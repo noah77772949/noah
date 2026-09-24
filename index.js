@@ -20,6 +20,11 @@ var COURSES = {
       { id: '03-variables', title: 'المتغيرات', time: 30, level: 'مبتدئ' },
       { id: '04-types', title: 'أنواع البيانات', time: 35, level: 'مبتدئ' },
       { id: '05-operators', title: 'العمليات الحسابية', time: 40, level: 'مبتدئ' },
+      { id: '06-conditions', title: 'الشروط في Python', time: 35, level: 'مبتدئ' },
+      { id: '07-loops', title: 'الحلقات في Python', time: 40, level: 'مبتدئ' },
+      { id: '08-lists', title: 'القوائم في Python', time: 40, level: 'مبتدئ' },
+      { id: '09-dictionaries', title: 'القواميس في Python', time: 35, level: 'مبتدئ' },
+      { id: '10-functions', title: 'الدوال في Python', time: 45, level: 'مبتدئ' },
       { id: '11-tuples', title: 'الصفوف (Tuples) في Python', time: 20, level: 'متوسط' },
     ]
   }

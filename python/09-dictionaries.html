@@ -1,0 +1,83 @@
+<!--title:القواميس في Python|time:35|level:مبتدئ|quiz:1,2,0,1-->
+<div class="lesson-content">
+<div class="lesson-hero"><div class="hero-badge">📘 الدرس 9</div><h1>القواميس — البيانات بصيغة (مفتاح: قيمة)</h1><div class="hero-meta"><span>⏱ 35 دقيقة</span><span>📊 مبتدئ</span></div></div>
+<section class="lesson-section"><h2>🎯 الأهداف</h2><div class="objectives"><div class="objective">✅ إنشاء قاموس وقراءته</div><div class="objective">✅ إضافة وحذف المفاتيح</div><div class="objective">✅ المرور على القاموس</div><div class="objective">✅ الدوال المهمة</div></div></section>
+<section class="lesson-section"><h2>📖 ما هو القاموس؟</h2><p>القائمة تعتمد على أرقام للوصول، لكن القاموس يعتمد على "أسماء" (مفاتيح). مثل دفتر هاتف: الاسم مفتاح، والرقم قيمة.</p><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {
+    "name": "أحمد",
+    "age": 25,
+    "city": "دمشق"
+}
+
+print(person["name"])
+print(person["age"])</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">أحمد
+25</pre></div></section>
+<section class="lesson-section"><h2>✏️ تعديل وإضافة</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {"name": "أحمد", "age": 25}
+
+person["age"] = 26
+person["job"] = "مبرمج"
+
+print(person)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">{'name': 'أحمد', 'age': 26, 'job': 'مبرمج'}</pre></div><h3>الحذف</h3><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {"name": "أحمد", "age": 25, "city": "دمشق"}
+
+del person["city"]
+print(person)
+
+removed = person.pop("age")
+print(removed)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">{'name': 'أحمد', 'age': 25}
+25</pre></div></section>
+<section class="lesson-section"><h2>🔍 الوصول الآمن</h2><p>لو حاولت الوصول لمفتاح غير موجود بـ [] ستحصل على خطأ. لكن get() أكثر أماناً:</p><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {"name": "أحمد", "age": 25}
+
+print(person.get("name"))
+print(person.get("job"))
+print(person.get("job", "غير محدد"))</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">أحمد
+None
+غير محدد</pre></div></section>
+<section class="lesson-section"><h2>🔄 المرور على القاموس</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {"name": "أحمد", "age": 25, "city": "دمشق"}
+
+for key in person:
+    print(key)
+
+print("---")
+
+for key, value in person.items():
+    print(f"{key}: {value}")</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">name
+age
+city
+---
+name: أحمد
+age: 25
+city: دمشق</pre></div></section>
+<section class="lesson-section"><h2>🧰 دوال مهمة</h2><table class="lesson-table"><thead><tr><th>الدالة</th><th>الوظيفة</th></tr></thead><tbody><tr><td><code>keys()</code></td><td>كل المفاتيح</td></tr><tr><td><code>values()</code></td><td>كل القيم</td></tr><tr><td><code>items()</code></td><td>أزواج (مفتاح، قيمة)</td></tr><tr><td><code>get(k)</code></td><td>قيمة المفتاح بأمان</td></tr><tr><td><code>update()</code></td><td>دمج قاموس آخر</td></tr></tbody></table><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">person = {"name": "أحمد", "age": 25}
+
+print(list(person.keys()))
+print(list(person.values()))
+print(len(person))</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">['name', 'age']
+['أحمد', 25]
+2</pre></div></section>
+<section class="lesson-section"><h2>✏️ تمارين</h2>
+<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 1</span><span class="exercise-level">سهل</span></div><p class="exercise-q">أنشئ قاموس لكتاب فيه: العنوان، المؤلف، السنة. واطبع كل قيمة.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم {"title": "...", ...}.</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>book = {
+    "title": "مقدمة في البرمجة",
+    "author": "أحمد",
+    "year": 2024
+}
+print(book["title"])
+print(book["author"])
+print(book["year"])</pre></details></div>
+<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 2</span><span class="exercise-level">سهل</span></div><p class="exercise-q">أضف مفتاح "price" إلى قاموس الكتاب، ثم اطبعه كاملاً.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم book["price"] = 50.</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>book = {"title": "مقدمة", "author": "أحمد"}
+book["price"] = 50
+print(book)</pre></details></div>
+<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 3</span><span class="exercise-level">متوسط</span></div><p class="exercise-q">أنشئ قاموس طالب فيه 3 مواد ودرجاتها. اطبع المعدل.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم sum(grades.values()) / len(grades).</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>student = {"رياضيات": 90, "علوم": 85, "عربي": 88}
+avg = sum(student.values()) / len(student)
+print(avg)</pre></details></div>
+<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 4</span><span class="exercise-level">متقدم</span></div><p class="exercise-q">اطبع قاموس الطالب بأسلوب أنيق: "المادة: الدرجة".</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم .items().</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>student = {"رياضيات": 90, "علوم": 85, "عربي": 88}
+for subject, grade in student.items():
+    print(f"{subject}: {grade}")</pre></details></div>
+</section>
+<section class="lesson-section"><h2>📝 اختبار</h2><div class="quiz">
+<div class="quiz-q"><p><strong>1. كيف نكتب قاموساً؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) [ ]</div><div class="quiz-opt">ب) { }</div><div class="quiz-opt">ج) ( )</div><div class="quiz-opt">د) &lt; &gt;</div></div></div>
+<div class="quiz-q"><p><strong>2. الفرق بين القاموس والقائمة؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) لا فرق</div><div class="quiz-opt">ب) القاموس مفاتيح، القائمة أرقام</div><div class="quiz-opt">ج) القائمة أسرع</div><div class="quiz-opt">د) القاموس أصغر</div></div></div>
+<div class="quiz-q"><p><strong>3. كيف نصل لقيمة مفتاح بأمان؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) d["key"]</div><div class="quiz-opt">ب) d.get("key")</div><div class="quiz-opt">ج) d.find("key")</div><div class="quiz-opt">د) d.value("key")</div></div></div>
+<div class="quiz-q"><p><strong>4. دالة الحصول على الأزواج؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) pairs()</div><div class="quiz-opt">ب) items()</div><div class="quiz-opt">ج) pairs</div><div class="quiz-opt">د) values()</div></div></div>
+</div></section>
+<section class="lesson-section summary"><h2>🎓 خلاصة</h2><ul class="summary-list"><li>✅ القاموس بـ {} وبصيغة {"key": value}</li><li>✅ الوصول بـ d["key"] أو d.get("key")</li><li>✅ الإضافة والتعديل بنفس الصيغة</li><li>✅ الحذف بـ del أو pop</li><li>✅ keys(), values(), items()</li></ul></section>
+<div class="lesson-nav"></div>
+</div>
