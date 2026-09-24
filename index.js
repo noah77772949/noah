@@ -20,6 +20,7 @@ var COURSES = {
       { id: '03-variables', title: 'المتغيرات', time: 30, level: 'مبتدئ' },
       { id: '04-types', title: 'أنواع البيانات', time: 35, level: 'مبتدئ' },
       { id: '05-operators', title: 'العمليات الحسابية', time: 40, level: 'مبتدئ' },
+      { id: '11-tuples', title: 'الصفوف (Tuples) في Python', time: 20, level: 'متوسط' },
     ]
   }
   ,html: { name: "HTML", icon: "🌐", color: "#E34F26", desc: "هيكل صفحات الويب", lessons: [] }
