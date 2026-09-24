@@ -1,0 +1,297 @@
+<!--title:مقدمة إلى JavaScript|time:20|level:مبتدئ|quiz:1,1,2,0-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 1 من 20</div>
+  <h1>مقدمة إلى JavaScript — لغة الويب</h1>
+  <div class="hero-meta">
+    <span>⏱ 20 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ ما هي JavaScript ولماذا هي مهمة</div>
+    <div class="objective">✅ الفرق بينها وبين Java</div>
+    <div class="objective">✅ أين تعمل JavaScript</div>
+    <div class="objective">✅ كتابة أول برنامج</div>
+    <div class="objective">✅ فهم console.log</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🌐 ما هي JavaScript؟</h2>
+  <p>تخيّل موقعاً إلكترونياً كاملاً: تصميم أنيق، ألوان جذابة، أزرار تفاعلية. هل تعرف أن هذا "الموقع الحي" لا يعمل بـ HTML و CSS فقط؟</p>
+  <p><strong>HTML</strong> = الهيكل (عظام الموقع)<br>
+  <strong>CSS</strong> = التنسيق (ملابس الموقع)<br>
+  <strong>JavaScript</strong> = الحركة والتفاعل (عقل الموقع)</p>
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div><strong>JavaScript</strong> هي اللغة الوحيدة التي تفهمها كل متصفحات الويب — Chrome, Firefox, Safari, Edge. بدونها، الإنترنت سيكون صفحات ثابتة مملة.</div>
+  </div>
+  <h3>ماذا تفعل JavaScript؟</h3>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-icon">🎬</div><h4>الحركات</h4><p>قوائم منسدلة، تأثيرات</p></div>
+    <div class="feature-card"><div class="feature-icon">📝</div><h4>التحقق من النماذج</h4><p>هل البريد صحيح؟</p></div>
+    <div class="feature-card"><div class="feature-icon">🔄</div><h4>التحديث الفوري</h4><p>شات، إشعارات</p></div>
+    <div class="feature-card"><div class="feature-icon">🎮</div><h4>الألعاب</h4><p>ألعاب المتصفح</p></div>
+    <div class="feature-card"><div class="feature-icon">🌐</div><h4>تطبيقات كاملة</h4><p>Gmail, Google Maps</p></div>
+    <div class="feature-card"><div class="feature-icon">⚙️</div><h4>السيرفرات</h4><p>عبر Node.js</p></div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>⚠️ JavaScript ≠ Java</h2>
+  <p>خطأ شائع: الاعتقاد أن JavaScript نسخة من Java. <strong>لا علاقة بينهما إطلاقاً!</strong></p>
+  <table class="lesson-table">
+    <thead><tr><th></th><th>JavaScript</th><th>Java</th></tr></thead>
+    <tbody>
+      <tr><td>سنة الإنشاء</td><td>1995</td><td>1995</td></tr>
+      <tr><td>المطور</td><td>Brendan Eich</td><td>James Gosling</td></tr>
+      <tr><td>الشركة</td><td>Netscape</td><td>Sun</td></tr>
+      <tr><td>الاستخدام</td><td>الويب</td><td>الأنظمة والأندرويد</td></tr>
+    </tbody>
+  </table>
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div><strong>القصة:</strong> سُمّيت JavaScript بـ "Java" لأسباب تسويقية فقط! أرادوا ركوب موجة شعبية Java.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>▶️ أول برنامج لك</h2>
+  <p>في Python استخدمنا print()، في JavaScript نستخدم console.log():</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">console.log("Hello, World!");</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">Hello, World!</pre>
+  </div>
+  <p>تشريح الكود:</p>
+  <ul class="styled-list">
+    <li><code>console</code> = كائن جاهز للتحكم بالطرفية</li>
+    <li><code>.log()</code> = دالة تطبع ما بين قوسيها</li>
+    <li><code>"..."</code> = النص</li>
+    <li><code>;</code> = نهاية السطر</li>
+  </ul>
+</section>
+
+<section class="lesson-section">
+  <h2>⚡ ميزة JavaScript الفريدة</h2>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">console.log(2 + 2);
+console.log("مرحبا" + " بك");
+console.log(10 / 3);</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">4
+مرحبا بك
+3.3333333333333335</pre>
+  </div>
+  <p>الفروق الرئيسية عن Python:</p>
+  <table class="lesson-table">
+    <thead><tr><th>العملية</th><th>JavaScript</th><th>Python</th></tr></thead>
+    <tbody>
+      <tr><td>طباعة</td><td><code>console.log(x)</code></td><td><code>print(x)</code></td></tr>
+      <tr><td>تعليق</td><td><code>// سطر</code></td><td><code># سطر</code></td></tr>
+      <tr><td>القوة</td><td><code>2 ** 3</code></td><td><code>2 ** 3</code></td></tr>
+      <tr><td>نهاية السطر</td><td><code>;</code></td><td>لا شيء</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="lesson-section">
+  <h2>💬 التعليقات</h2>
+  <p>تعليق سطر واحد:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">// هذا تعليق
+console.log("مرحبا"); // تعليق في نهاية السطر</pre>
+  </div>
+  <p>تعليق متعدد الأسطر (ميزة لا توجد في Python):</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">/* هذا تعليق
+   يمتد على عدة أسطر */
+console.log("النتيجة");</pre>
+  </div>
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div><strong>ميزة:</strong> JavaScript تسمح بتعليق متعدد الأسطر مباشرة. في Python تحتاج # لكل سطر.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎯 أين يعمل الكود؟</h2>
+  <p>JavaScript تعمل في مكانين:</p>
+  <h3>1. المتصفح (Browser)</h3>
+  <ul class="styled-list">
+    <li>مدمج في كل متصفح</li>
+    <li>يتحكم بصفحات الويب</li>
+    <li>يستخدم DOM للتفاعل مع HTML</li>
+  </ul>
+  <h3>2. الخادم (Server)</h3>
+  <ul class="styled-list">
+    <li>عبر Node.js</li>
+    <li>لبناء APIs ومواقع كاملة</li>
+    <li>شركات كبرى: Netflix, PayPal</li>
+  </ul>
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>في هذا التطبيق، نشغّل JavaScript داخل <strong>بيئة المتصفح</strong>. كل الكود يعمل مباشرة.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاؤك الأولى</h2>
+  <h3>خطأ 1: نسيان علامات الاقتباس</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">console.log(مرحبا)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">ReferenceError: مرحبا is not defined</pre>
+  </div>
+  <p><strong>الحل:</strong> أضف علامتي اقتباس.</p>
+
+  <h3>خطأ 2: استخدام print()</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print("مرحبا")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">ReferenceError: print is not defined</pre>
+  </div>
+  <p><strong>الحل:</strong> استخدم <code>console.log()</code>.</p>
+
+  <h3>خطأ 3: علامات اقتباس غير متطابقة</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">console.log("مرحبا')</pre>
+  </div>
+  <p><strong>الحل:</strong> تأكد أن البداية والنهاية من نفس النوع.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع اسمك على الشاشة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم console.log().</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>console.log("أحمد");</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع عمرك، ثم عمرك بعد 10 سنوات.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم عملية الجمع +.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>console.log(25);
+console.log(25 + 10);</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">اطبع خط فاصل من 30 علامة = ثم كلمة "قسم جديد" ثم خط آخر.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>"=".repeat(30)</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>console.log("=".repeat(30));
+console.log("قسم جديد");
+console.log("=".repeat(30));</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما الأمر لطباعة شيء في JavaScript؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) print()</div>
+        <div class="quiz-opt">ب) console.log()</div>
+        <div class="quiz-opt">ج) echo</div>
+        <div class="quiz-opt">د) output()</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>2. كيف تُكتب التعليقات؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) # تعليق</div>
+        <div class="quiz-opt">ب) // تعليق</div>
+        <div class="quiz-opt">ج) -- تعليق</div>
+        <div class="quiz-opt">د) ** تعليق</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>3. هل JavaScript هي Java؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) نعم نفس اللغة</div>
+        <div class="quiz-opt">ب) لا، مختلفتان تماماً</div>
+        <div class="quiz-opt">ج) JavaScript نسخة مبسطة</div>
+        <div class="quiz-opt">د) حسب المتصفح</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>4. أين تعمل JavaScript؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) المتصفح فقط</div>
+        <div class="quiz-opt">ب) الخادم فقط</div>
+        <div class="quiz-opt">ج) المتصفح والخادم</div>
+        <div class="quiz-opt">د) سطح المكتب فقط</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>JavaScript</strong> لغة الويب الوحيدة لكل المتصفحات</li>
+    <li>✅ لا علاقة بينها وبين <strong>Java</strong></li>
+    <li>✅ الطباعة بـ <code>console.log()</code></li>
+    <li>✅ التعليقات: <code>//</code> أو <code>/* */</code></li>
+    <li>✅ تعمل في المتصفح وفي الخادم (Node.js)</li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item disabled">→ الدرس السابق</div>
+  <div class="lesson-nav-item next">الدرس التالي: المتغيرات ←</div>
+</div>
+
+</div>

@@ -1,0 +1,2 @@
+window.LESSONS = window.LESSONS || {};
+window.LESSONS['javascript/test'] = "<div class=\"lesson-content\">\n<div class=\"lesson-hero\">\n  <div class=\"hero-badge\">📘 تجريبي</div>\n  <h1>درس تجريبي</h1>\n</div>\n<section class=\"lesson-section\">\n  <h2>🎯 الهدف</h2>\n  <p>هذا اختبار لنظام Pack الجديد.</p>\n</section>\n</div>\n";

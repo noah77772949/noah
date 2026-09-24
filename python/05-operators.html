@@ -1,0 +1,547 @@
+<!--title:العمليات الحسابية|time:40|level:مبتدئ|quiz:2,2,1,0,1-->
+
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 5 من 30</div>
+  <h1>العمليات الحسابية والمنطقية</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ العمليات الحسابية السبع الأساسية</div>
+    <div class="objective">✅ الفرق بين / و //</div>
+    <div class="objective">✅ سرّ العلامة % (الباقي)</div>
+    <div class="objective">✅ القوة ** والأولوية</div>
+    <div class="objective">✅ العمليات المنطقية and/or/not</div>
+    <div class="objective">✅ اختصارات التعيين المركّبة</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🧮 العمليات الحسابية الأساسية</h2>
+
+  <p>Python تدعم كل العمليات التي تعرفها من الرياضيات، وأكثر:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>الرمز</th>
+        <th>العملية</th>
+        <th>مثال</th>
+        <th>النتيجة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>+</code></td><td>جمع</td><td><code>10 + 5</code></td><td>15</td></tr>
+      <tr><td><code>-</code></td><td>طرح</td><td><code>10 - 5</code></td><td>5</td></tr>
+      <tr><td><code>*</code></td><td>ضرب</td><td><code>10 * 5</code></td><td>50</td></tr>
+      <tr><td><code>/</code></td><td>قسمة</td><td><code>10 / 5</code></td><td>2.0</td></tr>
+      <tr><td><code>//</code></td><td>قسمة صحيحة</td><td><code>10 // 3</code></td><td>3</td></tr>
+      <tr><td><code>%</code></td><td>الباقي</td><td><code>10 % 3</code></td><td>1</td></tr>
+      <tr><td><code>**</code></td><td>القوة</td><td><code>2 ** 3</code></td><td>8</td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(10 + 5)
+print(10 - 5)
+print(10 * 5)
+print(10 / 5)
+print(10 // 3)
+print(10 % 3)
+print(2 ** 3)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">15
+5
+50
+2.0
+3
+1
+8</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔍 السر: الفرق بين / و //</h2>
+
+  <p>هذا أهم فرق يجب أن تفهمه:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(10 / 3)   # قسمة عادية
+print(10 // 3)  # قسمة صحيحة</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">3.3333333333333335
+3</pre>
+  </div>
+
+  <p><strong>القسمة العادية <code>/</code></strong>: تعطي النتيجة الحقيقية (عدد عشري).</p>
+  <p><strong>القسمة الصحيحة <code>//</code></strong>: تُهمل الكسر تماماً، وتُعيد العدد الصحيح فقط.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>ملاحظة:</strong> <code>10 / 5</code> نتيجتها <code>2.0</code> وليس <code>2</code>. لأن <code>/</code> تُعيد دائماً <code>float</code>، حتى لو كانت النتيجة صحيحة.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎁 سرّ العلامة % — الباقي</h2>
+
+  <p>علامة <code>%</code> تُعيد <strong>باقي القسمة</strong>. تبدو بسيطة، لكنها من أقوى أدوات البرمجة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(10 % 3)   # 10 ÷ 3 = 3 والباقي 1
+print(10 % 5)   # 10 ÷ 5 = 2 والباقي 0
+print(7 % 2)    # 7 ÷ 2 = 3 والباقي 1
+print(8 % 2)    # 8 ÷ 2 = 4 والباقي 0</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">1
+0
+1
+0</pre>
+  </div>
+
+  <h3>🧠 كيف تكشف الزوجي والفردي؟</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">number = 7
+print(number % 2)</pre>
+  </div>
+
+  <p>القاعدة:</p>
+  <ul class="styled-list">
+    <li>إذا كان <code>x % 2 == 0</code> → العدد <strong>زوجي</strong></li>
+    <li>إذا كان <code>x % 2 == 1</code> → العدد <strong>فردي</strong></li>
+  </ul>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>استخدامات أخرى لـ %</strong>:
+      <br>• تحديد مضاعفات (مثل كل 5 دقائق)
+      <br>• دورة الأيام (اليوم 100 → أي يوم في الأسبوع؟)
+      <br>• توزيع العناصر على مجموعات
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>⚡ القوة **</h2>
+
+  <p>لرفع عدد لقوة، استخدم <code>**</code>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(2 ** 3)    # 2 × 2 × 2 = 8
+print(5 ** 2)    # 5 × 5 = 25
+print(10 ** 6)   # مليون
+print(2 ** 0)    # أي عدد أس صفر = 1
+print(2 ** -1)   # = 0.5</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">8
+25
+1000000
+1
+0.5</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div>
+      في لغات أخرى، تُكتب <code>Math.pow(2, 3)</code>. في Python، فقط <code>2 ** 3</code> — أنظف وأسرع.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📐 أولوية العمليات</h2>
+
+  <p>عند خلط عدة عمليات في سطر واحد، Python تتبع ترتيباً صارماً (نفس الرياضيات):</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>الأولوية</th>
+        <th>العملية</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1 (الأعلى)</td><td><code>()</code> الأقواس</td></tr>
+      <tr><td>2</td><td><code>**</code> القوة</td></tr>
+      <tr><td>3</td><td><code>*</code> <code>/</code> <code>//</code> <code>%</code></td></tr>
+      <tr><td>4 (الأدنى)</td><td><code>+</code> <code>-</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(2 + 3 * 4)      # 3 * 4 = 12، ثم 2 + 12 = 14
+print((2 + 3) * 4)    # 2 + 3 = 5، ثم 5 * 4 = 20
+print(2 ** 3 + 1)     # 2 ** 3 = 8، ثم 8 + 1 = 9
+print(10 - 2 * 3)     # 2 * 3 = 6، ثم 10 - 6 = 4</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">14
+20
+9
+4</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>نصيحة:</strong> عند الشك، استخدم الأقواس. الكود الواضح أفضل من الكود الذكي. حتى لو كانت الأولوية واضحة، الأقواس تُساعد القارئ.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔗 العمليات المنطقية</h2>
+
+  <p>Python تدعم ثلاث عمليات منطقية على القيم المنطقية:</p>
+
+  <h3>1. and — "و"</h3>
+  <p>يُعيد <code>True</code> فقط إذا كان <strong>الطرفان</strong> <code>True</code>.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(True and True)
+print(True and False)
+print(False and False)</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">True
+False
+False</pre>
+  </div>
+
+  <h3>2. or — "أو"</h3>
+  <p>يُعيد <code>True</code> إذا كان <strong>أحد الطرفين</strong> <code>True</code> على الأقل.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(True or False)
+print(False or False)
+print(True or True)</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">True
+False
+True</pre>
+  </div>
+
+  <h3>3. not — "ليس"</h3>
+  <p>يقلب القيمة: <code>True</code> → <code>False</code>، والعكس.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(not True)
+print(not False)</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">False
+True</pre>
+  </div>
+
+  <h3>🧠 تطبيق عملي</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 25
+has_license = True
+
+can_drive = age >= 18 and has_license
+print(f"هل يمكنه القيادة؟ {can_drive}")</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">هل يمكنه القيادة؟ True</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>⚡ اختصارات التعيين</h2>
+
+  <p>عندما تريد تحديث متغير بناءً على قيمته الحالية، هناك اختصارات مريحة:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>الاختصار</th>
+        <th>يعني</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>x += 5</code></td><td><code>x = x + 5</code></td></tr>
+      <tr><td><code>x -= 3</code></td><td><code>x = x - 3</code></td></tr>
+      <tr><td><code>x *= 2</code></td><td><code>x = x * 2</code></td></tr>
+      <tr><td><code>x /= 4</code></td><td><code>x = x / 4</code></td></tr>
+      <tr><td><code>x //= 2</code></td><td><code>x = x // 2</code></td></tr>
+      <tr><td><code>x %= 3</code></td><td><code>x = x % 3</code></td></tr>
+      <tr><td><code>x **= 2</code></td><td><code>x = x ** 2</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">score = 100
+score += 50   # score = 150
+score -= 30   # score = 120
+score *= 2    # score = 240
+print(score)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">240</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">⚡</div>
+    <div>
+      <strong>لماذا هذه الاختصارات مفيدة؟</strong>
+      <br>• أقصر: سطر أقل
+      <br>• أوضح: تعرف فوراً أنها "تحديث" وليس إنشاء
+      <br>• أسرع قليلاً في التنفيذ
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: خلط / و //</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ منطقي</span></div>
+    <pre class="code-content">students = 25
+groups = 4
+per_group = students / groups
+print(per_group)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">6.25</pre>
+  </div>
+  <p><strong>لا يمكن أن يكون في المجموعة 6.25 طالب!</strong> استخدم <code>//</code> أو <code>round()</code>.</p>
+
+  <h3>خطأ 2: القسمة على صفر</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print(10 / 0)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">ZeroDivisionError: division by zero</pre>
+  </div>
+
+  <h3>خطأ 3: نسيان الأولوية</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ منطقي</span></div>
+    <pre class="code-content">average = 10 + 20 + 30 / 3
+print(average)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">📤 النتيجة الخاطئة</div>
+    <pre class="output-content">40.0</pre>
+  </div>
+  <p><strong>المتوقع: 20</strong> (مجموع 60 ÷ 3). لكن الأولوية حسبت 30/3 أولاً. الحل: <code>(10 + 20 + 30) / 3</code>.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">احسب: <code>15 + 7</code>، <code>15 - 7</code>، <code>15 * 7</code>، واطبعهم.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>ثلاث عمليات print منفصلة.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print(15 + 7)
+print(15 - 7)
+print(15 * 7)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع باقي قسمة 17 على 5، ثم باقي قسمة 100 على 7.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>%</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print(17 % 5)
+print(100 % 7)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">احسب مساحة دائرة نصف قطرها 5 (المساحة = π × r²). استخدم π = 3.14159.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>لا تنسَ الأقواس: <code>3.14159 * (5 ** 2)</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>r = 5
+area = 3.14159 * (r ** 2)
+print(area)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ متغير <code>balance = 1000</code>. أضف 500، ثم اطرح 200، ثم اضرب في 2، واطبع النتيجة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>+=</code>، <code>-=</code>، <code>*=</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>balance = 1000
+balance += 500
+balance -= 200
+balance *= 2
+print(balance)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">اكتب كوداً يحدد إن كان الرقم 144 مربعاً كاملاً (مثلاً: <code>144 = 12²</code>). اطبع النتيجة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>المربع الكامل = <code>12 ** 2 == 144</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>n = 144
+is_square = (12 ** 2) == n
+print(is_square)</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما نتيجة <code>17 // 5</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 3</div>
+        <div class="quiz-opt">ب) 3.4</div>
+        <div class="quiz-opt">ج) 2</div>
+        <div class="quiz-opt">د) 4</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما نتيجة <code>2 ** 4</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 6</div>
+        <div class="quiz-opt">ب) 8</div>
+        <div class="quiz-opt">ج) 16</div>
+        <div class="quiz-opt">د) 24</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. ما نتيجة <code>True and False</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) True</div>
+        <div class="quiz-opt">ب) False</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) None</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. ما قيمة <code>x</code> بعد: <code>x = 10; x *= 3; x += 5</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 35</div>
+        <div class="quiz-opt">ب) 30</div>
+        <div class="quiz-opt">ج) 15</div>
+        <div class="quiz-opt">د) 20</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>5. ما نتيجة <code>2 + 3 * 4 ** 2</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 50</div>
+        <div class="quiz-opt">ب) 100</div>
+        <div class="quiz-opt">ج) 144</div>
+        <div class="quiz-opt">د) 400</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ العمليات: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>//</code> <code>%</code> <code>**</code></li>
+    <li>✅ <code>/</code> تُعيد دائماً float، <code>//</code> تُعيد int</li>
+    <li>✅ <code>%</code> تُعيد الباقي — مفيدة للزوجي/الفردي</li>
+    <li>✅ <code>**</code> للقوة (أسرع من <code>pow()</code>)</li>
+    <li>✅ الأولوية: <code>()</code> → <code>**</code> → <code>* / // %</code> → <code>+ -</code></li>
+    <li>✅ المنطقية: <code>and</code>، <code>or</code>، <code>not</code></li>
+    <li>✅ الاختصارات: <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>//=</code> <code>%=</code> <code>**=</code></li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item">→ الدرس السابق: الأنواع</div>
+  <div class="lesson-nav-item next">الدرس التالي: الإدخال ←</div>
+</div>
+
+</div>

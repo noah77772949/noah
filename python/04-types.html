@@ -1,0 +1,588 @@
+<!--title:أنواع البيانات|time:35|level:مبتدئ|quiz:2,1,1,1,1-->
+
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 4 من 30</div>
+  <h1>أنواع البيانات — قلب البرمجة</h1>
+  <div class="hero-meta">
+    <span>⏱ 35 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم الأنواع الأربعة الأساسية بعمق</div>
+    <div class="objective">✅ تحويل الأنواع (Type Conversion)</div>
+    <div class="objective">✅ الفرق بين Integer و Float</div>
+    <div class="objective">✅ العمليات المنطقية (Boolean)</div>
+    <div class="objective">✅ استخدام f-strings لتنسيق النصوص</div>
+    <div class="objective">✅ معرفة عمليات كل نوع</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎨 لماذا توجد أنواع؟</h2>
+
+  <p>الحاسوب يميّز بين "5" (نص) و 5 (رقم). كل واحد منهما له خصائص مختلفة:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>النوع</th>
+        <th>الاسم</th>
+        <th>مثال</th>
+        <th>الاستخدام</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>int</code></td><td>عدد صحيح</td><td>25, -3, 0</td><td>العدّ، الأعمار، النقاط</td></tr>
+      <tr><td><code>float</code></td><td>عدد عشري</td><td>3.14, -0.5</td><td>الأسعار، الأوزان، النسب</td></tr>
+      <tr><td><code>str</code></td><td>نص</td><td>"أحمد", "123"</td><td>الأسماء، الرسائل، العناوين</td></tr>
+      <tr><td><code>bool</code></td><td>منطقي</td><td>True, False</td><td>الشروط، الحالات</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>قاعدة ذهبية:</strong> كل قيمة في Python لها نوع. النوع يحدد <em>ما يمكنك فعله</em> بالقيمة.
+      <br>مثلاً: النص له طول، الرقم لا. الرقم يمكن جمعه، النص يُدمج.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔢 الأعداد الصحيحة (int)</h2>
+
+  <p>أي عدد بدون فاصلة عشرية. يمكن أن يكون موجباً، سالباً، أو صفراً.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 25
+temperature = -5
+count = 0
+big_number = 1000000
+
+print(type(age))
+print(type(temperature))</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">&lt;class 'int'&gt;
+&lt;class 'int'&gt;</pre>
+  </div>
+
+  <h3>ميزة Python المذهلة: الأرقام الضخمة</h3>
+  <p>في معظم اللغات، الحد الأقصى للعدد الصحيح محدود. في Python؟ لا حد!</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">huge = 99999999999999999999999999999
+print(huge * 2)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">199999999999999999999999999998</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔬 الأعداد العشرية (float)</h2>
+
+  <p>أي عدد فيه فاصلة عشرية. لاحظ أن Python تستخدم <strong>النقطة</strong> وليس الفاصلة العربية.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">price = 19.99
+weight = 75.5
+pi = 3.14159
+negative = -2.5
+
+print(type(price))</pre>
+  </div>
+
+  <h3>الأخطاء المضحكة للـ Float</h3>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">⚠️ مفاجأة</span></div>
+    <pre class="code-content">print(0.1 + 0.2)</pre>
+  </div>
+
+  <div class="output-block error">
+    <div class="output-header">😱 النتيجة</div>
+    <pre class="output-content">0.30000000000000004</pre>
+  </div>
+
+  <p>ما هذا؟ لماذا النتيجة غريبة؟</p>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>هذه مشكلة معروفة في جميع لغات البرمجة!</strong> ليست خاصة بـ Python.
+      <br><br>
+      السبب: الحاسوب يخزّن الأرقام في النظام الثنائي (0 و 1). بعض الأعداد العشرية لا يمكن تمثيلها بدقة في هذا النظام.
+      <br><br>
+      الحل: عند الحاجة لدقة عالية (مثل المال)، استخدم <code>decimal</code> module.
+    </div>
+  </div>
+
+  <h3>النظام العلمي</h3>
+  <p>للأرقام الصغيرة أو الكبيرة جداً:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">tiny = 1.5e-10   # = 0.00000000015
+big = 2.5e8      # = 250000000
+print(tiny)
+print(big)</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 النصوص (str)</h2>
+
+  <p>أي شيء بين علامتي اقتباس — مفردة أو مزدوجة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+city = 'دمشق'
+empty = ""
+number_as_string = "123"
+multi = "هذا نص طويل جداً"
+
+print(type(name))</pre>
+  </div>
+
+  <h3>متى تستخدم " ومتى '؟</h3>
+  <p>في Python، لا فرق. اختر ما يسهّل عليك:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># استخدم " عندما النص يحتوي على '
+message1 = "It's a great day"
+
+# استخدم ' عندما النص يحتوي على "
+message2 = 'He said "Hello"'</pre>
+  </div>
+
+  <h3>النصوص المتعددة الأسطر</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">poem = """
+في القلب حنين
+وفي العين دمعة
+يا وطني
+"""
+
+print(poem)</pre>
+  </div>
+
+  <h3>عمليات على النصوص</h3>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>العملية</th>
+        <th>الكود</th>
+        <th>النتيجة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>دمج</td><td><code>"مرحباً" + " بك"</code></td><td><code>"مرحباً بك"</code></td></tr>
+      <tr><td>تكرار</td><td><code>"=" * 5</code></td><td><code>"====="</code></td></tr>
+      <tr><td>الطول</td><td><code>len("أحمد")</code></td><td><code>4</code></td></tr>
+      <tr><td>الوصول لحرف</td><td><code>"Python"[0]</code></td><td><code>"P"</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">greeting = "مرحباً" + " " + "بك"
+print(greeting)
+
+line = "=" * 20
+print(line)
+
+name = "أحمد"
+print("عدد حروف اسمك:", len(name))
+
+print("أول حرف في Python:", "Python"[0])</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✅ القيم المنطقية (bool)</h2>
+
+  <p>فقط قيمتان: <code>True</code> و <code>False</code>. لاحظ: <strong>بحرف كبير في البداية</strong>.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">is_student = True
+is_married = False
+
+print(type(is_student))
+print(5 > 3)
+print(10 == 5)
+print("أ" == "أ")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">&lt;class 'bool'&gt;
+True
+False
+True</pre>
+  </div>
+
+  <h3>عمليات المقارنة</h3>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>الرمز</th>
+        <th>المعنى</th>
+        <th>مثال</th>
+        <th>النتيجة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>==</code></td><td>يساوي</td><td><code>5 == 5</code></td><td>True</td></tr>
+      <tr><td><code>!=</code></td><td>لا يساوي</td><td><code>5 != 3</code></td><td>True</td></tr>
+      <tr><td><code>&gt;</code></td><td>أكبر</td><td><code>5 &gt; 3</code></td><td>True</td></tr>
+      <tr><td><code>&lt;</code></td><td>أصغر</td><td><code>5 &lt; 3</code></td><td>False</td></tr>
+      <tr><td><code>&gt;=</code></td><td>أكبر أو يساوي</td><td><code>5 &gt;= 5</code></td><td>True</td></tr>
+      <tr><td><code>&lt;=</code></td><td>أصغر أو يساوي</td><td><code>3 &lt;= 5</code></td><td>True</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>لا تخلط بين <code>=</code> و <code>==</code>!</strong>
+      <br><code>=</code> للتعيين: <code>x = 5</code>
+      <br><code>==</code> للمقارنة: <code>x == 5</code>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔄 تحويل الأنواع</h2>
+
+  <p>يمكن تحويل قيمة من نوع لآخر:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># نص إلى رقم
+num_str = "100"
+num_int = int(num_str)
+print(num_int + 50)
+
+# رقم إلى نص
+num = 42
+num_str2 = str(num)
+print("العدد هو " + num_str2)
+
+# نص عشري إلى رقم
+price_str = "19.99"
+price = float(price_str)
+print(price * 2)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">150
+العدد هو 42
+39.98</pre>
+  </div>
+
+  <h3>⚠️ تحويلات تفشل</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">int("مرحبا")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">ValueError: invalid literal for int() with base 10: 'مرحبا'</pre>
+  </div>
+  <p><strong>السبب:</strong> لا يمكن تحويل نص غير رقمي إلى عدد.</p>
+
+  <h3>الحيلة: سؤال المستخدم</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age_str = "25"
+age = int(age_str)
+print("بعد 10 سنوات:", age + 10)</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎨 f-strings — الطريقة الحديثة لتنسيق النصوص</h2>
+
+  <p>هذه ميزة حديثة في Python (منذ 3.6) تجعل الكود أنظف بكثير.</p>
+
+  <h3>❌ الطريقة القديمة</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+age = 25
+print("اسمي " + name + " وعمري " + str(age) + " سنة")</pre>
+  </div>
+
+  <h3>✅ الطريقة الحديثة (f-string)</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+age = 25
+print(f"اسمي {name} وعمري {age} سنة")</pre>
+  </div>
+
+  <p>كيف؟ أضف حرف <code>f</code> قبل النص، ثم ضع المتغيرات بين <code>{}</code>.</p>
+
+  <h3>مزايا f-string</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">price = 19.99
+quantity = 3
+total = price * quantity
+
+print(f"السعر: {price}")
+print(f"الكمية: {quantity}")
+print(f"الإجمالي: {total}")
+
+# يمكن استخدام أي تعبير
+print(f"5 + 3 = {5 + 3}")
+print(f"الاسم بأحرف كبيرة: {'ahmed'.upper()}")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">السعر: 19.99
+الكمية: 3
+الإجمالي: 59.97
+5 + 3 = 8
+الاسم بأحرف كبيرة: AHMED</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div>
+      <strong>استخدم f-strings دائماً</strong> في Python الحديثة. أسرع، أوضح، وأسهل قراءةً.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: جمع نص مع رقم</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">age = 25
+print("عمري: " + age)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">TypeError: can only concatenate str (not "int") to str</pre>
+  </div>
+  <p><strong>الحل:</strong> استخدم <code>str(age)</code> أو f-string.</p>
+
+  <h3>خطأ 2: نسيان f في f-string</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">name = "أحمد"
+print("اسمي {name}")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 النتيجة الخاطئة</div>
+    <pre class="output-content">اسمي {name}</pre>
+  </div>
+  <p><strong>الحل:</strong> أضف حرف <code>f</code>: <code>f"اسمي {name}"</code></p>
+
+  <h3>خطأ 3: استخدام الأقواس الخطأ</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">name = "أحمد"
+print(f"اسمي (name)")</pre>
+  </div>
+  <p><strong>الحل:</strong> استخدم <code>{}</code> وليس <code>()</code>.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ متغيراً <code>age = 30</code> واطبع نوعه.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>type()</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>age = 30
+print(type(age))</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">حوّل النص <code>"3.14"</code> إلى رقم عشري واطبعه مضروباً في 2.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>float()</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>x = float("3.14")
+print(x * 2)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ 3 متغيرات (اسم، مدينة، عمر)، ثم اطبع جملة كاملة باستخدام f-string.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>لا تنسَ حرف <code>f</code> قبل النص، وضع المتغيرات بين <code>{}</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>name = "أحمد"
+city = "دمشق"
+age = 25
+print(f"أنا {name} من {city} وعمري {age} سنة")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ متغير <code>price = 49.99</code> و <code>quantity = 3</code>. احسب الإجمالي واطبعه بـ f-string مع كلمة "دولار".</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>الإجمالي = price * quantity</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>price = 49.99
+quantity = 3
+total = price * quantity
+print(f"الإجمالي: {total} دولار")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أنشئ نصاً فيه اسمك، واطبع طوله، وأول حرف منه.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>الطول بـ <code>len()</code>، والحرف الأول بـ <code>name[0]</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>name = "أحمد"
+print(f"عدد الحروف: {len(name)}")
+print(f"أول حرف: {name[0]}")</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما نوع القيمة <code>"42"</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) int</div>
+        <div class="quiz-opt">ب) float</div>
+        <div class="quiz-opt">ج) str</div>
+        <div class="quiz-opt">د) bool</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما نتيجة <code>int("50") + 25</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) "5025"</div>
+        <div class="quiz-opt">ب) 75</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) 50</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. أي جملة صحيحة لـ f-string؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) "اسمي {name}"</div>
+        <div class="quiz-opt">ب) f"اسمي {name}"</div>
+        <div class="quiz-opt">ج) f"اسمي (name)"</div>
+        <div class="quiz-opt">د) "{name}"f</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. ما الفرق بين <code>=</code> و <code>==</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) لا فرق</div>
+        <div class="quiz-opt">ب) = للتعيين، == للمقارنة</div>
+        <div class="quiz-opt">ج) = للمقارنة، == للتعيين</div>
+        <div class="quiz-opt">د) كلاهما للمقارنة</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>5. ما نتيجة <code>"=" * 3</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 3</div>
+        <div class="quiz-opt">ب) "==="</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) "3"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>int</strong>: أعداد صحيحة (لا حد أقصى في Python!)</li>
+    <li>✅ <strong>float</strong>: أعداد عشرية (انتبه لأخطاء الدقة)</li>
+    <li>✅ <strong>str</strong>: نصوص (مفردة ' أو مزدوجة ")</li>
+    <li>✅ <strong>bool</strong>: True / False فقط</li>
+    <li>✅ التحويل: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+    <li>✅ <strong>f-strings</strong> أفضل طريقة لتنسيق النصوص</li>
+    <li>✅ <code>type()</code> لمعرفة نوع أي قيمة</li>
+    <li>✅ <code>=</code> للتعيين، <code>==</code> للمقارنة</li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item">→ الدرس السابق: المتغيرات</div>
+  <div class="lesson-nav-item next">الدرس التالي: العمليات ←</div>
+</div>
+
+</div>

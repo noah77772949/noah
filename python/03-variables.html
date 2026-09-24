@@ -1,0 +1,579 @@
+<!--title:المتغيرات|time:30|level:مبتدئ|quiz:1,2,1,2,1-->
+
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 3 من 30</div>
+  <h1>المتغيرات — صناديق حفظ القيم</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم ماهية المتغير ولماذا نحتاجه</div>
+    <div class="objective">✅ تسمية المتغيرات بشكل صحيح</div>
+    <div class="objective">✅ إعادة تعيين القيم وتغييرها</div>
+    <div class="objective">✅ فهم أن المتغير "يُشير" للقيمة</div>
+    <div class="objective">✅ تعدد التعيين والتبديل الذكي</div>
+    <div class="objective">✅ الفرق بين الأنواع الأساسية</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📦 ما هو المتغير؟</h2>
+
+  <p>تخيّل مكتبة كبيرة فيها رفوف كثيرة. كل رف له <strong>ملصق</strong> يوضح ما فيه: "كتب التاريخ"، "روايات"، "قصص أطفال"... عندما تحتاج كتاباً، لا تبحث في كل المكتبة — تنظر للملصق وتذهب مباشرة.</p>
+
+  <p><strong>المتغير</strong> هو بالضبط هذا: ملصق على مكان في ذاكرة الحاسوب، يحمل اسماً وقيمة.</p>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>تعريف:</strong> المتغير هو اسم يشير إلى قيمة مخزّنة في ذاكرة الحاسوب. عندما تكتب اسم المتغير في الكود، Python تستبدله بالقيمة.
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="diagram-title">🧠 كيف يعمل المتغير؟</div>
+    <div class="diagram-box">
+      <div class="diagram-line">📝 <code>name = "أحمد"</code></div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">🔍 Python تحجز مكاناً في الذاكرة</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">🏷️ تُسمّي المكان "name"</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line success">💾 تضع فيه القيمة "أحمد"</div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✍️ إنشاء متغير</h2>
+
+  <p>الطريقة بسيطة جداً:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">اسم_المتغير = القيمة</pre>
+  </div>
+
+  <p>أمثلة حقيقية:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+age = 25
+height = 1.75
+is_student = True</pre>
+  </div>
+
+  <p>وهكذا أنشأنا 4 متغيرات:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>المتغير</th>
+        <th>القيمة</th>
+        <th>النوع</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>name</code></td><td>أحمد</td><td>نص (str)</td></tr>
+      <tr><td><code>age</code></td><td>25</td><td>عدد صحيح (int)</td></tr>
+      <tr><td><code>height</code></td><td>1.75</td><td>عدد عشري (float)</td></tr>
+      <tr><td><code>is_student</code></td><td>True</td><td>منطقي (bool)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-note">
+    <div class="callout-icon">📌</div>
+    <div>
+      لاحظ: في Python <strong>لا نُعلن نوع المتغير</strong>. هي تفهمه تلقائياً من القيمة. هذا يسمى <em>Dynamic Typing</em>.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎨 قواعد تسمية المتغيرات</h2>
+
+  <p>ليس كل اسم صالح. إليك القواعد:</p>
+
+  <h3>✅ مسموح:</h3>
+  <ul class="styled-list">
+    <li>الحروف الإنجليزية: <code>name</code>, <code>age</code></li>
+    <li>الأرقام (لكن ليس في البداية): <code>user1</code>, <code>score2</code></li>
+    <li>الشرطة السفلية: <code>first_name</code>, <code>my_var</code></li>
+    <li>الحروف العربية: <code>الاسم</code>, <code>العمر</code> (يعمل لكن غير شائع)</li>
+  </ul>
+
+  <h3>❌ ممنوع:</h3>
+  <ul class="styled-list">
+    <li>البدء برقم: <code>1name</code> ❌</li>
+    <li>المسافات: <code>my name</code> ❌</li>
+    <li>الرموز الخاصة: <code>name!</code>, <code>name@</code> ❌</li>
+    <li>الكلمات المحجوزة: <code>print</code>, <code>if</code>, <code>for</code> ❌</li>
+  </ul>
+
+  <h3>🎯 قواعد أسلوبية (نصائح احترافية):</h3>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📖</div>
+      <h4>أسماء واضحة</h4>
+      <p><code>user_age</code> أفضل من <code>ua</code></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔡</div>
+      <h4>حروف صغيرة</h4>
+      <p><code>my_var</code> أفضل من <code>MyVar</code></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">➖</div>
+      <h4>شرطة سفلية</h4>
+      <p><code>first_name</code> أفضل من <code>firstName</code></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚫</div>
+      <h4>لا اختصارات مبهمة</h4>
+      <p><code>total</code> أفضل من <code>t</code></p>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>Python حسّاسة لحالة الأحرف!</strong>
+      <br><code>name</code> ≠ <code>Name</code> ≠ <code>NAME</code>
+      <br>كل واحد منها متغير مختلف تماماً.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔄 تغيير قيمة متغير</h2>
+
+  <p>المتغير كاسمه — قابل للتغيير. يمكنك إعطاؤه قيمة جديدة في أي وقت:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">score = 10
+print("النتيجة الأولية:", score)
+
+score = 25
+print("بعد التحديث:", score)
+
+score = score + 5
+print("بعد إضافة 5:", score)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">النتيجة الأولية: 10
+بعد التحديث: 25
+بعد إضافة 5: 30</pre>
+  </div>
+
+  <h3>السطر الأخير مثير للاهتمام</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">score = score + 5</pre>
+  </div>
+
+  <p>كيف يمكن أن يكون المتغير على جانبي المعادلة؟</p>
+
+  <p><strong>الترتيب في Python:</strong></p>
+  <ol class="styled-list">
+    <li>يُحسب الجانب الأيمن أولاً: <code>score + 5</code> = 25 + 5 = 30</li>
+    <li>ثم تُخزّن النتيجة في المتغير على اليسار: <code>score = 30</code></li>
+  </ol>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>اختصار مفيد:</strong> يمكنك كتابة <code>score += 5</code> بدلاً من <code>score = score + 5</code>. نفس النتيجة، أقل كتابة.
+      <br><br>
+      وأيضاً: <code>-=</code> للطرح، <code>*=</code> للضرب، <code>/=</code> للقسمة.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎭 المتغير يشير للقيمة (مفهوم عميق)</h2>
+
+  <p>في Python، المتغير لا يحتوي على القيمة — بل <strong>يشير إليها</strong>. الفرق يبدو بسيطاً لكنه مهم جداً:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">a = 10
+b = a
+a = 20
+
+print("a =", a)
+print("b =", b)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">a = 20
+b = 10</pre>
+  </div>
+
+  <p><strong>لماذا b ظلّ 10؟</strong></p>
+
+  <p>لأن السطر <code>b = a</code> لم ينسخ "متغير a"، بل نسخ <strong>القيمة الحالية</strong> لـ a (وهي 10). فb أصبح له قيمة مستقلة.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">🔗 ما حدث بالتفصيل</div>
+    <div class="diagram-box">
+      <div class="diagram-line">1️⃣ <code>a = 10</code> → a يشير للقيمة 10</div>
+      <div class="diagram-line">2️⃣ <code>b = a</code> → b يشير لنفس القيمة (10)</div>
+      <div class="diagram-line">3️⃣ <code>a = 20</code> → a الآن يشير لقيمة جديدة (20)</div>
+      <div class="diagram-line success">✅ b لا يزال يشير للقيمة القديمة 10</div>
+    </div>
+  </div>
+
+  <div class="callout callout-note">
+    <div class="callout-icon">🧠</div>
+    <div>
+      <strong>هذه الفكرة ستعود لاحقاً</strong> عندما نتحدث عن القوائم (Lists). القوائم تتصرف بشكل مختلف قليلاً، وهذا سيصبح مهماً جداً.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✨ تعدد التعيين</h2>
+
+  <p>Python تسمح بإعطاء قيم متعددة في سطر واحد:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">x = y = z = 100
+print(x, y, z)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">100 100 100</pre>
+  </div>
+
+  <p>أو قيم مختلفة لمتغيرات مختلفة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name, age, city = "أحمد", 25, "دمشق"
+print(name)
+print(age)
+print(city)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">أحمد
+25
+دمشق</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔀 التبديل الذكي</h2>
+
+  <p>في معظم اللغات، لتبديل قيمتَي متغيرين تحتاج متغيراً مؤقتاً:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python — الطريقة التقليدية</span></div>
+    <pre class="code-content">a = 5
+b = 10
+
+temp = a
+a = b
+b = temp
+
+print("a =", a)
+print("b =", b)</pre>
+  </div>
+
+  <p>لكن في Python، هناك طريقة سحرية:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python — الطريقة الذكية</span></div>
+    <pre class="code-content">a = 5
+b = 10
+
+a, b = b, a
+
+print("a =", a)
+print("b =", b)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">a = 10
+b = 5</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">⚡</div>
+    <div>
+      هذا واحد من أجمل اختصارات Python. سطر واحد بدل ثلاثة. السبب: Python تحسب الطرف الأيمن <strong>بالكامل أولاً</strong> ثم تُوزّع على المتغيرات.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🧪 معرفة نوع المتغير</h2>
+
+  <p>نسيت نوع متغير؟ استخدم دالة <code>type()</code>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+age = 25
+height = 1.75
+is_student = True
+
+print(type(name))
+print(type(age))
+print(type(height))
+print(type(is_student))</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'bool'&gt;</pre>
+  </div>
+
+  <p>هذه هي الأنواع الأربعة الأساسية:</p>
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>النوع</th>
+        <th>يعني</th>
+        <th>مثال</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>str</code></td><td>نص (String)</td><td>"أحمد"</td></tr>
+      <tr><td><code>int</code></td><td>عدد صحيح (Integer)</td><td>25</td></tr>
+      <tr><td><code>float</code></td><td>عدد عشري</td><td>1.75</td></tr>
+      <tr><td><code>bool</code></td><td>منطقي (True/False)</td><td>True</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: استخدام متغير قبل تعريفه</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print(score)
+score = 10</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">NameError: name 'score' is not defined</pre>
+  </div>
+  <p><strong>السبب:</strong> Python تنفّذ من الأعلى للأسفل. عند <code>print(score)</code> لم يكن المتغير موجوداً بعد.</p>
+
+  <h3>خطأ 2: خطأ إملائي في الاسم</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">first_name = "أحمد"
+print(frist_name)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">NameError: name 'frist_name' is not defined</pre>
+  </div>
+  <p><strong>لاحظ:</strong> كتبنا <code>frist</code> بدل <code>first</code>. خطأ حرف واحد يوقف البرنامج.</p>
+
+  <h3>خطأ 3: الاستخدام قبل التعريف</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print("نتيجتك:", result)
+result = 100</pre>
+  </div>
+  <p>نفس المشكلة: الترتيب مهم.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ متغيراً باسم <code>city</code> يحتوي على "دمشق"، ثم اطبعه.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>لا تنسَ علامتي الاقتباس حول النص.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>city = "دمشق"
+print(city)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ متغيراً <code>price = 50</code>، ثم اطبعه مرتين: مرة كما هو، ومرة مضروباً في 2.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>price * 2</code> في الطباعة الثانية.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>price = 50
+print(price)
+print(price * 2)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ متغيراً <code>counter = 5</code>. زِده بـ 3، ثم اطبعه. ثم اضربه في 2 واطبعه.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>counter = counter + 3</code> أو <code>counter += 3</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>counter = 5
+counter = counter + 3
+print(counter)
+counter = counter * 2
+print(counter)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ متغيرين <code>a = 100</code> و <code>b = 200</code>، ثم بدّلهما في سطر واحد، واطبع النتيجة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>a, b = b, a</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>a = 100
+b = 200
+a, b = b, a
+print("a =", a)
+print("b =", b)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أنشئ 3 متغيرات في سطر واحد: اسمك، عمرك، مدينتك. ثم اطبعهم.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>name, age, city = "أحمد", 25, "دمشق"</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>name, age, city = "أحمد", 25, "دمشق"
+print(name)
+print(age)
+print(city)</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. أي مما يلي اسم متغير صحيح؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 2name</div>
+        <div class="quiz-opt">ب) my_name</div>
+        <div class="quiz-opt">ج) my name</div>
+        <div class="quiz-opt">د) my-name</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما نتيجة <code>x = 5; x += 3; print(x)</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 5</div>
+        <div class="quiz-opt">ب) 3</div>
+        <div class="quiz-opt">ج) 8</div>
+        <div class="quiz-opt">د) خطأ</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. ماذا يعني <code>a, b = b, a</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) نسخ a إلى b</div>
+        <div class="quiz-opt">ب) تبديل قيمتَي المتغيرين</div>
+        <div class="quiz-opt">ج) خطأ في الصياغة</div>
+        <div class="quiz-opt">د) حذف المتغيرين</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. أي نوع يمثّل القيمة <code>3.14</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) int</div>
+        <div class="quiz-opt">ب) str</div>
+        <div class="quiz-opt">ج) float</div>
+        <div class="quiz-opt">د) bool</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>5. هل <code>name</code> و <code>Name</code> نفس المتغير؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) نعم</div>
+        <div class="quiz-opt">ب) لا، مختلفان تماماً</div>
+        <div class="quiz-opt">ج) أحياناً</div>
+        <div class="quiz-opt">د) حسب النظام</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>المتغير</strong> اسم يشير إلى قيمة في الذاكرة</li>
+    <li>✅ الصيغة: <code>اسم = قيمة</code></li>
+    <li>✅ القواعد: ابدأ بحرف أو <code>_</code>، لا مسافات، لا كلمات محجوزة</li>
+    <li>✅ Python <strong>حسّاسة</strong> لحالة الأحرف: <code>name</code> ≠ <code>Name</code></li>
+    <li>✅ <code>+=</code>، <code>-=</code>، <code>*=</code> اختصارات لتحديث القيم</li>
+    <li>✅ تبديل ذكي: <code>a, b = b, a</code></li>
+    <li>✅ استخدم <code>type()</code> لمعرفة نوع المتغير</li>
+    <li>✅ الأنواع الأساسية: <code>str</code>, <code>int</code>, <code>float</code>, <code>bool</code></li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item">→ الدرس السابق: التثبيت</div>
+  <div class="lesson-nav-item next">الدرس التالي: الأنواع ←</div>
+</div>
+
+</div>

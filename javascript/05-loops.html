@@ -1,0 +1,322 @@
+<!--title:الحلقات التكرارية|time:40|level:مبتدئ|quiz:1,2,0,2-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 5 من 20</div>
+  <h1>الحلقات — تكرار المهام بذكاء</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 التحكم بالتكرار</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ حلقة for التقليدية</div>
+    <div class="objective">✅ حلقة while</div>
+    <div class="objective">✅ do-while</div>
+    <div class="objective">✅ break و continue</div>
+    <div class="objective">✅ for...of للقوائم</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🤔 لماذا الحلقات؟</h2>
+  <p>تخيّل أنك تريد طباعة الأرقام من 1 إلى 100. هل ستكتب 100 سطر <code>console.log</code>؟</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript — مع for</span></div>
+    <pre class="code-content">for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">1
+2
+3
+4
+5</pre>
+  </div>
+  <p>5 أسطر بدل 5 <code>console.log</code>! ولو أردت 100 رقم؟ نفس الكود بتغيير واحد.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>🔁 حلقة for</h2>
+  <p>الصيغة العامة:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">for (البداية; الشرط; الزيادة) {
+  // الكود المتكرر
+}</pre>
+  </div>
+
+  <h3>تشريح المثال السابق:</h3>
+  <table class="lesson-table">
+    <thead><tr><th>الجزء</th><th>المعنى</th></tr></thead>
+    <tbody>
+      <tr><td><code>let i = 1</code></td><td>نقطة البداية (مرة واحدة)</td></tr>
+      <tr><td><code>i <= 5</code></td><td>الشرط (يُفحص قبل كل دورة)</td></tr>
+      <tr><td><code>i++</code></td><td>الزيادة (بعد كل دورة)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>أمثلة متنوعة</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">// من 0 إلى 4
+for (let i = 0; i < 5; i++) { console.log(i); }
+
+// من 10 إلى 1 تنازلياً
+for (let i = 10; i >= 1; i--) { console.log(i); }
+
+// خطوات 2 (زوجي فقط)
+for (let i = 0; i <= 10; i += 2) { console.log(i); }
+
+// جدول ضرب 7
+for (let i = 1; i <= 5; i++) {
+  console.log(`7 × ${i} = ${7 * i}`);
+}</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔄 حلقة while</h2>
+  <p>تكرّر ما دام الشرط صحيحاً. لا نعرف عدد الدورات مسبقاً:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">let i = 1;
+while (i <= 5) {
+  console.log(i);
+  i++;
+}</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">1
+2
+3
+4
+5</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div><strong>احذر من الحلقة اللانهائية!</strong> إذا نسيت <code>i++</code>، سيستمر البرنامج للأبد. دائماً تأكد أن المتغير يتغير داخل الحلقة.</div>
+  </div>
+
+  <h3>مثال عملي: عدّاد تنازلي</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">let countdown = 5;
+while (countdown > 0) {
+  console.log(countdown);
+  countdown--;
+}
+console.log("انطلاق!");</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">5
+4
+3
+2
+1
+انطلاق!</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎯 do-while</h2>
+  <p>مثل while، لكن تنفّذ مرة واحدة على الأقل:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">let x = 10;
+do {
+  console.log("نُفِّذت مرة");
+  x++;
+} while (x < 5);</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">نُفِّذت مرة</pre>
+  </div>
+  <p>رغم أن الشرط غير محقق (10 < 5 خطأ)، الكود نُفِّذ مرة واحدة لأن <code>do</code> تنفّذ قبل الفحص.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>🎮 for...of — لقوائم القيم</h2>
+  <p>طريقة حديثة وأنيقة للمرور على قائمة:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">let fruits = ["تفاح", "موز", "برتقال"];
+
+for (let fruit of fruits) {
+  console.log(fruit);
+}</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">تفاح
+موز
+برتقال</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div><strong>for...of</strong> أسهل بكثير من for التقليدية عند المرور على قائمة. استخدمها كلما استطعت.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>⏸️ break و continue</h2>
+
+  <h3>break — كسر الحلقة</h3>
+  <p>يوقف الحلقة فوراً:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">for (let i = 1; i <= 10; i++) {
+  if (i === 5) break;
+  console.log(i);
+}</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">1
+2
+3
+4</pre>
+  </div>
+
+  <h3>continue — تخطي الدورة</h3>
+  <p>يتخطى بقية هذه الدورة، ويستمر بالتي بعدها:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">for (let i = 1; i <= 5; i++) {
+  if (i === 3) continue;
+  console.log(i);
+}</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">1
+2
+4
+5</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-num">تمرين 1</span><span class="exercise-level">سهل</span></div>
+    <p class="exercise-q">اطبع الأرقام من 1 إلى 10.</p>
+    <details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم <code>for</code>.</p></details>
+    <details class="exercise-solution"><summary>✅ الحل</summary><pre>for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}</pre></details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-num">تمرين 2</span><span class="exercise-level">سهل</span></div>
+    <p class="exercise-q">اطبع الأرقام الزوجية من 2 إلى 20.</p>
+    <details class="exercise-hint"><summary>💡 تلميح</summary><p>ابدأ من 2، وزد بـ 2.</p></details>
+    <details class="exercise-solution"><summary>✅ الحل</summary><pre>for (let i = 2; i <= 20; i += 2) {
+  console.log(i);
+}</pre></details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-num">تمرين 3</span><span class="exercise-level">متوسط</span></div>
+    <p class="exercise-q">اطبع جدول ضرب 9 (من 1×9 إلى 10×9).</p>
+    <details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم template literal.</p></details>
+    <details class="exercise-solution"><summary>✅ الحل</summary><pre>for (let i = 1; i <= 10; i++) {
+  console.log(`${i} × 9 = ${i * 9}`);
+}</pre></details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-num">تمرين 4</span><span class="exercise-level">متوسط</span></div>
+    <p class="exercise-q">احسب مجموع الأرقام من 1 إلى 100.</p>
+    <details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم متغير <code>sum = 0</code> خارج الحلقة.</p></details>
+    <details class="exercise-solution"><summary>✅ الحل</summary><pre>let sum = 0;
+for (let i = 1; i <= 100; i++) {
+  sum += i;
+}
+console.log(sum);</pre></details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header"><span class="exercise-num">تمرين 5</span><span class="exercise-level">متقدم</span></div>
+    <p class="exercise-q">اطبع أرقام فيبوناتشي الأولى (0, 1, 1, 2, 3, 5, 8, 13, 21, 34).</p>
+    <details class="exercise-hint"><summary>💡 تلميح</summary><p>احتفظ بمتغيرين للأرقام السابقة.</p></details>
+    <details class="exercise-solution"><summary>✅ الحل</summary><pre>let a = 0;
+let b = 1;
+for (let i = 0; i < 10; i++) {
+  console.log(a);
+  let temp = a + b;
+  a = b;
+  b = temp;
+}</pre></details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما الصيغة الصحيحة لحلقة for؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) for (let i = 0; i < 5; i++)</div>
+        <div class="quiz-opt">ب) for i in 0..5</div>
+        <div class="quiz-opt">ج) loop i = 0 to 5</div>
+        <div class="quiz-opt">د) repeat 5</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>2. ماذا يفعل break؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) يتخطى الدورة</div>
+        <div class="quiz-opt">ب) يوقف الحلقة كاملة</div>
+        <div class="quiz-opt">ج) يعيد التشغيل</div>
+        <div class="quiz-opt">د) لا شيء</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>3. ما نتيجة الحلقة اللانهائية؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) خطأ فوري</div>
+        <div class="quiz-opt">ب) تطبيق يتوقف</div>
+        <div class="quiz-opt">ج) يتجمد التطبيق</div>
+        <div class="quiz-opt">د) خطأ في السطر</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>4. أي حلقة تنفّذ مرة على الأقل؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) for</div>
+        <div class="quiz-opt">ب) while</div>
+        <div class="quiz-opt">ج) do-while</div>
+        <div class="quiz-opt">د) for...of</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <code>for</code> للتكرار بعدد معروف</li>
+    <li>✅ <code>while</code> للتكرار حتى تحقق شرط</li>
+    <li>✅ <code>do-while</code> ينفّذ مرة على الأقل</li>
+    <li>✅ <code>for...of</code> للمرور على القوائم</li>
+    <li>✅ <code>break</code> يوقف، <code>continue</code> يتخطى</li>
+    <li>✅ <strong>احذر</strong> من الحلقات اللانهائية!</li>
+  </ul>
+</section>
+
+<div class="lesson-nav"></div>
+
+</div>

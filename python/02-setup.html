@@ -1,0 +1,555 @@
+<!--title:التثبيت وأول برنامج|time:25|level:مبتدئ|quiz:1,2,1,2-->
+
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 2 من 30</div>
+  <h1>تثبيت Python وكتابة أول برنامج حقيقي</h1>
+  <div class="hero-meta">
+    <span>⏱ 25 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 بيئة العمل</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم الفرق بين IDE والمحرر والمفسر</div>
+    <div class="objective">✅ تثبيت Python على ويندوز/ماك/لينكس</div>
+    <div class="objective">✅ تجربة REPL (الوضع التفاعلي)</div>
+    <div class="objective">✅ كتابة وحفظ أول ملف .py</div>
+    <div class="objective">✅ تشغيل الملف من سطر الأوامر</div>
+    <div class="objective">✅ فهم أول خطأ حقيقي وحلّه</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🧩 مملكة البرمجة: من يفعل ماذا؟</h2>
+  
+  <p>قبل أن نبدأ التثبيت، يجب أن نفهم <strong>الأدوار</strong>. كثير من المبتدئين يخلطون بين هذه المصطلحات الثلاثة:</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <h4>المفسر (Interpreter)</h4>
+      <p>البرنامج الذي يُنفّذ كودك فعلاً. هو <code>python.exe</code> أو <code>python</code> في الطرفية.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h4>المحرر (Editor)</h4>
+      <p>برنامج تكتب فيه الكود كنص. مثل Notepad, VS Code, أو حتى مدير الملاحظات.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h4>بيئة التطوير (IDE)</h4>
+      <p>محرر + أدوات مساعدة + مفسر مدمج. مثل PyCharm أو Thonny.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>تشبيه بسيط:</strong> المحرر = ورق وقلم. المفسر = المعلم الذي يقرأ ما كتبت. IDE = مكتب متكامل فيه ورق ومعلم وكل الأدوات.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>💾 تثبيت Python — ويندوز</h2>
+  
+  <p>إذا كنت على ويندوز، اتبع هذه الخطوات:</p>
+
+  <h3>1. حمّل المثبّت الرسمي</h3>
+  <p>اذهب إلى الموقع الرسمي: <code>python.org/downloads</code></p>
+  <p>حمّل آخر إصدار (3.12 أو أحدث). اختر <strong>Windows Installer (64-bit)</strong>.</p>
+
+  <h3>2. الخطوة الأهم عند التثبيت</h3>
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      في أول شاشة من المثبّت، <strong>ضع علامة صح</strong> أمام خيار:
+      <br><br>
+      <code>☑ Add Python to PATH</code>
+      <br><br>
+      <strong>إذا نسيت هذا الخيار</strong>، لن تستطيع تشغيل Python من الطرفية لاحقاً، وستحتاج إعادة التثبيت.
+    </div>
+  </div>
+
+  <h3>3. اضغط Install Now</h3>
+  <p>انتظر بضع دقائق حتى ينتهي التثبيت. لا تحتاج لتغيير أي إعدادات أخرى.</p>
+
+  <h3>4. تحقق من التثبيت</h3>
+  <p>افتح <strong>Command Prompt</strong> (اضغط Win+R واكتب <code>cmd</code> ثم Enter)، ثم اكتب:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">CMD</span></div>
+    <pre class="code-content">python --version</pre>
+  </div>
+
+  <p>يجب أن يظهر شيء مثل:</p>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">Python 3.12.1</pre>
+  </div>
+
+  <p>إذا ظهر رقم الإصدار، فأنت جاهز! إذا ظهرت رسالة <code>'python' is not recognized</code>، فراجع الخطوة 2.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>🍎 تثبيت Python — ماك (macOS)</h2>
+  
+  <p>الخبر الجيد: ماك يأتي مع Python 2 مثبتة مسبقاً، لكنها <strong>قديمة جداً</strong>. نحتاج Python 3 الحديثة.</p>
+
+  <h3>الطريقة 1: من الموقع الرسمي (الأسهل)</h3>
+  <p>حمّل من <code>python.org/downloads</code> نسخة macOS Installer، وثبّتها كأي برنامج آخر.</p>
+
+  <h3>الطريقة 2: عبر Homebrew (للمتقدمين)</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Terminal</span></div>
+    <pre class="code-content">brew install python3</pre>
+  </div>
+
+  <h3>تحقق من التثبيت</h3>
+  <p>افتح Terminal واكتب:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Terminal</span></div>
+    <pre class="code-content">python3 --version</pre>
+  </div>
+
+  <div class="callout callout-note">
+    <div class="callout-icon">📌</div>
+    <div>
+      لاحظ أننا نستخدم <code>python3</code> وليس <code>python</code>. على ماك ولينكس، الأمر <code>python</code> قد يشير للنسخة القديمة 2.7.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐧 تثبيت Python — لينكس</h2>
+  
+  <p>معظم توزيعات لينكس تأتي مع Python 3 مثبتة مسبقاً. تحقق أولاً:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Terminal</span></div>
+    <pre class="code-content">python3 --version</pre>
+  </div>
+
+  <p>إذا لم تكن مثبتة، استخدم مدير الحزم حسب توزيعتك:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>التوزيعة</th>
+        <th>الأمر</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ubuntu / Debian</td>
+        <td><code>sudo apt install python3</code></td>
+      </tr>
+      <tr>
+        <td>Fedora / RHEL</td>
+        <td><code>sudo dnf install python3</code></td>
+      </tr>
+      <tr>
+        <td>Arch Linux</td>
+        <td><code>sudo pacman -S python</code></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="lesson-section">
+  <h2>🎮 REPL — غرفة التجارب التفاعلية</h2>
+  
+  <p>REPL اختصار لـ <strong>Read-Eval-Print Loop</strong> (اقرأ-نفّذ-اطبع-كرّر). وهو بيئة تفاعلية تُدخل فيها أمراً فينفّذه Python فوراً.</p>
+
+  <h3>كيف تفتح REPL؟</h3>
+  <p>افتح الطرفية واكتب:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">CMD / Terminal</span></div>
+    <pre class="code-content">python</pre>
+  </div>
+
+  <p>أو على ماك ولينكس:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Terminal</span></div>
+    <pre class="code-content">python3</pre>
+  </div>
+
+  <p>سترى شيئاً كهذا:</p>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">Python 3.12.1 (main, Dec 7 2023)
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; </pre>
+  </div>
+
+  <p>الرمز <code>&gt;&gt;&gt;</code> هو دعوة Python لك بالكتابة. جرّب:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python REPL</span></div>
+    <pre class="code-content">&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; 10 * 5
+50
+&gt;&gt;&gt; "أهلاً" + " بك"
+'أهلاً بك'
+&gt;&gt;&gt; print("مرحباً")
+مرحباً</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">⚡</div>
+    <div>
+      REPL مثالي لتجربة الأوامر <strong>بسرعة</strong>. لا يحتاج حفظ ملف، ولا تشغيل، ولا أي شيء. اكتب فينفّذ. لكنه <strong>لا يحفظ عملك</strong> — عند الخروج يضيع كل شيء.
+    </div>
+  </div>
+
+  <h3>كيف تخرج من REPL؟</h3>
+  <p>اكتب أحد الأوامر:</p>
+  <ul class="styled-list">
+    <li><code>exit()</code></li>
+    <li><code>quit()</code></li>
+    <li>أو اضغط <code>Ctrl + D</code> (لينكس/ماك) أو <code>Ctrl + Z</code> ثم Enter (ويندوز)</li>
+  </ul>
+</section>
+
+<section class="lesson-section">
+  <h2>📄 من REPL إلى ملف حقيقي</h2>
+  
+  <p>REPL رائع للتجارب، لكن البرامج الحقيقية تُحفظ في <strong>ملفات</strong>. لننشئ أول ملف:</p>
+
+  <h3>1. أنشئ مجلداً جديداً</h3>
+  <p>على سطح المكتب، أنشئ مجلداً اسمه <code>python-learn</code>.</p>
+
+  <h3>2. افتح محرر نصوص</h3>
+  <p>استخدم أي محرر: Notepad, VS Code, Sublime Text, أو حتى محرر بسيط مدمج.</p>
+
+  <h3>3. اكتب هذا الكود</h3>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="code-lang">Python</span>
+      <span class="code-filename">first.py</span>
+    </div>
+    <pre class="code-content"># أول برنامج حقيقي لي
+print("=" * 30)
+print("  مرحباً بك في عالم Python")
+print("=" * 30)
+
+name = "أحمد"
+age = 25
+
+print("اسمي:", name)
+print("عمري:", age, "سنة")
+print("عمري بعد 5 سنوات:", age + 5)</pre>
+  </div>
+
+  <h3>4. احفظ الملف باسم <code>first.py</code></h3>
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      تأكد من أن <strong>نوع الملف "All Files"</strong> وليس "Text Document". وإلا سيُحفظ الملف كـ <code>first.py.txt</code> ولن يعمل.
+    </div>
+  </div>
+
+  <h3>5. شغّل الملف</h3>
+  <p>افتح الطرفية، انتقل إلى المجلد، ثم شغّل:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">CMD / Terminal</span></div>
+    <pre class="code-content">cd Desktop/python-learn
+python first.py</pre>
+  </div>
+
+  <p>يجب أن تظهر:</p>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">==============================
+  مرحباً بك في عالم Python
+==============================
+اسمي: أحمد
+عمري: 25 سنة
+عمري بعد 5 سنوات: 30</pre>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      مبروك! هذا أول برنامج حقيقي لك يُحفظ على القرص، ويُشغّل من الطرفية، وينتج مخرجات. هذه هي <strong>دورة حياة البرمجة الكاملة</strong>.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔍 تفكيك البرنامج سطراً بسطر</h2>
+
+  <p>لنفهم ما فعلناه بالضبط:</p>
+
+  <h3>السطر 1: تعليق</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># أول برنامج حقيقي لي</pre>
+  </div>
+  <p>سطر يبدأ بـ <code>#</code> — Python تتجاهله تماماً. للتوثيق فقط.</p>
+
+  <h3>السطر 2: طباعة خط فاصل</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("=" * 30)</pre>
+  </div>
+  <p>هنا سر صغير: <code>"=" * 30</code> يعني "كرّر علامة = ثلاثين مرة". النتيجة: خط من 30 علامة يساوي.</p>
+
+  <h3>السطر 5-6: المتغيرات</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">name = "أحمد"
+age = 25</pre>
+  </div>
+  <p><strong>المتغير</strong> صندوق نحفظ فيه قيمة. <code>name</code> يحتوي على "أحمد"، و<code>age</code> يحتوي على 25. (سنتعمق في المتغيرات في الدرس القادم)</p>
+
+  <h3>السطر 8: طباعة نص ومتغير</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("اسمي:", name)</pre>
+  </div>
+  <p>نطبع النص "اسمي:" ثم فاصلة ثم قيمة المتغير. Python تطبع مسافة تلقائياً بينهما.</p>
+
+  <h3>السطر 10: عملية حسابية</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("عمري بعد 5 سنوات:", age + 5)</pre>
+  </div>
+  <p>نطبع النص، ثم <strong>نحسب</strong> قيمة <code>age + 5</code> أولاً (فتصبح 30) ثم نطبعها.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أول خطأ حقيقي — وكيف تحلّه</h2>
+
+  <p>سنتعمد الآن عمل خطأ. عدّل السطر الأخير ليصبح:</p>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ مقصود</span></div>
+    <pre class="code-content">print("عمري بعد 5 سنوات:", age + "5")</pre>
+  </div>
+
+  <p>شغّل الملف مرة أخرى. سيظهر:</p>
+
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">Traceback (most recent call last):
+  File "first.py", line 10, in &lt;module&gt;
+    print("عمري بعد 5 سنوات:", age + "5")
+TypeError: unsupported operand type(s) for +: 'int' and 'str'</pre>
+  </div>
+
+  <p>لنتفكيك رسالة الخطأ هذه، فهي <strong>مهمة جداً</strong>:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>الجزء</th>
+        <th>المعنى</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>Traceback</code></td>
+        <td>مسار تتبّع الخطأ — من أين بدأ</td>
+      </tr>
+      <tr>
+        <td><code>File "first.py"</code></td>
+        <td>اسم الملف الذي به الخطأ</td>
+      </tr>
+      <tr>
+        <td><code>line 10</code></td>
+        <td>رقم السطر بالضبط — <strong>مهم جداً!</strong></td>
+      </tr>
+      <tr>
+        <td><code>TypeError</code></td>
+        <td>نوع الخطأ: عدم توافق الأنواع</td>
+      </tr>
+      <tr>
+        <td><code>unsupported operand...</code></td>
+        <td>السبب: لا يمكن جمع <code>int</code> (عدد) مع <code>str</code> (نص)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">🧠</div>
+    <div>
+      <strong>قاعدة ذهبية:</strong> اقرأ رسالة الخطأ من <strong>الأسفل للأعلى</strong>:
+      <br>1. آخر سطر = نوع المشكلة
+      <br>2. ما قبله = مكان المشكلة (السطر)
+      <br>3. أعلاه = مسار التنفيذ (للمشاريع الكبيرة)
+    </div>
+  </div>
+
+  <h3>الحل</h3>
+  <p>المشكلة: <code>age</code> رقم صحيح، و<code>"5"</code> نص (بسبب علامات الاقتباس). لا يمكن جمعهما.</p>
+  <p>الحل: احذف علامات الاقتباس:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">✅ صحيح</span></div>
+    <pre class="code-content">print("عمري بعد 5 سنوات:", age + 5)</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎯 4 مبادئ لتجنّب الأخطاء</h2>
+
+  <ol class="styled-list">
+    <li><strong>احفظ الملف دائماً</strong> قبل التشغيل. Python تقرأ من الملف المحفوظ، وليس من الشاشة.</li>
+    <li><strong>انتبه للمسافات البادئة</strong> (Indentation). Python حساسة جداً للمسافة في بداية السطر — سنشرح هذا لاحقاً.</li>
+    <li><strong>تأكد من امتداد .py</strong>. ليس .txt ولا .docx.</li>
+    <li><strong>اقرأ الخطأ من الأسفل</strong>. لا تخف منه، هو صديقك.</li>
+  </ol>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع اسمك في سطر، ثم عمرك في سطر آخر.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>print()</code> مرتين.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print("أحمد")
+print(25)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع خط فاصل من 50 علامة <code>=</code> ثم كلمة "قسم جديد" ثم خط آخر.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>"=" * 50</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print("=" * 50)
+print("قسم جديد")
+print("=" * 50)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ متغير <code>x = 10</code>، واطبع مربّعه (x×x) وثلاثة أضعافه (x×3).</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم العملية <code>*</code> للضرب.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>x = 10
+print("مربعه:", x * x)
+print("ثلاثة أضعافه:", x * 3)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أنشئ 3 متغيرات: اسمك، مدينتك، عمرك. واطبع جملة كاملة تجمعهم بجملة واحدة منسقة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم عدة وسائط في <code>print()</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>name = "أحمد"
+city = "دمشق"
+age = 25
+print("أنا", name, "من", city, "وعمري", age, "سنة")</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما الأمر الذي يعرض إصدار Python؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) python -v</div>
+        <div class="quiz-opt">ب) python --version</div>
+        <div class="quiz-opt">ج) version python</div>
+        <div class="quiz-opt">د) python.info</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما هو REPL؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) اسم محرر نصوص</div>
+        <div class="quiz-opt">ب) مكتبة Python</div>
+        <div class="quiz-opt">ج) بيئة تنفيذ تفاعلية سطر بسطر</div>
+        <div class="quiz-opt">د) نوع من المتغيرات</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. عند كتابة <code>"=" * 30</code>، ما النتيجة؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 30</div>
+        <div class="quiz-opt">ب) سلسلة من 30 علامة =</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) لا شيء</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. من أين تقرأ رسالة الخطأ أولاً؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) من الأعلى</div>
+        <div class="quiz-opt">ب) من الوسط</div>
+        <div class="quiz-opt">ج) من الأسفل</div>
+        <div class="quiz-opt">د) لا تقرأها</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>المفسر</strong> ينفّذ كودك، <strong>المحرر</strong> يكتبه، <strong>IDE</strong> يجمع الاثنين معاً</li>
+    <li>✅ التثبيت في ويندوز: لا تنسَ <strong>"Add Python to PATH"</strong></li>
+    <li>✅ على ماك ولينكس، الأمر هو <code>python3</code> وليس <code>python</code></li>
+    <li>✅ <strong>REPL</strong> للتجارب السريعة، <strong>الملفات</strong> للبرامج الحقيقية</li>
+    <li>✅ احفظ الملف بامتداد <code>.py</code> وليس <code>.txt</code></li>
+    <li>✅ <strong>اقرأ الخطأ من الأسفل</strong> — آخر سطر فيه الحل</li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item">→ الدرس السابق: المقدمة</div>
+  <div class="lesson-nav-item next">الدرس التالي: المتغيرات ←</div>
+</div>
+
+</div>

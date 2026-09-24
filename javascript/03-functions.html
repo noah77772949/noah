@@ -1,0 +1,473 @@
+<!--title:الدوال في JavaScript|time:35|level:مبتدئ|quiz:1,2,0,1,2-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 3 من 20</div>
+  <h1>الدوال (Functions) — أدواتك المتكررة</h1>
+  <div class="hero-meta">
+    <span>⏱ 35 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم ماهية الدوال ولماذا هي ضرورية</div>
+    <div class="objective">✅ إنشاء دوال بسيطة</div>
+    <div class="objective">✅ تمرير الوسائط (Parameters)</div>
+    <div class="objective">✅ استخدام return لإرجاع القيم</div>
+    <div class="objective">✅ Arrow Functions</div>
+    <div class="objective">✅ الدوال الافتراضية</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🤔 لماذا نحتاج الدوال؟</h2>
+  <p>تخيّل أنك تريد حساب مساحة دائرة 10 مرات في برنامجك. هل تكتب نفس الصيغة 10 مرات؟</p>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ بدون دوال (ممل)</span></div>
+    <pre class="code-content">let r1 = 5;
+let area1 = 3.14 * r1 * r1;
+console.log(area1);
+
+let r2 = 10;
+let area2 = 3.14 * r2 * r2;
+console.log(area2);
+
+let r3 = 7;
+let area3 = 3.14 * r3 * r3;
+console.log(area3);
+// ... 7 مرات أخرى!</pre>
+  </div>
+
+  <p>مع الدوال، اكتب الصيغة مرة واحدة واستخدمها متى شئت:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">✅ مع الدوال (أنيق)</span></div>
+    <pre class="code-content">function circleArea(r) {
+  return 3.14 * r * r;
+}
+
+console.log(circleArea(5));
+console.log(circleArea(10));
+console.log(circleArea(7));</pre>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div><strong>قاعدة برمجية:</strong> لو نسخت كوداً مرتين، اعمل منه دالة. هذا مبدأ DRY: <em>Don't Repeat Yourself</em>.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔨 إنشاء أول دالة</h2>
+  <p>الصيغة الأساسية:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function functionName() {
+  // الكود هنا
+}</pre>
+  </div>
+
+  <p>مثال عملي:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function sayHello() {
+  console.log("مرحباً بالعالم!");
+}
+
+// استدعاء الدالة
+sayHello();
+sayHello();
+sayHello();</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً بالعالم!
+مرحباً بالعالم!
+مرحباً بالعالم!</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div><strong>لا تنسَ الأقواس!</strong> كتابة <code>sayHello</code> بدون <code>()</code> تعني "أشر إلى الدالة" وليس "نفّذها". الفرق ضخم.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📥 الوسائط (Parameters)</h2>
+  <p>يمكنك تمرير قيم للدالة لتستخدمها:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function greet(name) {
+  console.log("مرحباً " + name);
+}
+
+greet("أحمد");
+greet("سارة");
+greet("محمد");</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً أحمد
+مرحباً سارة
+مرحباً محمد</pre>
+  </div>
+
+  <h3>عدة وسائط</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function introduce(name, age, city) {
+  console.log(`أنا ${name} من ${city} وعمري ${age}`);
+}
+
+introduce("أحمد", 25, "دمشق");
+introduce("سارة", 30, "بيروت");</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">أنا أحمد من دمشق وعمري 25
+أنا سارة من بيروت وعمري 30</pre>
+  </div>
+
+  <h3>قيم افتراضية</h3>
+  <p>يمكنك إعطاء قيمة افتراضية للوسيط:</p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function greet(name = "زائر") {
+  console.log("مرحباً " + name);
+}
+
+greet("أحمد");
+greet();  // يستخدم القيمة الافتراضية</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً أحمد
+مرحباً زائر</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📤 إرجاع القيم (return)</h2>
+  <p>حتى الآن دوالنا تطبع فقط. لكن الدوال الأقوى هي التي <strong>تُرجع</strong> قيمة.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">function add(a, b) {
+  return a + b;
+}
+
+let result = add(5, 3);
+console.log(result);
+console.log(add(10, 20));
+console.log(add(100, 200));</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">8
+30
+300</pre>
+  </div>
+
+  <h3>الفرق بين console.log و return</h3>
+  <table class="lesson-table">
+    <thead><tr><th></th><th>console.log</th><th>return</th></tr></thead>
+    <tbody>
+      <tr><td>الوظيفة</td><td>يُظهر على الشاشة</td><td>يُعيد قيمة للكود</td></tr>
+      <tr><td>يمكن استخدامها في حساب؟</td><td>لا</td><td>نعم</td></tr>
+      <tr><td>تُوقف الدالة؟</td><td>لا</td><td>نعم</td></tr>
+    </tbody>
+  </table>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">// خطأ شائع: يطبع لكن لا يُرجع
+function wrongAdd(a, b) {
+  console.log(a + b);
+}
+let x = wrongAdd(5, 3);
+console.log("x =", x);  // x = undefined!
+
+// صحيح
+function rightAdd(a, b) {
+  return a + b;
+}
+let y = rightAdd(5, 3);
+console.log("y =", y);  // y = 8</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div><code>return</code> تُوقف تنفيذ الدالة فوراً. أي كود بعدها لا يُنفَّذ.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎯 Arrow Functions</h2>
+  <p>JavaScript الحديثة لديها طريقة أقصر لكتابة الدوال:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">الطريقة التقليدية</span></div>
+    <pre class="code-content">function add(a, b) {
+  return a + b;
+}</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Arrow Function</span></div>
+    <pre class="code-content">const add = (a, b) => {
+  return a + b;
+};</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">أقصر — بسطر واحد</span></div>
+    <pre class="code-content">const add = (a, b) => a + b;</pre>
+  </div>
+
+  <p>القاعدة: إذا كانت الدالة تُرجع قيمة واحدة فقط، يمكن الاستغناء عن <code>{}</code> و <code>return</code>.</p>
+
+  <h3>أمثلة</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">JavaScript</span></div>
+    <pre class="code-content">// تقليدي
+function square(x) { return x * x; }
+
+// Arrow — نفس الشيء
+const square2 = x => x * x;
+
+// بدون وسائط
+const sayHi = () => console.log("مرحباً!");
+
+// عدة وسائط
+const multiply = (a, b) => a * b;
+
+console.log(square2(5));
+sayHi();
+console.log(multiply(3, 4));</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">25
+مرحباً!
+12</pre>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>Arrow Functions اختراع حديث (ES6, 2015). معظم كود JavaScript الحديث يستخدمها. تعلّمها مبكراً يجعل كودك أنيقاً.</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: نسيان ()</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">function sayHi() {
+  console.log("مرحبا");
+}
+sayHi;  // لا يفعل شيء!</pre>
+  </div>
+  <p><strong>الحل:</strong> <code>sayHi();</code></p>
+
+  <h3>خطأ 2: عدم إرجاع القيمة</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">function double(x) {
+  x * 2;  // نسيان return
+}
+console.log(double(5));  // undefined</pre>
+  </div>
+  <p><strong>الحل:</strong> أضف <code>return</code>.</p>
+
+  <h3>خطأ 3: كود بعد return</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">function test() {
+  return 5;
+  console.log("لن يُنفَّذ");
+}</pre>
+  </div>
+  <p><strong>السبب:</strong> return تُوقف التنفيذ فوراً.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اكتب دالة <code>welcome()</code> تطبع "أهلاً وسهلاً". ثم استدعها مرتين.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>function</code> ثم <code>console.log</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>function welcome() {
+  console.log("أهلاً وسهلاً");
+}
+welcome();
+welcome();</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اكتب دالة <code>greet(name)</code> تطبع "مرحباً [الاسم]". جرّبها مع 3 أسماء.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم template literal: `` `مرحباً ${name}` ``.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>function greet(name) {
+  console.log(`مرحباً ${name}`);
+}
+greet("أحمد");
+greet("سارة");
+greet("محمد");</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">اكتب دالة <code>square(x)</code> تُرجع مربع العدد. استخدمها لطباعة مربعات 3، 5، 7.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>return x * x;</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>function square(x) {
+  return x * x;
+}
+console.log(square(3));
+console.log(square(5));
+console.log(square(7));</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">اكتب دالة <code>max(a, b)</code> تُرجع الأكبر من العددين.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>if</code> أو العامل الثلاثي <code>a > b ? a : b</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>function max(a, b) {
+  if (a > b) return a;
+  return b;
+}
+console.log(max(10, 20));
+console.log(max(100, 50));</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أعد كتابة دالة <code>square</code> كـ Arrow Function في سطر واحد.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>الصيغة: <code>const name = (params) => expr;</code></p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>const square = x => x * x;
+console.log(square(6));
+console.log(square(10));</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. كيف تُعرِّف دالة بسيطة؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) def myFunc()</div>
+        <div class="quiz-opt">ب) function myFunc()</div>
+        <div class="quiz-opt">ج) func myFunc()</div>
+        <div class="quiz-opt">د) define myFunc()</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>2. ما الفرق بين console.log و return؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) لا فرق</div>
+        <div class="quiz-opt">ب) console.log يعرض، return يُرجع قيمة</div>
+        <div class="quiz-opt">ج) return أسرع</div>
+        <div class="quiz-opt">د) console.log للطباعة فقط</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>3. ما نتيجة <code>function f(x) { x + 1; } f(5)</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 6</div>
+        <div class="quiz-opt">ب) 5</div>
+        <div class="quiz-opt">ج) undefined</div>
+        <div class="quiz-opt">د) خطأ</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>4. ما الصيغة الصحيحة للـ Arrow Function؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) function(x) => x * 2</div>
+        <div class="quiz-opt">ب) x => x * 2</div>
+        <div class="quiz-opt">ج) (x) -> x * 2</div>
+        <div class="quiz-opt">د) lambda x: x * 2</div>
+      </div>
+    </div>
+    <div class="quiz-q">
+      <p><strong>5. ماذا يحدث بعد تنفيذ return؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) يكمل الكود</div>
+        <div class="quiz-opt">ب) يُعيد الطباعة</div>
+        <div class="quiz-opt">ج) يتوقف تنفيذ الدالة فوراً</div>
+        <div class="quiz-opt">د) يُعيد تشغيل الدالة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>الدوال</strong> تمنع تكرار الكود</li>
+    <li>✅ الصيغة: <code>function name(params) { ... }</code></li>
+    <li>✅ <strong>الوسائط</strong> تُمرَّر بين الأقواس</li>
+    <li>✅ <strong>return</strong> تُرجع قيمة وتوقف التنفيذ</li>
+    <li>✅ <strong>Arrow Functions</strong>: <code>const f = x => x * 2;</code></li>
+    <li>✅ القيم الافتراضية: <code>function f(x = 5)</code></li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item">→ الدرس السابق: المتغيرات</div>
+  <div class="lesson-nav-item next">الدرس التالي: الشروط ←</div>
+</div>
+
+</div>

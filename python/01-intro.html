@@ -1,0 +1,442 @@
+<!--title:مقدمة إلى Python|time:20|level:مبتدئ|quiz:1,1,0-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 1 من 30</div>
+  <h1>مقدمة إلى Python وبرمجة الحاسوب</h1>
+  <div class="hero-meta">
+    <span>⏱ 20 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 الأساسيات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ ما هي البرمجة ولماذا نحتاجها</div>
+    <div class="objective">✅ ما هي لغة Python ومميزاتها</div>
+    <div class="objective">✅ كيف يعمل المفسر (Interpreter)</div>
+    <div class="objective">✅ كتابة أول برنامج لك</div>
+    <div class="objective">✅ فهم دالة print() بعمق</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>💡 ما هي البرمجة؟</h2>
+  
+  <p>تخيّل أنك تريد أن تطلب من صديق أجنبي أن يُعدّ لك كوب شاي، لكنه <strong>لا يفهم لغتك العربية</strong> إطلاقاً. كيف ستشرح له؟</p>
+  
+  <p>ستستخدم <strong>لغة مشتركة</strong> يفهمها هو، مثل الإنجليزية. وتُعطيه <strong>خطوات دقيقة ومتسلسلة</strong>: "خذ الكوب، املأه ماءً، ضعه على النار، أضف الشاي..." إلخ.</p>
+  
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>البرمجة</strong> هي بالضبط هذا: أنت تعطي الكمبيوتر <strong>تعليمات دقيقة ومتسلسلة بلغة يفهمها</strong>، ليقوم بمهمة ما.
+    </div>
+  </div>
+  
+  <p>لكن الكمبيوتر <strong>غبي جداً</strong> في الحقيقة — لا يفهم النية، لا يفترض، ولا يستنتج. إن قلت له "خذ الكوب" سيسأل: <em>أي كوب؟ في أي غرفة؟ بأي يد؟</em></p>
+  
+  <p>لذلك لغة البرمجة يجب أن تكون <strong>واضحة، دقيقة، وخالية من الغموض</strong>.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">🔁 كيف تتحول فكرتك إلى نتيجة؟</div>
+    <div class="diagram-flow">
+      <div class="flow-item">🧠 فكرتك</div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">💻 كود برمجي</div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">⚙️ المفسر</div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">✅ النتيجة</div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐍 لماذا Python؟</h2>
+  
+  <p>Python ليست اللغة الوحيدة في العالم — هناك مئات اللغات. لكنها اكتسبت شعبية هائلة لعدة أسباب:</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📖</div>
+      <h4>سهلة القراءة</h4>
+      <p>تشبه الإنجليزية إلى حد كبير، وبدون رموز معقدة</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h4>سريعة التعلم</h4>
+      <p>يمكنك كتابة برامج مفيدة في يومك الأول</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h4>مجتمع ضخم</h4>
+      <p>ملايين المبرمجين ومكتبات جاهزة لكل شيء</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <h4>قوية في الذكاء الاصطناعي</h4>
+      <p>اللغة رقم 1 في علوم البيانات والذكاء الاصطناعي</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💼</div>
+      <h4>طلب عالٍ في السوق</h4>
+      <p>من أعلى اللغات طلباً في الوظائف</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h4>متعددة الاستخدامات</h4>
+      <p>ويب، ذكاء اصطناعي، سكربتات، ألعاب، تطبيقات سطح مكتب</p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div>
+      <strong>حقيقة:</strong> Python سُميت على اسم فرقة كوميدية بريطانية تُدعى "Monty Python" وليس على اسم الأفعى! مؤسسها Guido van Rossum كان من معجبي الفرقة.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>⚙️ كيف يعمل Python؟</h2>
+  
+  <p>هناك نوعان رئيسيان من اللغات البرمجية:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>النوع</th>
+        <th>طريقة العمل</th>
+        <th>أمثلة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>مُترجَمة (Compiled)</strong></td>
+        <td>يُترجم الكود كاملاً إلى لغة الآلة ثم يُنفّذ</td>
+        <td>C, C++, Rust, Go</td>
+      </tr>
+      <tr>
+        <td><strong>مُفسّرة (Interpreted)</strong></td>
+        <td>يُترجم ويُنفّذ سطراً بسطر أثناء التشغيل</td>
+        <td>Python, JavaScript, Ruby</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Python <strong>لغة مُفسّرة</strong>. هذا يعني أن هناك برنامجاً اسمه <em>المفسر (Interpreter)</em> يقرأ كودك سطراً بسطر وينفّذه فوراً.</p>
+
+  <div class="diagram">
+    <div class="diagram-title">🔄 رحلة الكود في Python</div>
+    <div class="diagram-box">
+      <div class="diagram-line">📝 أنت تكتب: <code>print("مرحباً")</code></div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">🔍 المفسر يقرأ السطر</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">🧠 يفهم: "أريد طباعة شيء"</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line success">✅ الشاشة تُظهر: مرحباً</div>
+    </div>
+  </div>
+
+  <div class="callout callout-note">
+    <div class="callout-icon">📌</div>
+    <div>
+      <strong>ملاحظة:</strong> عندما تحفظ ملف Python، يجب أن ينتهي اسمه بـ <code>.py</code>. مثلاً: <code>hello.py</code> أو <code>my_program.py</code>.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🚀 أول برنامج لك</h2>
+  
+  <p>كلمة "Hello, World!" (مرحباً بالعالم) هي التقليد المتعارف عليه في كل لغة برمجة جديدة. لنبدأ بها:</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <span class="code-lang">Python</span>
+      <span class="code-filename">hello.py</span>
+    </div>
+    <pre class="code-content">print("Hello, World!")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">Hello, World!</pre>
+  </div>
+
+  <p>انتهى! هذا برنامجك الأول. 😄</p>
+
+  <p>لكن دعنا نفكّك ما حدث:</p>
+
+  <ul class="styled-list">
+    <li><code>print</code> هي <strong>دالة</strong> (Function) — أي أمر جاهز يقوم بمهمة محددة.</li>
+    <li>الأقواس <code>()</code> تُخبر Python أن "الآن استدعِ هذه الدالة".</li>
+    <li>العلامات <code>" "</code> تُخبر Python أن ما بينهما هو <strong>نص</strong> وليس أمراً.</li>
+    <li>النص المُعطى للدالة يسمى <strong>وسيطاً</strong> (Argument).</li>
+  </ul>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>خطأ شائع:</strong> نسيان علامات الاقتباس. لو كتبت <code>print(Hello)</code> سيحاول Python البحث عن متغير اسمه Hello ولن يجده، وسيظهر خطأ.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔍 دالة print() بالتفصيل</h2>
+  
+  <p>يبدو أن <code>print</code> بسيطة، لكنها أعمق مما تظن. لنكتشف كل قدراتها:</p>
+
+  <h3>1. طباعة نص</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("أهلاً بك في عالم البرمجة")</pre>
+  </div>
+
+  <h3>2. طباعة رقم</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print(42)
+print(3.14)</pre>
+  </div>
+
+  <h3>3. طباعة عدة أشياء معاً</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("عمري", 25, "سنة")</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">عمري 25 سنة</pre>
+  </div>
+  <p>لاحظ: Python أضافت <strong>مسافة</strong> تلقائياً بين كل وسيطين.</p>
+
+  <h3>4. تغيير الفاصل</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("أ", "ب", "ج", sep="-")</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">أ-ب-ج</pre>
+  </div>
+
+  <h3>5. التحكم بنهاية السطر</h3>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">print("مرحباً", end=" ")
+print("بك")</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً بك</pre>
+  </div>
+  <p>عادةً <code>print</code> تنزل سطراً جديداً بعد الطباعة، لكن <code>end=" "</code> جعلتها تُكمل في نفس السطر.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>معلومة:</strong> الرمز <code>\n</code> يعني "سطر جديد". إذا كتبت <code>print("أ\nب")</code> سيظهر:
+      <br>أ
+      <br>ب
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>💬 التعليقات (Comments)</h2>
+  
+  <p>التعليقات هي نصوص في الكود <strong>لا ينفّذها Python</strong>. وجودها لسببين:</p>
+  <ol class="styled-list">
+    <li>توضيح الكود لك أو لمن يقرأه لاحقاً</li>
+    <li>تعطيل سطر مؤقتاً دون حذفه</li>
+  </ol>
+
+  <p>تبدأ التعليقات في Python بالرمز <code>#</code>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># هذا تعليق — Python ستتجاهله
+print("هذا يُنفّذ")  # تعليق في نهاية السطر
+
+# print("هذا معطّل مؤقتاً")</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">هذا يُنفّذ</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      Python لا تملك تعليقات متعددة الأسطر مثل بعض اللغات. لكن يمكنك كتابة:
+      <br><code># سطر 1</code>
+      <br><code># سطر 2</code>
+      <br><code># سطر 3</code>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاؤك الأولى</h2>
+  
+  <p>الأخطاء ليست نهاية العالم — هي معلّمك الأول. إليك أشهر 3 أخطاء للمبتدئين:</p>
+
+  <h3>خطأ 1: نسيان علامات الاقتباس</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print(Hello)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">NameError: name 'Hello' is not defined</pre>
+  </div>
+  <p><strong>الترجمة:</strong> "اسم Hello غير معرّف". الحل: أضف علامات اقتباس.</p>
+
+  <h3>خطأ 2: نسيان الأقواس</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print "مرحباً"</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">SyntaxError: Missing parentheses in call to 'print'</pre>
+  </div>
+  <p><strong>الترجمة:</strong> "أقواس مفقودة في استدعاء print". الحل: أضف الأقواس.</p>
+
+  <h3>خطأ 3: علامات اقتباس غير متطابقة</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">print("مرحباً)</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">SyntaxError: unterminated string literal</pre>
+  </div>
+  <p><strong>الترجمة:</strong> "نص لم يُغلق". الحل: تأكد أن علامتَي الاقتباس متطابقتان.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">🧠</div>
+    <div>
+      <strong>قاعدة ذهبية:</strong> عندما يظهر خطأ، اقرأ <strong>آخر سطر</strong> من الرسالة أولاً — هو عادةً يشرح المشكلة بوضوح.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+  
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">اطبع اسمك على الشاشة.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم print مع علامتي اقتباس حول اسمك.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print("أحمد")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">اطبع اسمك وعمرك في نفس السطر مع فاصلة " - " بينهما.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>sep=" - "</code> مع عدة وسائط.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print("أحمد", 25, sep=" - ")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">اطبع شكل شجرة صغيرة باستخدام print فقط:</p>
+    <pre class="exercise-target">
+    🌲
+   🌲🌲
+  🌲🌲🌲
+</pre>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم مسافات في بداية النص للتحكم بالموقع.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>print("    🌲")
+print("   🌲🌲")
+print("  🌲🌲🌲")</pre>
+    </details>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+  
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. ما نتيجة <code>print("مرحبا", "بك")</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) مرحبابك</div>
+        <div class="quiz-opt">ب) مرحبا بك</div>
+        <div class="quiz-opt">ج) مرحبا, بك</div>
+        <div class="quiz-opt">د) خطأ</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما وظيفة <code>#</code> في Python؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) ضرب</div>
+        <div class="quiz-opt">ب) تعليق</div>
+        <div class="quiz-opt">ج) متغير</div>
+        <div class="quiz-opt">د) طباعة</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. أي مما يلي صحيح لتعريف نص؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) "Hello"</div>
+        <div class="quiz-opt">ب) Hello</div>
+        <div class="quiz-opt">ج) (Hello)</div>
+        <div class="quiz-opt">د) [Hello]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <strong>البرمجة</strong> هي إعطاء الحاسوب تعليمات دقيقة بلغة يفهمها</li>
+    <li>✅ <strong>Python</strong> لغة مُفسَّرة، سهلة، قوية، ومتعددة الاستخدامات</li>
+    <li>✅ <strong>print()</strong> دالة تطبع على الشاشة، ولها خصائص متقدمة</li>
+    <li>✅ <strong>#</strong> يبدأ تعليقاً يتجاهله Python</li>
+    <li>✅ <strong>الأخطاء</strong> صديقة — اقرأ آخر سطر من الرسالة</li>
+  </ul>
+</section>
+
+<div class="lesson-nav">
+  <div class="lesson-nav-item disabled">← الدرس السابق</div>
+  <div class="lesson-nav-item next">الدرس التالي: المتغيرات ←</div>
+</div>
+
+</div>
