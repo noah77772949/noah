@@ -1,93 +1,932 @@
 <!--title:القوائم في Python|time:40|level:مبتدئ|quiz:1,2,0,1-->
 <div class="lesson-content">
-<div class="lesson-hero"><div class="hero-badge">📘 الدرس 8</div><h1>القوائم — تخزين عدة قيم</h1><div class="hero-meta"><span>⏱ 40 دقيقة</span><span>📊 مبتدئ</span></div></div>
-<section class="lesson-section"><h2>🎯 الأهداف</h2><div class="objectives"><div class="objective">✅ إنشاء قائمة وتعديلها</div><div class="objective">✅ الوصول للعناصر بالفهرسة</div><div class="objective">✅ إضافة وحذف العناصر</div><div class="objective">✅ التقطيع (Slicing)</div></div></section>
-<section class="lesson-section"><h2>📦 ما هي القائمة؟</h2><p>تخيّل صندوقاً فيه عدة عناصر مرتبة.</p><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 8 من 30</div>
+  <h1>القوائم — تخزين مجموعات من القيم</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 هياكل البيانات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم ماهية القائمة وأهميتها</div>
+    <div class="objective">✅ إنشاء القوائم والوصول للعناصر</div>
+    <div class="objective">✅ الفهرسة السالبة</div>
+    <div class="objective">✅ تعديل وإضافة وحذف العناصر</div>
+    <div class="objective">✅ التقطيع (Slicing)</div>
+    <div class="objective">✅ أهم الدوال والطرق</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🤔 لماذا القوائم؟</h2>
+
+  <p>تخيّل أنك تكتب برنامجاً لصف فيه 30 طالباً. كيف تخزّن أسماءهم؟ متغير واحد لكل طالب؟ هذا يعني 30 متغيراً!</p>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ فوضى</span></div>
+    <pre class="code-content">student1 = "أحمد"
+student2 = "سارة"
+student3 = "محمد"
+student4 = "ليلى"
+# ... 26 متغيراً آخر!</pre>
+  </div>
+
+  <p>مع القوائم، كل شيء في متغير واحد:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">✅ مع القوائم</span></div>
+    <pre class="code-content">students = ["أحمد", "سارة", "محمد", "ليلى", "..."]</pre>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>القائمة (List)</strong> هي مجموعة مرتبة من العناصر. تُخزّن بين <code>[ ]</code> وتُفصل العناصر بفواصل. يمكن أن تحتوي أي نوع من البيانات.
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="diagram-title">📦 القائمة كصندوق</div>
+    <div class="diagram-box">
+      <div class="diagram-line">🏷️ اسم: fruits</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">[تفاح]  [موز]  [برتقال]  [عنب]</div>
+      <div class="diagram-arrow">⬇️  ⬇️  ⬇️  ⬇️</div>
+      <div class="diagram-line">[0]   [1]   [2]   [3]</div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 إنشاء القوائم</h2>
+
+  <p>عدة طرق لإنشاء قائمة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># قائمة نصوص
+fruits = ["تفاح", "موز", "برتقال", "عنب"]
+
+# قائمة أرقام
 numbers = [1, 2, 3, 4, 5]
+
+# قائمة مختلطة
 mixed = [10, "نص", True, 3.14]
-empty = []</pre></div><div class="callout callout-info"><div class="callout-icon">🎓</div><div>القائمة تُكتب بين [] وتُفصل العناصر بـ ,. يمكن أن تحتوي أنواعاً مختلفة.</div></div></section>
-<section class="lesson-section"><h2>📍 الفهرسة</h2><p>كل عنصر له رقم (Index) يبدأ من 0:</p><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+
+# قائمة فارغة
+empty = []
+
+# قائمة بمتغير واحد
+single = ["عنصر واحد"]
+
+print(fruits)
+print(numbers)
+print(mixed)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">['تفاح', 'موز', 'برتقال', 'عنب']
+[1, 2, 3, 4, 5]
+[10, 'نص', True, 3.14]</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>ملاحظة:</strong> القائمة يمكن أن تحتوي أنواعاً مختلفة (نصوص، أرقام، منطقيات) في نفس القائمة. هذا يختلف عن لغات مثل Java التي تحتاج نوعاً موحداً.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📍 الوصول للعناصر بالفهرسة</h2>
+
+  <p>كل عنصر له رقم (Index) يبدأ من <strong>صفر</strong>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
 #            0        1        2        3
+
+print(fruits[0])   # العنصر الأول
+print(fruits[1])   # الثاني
+print(fruits[2])   # الثالث</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">تفاح
+موز
+برتقال</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>الفهرس يبدأ من 0!</strong> العنصر الأول فهرسه 0، الثاني فهرسه 1، وهكذا. إذا طلبت فهرساً غير موجود، ستحصل على خطأ <code>IndexError</code>.
+    </div>
+  </div>
+
+  <h3>الفهرسة السالبة — من النهاية</h3>
+
+  <p>Python تقدّم ميزة رائعة: فهارس سالبة للوصول من النهاية:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
 #           -4       -3       -2       -1
 
-print(fruits[0])
-print(fruits[2])
-print(fruits[-1])</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">تفاح
+print(fruits[-1])   # آخر عنصر
+print(fruits[-2])   # قبل الأخير
+print(fruits[-4])   # نفس fruits[0]</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">عنب
 برتقال
-عنب</pre></div><p>الفهرس السالب يعني "من النهاية".</p></section>
-<section class="lesson-section"><h2>✏️ تعديل العناصر</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+تفاح</pre>
+  </div>
+
+  <h3>عدّ العناصر</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+print(len(fruits))</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">4</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تعديل العناصر</h2>
+
+  <p>يمكنك تغيير قيمة أي عنصر بفهرسه:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+print("قبل:", fruits)
+
 fruits[1] = "بطيخ"
-print(fruits)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">['تفاح', 'بطيخ', 'برتقال']</pre></div></section>
-<section class="lesson-section"><h2>➕ إضافة وحذف</h2><table class="lesson-table"><thead><tr><th>العملية</th><th>الدالة</th></tr></thead><tbody><tr><td>إضافة في النهاية</td><td><code>append(x)</code></td></tr><tr><td>إضافة في موضع</td><td><code>insert(i, x)</code></td></tr><tr><td>حذف بالقيمة</td><td><code>remove(x)</code></td></tr><tr><td>حذف بموضع</td><td><code>pop(i)</code></td></tr><tr><td>حذف الكل</td><td><code>clear()</code></td></tr></tbody></table><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">fruits = ["تفاح", "موز"]
+print("بعد:", fruits)</pre>
+  </div>
+
+  <div class="output
+rm ~/codeforge/app/assets/lessons/python/08-lists.html
+
+cat > ~/codeforge/app/assets/lessons/python/08-lists.html << 'EOF'
+<!--title:القوائم في Python|time:40|level:مبتدئ|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 8 من 30</div>
+  <h1>القوائم — تخزين مجموعات من القيم</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 هياكل البيانات</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم ماهية القائمة وأهميتها</div>
+    <div class="objective">✅ إنشاء القوائم والوصول للعناصر</div>
+    <div class="objective">✅ الفهرسة السالبة</div>
+    <div class="objective">✅ تعديل وإضافة وحذف العناصر</div>
+    <div class="objective">✅ التقطيع (Slicing)</div>
+    <div class="objective">✅ أهم الدوال والطرق</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🤔 لماذا القوائم؟</h2>
+
+  <p>تخيّل أنك تكتب برنامجاً لصف فيه 30 طالباً. كيف تخزّن أسماءهم؟ متغير واحد لكل طالب؟ هذا يعني 30 متغيراً!</p>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ فوضى</span></div>
+    <pre class="code-content">student1 = "أحمد"
+student2 = "سارة"
+student3 = "محمد"
+student4 = "ليلى"
+# ... 26 متغيراً آخر!</pre>
+  </div>
+
+  <p>مع القوائم، كل شيء في متغير واحد:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">✅ مع القوائم</span></div>
+    <pre class="code-content">students = ["أحمد", "سارة", "محمد", "ليلى", "..."]</pre>
+  </div>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>القائمة (List)</strong> هي مجموعة مرتبة من العناصر. تُخزّن بين <code>[ ]</code> وتُفصل العناصر بفواصل. يمكن أن تحتوي أي نوع من البيانات.
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="diagram-title">📦 القائمة كصندوق</div>
+    <div class="diagram-box">
+      <div class="diagram-line">🏷️ اسم: fruits</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">[تفاح]  [موز]  [برتقال]  [عنب]</div>
+      <div class="diagram-arrow">⬇️  ⬇️  ⬇️  ⬇️</div>
+      <div class="diagram-line">[0]   [1]   [2]   [3]</div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📝 إنشاء القوائم</h2>
+
+  <p>عدة طرق لإنشاء قائمة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># قائمة نصوص
+fruits = ["تفاح", "موز", "برتقال", "عنب"]
+
+# قائمة أرقام
+numbers = [1, 2, 3, 4, 5]
+
+# قائمة مختلطة
+mixed = [10, "نص", True, 3.14]
+
+# قائمة فارغة
+empty = []
+
+# قائمة بمتغير واحد
+single = ["عنصر واحد"]
+
+print(fruits)
+print(numbers)
+print(mixed)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">['تفاح', 'موز', 'برتقال', 'عنب']
+[1, 2, 3, 4, 5]
+[10, 'نص', True, 3.14]</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>ملاحظة:</strong> القائمة يمكن أن تحتوي أنواعاً مختلفة (نصوص، أرقام، منطقيات) في نفس القائمة. هذا يختلف عن لغات مثل Java التي تحتاج نوعاً موحداً.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>📍 الوصول للعناصر بالفهرسة</h2>
+
+  <p>كل عنصر له رقم (Index) يبدأ من <strong>صفر</strong>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+#            0        1        2        3
+
+print(fruits[0])   # العنصر الأول
+print(fruits[1])   # الثاني
+print(fruits[2])   # الثالث</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">تفاح
+موز
+برتقال</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>الفهرس يبدأ من 0!</strong> العنصر الأول فهرسه 0، الثاني فهرسه 1، وهكذا. إذا طلبت فهرساً غير موجود، ستحصل على خطأ <code>IndexError</code>.
+    </div>
+  </div>
+
+  <h3>الفهرسة السالبة — من النهاية</h3>
+
+  <p>Python تقدّم ميزة رائعة: فهارس سالبة للوصول من النهاية:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+#           -4       -3       -2       -1
+
+print(fruits[-1])   # آخر عنصر
+print(fruits[-2])   # قبل الأخير
+print(fruits[-4])   # نفس fruits[0]</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">عنب
+برتقال
+تفاح</pre>
+  </div>
+
+  <h3>عدّ العناصر</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "عنب"]
+print(len(fruits))</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">4</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تعديل العناصر</h2>
+
+  <p>يمكنك تغيير قيمة أي عنصر بفهرسه:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+print("قبل:", fruits)
+
+fruits[1] = "بطيخ"
+print("بعد:", fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">قبل: ['تفاح', 'موز', 'برتقال']
+بعد: ['تفاح', 'بطيخ', 'برتقال']</pre>
+  </div>
+
+  <p>لاحظ: "موز" أصبح "بطيخ". القائمة <strong>قابلة للتعديل</strong> (على عكس الصفوف التي سنراها لاحقاً).</p>
+</section>
+
+<section class="lesson-section">
+  <h2>➕ إضافة العناصر</h2>
+
+  <p>Python تقدّم عدة دوال لإضافة عناصر للقائمة:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr><th>الدالة</th><th>الوظيفة</th><th>الموضع</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>append(x)</code></td><td>تُضيف عنصراً</td><td>في النهاية</td></tr>
+      <tr><td><code>insert(i, x)</code></td><td>تُدخل عنصراً</td><td>في الموضع i</td></tr>
+      <tr><td><code>extend(list)</code></td><td>تُضيف قائمة كاملة</td><td>في النهاية</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1. append — الإضافة في النهاية</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز"]
+print("قبل:", fruits)
 
 fruits.append("برتقال")
-print(fruits)
+print("بعد:", fruits)
 
-fruits.insert(1, "عنب")
-print(fruits)
+fruits.append("عنب")
+print("بعد آخر:", fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">قبل: ['تفاح', 'موز']
+بعد: ['تفاح', 'موز', 'برتقال']
+بعد آخر: ['تفاح', 'موز', 'برتقال', 'عنب']</pre>
+  </div>
+
+  <h3>2. insert — الإدخال في موضع محدد</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "عنب"]
+print("قبل:", fruits)
+
+fruits.insert(1, "برتقال")
+print("بعد:", fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">قبل: ['تفاح', 'موز', 'عنب']
+بعد: ['تفاح', 'برتقال', 'موز', 'عنب']</pre>
+  </div>
+
+  <p>لاحظ: "برتقال" دخل في الموضع 1، والباقي انزاح.</p>
+
+  <h3>3. extend — إضافة قائمة كاملة</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز"]
+vegetables = ["جزر", "خيار"]
+
+fruits.extend(vegetables)
+print(fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">['تفاح', 'موز', 'جزر', 'خيار']</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🗑️ حذف العناصر</h2>
+
+  <table class="lesson-table">
+    <thead>
+      <tr><th>الدالة</th><th>الوظيفة</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>remove(x)</code></td><td>تحذف أول عنصر بقيمة x</td></tr>
+      <tr><td><code>pop(i)</code></td><td>تحذف وتُرجع العنصر في الموضع i</td></tr>
+      <tr><td><code>del list[i]</code></td><td>تحذف العنصر في الموضع i</td></tr>
+      <tr><td><code>clear()</code></td><td>تُفرغ القائمة تماماً</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1. remove — الحذف بالقيمة</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال", "موز"]
+print("قبل:", fruits)
 
 fruits.remove("موز")
-print(fruits)
+print("بعد:", fruits)</pre>
+  </div>
 
-fruits.pop()
-print(fruits)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">['تفاح', 'موز', 'برتقال']
-['تفاح', 'عنب', 'موز', 'برتقال']
-['تفاح', 'عنب', 'برتقال']
-['تفاح', 'عنب']</pre></div></section>
-<section class="lesson-section"><h2>✂️ التقطيع</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">nums = [10, 20, 30, 40, 50, 60]
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">قبل: ['تفاح', 'موز', 'برتقال', 'موز']
+بعد: ['تفاح', 'برتقال', 'موز']</pre>
+  </div>
 
-print(nums[1:4])
-print(nums[:3])
-print(nums[3:])
-print(nums[-2:])
-print(nums[::2])</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">[20, 30, 40]
+  <p>لاحظ: حُذف "موز" الأول فقط، والثاني بقي.</p>
+
+  <h3>2. pop — الحذف بالموقع</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+
+last = fruits.pop()      # يحذف الأخير ويُرجعه
+print("المحذوف:", last)
+print("الباقي:", fruits)
+
+second = fruits.pop(1)   # يحذف الموضع 1
+print("المحذوف:", second)
+print("الباقي:", fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">المحذوف: برتقال
+الباقي: ['تفاح', 'موز']
+المحذوف: موز
+الباقي: ['تفاح']</pre>
+  </div>
+
+  <h3>3. del — الحذف بموضع مباشر</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+del fruits[1]
+print(fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">['تفاح', 'برتقال']</pre>
+  </div>
+
+  <h3>4. clear — تفريغ القائمة</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+fruits.clear()
+print(fruits)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">[]</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✂️ التقطيع (Slicing)</h2>
+
+  <p>استخراج جزء من القائمة باستخدام <code>[start:end:step]</code>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">nums = [10, 20, 30, 40, 50, 60]
+
+print(nums[1:4])    # من 1 إلى 3
+print(nums[:3])     # من البداية إلى 2
+print(nums[3:])     # من 3 للنهاية
+print(nums[-2:])    # آخر عنصرين
+print(nums[::2])    # كل عنصرين
+print(nums[::-1])   # عكس القائمة</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">[20, 30, 40]
 [10, 20, 30]
 [40, 50, 60]
 [50, 60]
-[10, 30, 50]</pre></div><p><strong>القاعدة:</strong> [start:end:step] — النهاية غير مشمولة.</p></section>
-<section class="lesson-section"><h2>🧰 دوال مهمة</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">nums = [3, 1, 4, 1, 5, 9, 2, 6]
+[10, 30, 50]
+[60, 50, 40, 30, 20, 10]</pre>
+  </div>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>القاعدة الذهبية:</strong> النهاية <strong>غير مشمولة</strong>.
+      <br><code>nums[1:4]</code> تُرجع العناصر 1, 2, 3 (وليس 4).
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🧰 دوال مهمة للقوائم</h2>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">nums = [3, 1, 4, 1, 5, 9, 2, 6]
 
 print(len(nums))
 print(sum(nums))
 print(min(nums))
 print(max(nums))
 print(sorted(nums))
-print(nums.count(1))</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">8
+print(nums.count(1))
+print(nums.index(4))</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">8
 31
 1
 9
 [1, 1, 2, 3, 4, 5, 6, 9]
-2</pre></div></section>
-<section class="lesson-section"><h2>🔄 المرور على القوائم</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">fruits = ["تفاح", "موز", "عنب"]
+2
+2</pre>
+  </div>
+
+  <table class="lesson-table">
+    <thead>
+      <tr><th>الدالة</th><th>الوظيفة</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>len(list)</code></td><td>عدد العناصر</td></tr>
+      <tr><td><code>sum(list)</code></td><td>مجموع العناصر</td></tr>
+      <tr><td><code>min(list)</code></td><td>أصغر عنصر</td></tr>
+      <tr><td><code>max(list)</code></td><td>أكبر عنصر</td></tr>
+      <tr><td><code>sorted(list)</code></td><td>ترتيب تصاعدي</td></tr>
+      <tr><td><code>count(x)</code></td><td>عدد ظهور x</td></tr>
+      <tr><td><code>index(x)</code></td><td>موضع أول ظهور لـ x</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="lesson-section">
+  <h2>🔄 المرور على القوائم</h2>
+
+  <h3>1. الطريقة البسيطة</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "عنب"]
 
 for fruit in fruits:
-    print(fruit)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">تفاح
+    print(fruit)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">تفاح
 موز
-عنب</pre></div></section>
-<section class="lesson-section"><h2>✏️ تمارين</h2>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 1</span><span class="exercise-level">سهل</span></div><p class="exercise-q">أنشئ قائمة بأسماء 3 فواكه، واطبع كل واحدة في سطر.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم for.</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>fruits = ["تفاح", "موز", "عنب"]
-for f in fruits:
-    print(f)</pre></details></div>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 2</span><span class="exercise-level">سهل</span></div><p class="exercise-q">أنشئ قائمة أرقام، واطبع أول عنصر وأخر عنصر.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم [0] و [-1].</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>nums = [10, 20, 30, 40]
+عنب</pre>
+  </div>
+
+  <h3>2. بالفهرس</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "عنب"]
+
+for i in range(len(fruits)):
+    print(f"{i}: {fruits[i]}")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">0: تفاح
+1: موز
+2: عنب</pre>
+  </div>
+
+  <h3>3. بـ enumerate (الأفضل)</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "عنب"]
+
+for i, fruit in enumerate(fruits):
+    print(f"{i}: {fruit}")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">0: تفاح
+1: موز
+2: عنب</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💎</div>
+    <div>
+      <strong>enumerate</strong> طريقة Python الحديثة للحصول على الفهرس والقيمة معاً في حلقة واحدة.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: الفهرس خارج النطاق</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">fruits = ["تفاح", "موز", "برتقال"]
+print(fruits[5])</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">IndexError: list index out of range</pre>
+  </div>
+  <p><strong>السبب:</strong> القائمة فيها 3 عناصر فقط، والفهرس 5 غير موجود. تذكّر: الفهارس من 0 إلى 2.</p>
+
+  <h3>خطأ 2: نسيان علامات الاقتباس</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">fruits = [تفاح, موز, برتقال]</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">NameError: name 'تفاح' is not defined</pre>
+  </div>
+  <p><strong>الحل:</strong> أضف علامات اقتباس حول كل نص.</p>
+
+  <h3>خطأ 3: تعديل القائمة أثناء المرور عليها</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ منطق خاطئ</span></div>
+    <pre class="code-content">nums = [1, 2, 3, 4, 5]
+
+for n in nums:
+    if n % 2 == 0:
+        nums.remove(n)  # خطير!</pre>
+  </div>
+  <p>هذا يُربك Python ونتائج غير متوقعة. <strong>الحل:</strong> أنشئ قائمة جديدة.</p>
+
+  <h3>خطأ 4: الاعتقاد أن = تنسخ القائمة</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ منطقي</span></div>
+    <pre class="code-content">a = [1, 2, 3]
+b = a          # ليس نسخاً!
+b.append(4)
+print(a)       # سيتغير أيضاً!</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">[1, 2, 3, 4]</pre>
+  </div>
+  <p><strong>الحل:</strong> استخدم <code>b = a.copy()</code> أو <code>b = a[:]</code> لنسخة مستقلة.</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">✅ الطريقة الصحيحة</span></div>
+    <pre class="code-content">a = [1, 2, 3]
+b = a.copy()
+b.append(4)
+
+print("a:", a)
+print("b:", b)</pre>
+  </div>
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">a: [1, 2, 3]
+b: [1, 2, 3, 4]</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة بأسماء 4 فواكه، واطبع كل واحدة في سطر.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>for fruit in fruits</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>fruits = ["تفاح", "موز", "برتقال", "عنب"]
+for fruit in fruits:
+    print(fruit)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة أرقام [10, 20, 30, 40, 50]، واطبع أول عنصر وآخر عنصر.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>[0]</code> و <code>[-1]</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>nums = [10, 20, 30, 40, 50]
 print(nums[0])
-print(nums[-1])</pre></details></div>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 3</span><span class="exercise-level">متوسط</span></div><p class="exercise-q">أنشئ قائمة فارغة، أضف 5 أرقام، ثم اطبع المجموع والمتوسط.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم append، sum، len.</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>nums = []
+print(nums[-1])</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة فارغة، ثم أضف إليها 5 أرقام، ثم اطبع المجموع والمتوسط.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>append</code>، <code>sum</code>، <code>len</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>nums = []
 nums.append(10)
 nums.append(20)
 nums.append(30)
 nums.append(40)
 nums.append(50)
-print(sum(nums))
-print(sum(nums) / len(nums))</pre></details></div>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 4</span><span class="exercise-level">متقدم</span></div><p class="exercise-q">أنشئ قائمة، واطبع عناصرها بترتيب عكسي باستخدام التقطيع.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم [::-1].</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>nums = [1, 2, 3, 4, 5]
-print(nums[::-1])</pre></details></div>
+
+print("المجموع:", sum(nums))
+print("المتوسط:", sum(nums) / len(nums))</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] واطبع الأرقام الزوجية فقط.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم if داخل for.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for n in nums:
+    if n % 2 == 0:
+        print(n)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة، واطبع عناصرها بترتيب عكسي باستخدام التقطيع.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>[::-1]</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>nums = [1, 2, 3, 4, 5]
+print(nums[::-1])</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 6</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">أنشئ قائمة بأرقام، ثم اطبع أكبر وأصغر عنصر، ثم رتّبها تصاعدياً.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>min</code>، <code>max</code>، <code>sorted</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>nums = [5, 2, 9, 1, 7, 3]
+print("الأصغر:", min(nums))
+print("الأكبر:", max(nums))
+print("المرتبة:", sorted(nums))</pre>
+    </details>
+  </div>
 </section>
-<section class="lesson-section"><h2>📝 اختبار</h2><div class="quiz">
-<div class="quiz-q"><p><strong>1. كيف نضيف عنصراً في نهاية القائمة؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) add()</div><div class="quiz-opt">ب) append()</div><div class="quiz-opt">ج) push()</div><div class="quiz-opt">د) insert()</div></div></div>
-<div class="quiz-q"><p><strong>2. نتيجة [1, 2, 3, 4][-1]؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) 1</div><div class="quiz-opt">ب) 4</div><div class="quiz-opt">ج) خطأ</div><div class="quiz-opt">د) [4]</div></div></div>
-<div class="quiz-q"><p><strong>3. ماذا يعطي [10, 20, 30][0:2]؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) [10, 20]</div><div class="quiz-opt">ب) [10, 20, 30]</div><div class="quiz-opt">ج) [20, 30]</div><div class="quiz-opt">د) [30]</div></div></div>
-<div class="quiz-q"><p><strong>4. دالة حذف عنصر بالقيمة؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) pop()</div><div class="quiz-opt">ب) remove()</div><div class="quiz-opt">ج) delete()</div><div class="quiz-opt">د) drop()</div></div></div>
-</div></section>
-<section class="lesson-section summary"><h2>🎓 خلاصة</h2><ul class="summary-list"><li>✅ القائمة بـ []</li><li>✅ الفهرسة من 0، والسالب من النهاية</li><li>✅ الإضافة: append, insert</li><li>✅ الحذف: remove, pop, clear</li><li>✅ التقطيع: [start:end:step]</li><li>✅ دوال: len, sum, min, max, sorted</li></ul></section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. كيف نضيف عنصراً في نهاية القائمة؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) add()</div>
+        <div class="quiz-opt">ب) append()</div>
+        <div class="quiz-opt">ج) push()</div>
+        <div class="quiz-opt">د) insert()</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما نتيجة <code>[1, 2, 3, 4][-1]</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) 1</div>
+        <div class="quiz-opt">ب) 4</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) [4]</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. ماذا يعطي <code>[10, 20, 30][0:2]</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) [10, 20]</div>
+        <div class="quiz-opt">ب) [10, 20, 30]</div>
+        <div class="quiz-opt">ج) [20, 30]</div>
+        <div class="quiz-opt">د) [30]</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. ما دالة حذف عنصر بقيمته؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) pop()</div>
+        <div class="quiz-opt">ب) remove()</div>
+        <div class="quiz-opt">ج) delete()</div>
+        <div class="quiz-opt">د) drop()</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ القائمة تُكتب بـ <code>[]</code> — قابلة للتعديل</li>
+    <li>✅ الفهرسة تبدأ من 0، والسالب من النهاية</li>
+    <li>✅ الإضافة: <code>append</code>، <code>insert</code>، <code>extend</code></li>
+    <li>✅ الحذف: <code>remove</code>، <code>pop</code>، <code>del</code>، <code>clear</code></li>
+    <li>✅ التقطيع: <code>[start:end:step]</code> — النهاية غير مشمولة</li>
+    <li>✅ دوال: <code>len</code>، <code>sum</code>، <code>min</code>، <code>max</code>، <code>sorted</code></li>
+    <li>✅ <code>enumerate</code> للحصول على الفهرس والقيمة معاً</li>
+    <li>✅ <code>=</code> لا ينسخ القائمة! استخدم <code>.copy()</code></li>
+  </ul>
+</section>
+
 <div class="lesson-nav"></div>
+
 </div>
