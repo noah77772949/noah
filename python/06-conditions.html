@@ -1,19 +1,186 @@
 <!--title:الشروط في Python|time:35|level:مبتدئ|quiz:1,2,0,1-->
 <div class="lesson-content">
-<div class="lesson-hero"><div class="hero-badge">📘 الدرس 6</div><h1>الشروط — اتخاذ القرارات</h1><div class="hero-meta"><span>⏱ 35 دقيقة</span><span>📊 مبتدئ</span></div></div>
-<section class="lesson-section"><h2>🎯 الأهداف</h2><div class="objectives"><div class="objective">✅ جملة if</div><div class="objective">✅ else و elif</div><div class="objective">✅ العوامل المنطقية</div><div class="objective">✅ الشروط المتداخلة</div></div></section>
-<section class="lesson-section"><h2>🤔 لماذا الشروط؟</h2><p>الحياة مليئة بالقرارات: "إذا كان الجو ممطراً سآخذ مظلة". البرمجة كذلك — نحتاج لاتخاذ قرارات بناءً على شروط.</p><div class="callout callout-info"><div class="callout-icon">🎓</div><div>الشرط تعبير يعطي True أو False. إذا صحيح → نفّذ كوداً، وإلا → آخر.</div></div></section>
-<section class="lesson-section"><h2>🔹 جملة if</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">age = 20
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 الدرس 6 من 30</div>
+  <h1>الشروط — اتخاذ القرارات في Python</h1>
+  <div class="hero-meta">
+    <span>⏱ 35 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🎯 التحكم بالمسار</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+  <h2>🎯 أهداف الدرس</h2>
+  <div class="objectives">
+    <div class="objective">✅ فهم ماهية الشروط وأهميتها</div>
+    <div class="objective">✅ جملة if الأساسية</div>
+    <div class="objective">✅ else و elif للبدائل</div>
+    <div class="objective">✅ العوامل المنطقية and/or/not</div>
+    <div class="objective">✅ الشروط المتداخلة</div>
+    <div class="objective">✅ العامل الثلاثي (Ternary)</div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🤔 لماذا نحتاج الشروط؟</h2>
+
+  <p>تخيّل أنك تكتب برنامجاً لموقع تسجيل دخول. كيف يعرف البرنامج إن كان المستخدم يملك حساباً أم لا؟ كيف يتحقق من كلمة المرور؟ كيف يقبل بعض الطلبات ويرفض غيرها؟</p>
+
+  <p>كل هذه الأسئلة تُحل بـ <strong>الشروط</strong>. بدون الشروط، برنامجك ينفّذ نفس التعليمات دائماً — بلا قرارات، بلا تفاعل، بلا ذكاء.</p>
+
+  <div class="callout callout-info">
+    <div class="callout-icon">🎓</div>
+    <div>
+      <strong>الشرط</strong> هو تعبير برمجي نتيجته إما <code>True</code> (صحيح) أو <code>False</code> (خطأ). بناءً على النتيجة، ينفّذ البرنامج كوداً أو آخر.
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="diagram-title">🎯 كيف يعمل الشرط؟</div>
+    <div class="diagram-box">
+      <div class="diagram-line">📝 الشرط: هل العمر ≥ 18؟</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">🤔 إذا نعم (True)</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line success">✅ "أنت بالغ"</div>
+      <div class="diagram-arrow">أو</div>
+      <div class="diagram-line">❌ إذا لا (False)</div>
+      <div class="diagram-arrow">⬇️</div>
+      <div class="diagram-line">"أنت قاصر"</div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔹 جملة if — الأساس البسيط</h2>
+
+  <p>الصيغة العامة:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">if الشرط:
+    # الكود الذي ينفّذ إذا كان الشرط صحيحاً</pre>
+  </div>
+
+  <p>مثال عملي:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 20
 
 if age >= 18:
-    print("أنت بالغ")</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">أنت بالغ</pre></div><h3>3 قواعد:</h3><ul class="styled-list"><li><code>if</code> تنتهي بنقطتين :</li><li>الكود المنفّذ <strong>مُزاح</strong> 4 مسافات</li><li>Python تعتمد الإزاحة للكتلة</li></ul><div class="callout callout-warning"><div class="callout-icon">⚠️</div><div>لا تخلط بين مسافات و Tab. اختر واحداً وثبّت عليه.</div></div></section>
-<section class="lesson-section"><h2>🔸 else</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">age = 15
+    print("أنت بالغ")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">أنت بالغ</pre>
+  </div>
+
+  <h3>تشريح الكود:</h3>
+  <ul class="styled-list">
+    <li><code>if</code> = الكلمة المفتاحية للشرط</li>
+    <li><code>age >= 18</code> = الشرط (هل العمر 18 أو أكثر؟)</li>
+    <li><code>:</code> = نقطتان لإنهاء سطر الشرط (إجباري!)</li>
+    <li>السطر التالي <strong>مُزاح (Indented)</strong> = الكود المنفّذ</li>
+  </ul>
+
+  <div class="callout callout-warning">
+    <div class="callout-icon">⚠️</div>
+    <div>
+      <strong>3 أخطاء قاتلة في if:</strong>
+      <br>1. نسيان النقطتين <code>:</code>
+      <br>2. نسيان الإزاحة (المسافات في بداية السطر)
+      <br>3. خلط المسافات مع Tab — اختر واحداً فقط
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎨 الإزاحة في Python — مفهوم فريد</h2>
+
+  <p>على عكس كل اللغات الأخرى، Python لا تستخدم <code>{}</code> لتحديد الكتل. تستخدم <strong>الإزاحة (Indentation)</strong>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content"># صحيح — 4 مسافات
+if True:
+    print("داخل الشرط")
+    print("سطر آخر داخل الشرط")
+
+print("خارج الشرط")</pre>
+  </div>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">if True:
+print("داخل الشرط")</pre>
+  </div>
+
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">IndentationError: expected an indented block</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>قاعدة عملية:</strong> استخدم <strong>4 مسافات</strong> دائماً. معظم المحررات تحوّل Tab تلقائياً لـ 4 مسافات. في Termux، عند الكتابة يدوياً، تأكد من الاتساق.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔸 else — البديل</h2>
+
+  <p>ماذا لو كان الشرط خاطئاً؟ نستخدم <code>else</code> لتنفيذ كود بديل:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 15
 
 if age >= 18:
     print("أنت بالغ")
 else:
-    print("أنت قاصر")</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">أنت قاصر</pre></div></section>
-<section class="lesson-section"><h2>🔷 elif</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">grade = 85
+    print("أنت قاصر")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">أنت قاصر</pre>
+  </div>
+
+  <p><strong>ملاحظة:</strong> <code>else</code> لا تحتاج شرطاً — تُنفَّذ دائماً إن فشل الشرط السابق.</p>
+
+  <h3>مثال عملي: تحقق من كلمة المرور</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">password = "12345"
+input_password = "12345"
+
+if input_password == password:
+    print("✅ تم تسجيل الدخول")
+else:
+    print("❌ كلمة المرور خطأ")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">✅ تم تسجيل الدخول</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🔷 elif — شروط متعددة</h2>
+
+  <p>عندما يكون لديك عدة احتمالات، استخدم <code>elif</code> (اختصار else if):</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">grade = 85
 
 if grade >= 90:
     print("ممتاز")
@@ -24,30 +191,348 @@ elif grade >= 70:
 elif grade >= 60:
     print("مقبول")
 else:
-    print("راسب")</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">جيد جداً</pre></div><div class="callout callout-tip"><div class="callout-icon">💡</div><div>Python تفحص الشروط بالترتيب. أول شرط يتحقق → نفّذ → توقف.</div></div></section>
-<section class="lesson-section"><h2>🔗 العوامل المنطقية</h2><table class="lesson-table"><thead><tr><th>العامل</th><th>المعنى</th><th>مثال</th></tr></thead><tbody><tr><td><code>and</code></td><td>و</td><td><code>age > 18 and has_id</code></td></tr><tr><td><code>or</code></td><td>أو</td><td><code>is_admin or is_owner</code></td></tr><tr><td><code>not</code></td><td>ليس</td><td><code>not is_blocked</code></td></tr></tbody></table><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">age = 25
+    print("راسب")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">جيد جداً</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>ترتيب مهم:</strong> Python تفحص الشروط <strong>بالترتيب من الأعلى للأسفل</strong>. أول شرط يتحقق → ينفّذ → يتوقف. لهذا نضع الشروط الصارمة أولاً.
+    </div>
+  </div>
+
+  <h3>مثال خاطئ شائع</h3>
+
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ ترتيب خاطئ</span></div>
+    <pre class="code-content">grade = 95
+
+if grade >= 60:
+    print("مقبول")     # هذا سيتحقق دائماً!
+elif grade >= 90:
+    print("ممتاز")     # لن يصل هنا أبداً
+elif grade >= 80:
+    print("جيد جداً")</pre>
+  </div>
+
+  <p>النتيجة الخاطئة:</p>
+
+  <div class="output-block error">
+    <div class="output-header">📤 النتيجة الخاطئة</div>
+    <pre class="output-content">مقبول</pre>
+  </div>
+
+  <p>رغم أن الدرجة 95 يجب أن تكون "ممتاز"! السبب: <code>grade >= 60</code> يتحقق أولاً.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>🔗 العوامل المنطقية</h2>
+
+  <p>تسمح لك بدمج عدة شروط في شرط واحد:</p>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>العامل</th>
+        <th>المعنى</th>
+        <th>مثال</th>
+        <th>النتيجة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>and</code></td><td>و — الطرفان صحيحان</td><td><code>5 > 3 and 2 > 1</code></td><td>True</td></tr>
+      <tr><td><code>or</code></td><td>أو — أحدهما صحيح</td><td><code>5 > 3 or 2 > 5</code></td><td>True</td></tr>
+      <tr><td><code>not</code></td><td>ليس — نفي القيمة</td><td><code>not (5 > 3)</code></td><td>False</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1. العامل and</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 25
 has_id = True
 
 if age >= 18 and has_id:
     print("يمكنك الدخول")
 else:
-    print("ممنوع")</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">يمكنك الدخول</pre></div></section>
-<section class="lesson-section"><h2>🎯 العامل الثلاثي</h2><div class="code-block"><div class="code-header"><span class="code-lang">Python</span></div><pre class="code-content">age = 20
+    print("ممنوع الدخول")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">يمكنك الدخول</pre>
+  </div>
+
+  <h3>2. العامل or</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">day = "الجمعة"
+
+if day == "الجمعة" or day == "السبت":
+    print("عطلة نهاية الأسبوع!")
+else:
+    print("يوم عمل")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">عطلة نهاية الأسبوع!</pre>
+  </div>
+
+  <h3>3. العامل not</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">is_blocked = False
+
+if not is_blocked:
+    print("مرحباً بك")
+else:
+    print("حسابك محجوب")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً بك</pre>
+  </div>
+
+  <h3>جدول الحقائق الكامل</h3>
+
+  <table class="lesson-table">
+    <thead>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+        <th>A and B</th>
+        <th>A or B</th>
+        <th>not A</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>True</td><td>True</td><td>True</td><td>True</td><td>False</td></tr>
+      <tr><td>True</td><td>False</td><td>False</td><td>True</td><td>False</td></tr>
+      <tr><td>False</td><td>True</td><td>False</td><td>True</td><td>True</td></tr>
+      <tr><td>False</td><td>False</td><td>False</td><td>False</td><td>True</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="lesson-section">
+  <h2>🪆 الشروط المتداخلة</h2>
+
+  <p>يمكنك وضع شرط داخل شرط — هذا يسمى <strong>Nested Conditions</strong>:</p>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 25
+has_ticket = True
+
+if age >= 18:
+    if has_ticket:
+        print("مرحباً بك في الحفل 🎉")
+    else:
+        print("تحتاج تذكرة")
+else:
+    print("صغار السن غير مسموح")</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">مرحباً بك في الحفل 🎉</pre>
+  </div>
+
+  <h3>بديل أنظف بـ and</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python — أنظف</span></div>
+    <pre class="code-content">if age >= 18 and has_ticket:
+    print("مرحباً بك في الحفل 🎉")
+else:
+    print("لا يمكنك الدخول")</pre>
+  </div>
+
+  <div class="callout callout-tip">
+    <div class="callout-icon">💡</div>
+    <div>
+      <strong>قاعدة عملية:</strong> إذا أمكن، استخدم <code>and</code>/<code>or</code> بدل الشروط المتداخلة. الكود يصبح أقصر وأسهل قراءة.
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🎯 العامل الثلاثي (Ternary)</h2>
+
+  <p>طريقة مختصرة لكتابة if/else في سطر واحد:</p>
+
+  <h3>الطريقة التقليدية (3 أسطر)</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 20
+
+if age >= 18:
+    status = "بالغ"
+else:
+    status = "قاصر"
+
+print(status)</pre>
+  </div>
+
+  <h3>الطريقة الثلاثية (سطر واحد)</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">age = 20
 status = "بالغ" if age >= 18 else "قاصر"
-print(status)</pre></div><div class="output-block"><div class="output-header">📤 النتيجة</div><pre class="output-content">بالغ</pre></div></section>
-<section class="lesson-section"><h2>✏️ تمارين</h2>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 1</span><span class="exercise-level">سهل</span></div><p class="exercise-q">أنشئ num = 15 واطبع "زوجي" أو "فردي".</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم num % 2 == 0</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>num = 15
+print(status)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">بالغ</pre>
+  </div>
+
+  <p><strong>الصيغة:</strong></p>
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">القيمة_إذا_صحيح if الشرط else القيمة_إذا_خطأ</pre>
+  </div>
+
+  <h3>أمثلة إضافية</h3>
+
+  <div class="code-block">
+    <div class="code-header"><span class="code-lang">Python</span></div>
+    <pre class="code-content">score = 85
+result = "ناجح" if score >= 60 else "راسب"
+print(result)
+
+num = 7
+type_num = "زوجي" if num % 2 == 0 else "فردي"
+print(type_num)</pre>
+  </div>
+
+  <div class="output-block">
+    <div class="output-header">📤 النتيجة</div>
+    <pre class="output-content">ناجح
+فردي</pre>
+  </div>
+</section>
+
+<section class="lesson-section">
+  <h2>🐛 أخطاء شائعة</h2>
+
+  <h3>خطأ 1: نسيان النقطتين</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">if age >= 18
+    print("بالغ")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">SyntaxError: expected ':'</pre>
+  </div>
+
+  <h3>خطأ 2: نسيان الإزاحة</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">if age >= 18:
+print("بالغ")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">IndentationError: expected an indented block</pre>
+  </div>
+
+  <h3>خطأ 3: استخدام = بدل ==</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ خطأ</span></div>
+    <pre class="code-content">password = "secret"
+if password = "secret":
+    print("صحيح")</pre>
+  </div>
+  <div class="output-block error">
+    <div class="output-header">💥 رسالة الخطأ</div>
+    <pre class="output-content">SyntaxError: invalid syntax</pre>
+  </div>
+  <p><strong>الحل:</strong> استخدم <code>==</code> للمقارنة، <code>=</code> للتعيين.</p>
+
+  <h3>خطأ 4: ترتيب خاطئ للشروط</h3>
+  <div class="code-block error">
+    <div class="code-header"><span class="code-lang">❌ منطق خاطئ</span></div>
+    <pre class="code-content">score = 95
+
+if score >= 60:
+    print("ناجح")
+elif score >= 90:
+    print("ممتاز")</pre>
+  </div>
+  <p>الطالب حصل على 95 لكن النتيجة "ناجح" وليس "ممتاز" — لأن الشرط الأول تحقق. <strong>الحل:</strong> ابدأ بالشروط الأصعب.</p>
+</section>
+
+<section class="lesson-section">
+  <h2>✏️ تمارين تطبيقية</h2>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 1</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ متغير <code>num = 15</code> واطبع "زوجي" أو "فردي".</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>num % 2 == 0</code> لفحص الزوجي.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>num = 15
 if num % 2 == 0:
     print("زوجي")
 else:
-    print("فردي")</pre></details></div>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 2</span><span class="exercise-level">سهل</span></div><p class="exercise-q">اطبع أكبر رقم من a=10 و b=25.</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم if/else</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>a = 10
+    print("فردي")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 2</span>
+      <span class="exercise-level">سهل</span>
+    </div>
+    <p class="exercise-q">أنشئ <code>a = 10</code> و <code>b = 25</code> واطبع الأكبر منهما.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم if/else.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>a = 10
 b = 25
 if a > b:
     print(a)
 else:
-    print(b)</pre></details></div>
-<div class="exercise"><div class="exercise-header"><span class="exercise-num">تمرين 3</span><span class="exercise-level">متوسط</span></div><p class="exercise-q">أنشئ score = 75 واطبع التقدير (A/B/C/D/F).</p><details class="exercise-hint"><summary>💡 تلميح</summary><p>استخدم if/elif/else</p></details><details class="exercise-solution"><summary>✅ الحل</summary><pre>score = 75
+    print(b)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 3</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">أنشئ <code>score = 75</code> واطبع التقدير حسب الجدول: 90+ → A، 80+ → B، 70+ → C، 60+ → D، أقل → F.</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم if/elif/else بالترتيب الصحيح.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>score = 75
 if score >= 90:
     print("A")
 elif score >= 80:
@@ -57,14 +542,108 @@ elif score >= 70:
 elif score >= 60:
     print("D")
 else:
-    print("F")</pre></details></div>
+    print("F")</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 4</span>
+      <span class="exercise-level">متوسط</span>
+    </div>
+    <p class="exercise-q">استخدم Ternary لطباعة "شاب" إذا كان العمر أقل من 30، وإلا "كبير".</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>الصيغة: <code>a if condition else b</code></p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>age = 25
+status = "شاب" if age < 30 else "كبير"
+print(status)</pre>
+    </details>
+  </div>
+
+  <div class="exercise">
+    <div class="exercise-header">
+      <span class="exercise-num">تمرين 5</span>
+      <span class="exercise-level">متقدم</span>
+    </div>
+    <p class="exercise-q">اكتب كوداً يحدد إن كان <code>year = 2024</code> سنة كبيسة (تقبل القسمة على 4 وليس على 100، أو تقبل القسمة على 400).</p>
+    <details class="exercise-hint">
+      <summary>💡 تلميح</summary>
+      <p>استخدم <code>and</code> و <code>or</code>.</p>
+    </details>
+    <details class="exercise-solution">
+      <summary>✅ الحل</summary>
+      <pre>year = 2024
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("سنة كبيسة")
+else:
+    print("ليست كبيسة")</pre>
+    </details>
+  </div>
 </section>
-<section class="lesson-section"><h2>📝 اختبار</h2><div class="quiz">
-<div class="quiz-q"><p><strong>1. كيف تنتهي if في Python؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) بفاصلة منقوطة</div><div class="quiz-opt">ب) بنقطتين</div><div class="quiz-opt">ج) بأقواس</div><div class="quiz-opt">د) بمسافة</div></div></div>
-<div class="quiz-q"><p><strong>2. ما كلمة الشرط البديل؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) elif</div><div class="quiz-opt">ب) else if</div><div class="quiz-opt">ج) otherwise</div><div class="quiz-opt">د) other</div></div></div>
-<div class="quiz-q"><p><strong>3. نتيجة 5>3 and 2>4؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) True</div><div class="quiz-opt">ب) False</div><div class="quiz-opt">ج) خطأ</div><div class="quiz-opt">د) 5</div></div></div>
-<div class="quiz-q"><p><strong>4. الإزاحة الصحيحة؟</strong></p><div class="quiz-options"><div class="quiz-opt">أ) Tab فقط</div><div class="quiz-opt">ب) مسافات ثابتة</div><div class="quiz-opt">ج) أي عدد</div><div class="quiz-opt">د) مسافة واحدة</div></div></div>
-</div></section>
-<section class="lesson-section summary"><h2>🎓 خلاصة</h2><ul class="summary-list"><li>✅ if/elif/else للقرارات</li><li>✅ تنتهي بنقطتين</li><li>✅ الكود مُزاح</li><li>✅ and/or/not للشروط المركبة</li><li>✅ Ternary: a if cond else b</li></ul></section>
+
+<section class="lesson-section">
+  <h2>📝 اختبار سريع</h2>
+
+  <div class="quiz">
+    <div class="quiz-q">
+      <p><strong>1. كيف تنتهي جملة if في Python؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) بفاصلة منقوطة</div>
+        <div class="quiz-opt">ب) بنقطتين :</div>
+        <div class="quiz-opt">ج) بأقواس</div>
+        <div class="quiz-opt">د) بمسافة</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>2. ما الكلمة المفتاحية للشرط البديل؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) elif</div>
+        <div class="quiz-opt">ب) else if</div>
+        <div class="quiz-opt">ج) otherwise</div>
+        <div class="quiz-opt">د) other</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>3. ما نتيجة <code>5 > 3 and 2 > 4</code>؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) True</div>
+        <div class="quiz-opt">ب) False</div>
+        <div class="quiz-opt">ج) خطأ</div>
+        <div class="quiz-opt">د) 5</div>
+      </div>
+    </div>
+
+    <div class="quiz-q">
+      <p><strong>4. ما الإزاحة الموصى بها في Python؟</strong></p>
+      <div class="quiz-options">
+        <div class="quiz-opt">أ) Tab واحد فقط</div>
+        <div class="quiz-opt">ب) 4 مسافات</div>
+        <div class="quiz-opt">ج) أي عدد</div>
+        <div class="quiz-opt">د) مسافة واحدة</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lesson-section summary">
+  <h2>🎓 خلاصة الدرس</h2>
+  <ul class="summary-list">
+    <li>✅ <code>if</code> للقرار، <code>elif</code> للبدائل، <code>else</code> للأخير</li>
+    <li>✅ جمل الشرط تنتهي بنقطتين <code>:</code></li>
+    <li>✅ الكود داخلها <strong>مُزاح</strong> بـ 4 مسافات</li>
+    <li>✅ <code>and</code>، <code>or</code>، <code>not</code> لدمج الشروط</li>
+    <li>✅ <strong>Ternary</strong>: <code>a if cond else b</code></li>
+    <li>✅ ابدأ بالشروط الأصعب عند استخدام elif</li>
+    <li>✅ استخدم <code>==</code> للمقارنة، <code>=</code> للتعيين</li>
+  </ul>
+</section>
+
 <div class="lesson-nav"></div>
+
 </div>

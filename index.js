@@ -1,4 +1,4 @@
-window.COURSES = {
+var COURSES = {
   javascript: {
     name: "JavaScript", icon: "🟨", color: "#F7DF1E",
     desc: "لغة الويب — تعمل في كل متصفح",
