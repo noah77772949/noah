@@ -1,0 +1,991 @@
+<!--title:Pandas|time:40|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 25: Pandas</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#dataframes">DataFrames</a>
+</li>
+<li><a href="#reading-csv-file-using-pandas">Reading CSV File Using Pandas</a>
+</li>
+<li><a href="#modifying-a-dataframe">Modifying a DataFrame</a>
+</li>
+<li><a href="#checking-data-types-of-column-values">Checking data types of Column values</a>
+</li>
+<li><a href="#exercises-day-25">Exercises: Day 25</a></li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 25</h1>
+<h2>Pandas</h2>
+<p>Pandas is an open source, high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
+Pandas adds data structures and tools designed to work with table-like data which is <em>Series</em> and <em>Data Frames</em>.
+Pandas provides tools for data manipulation:</p>
+<ul>
+<li>reshaping</li>
+<li>merging</li>
+<li>sorting</li>
+<li>slicing</li>
+<li>aggregation</li>
+<li>imputation.
+If you are using anaconda, you do not have install pandas.</li>
+</ul>
+<h3>Installing Pandas</h3>
+<p>For Mac:</p>
+<pre><code class="language-py">pip install conda
+conda install pandas
+</code></pre>
+<p>For Windows:</p>
+<pre><code class="language-py">pip install conda
+pip install pandas
+</code></pre>
+<p>Pandas data structure is based on <em>Series</em> and <em>DataFrames</em>.</p>
+<p>A <em>series</em> is a <em>column</em> and a DataFrame is a <em>multidimensional table</em> made up of collection of <em>series</em>. In order to create a pandas series we should use numpy to create a one dimensional arrays or a python list.
+Let us see an example of a series:</p>
+<p>Names Pandas Series</p>
+<p><img src="../images/pandas-series-1.png" alt="pandas series"></p>
+<p>Countries Series</p>
+<p><img src="../images/pandas-series-2.png" alt="pandas series"></p>
+<p>Cities Series</p>
+<p><img src="../images/pandas-series-3.png" alt="pandas series"></p>
+<p>As you can see, pandas series is just one column of data. If we want to have multiple columns we use data frames. The example below shows pandas DataFrames.</p>
+<p>Let us see, an example of a pandas data frame:</p>
+<p><img src="../images/pandas-dataframe-1.png" alt="Pandas data frame"></p>
+<p>Data frame is a collection of rows and columns. Look at the table below; it has many more columns than the example above:</p>
+<p><img src="../images/pandas-dataframe-2.png" alt="Pandas data frame"></p>
+<p>Next, we will see how to import pandas and how to create Series and DataFrames using pandas</p>
+<h3>Importing Pandas</h3>
+<pre><code class="language-python">import pandas as pd # importing pandas as pd
+import numpy  as np # importing numpy as np
+</code></pre>
+<h3>Creating Pandas Series with Default Index</h3>
+<pre><code class="language-python">nums = [1, 2, 3, 4,5]
+s = pd.Series(nums)
+print(s)
+</code></pre>
+<pre><code class="language-sh">    0    1
+    1    2
+    2    3
+    3    4
+    4    5
+    dtype: int64
+</code></pre>
+<h3>Creating  Pandas Series with custom index</h3>
+<pre><code class="language-python">nums = [1, 2, 3, 4, 5]
+s = pd.Series(nums, index=[1, 2, 3, 4, 5])
+print(s)
+</code></pre>
+<pre><code class="language-sh">    1    1
+    2    2
+    3    3
+    4    4
+    5    5
+    dtype: int64
+</code></pre>
+<pre><code class="language-python">fruits = [&#39;Orange&#39;,&#39;Banana&#39;,&#39;Mango&#39;]
+fruits = pd.Series(fruits, index=[1, 2, 3])
+print(fruits)
+</code></pre>
+<pre><code class="language-sh">    1    Orange
+    2    Banana
+    3    Mango
+    dtype: object
+</code></pre>
+<h3>Creating Pandas Series from a Dictionary</h3>
+<pre><code class="language-python">dct = {&#39;name&#39;:&#39;Asabeneh&#39;,&#39;country&#39;:&#39;Finland&#39;,&#39;city&#39;:&#39;Helsinki&#39;}
+</code></pre>
+<pre><code class="language-python">s = pd.Series(dct)
+print(s)
+</code></pre>
+<pre><code class="language-sh">    name       Asabeneh
+    country     Finland
+    city       Helsinki
+    dtype: object
+</code></pre>
+<h3>Creating a Constant Pandas Series</h3>
+<pre><code class="language-python">s = pd.Series(10, index = [1, 2, 3])
+print(s)
+</code></pre>
+<pre><code class="language-sh">    1    10
+    2    10
+    3    10
+    dtype: int64
+</code></pre>
+<h3>Creating a  Pandas Series Using Linspace</h3>
+<pre><code class="language-python">s = pd.Series(np.linspace(5, 20, 10)) # linspace(starting, end, items)
+print(s)
+</code></pre>
+<pre><code class="language-sh">    0     5.000000
+    1     6.666667
+    2     8.333333
+    3    10.000000
+    4    11.666667
+    5    13.333333
+    6    15.000000
+    7    16.666667
+    8    18.333333
+    9    20.000000
+    dtype: float64
+</code></pre>
+<h2>DataFrames</h2>
+<p>Pandas data frames can be created in different ways.</p>
+<h3>Creating DataFrames from List of Lists</h3>
+<pre><code class="language-python">data = [
+    [&#39;Asabeneh&#39;, &#39;Finland&#39;, &#39;Helsink&#39;],
+    [&#39;David&#39;, &#39;UK&#39;, &#39;London&#39;],
+    [&#39;John&#39;, &#39;Sweden&#39;, &#39;Stockholm&#39;]
+]
+df = pd.DataFrame(data, columns=[&#39;Names&#39;,&#39;Country&#39;,&#39;City&#39;])
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Names</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsink</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table><h3>Creating DataFrame Using Dictionary</h3>
+<pre><code class="language-python">data = {&#39;Name&#39;: [&#39;Asabeneh&#39;, &#39;David&#39;, &#39;John&#39;], &#39;Country&#39;:[
+    &#39;Finland&#39;, &#39;UK&#39;, &#39;Sweden&#39;], &#39;City&#39;: [&#39;Helsiki&#39;, &#39;London&#39;, &#39;Stockholm&#39;]}
+df = pd.DataFrame(data)
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsiki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table><h3>Creating DataFrames from a List of Dictionaries</h3>
+<pre><code class="language-python">data = [
+    {&#39;Name&#39;: &#39;Asabeneh&#39;, &#39;Country&#39;: &#39;Finland&#39;, &#39;City&#39;: &#39;Helsinki&#39;},
+    {&#39;Name&#39;: &#39;David&#39;, &#39;Country&#39;: &#39;UK&#39;, &#39;City&#39;: &#39;London&#39;},
+    {&#39;Name&#39;: &#39;John&#39;, &#39;Country&#39;: &#39;Sweden&#39;, &#39;City&#39;: &#39;Stockholm&#39;}]
+df = pd.DataFrame(data)
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table><h2>Reading CSV File Using Pandas</h2>
+<p>To download the CSV file, what is needed in this example, console/command line is enough:</p>
+<pre><code class="language-sh">curl -O https://raw.githubusercontent.com/Asabeneh/30-Days-Of-Python/master/data/weight-height.csv
+</code></pre>
+<p>Put the downloaded file in your working directory.</p>
+<pre><code class="language-python">import pandas as pd
+
+df = pd.read_csv(&#39;weight-height.csv&#39;)
+print(df)
+</code></pre>
+<h3>Data Exploration</h3>
+<p>Let us read only the first 5 rows using head()</p>
+<pre><code class="language-python">print(df.head()) # give five rows we can increase the number of rows by passing argument to the head() method
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Male</td>
+      <td>73.847017</td>
+      <td>241.893563</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Male</td>
+      <td>68.781904</td>
+      <td>162.310473</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Male</td>
+      <td>74.110105</td>
+      <td>212.740856</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Male</td>
+      <td>71.730978</td>
+      <td>220.042470</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Male</td>
+      <td>69.881796</td>
+      <td>206.349801</td>
+    </tr>
+  </tbody>
+</table><p>Let us also explore the last recordings of the dataframe using the tail() methods.</p>
+<pre><code class="language-python">print(df.tail()) # tails give the last five rows, we can increase the rows by passing argument to tail method
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9995</td>
+      <td>Female</td>
+      <td>66.172652</td>
+      <td>136.777454</td>
+    </tr>
+    <tr>
+      <td>9996</td>
+      <td>Female</td>
+      <td>67.067155</td>
+      <td>170.867906</td>
+    </tr>
+    <tr>
+      <td>9997</td>
+      <td>Female</td>
+      <td>63.867992</td>
+      <td>128.475319</td>
+    </tr>
+    <tr>
+      <td>9998</td>
+      <td>Female</td>
+      <td>69.034243</td>
+      <td>163.852461</td>
+    </tr>
+    <tr>
+      <td>9999</td>
+      <td>Female</td>
+      <td>61.944246</td>
+      <td>113.649103</td>
+    </tr>
+  </tbody>
+</table><p>As you can see the csv file has three rows: Gender, Height and Weight. If the DataFrame would have a long rows, it would be hard to know all the columns. Therefore, we should use a method to know the columns.  we do not know the number of rows. Let&#39;s use shape method.</p>
+<pre><code class="language-python">print(df.shape) # as you can see 10000 rows and three columns
+</code></pre>
+<pre><code>(10000, 3)
+</code></pre>
+<p>Let us get all the columns using columns.</p>
+<pre><code class="language-python">print(df.columns)
+</code></pre>
+<pre><code>Index([&#39;Gender&#39;, &#39;Height&#39;, &#39;Weight&#39;], dtype=&#39;object&#39;)
+</code></pre>
+<p>Now, let us get a specific column using the column key</p>
+<pre><code class="language-python">heights = df[&#39;Height&#39;] # this is now a series
+</code></pre>
+<pre><code class="language-python">print(heights)
+</code></pre>
+<pre><code class="language-sh">    0       73.847017
+    1       68.781904
+    2       74.110105
+    3       71.730978
+    4       69.881796
+              ...
+    9995    66.172652
+    9996    67.067155
+    9997    63.867992
+    9998    69.034243
+    9999    61.944246
+    Name: Height, Length: 10000, dtype: float64
+</code></pre>
+<pre><code class="language-python">weights = df[&#39;Weight&#39;] # this is now a series
+</code></pre>
+<pre><code class="language-python">print(weights)
+</code></pre>
+<pre><code class="language-sh">    0       241.893563
+    1       162.310473
+    2       212.740856
+    3       220.042470
+    4       206.349801
+               ...
+    9995    136.777454
+    9996    170.867906
+    9997    128.475319
+    9998    163.852461
+    9999    113.649103
+    Name: Weight, Length: 10000, dtype: float64
+</code></pre>
+<pre><code class="language-python">print(len(heights) == len(weights))
+</code></pre>
+<pre><code>True
+</code></pre>
+<p>The describe() method provides a descriptive statistical values of a dataset.</p>
+<pre><code class="language-python">print(heights.describe()) # give statistical information about height data
+</code></pre>
+<pre><code class="language-sh">    count    10000.000000
+    mean        66.367560
+    std          3.847528
+    min         54.263133
+    25%         63.505620
+    50%         66.318070
+    75%         69.174262
+    max         78.998742
+    Name: Height, dtype: float64
+</code></pre>
+<pre><code class="language-python">print(weights.describe())
+</code></pre>
+<pre><code class="language-sh">    count    10000.000000
+    mean       161.440357
+    std         32.108439
+    min         64.700127
+    25%        135.818051
+    50%        161.212928
+    75%        187.169525
+    max        269.989699
+    Name: Weight, dtype: float64
+</code></pre>
+<pre><code class="language-python">print(df.describe())  # describe can also give statistical information from a dataFrame
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>10000.000000</td>
+      <td>10000.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>66.367560</td>
+      <td>161.440357</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>3.847528</td>
+      <td>32.108439</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>54.263133</td>
+      <td>64.700127</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>63.505620</td>
+      <td>135.818051</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>66.318070</td>
+      <td>161.212928</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>69.174262</td>
+      <td>187.169525</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>78.998742</td>
+      <td>269.989699</td>
+    </tr>
+  </tbody>
+</table><p>Similar to describe(), the info() method also give information about the dataset.</p>
+<h2>Modifying a DataFrame</h2>
+<p>Modifying a DataFrame:
+    * We can create a new DataFrame
+    * We can create a new column and add it to the DataFrame,
+    * we can remove an existing column from a DataFrame,
+    * we can modify an existing column in a DataFrame,
+    * we can change the data type of column values in the DataFrame</p>
+<h3>Creating a DataFrame</h3>
+<p>As always, first we import the necessary packages. Now, lets import pandas and numpy, two best friends ever.</p>
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+data = [
+    {&quot;Name&quot;: &quot;Asabeneh&quot;, &quot;Country&quot;:&quot;Finland&quot;,&quot;City&quot;:&quot;Helsinki&quot;},
+    {&quot;Name&quot;: &quot;David&quot;, &quot;Country&quot;:&quot;UK&quot;,&quot;City&quot;:&quot;London&quot;},
+    {&quot;Name&quot;: &quot;John&quot;, &quot;Country&quot;:&quot;Sweden&quot;,&quot;City&quot;:&quot;Stockholm&quot;}]
+df = pd.DataFrame(data)
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+    </tr>
+  </tbody>
+</table><p>Adding a column to a DataFrame is like adding a key to a dictionary.</p>
+<p>First let&#39;s use the previous example to create a DataFrame. After we create the DataFrame, we will start modifying the columns and column values.</p>
+<h3>Adding a New Column</h3>
+<p>Let&#39;s add a weight column in the DataFrame</p>
+<pre><code class="language-python">weights = [74, 78, 69]
+df[&#39;Weight&#39;] = weights
+df
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+    </tr>
+  </tbody>
+</table><p>Let&#39;s add a height column into the DataFrame aswell</p>
+<pre><code class="language-python">heights = [173, 175, 169]
+df[&#39;Height&#39;] = heights
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>173</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>169</td>
+    </tr>
+  </tbody>
+</table><p>As you can see in the DataFrame above, we did add new columns, Weight and Height. Let&#39;s add one additional column called BMI(Body Mass Index) by calculating their BMI using thier mass and height. BMI is mass divided by height squared (in meters) - Weight/Height * Height.</p>
+<p>As you can see, the height is in centimeters, so we shoud change it to meters. Let&#39;s modify the height row.</p>
+<h3>Modifying column values</h3>
+<pre><code class="language-python">df[&#39;Height&#39;] = df[&#39;Height&#39;] * 0.01
+df
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+    </tr>
+  </tbody>
+</table><pre><code class="language-python"># Using functions makes our code clean, but you can calculate the bmi without one
+def calculate_bmi ():
+    weights = df[&#39;Weight&#39;]
+    heights = df[&#39;Height&#39;]
+    bmi = []
+    for w,h in zip(weights, heights):
+        b = w/(h*h)
+        bmi.append(b)
+    return bmi
+
+bmi = calculate_bmi()
+</code></pre>
+<pre><code class="language-python">df[&#39;BMI&#39;] = bmi
+df
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.725183</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.469388</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.158818</td>
+    </tr>
+  </tbody>
+</table><h3>Formatting DataFrame columns</h3>
+<p>The BMI column values of the DataFrame are float with many significant digits after decimal. Let&#39;s change it to one significant digit after point.</p>
+<pre><code class="language-python">df[&#39;BMI&#39;] = round(df[&#39;BMI&#39;], 1)
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+    </tr>
+  </tbody>
+</table><p>The information in the DataFrame seems not yet complete, let&#39;s add birth year and current year columns.</p>
+<pre><code class="language-python">birth_year = [&#39;1769&#39;, &#39;1985&#39;, &#39;1990&#39;]
+current_year = pd.Series(2020, index=[0, 1,2])
+df[&#39;Birth Year&#39;] = birth_year
+df[&#39;Current Year&#39;] = current_year
+df
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table><h2>Checking data types of Column values</h2>
+<pre><code class="language-python">print(df.Weight.dtype)
+</code></pre>
+<pre><code class="language-sh">    dtype(&#39;int64&#39;)
+</code></pre>
+<pre><code class="language-python">df[&#39;Birth Year&#39;].dtype # it gives string object , we should change this to number
+</code></pre>
+<pre><code class="language-python">df[&#39;Birth Year&#39;] = df[&#39;Birth Year&#39;].astype(&#39;int&#39;)
+print(df[&#39;Birth Year&#39;].dtype) # let&#39;s check the data type now
+</code></pre>
+<pre><code class="language-sh">    dtype(&#39;int32&#39;)
+</code></pre>
+<p>Now same for the current year:</p>
+<pre><code class="language-python">df[&#39;Current Year&#39;] = df[&#39;Current Year&#39;].astype(&#39;int&#39;)
+df[&#39;Current Year&#39;].dtype
+</code></pre>
+<pre><code class="language-sh">    dtype(&#39;int32&#39;)
+</code></pre>
+<p>Now, the column values of birth year and current year are integers. We can calculate the age.</p>
+<pre><code class="language-python">ages = df[&#39;Current Year&#39;] - df[&#39;Birth Year&#39;]
+ages
+</code></pre>
+<pre><code>0    251
+1     35
+2     30
+dtype: int32
+</code></pre>
+<pre><code class="language-python">df[&#39;Ages&#39;] = ages
+print(df)
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2019</td>
+      <td>250</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2019</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2019</td>
+      <td>29</td>
+    </tr>
+  </tbody>
+</table><p>The person in the first row lived so far for 251 years. It is unlikely for someone to live so long. Either it is a typo or the data is cooked. So lets fill that data with average of the columns without including outlier.</p>
+<p>mean = (35 + 30)/ 2</p>
+<pre><code class="language-python">mean = (35 + 30)/ 2
+print(&#39;Mean: &#39;,mean)	#it is good to add some description to the output, so we know what is what
+</code></pre>
+<pre><code class="language-sh">   Mean:  32.5
+</code></pre>
+<h3>Boolean Indexing</h3>
+<pre><code class="language-python">print(df[df[&#39;Ages&#39;] &gt; 120])
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Asabeneh</td>
+      <td>Finland</td>
+      <td>Helsinki</td>
+      <td>74</td>
+      <td>1.73</td>
+      <td>24.7</td>
+      <td>1769</td>
+      <td>2020</td>
+      <td>251</td>
+    </tr>
+  </tbody>
+</table><pre><code class="language-python">print(df[df[&#39;Ages&#39;] &lt; 120])
+</code></pre>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>BMI</th>
+      <th>Birth Year</th>
+      <th>Current Year</th>
+      <th>Ages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>David</td>
+      <td>UK</td>
+      <td>London</td>
+      <td>78</td>
+      <td>1.75</td>
+      <td>25.5</td>
+      <td>1985</td>
+      <td>2020</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>John</td>
+      <td>Sweden</td>
+      <td>Stockholm</td>
+      <td>69</td>
+      <td>1.69</td>
+      <td>24.2</td>
+      <td>1990</td>
+      <td>2020</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table><h2>Exercises: Day 25</h2>
+<ol>
+<li>Read the hacker_news.csv file from data directory</li>
+<li>Get the first five rows</li>
+<li>Get the last five rows</li>
+<li>Get the title column as pandas series</li>
+<li>Count the number of rows and columns<ul>
+<li>Filter the titles which contain python</li>
+<li>Filter the titles which contain JavaScript</li>
+<li>Explore the data and make sense of it</li>
+</ul>
+</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

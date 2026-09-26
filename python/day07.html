@@ -1,0 +1,299 @@
+<!--title:المجموعات (Sets)|time:20|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 07: المجموعات (Sets)</h1>
+  <div class="hero-meta">
+    <span>⏱ 20 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-7">💻 Exercises: Day 7</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 7</h1>
+<h2>Sets</h2>
+<p>Set is a collection of items. Let me take you back to your elementary or high school Mathematics lesson. The Mathematics definition of a set can be applied also in Python. Set is a collection of unordered and un-indexed distinct elements. In Python set is used to store unique items, and it is possible to find the <em>union</em>, <em>intersection</em>, <em>difference</em>, <em>symmetric difference</em>, <em>subset</em>, <em>super set</em> and <em>disjoint set</em> among sets.</p>
+<h3>Creating a Set</h3>
+<p>To create an empty set, we use the set() function. Empty curly brackets {} will create a dictionary. </p>
+<ul>
+<li>Creating an empty set</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = set()
+</code></pre>
+<ul>
+<li>Creating a set with initial items</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py"># syntax
+fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+</code></pre>
+<h3>Getting Set&#39;s Length</h3>
+<p>We use <strong>len()</strong> method to find the length of a set.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+len(st)
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+len(fruits)
+</code></pre>
+<h3>Accessing Items in a Set</h3>
+<p>We use loops to access items. We will see this in loop section</p>
+<h3>Checking an Item</h3>
+<p>To check if an item exist in a list we use <em>in</em> membership operator.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+print(&quot;Does set st contain item3? &quot;, &#39;item3&#39; in st) # Does set st contain item3? True
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+print(&#39;mango&#39; in fruits ) # True
+</code></pre>
+<h3>Adding Items to a Set</h3>
+<p>Once a set is created we cannot change any items and we can also add additional items.</p>
+<ul>
+<li>Add one item using <em>add()</em></li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.add(&#39;item5&#39;)
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.add(&#39;lime&#39;)
+</code></pre>
+<ul>
+<li>Add multiple items using <em>update()</em>
+The <em>update()</em> allows to add multiple items to a set. The <em>update()</em> takes a list argument.</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.update([&#39;item5&#39;,&#39;item6&#39;,&#39;item7&#39;])
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = (&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;)
+fruits.update(vegetables)
+</code></pre>
+<h3>Removing Items from a Set</h3>
+<p>We can remove an item from a set using <em>remove()</em> method. If the item is not found <em>remove()</em> method will raise errors, so it is good to check if the item exist in the given set. However, <em>discard()</em> method doesn&#39;t raise any errors.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.remove(&#39;item2&#39;)
+</code></pre>
+<p>The pop() methods remove a random item from a list and it returns the removed item.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.pop()  # removes a random item from the set
+</code></pre>
+<p>If we are interested in the removed item.</p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+removed_item = fruits.pop() 
+</code></pre>
+<h3>Clearing Items in a Set</h3>
+<p>If we want to clear or empty the set we use <em>clear</em> method.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.clear()
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.clear()
+print(fruits) # set()
+</code></pre>
+<h3>Deleting a Set</h3>
+<p>If we want to delete the set itself we use <em>del</em> operator.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+del st
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+del fruits
+</code></pre>
+<h3>Converting List to Set</h3>
+<p>We can convert list to set and set to list. Converting list to set removes duplicates and only unique items will be reserved.</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;, &#39;item1&#39;]
+st = set(lst)  # {&#39;item2&#39;, &#39;item4&#39;, &#39;item1&#39;, &#39;item3&#39;} - the order is random, because sets in general are unordered
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;,&#39;orange&#39;, &#39;banana&#39;]
+fruits = set(fruits) # {&#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;, &#39;orange&#39;}
+</code></pre>
+<h3>Joining Sets</h3>
+<p>We can join two sets using the <em>union()</em> or <em>update()</em> method or <em>|</em> symbol .</p>
+<ul>
+<li>Union
+This method returns a new set</li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item5&#39;, &#39;item6&#39;, &#39;item7&#39;, &#39;item8&#39;}
+st3 = st1.union(st2) #st3 = st1 | st2
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = {&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;}
+print(fruits.union(vegetables)) # {&#39;lemon&#39;, &#39;carrot&#39;, &#39;tomato&#39;, &#39;banana&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;cabbage&#39;, &#39;potato&#39;, &#39;onion&#39;}
+# or using this : print(fruits | vegetables)
+</code></pre>
+<ul>
+<li>Update
+This method inserts a set into a given set</li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item5&#39;, &#39;item6&#39;, &#39;item7&#39;, &#39;item8&#39;}
+st1.update(st2) # st2 contents are added to st1
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = {&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;}
+fruits.update(vegetables)
+print(fruits) # {&#39;lemon&#39;, &#39;carrot&#39;, &#39;tomato&#39;, &#39;banana&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;cabbage&#39;, &#39;potato&#39;, &#39;onion&#39;}
+</code></pre>
+<h3>Finding Intersection Items</h3>
+<p>Intersection returns a set of items which are in both the sets or using <em>&amp;</em> symbol. See the example</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item3&#39;, &#39;item2&#39;}
+st1.intersection(st2) # {&#39;item3&#39;, &#39;item2&#39;}
+# or using thia : st1 &amp; st2
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.intersection(even_numbers) # {0, 2, 4, 6, 8, 10}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.intersection(dragon)     # {&#39;o&#39;, &#39;n&#39;}
+# python &amp; dragon
+</code></pre>
+<h3>Checking Subset and Super Set</h3>
+<p>A set can be a subset or super set of other sets:</p>
+<ul>
+<li>Subset: <em>issubset()</em></li>
+<li>Super set: <em>issuperset</em></li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.issubset(st1) # True
+st1.issuperset(st2) # True
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.issubset(even_numbers) # False, because it is a super set
+whole_numbers.issuperset(even_numbers) # True
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.issubset(dragon)     # False
+</code></pre>
+<h3>Checking the Difference Between Two Sets</h3>
+<p>It returns the difference between two sets or using <em>-</em> symbol .</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.difference(st1) # set() : st2 - st1
+st1.difference(st2) # {&#39;item1&#39;, &#39;item4&#39;} =&gt; st1\st2  : st2 - st1
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.difference(even_numbers) # {1, 3, 5, 7, 9}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.difference(dragon)     # {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;}  - the result is unordered (characteristic of sets)
+# python - dragon
+dragon.difference(python)     # {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;}
+# dragon - python
+</code></pre>
+<h3>Finding Symmetric Difference Between Two Sets</h3>
+<p>It returns the symmetric difference between two sets. It means that it returns a set that contains all items from both sets, except items that are present in both sets, mathematically: (A\B) ∪ (B\A)</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+# it means (A\B)∪(B\A)
+st2.symmetric_difference(st1) # {&#39;item1&#39;, &#39;item4&#39;} : st2 ^ st1
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+some_numbers = {1, 2, 3, 4, 5}
+whole_numbers.symmetric_difference(some_numbers) # {0, 6, 7, 8, 9, 10}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.symmetric_difference(dragon)  # {&#39;r&#39;, &#39;t&#39;, &#39;p&#39;, &#39;y&#39;, &#39;g&#39;, &#39;a&#39;, &#39;d&#39;, &#39;h&#39;}
+# python ^ dragon
+</code></pre>
+<h3>Joining Sets</h3>
+<p>If two sets do not have a common item or items we call them disjoint sets. We can check if two sets are joint or disjoint using <em>isdisjoint()</em> method.</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.isdisjoint(st1) # False
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">even_numbers = {0, 2, 4 ,6, 8}
+odd_numbers = {1, 3, 5, 7, 9}
+even_numbers.isdisjoint(odd_numbers) # True, because no common item
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.isdisjoint(dragon)  # False, there are common items {&#39;o&#39;, &#39;n&#39;}
+</code></pre>
+<p>🌕 You are a rising star . You have just completed day 7 challenges and you are 7 steps ahead in to your way to greatness. Now do some exercises for your brain and muscles.</p>
+<h2>💻 Exercises: Day 7</h2>
+<pre><code class="language-py"># sets
+it_companies = {&#39;Facebook&#39;, &#39;Google&#39;, &#39;Microsoft&#39;, &#39;Apple&#39;, &#39;IBM&#39;, &#39;Oracle&#39;, &#39;Amazon&#39;}
+A = {19, 22, 24, 20, 25, 26}
+B = {19, 22, 20, 25, 26, 24, 28, 27}
+age = [22, 19, 24, 25, 26, 24, 25, 24]
+</code></pre>
+<h3>Exercises: Level 1</h3>
+<ol>
+<li>Find the length of the set it_companies</li>
+<li>Add &#39;Twitter&#39; to it_companies</li>
+<li>Insert multiple IT companies at once to the set it_companies</li>
+<li>Remove one of the companies from the set it_companies</li>
+<li>What is the difference between remove and discard</li>
+</ol>
+<h3>Exercises: Level 2</h3>
+<ol>
+<li>Join A and B</li>
+<li>Find A intersection B</li>
+<li>Is A subset of B</li>
+<li>Are A and B disjoint sets</li>
+<li>Join A with B and B with A</li>
+<li>What is the symmetric difference between A and B</li>
+<li>Delete the sets completely</li>
+</ol>
+<h3>Exercises: Level 3</h3>
+<ol>
+<li>Convert the ages to a set and compare the length of the list and the set, which one is bigger?</li>
+<li>Explain the difference between the following data types: string, list, tuple and set</li>
+<li><em>I am a teacher and I love to inspire and teach people.</em> How many unique words have been used in the sentence? Use the split methods and set to get the unique words.</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

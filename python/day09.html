@@ -1,0 +1,213 @@
+<!--title:الشروط (Conditionals)|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 09: الشروط (Conditionals)</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-9">💻 Exercises: Day 9</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 9</h1>
+<h2>Conditionals</h2>
+<p>By default, statements in Python script are executed sequentially from top to bottom. If the processing logic require so, the sequential flow of execution can be altered in two way:</p>
+<ul>
+<li>Conditional execution: a block of one or more statements will be executed if a certain expression is true</li>
+<li>Repetitive execution: a block of one or more statements will be repetitively executed as long as a certain expression is true. In this section, we will cover <em>if</em>, <em>else</em>, <em>elif</em> statements. The comparison and logical operators we learned in previous sections will be useful here.</li>
+</ul>
+<h3>If Condition</h3>
+<p>In python and other programming languages the key word <em>if</em> is used to check if a condition is true and to execute the block code. Remember the indentation after the colon.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    this part of code runs for truthy conditions
+</code></pre>
+<p><strong>Example: 1</strong></p>
+<pre><code class="language-py">a = 3
+if a &gt; 0:
+    print(&#39;A is a positive number&#39;)
+# A is a positive number
+</code></pre>
+<p>As you can see in the example above, 3 is greater than 0. The condition was true and the block code was executed. However, if the condition is false, we do not see the result. In order to see the result of the falsy condition, we should have another block, which is going to be <em>else</em>.</p>
+<h3>If Else</h3>
+<p>If condition is true the first block will be executed, if not the else condition will run.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    this part of code runs for truthy conditions
+else:
+     this part of code runs for false conditions
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">a = 3
+if a &lt; 0:
+    print(&#39;A is a negative number&#39;)
+else:
+    print(&#39;A is a positive number&#39;)
+</code></pre>
+<p>The condition above proves false, therefore the else block was executed. How about if our condition is more than two? We could use <em>elif</em>.</p>
+<h3>If Elif Else</h3>
+<p>In our daily life, we make decisions on daily basis. We make decisions not by checking one or two conditions but multiple conditions. As similar to life, programming is also full of conditions. We use <em>elif</em> when we have multiple conditions.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    code
+elif condition:
+    code
+else:
+    code
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0:
+    print(&#39;A is a positive number&#39;)
+elif a &lt; 0:
+    print(&#39;A is a negative number&#39;)
+else:
+    print(&#39;A is zero&#39;)
+</code></pre>
+<h3>Short Hand</h3>
+<pre><code class="language-py"># syntax
+code if condition else code
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">a = 3
+print(&#39;A is positive&#39;) if a &gt; 0 else print(&#39;A is negative&#39;) # first condition met, &#39;A is positive&#39; will be printed
+</code></pre>
+<h3>Nested Conditions</h3>
+<p>Conditions can be nested</p>
+<pre><code class="language-py"># syntax
+if condition:
+    code
+    if condition:
+    code
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0:
+    if a % 2 == 0:
+        print(&#39;A is a positive and even integer&#39;)
+    else:
+        print(&#39;A is a positive number&#39;)
+elif a == 0:
+    print(&#39;A is zero&#39;)
+else:
+    print(&#39;A is a negative number&#39;)
+</code></pre>
+<p>We can avoid writing nested condition by using logical operator <em>and</em>.</p>
+<h3>If Condition and Logical Operators</h3>
+<pre><code class="language-py"># syntax
+if condition and condition:
+    code
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0 and a % 2 == 0:
+        print(&#39;A is an even and positive integer&#39;)
+elif a &gt; 0 and a % 2 !=  0:
+     print(&#39;A is a positive integer&#39;)
+elif a == 0:
+    print(&#39;A is zero&#39;)
+else:
+    print(&#39;A is negative&#39;)
+</code></pre>
+<h3>If and Or Logical Operators</h3>
+<pre><code class="language-py"># syntax
+if condition or condition:
+    code
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">user = &#39;James&#39;
+access_level = 3
+if user == &#39;admin&#39; or access_level &gt;= 4:
+        print(&#39;Access granted!&#39;)
+else:
+    print(&#39;Access denied!&#39;)
+</code></pre>
+<p>🌕 You are doing great.Never give up because great things take time. You have just completed day 9 challenges and you are 9 steps a head in to your way to greatness. Now do some exercises for your brain and muscles.</p>
+<h2>💻 Exercises: Day 9</h2>
+<h3>Exercises: Level 1</h3>
+<ol>
+<li><p>Get user input using input(“Enter your age: ”). If user is 18 or older, give feedback: You are old enough to drive. If below 18 give feedback to wait for the missing amount of years. Output:</p>
+<pre><code class="language-sh">Enter your age: 30
+You are old enough to learn to drive.
+Output:
+Enter your age: 15
+You need 3 more years to learn to drive.
+</code></pre>
+</li>
+<li><p>Compare the values of my_age and your_age using if … else. Who is older (me or you)? Use input(“Enter your age: ”) to get the age as input. You can use a nested condition to print &#39;year&#39; for 1 year difference in age, &#39;years&#39; for bigger differences, and a custom text if my_age = your_age. Output:</p>
+<pre><code class="language-sh">Enter your age: 30
+You are 5 years older than me.
+</code></pre>
+</li>
+<li><p>Get two numbers from the user using input prompt. If a is greater than b return a is greater than b, if a is less b return a is smaller than b, else a is equal to b. Output:</p>
+</li>
+</ol>
+<pre><code class="language-sh">Enter number one: 4
+Enter number two: 3
+4 is greater than 3
+</code></pre>
+<h3>Exercises: Level 2</h3>
+<ol>
+<li>Write a code which gives grade to students according to theirs scores:</li>
+</ol>
+<pre><code>```sh
+90-100, A
+80-89, B
+70-79, C
+60-69, D
+0-59, F
+```
+</code></pre>
+<ol start="2">
+<li>Get the month from user input then check if the season is Autumn, Winter, Spring or Summer. If the user input is:
+September, October or November, the season is Autumn.
+December, January or February, the season is Winter.
+March, April or May, the season is Spring
+June, July or August, the season is Summer</li>
+<li>The following list contains some fruits:</li>
+</ol>
+<pre><code>```sh
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+```
+
+If a fruit doesn&#39;t exist in the list add the fruit to the list and print the modified list. If the fruit exists print(&#39;That fruit already exist in the list&#39;)
+</code></pre>
+<h3>Exercises: Level 3</h3>
+<ol>
+<li>Here we have a person dictionary. Feel free to modify it!</li>
+</ol>
+<pre><code class="language-py">        person={
+    &#39;first_name&#39;: &#39;Asabeneh&#39;,
+    &#39;last_name&#39;: &#39;Yetayeh&#39;,
+    &#39;age&#39;: 250,
+    &#39;country&#39;: &#39;Finland&#39;,
+    &#39;is_married&#39;: True,
+    &#39;skills&#39;: [&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;: {
+        &#39;street&#39;: &#39;Space street&#39;,
+        &#39;zipcode&#39;: &#39;02210&#39;
+    }
+    }
+</code></pre>
+<pre><code> * Check if the person dictionary has skills key, if so print out the middle skill in the skills list.
+ * Check if the person dictionary has skills key, if so check if the person has &#39;Python&#39; skill and print out the result.
+ * If a person skills has only JavaScript and React, print(&#39;He is a front end developer&#39;), if the person skills has Node, Python, MongoDB, print(&#39;He is a backend developer&#39;), if the person skills has React, Node and MongoDB, Print(&#39;He is a fullstack developer&#39;), else print(&#39;unknown title&#39;) - for more accurate results more conditions can be nested!
+ * If the person is married and if he lives in Finland, print the information in the following format:
+</code></pre>
+<pre><code class="language-py">    Asabeneh Yetayeh lives in Finland. He is married.
+</code></pre>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

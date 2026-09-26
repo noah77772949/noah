@@ -1,0 +1,224 @@
+<!--title:التعامل مع الأخطاء|time:25|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 17: التعامل مع الأخطاء</h1>
+  <div class="hero-meta">
+    <span>⏱ 25 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#packing">Packing</a></li>
+<li><a href="#packing-lists">Packing Lists</a>
+</li>
+</ul>
+</li>
+<li><a href="#spreading-in-python">Spreading in Python</a></li>
+<li><a href="#enumerate">Enumerate</a></li>
+<li><a href="#zip">Zip</a></li>
+<li><a href="#exercises-day-17">Exercises: Day 17</a></li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 17</h1>
+<h2>Exception Handling</h2>
+<p>Python uses <em>try</em> and <em>except</em> to handle errors gracefully. A graceful exit (or graceful handling) of errors is a simple programming idiom - a program detects a serious error condition and &quot;exits gracefully&quot;, in a controlled manner as a result. Often the program prints a descriptive error message to a terminal or log as part of the graceful exit, this makes our application more robust. The cause of an exception is often external to the program itself. An example of exceptions could be an incorrect input, wrong file name, unable to find a file, a malfunctioning IO device. Graceful handling of errors prevents our applications from crashing.</p>
+<p>We have covered the different Python <em>error</em> types in the previous section. If we use <em>try</em> and <em>except</em> in our program, then it will not raise errors in those blocks.</p>
+<p><img src="../images/try_except.png" alt="Try and Except"></p>
+<pre><code class="language-py">try:
+    code in this block if things go well
+except:
+    code in this block run if things go wrong
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">try:
+    print(10 + &#39;5&#39;)
+except:
+    print(&#39;Something went wrong&#39;)
+</code></pre>
+<p>In the example above the second operand is a string. We could change it to float or int to add it with the number to make it work. But without any changes, the second block, <em>except</em>, will be executed.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">try:
+    name = input(&#39;Enter your name:&#39;)
+    year_born = input(&#39;Year you were born:&#39;)
+    age = 2019 - year_born
+    print(f&#39;You are {name}. And your age is {age}.&#39;)
+except:
+    print(&#39;Something went wrong&#39;)
+</code></pre>
+<pre><code class="language-sh">Something went wrong
+</code></pre>
+<p>In the above example, the exception block will run and we do not know exactly the problem. To analyze the problem, we can use the different error types with except.</p>
+<p>In the following example, it will handle the error and will also tell us the kind of error raised.</p>
+<pre><code class="language-py">try:
+    name = input(&#39;Enter your name:&#39;)
+    year_born = input(&#39;Year you were born:&#39;)
+    age = 2019 - year_born
+    print(f&#39;You are {name}. And your age is {age}.&#39;)
+except TypeError:
+    print(&#39;Type error occured&#39;)
+except ValueError:
+    print(&#39;Value error occured&#39;)
+except ZeroDivisionError:
+    print(&#39;zero division error occured&#39;)
+</code></pre>
+<pre><code class="language-sh">Enter your name:Asabeneh
+Year you born:1920
+Type error occured
+</code></pre>
+<p>In the code above the output is going to be <em>TypeError</em>.
+Now, let&#39;s add an additional block:</p>
+<pre><code class="language-py">try:
+    name = input(&#39;Enter your name:&#39;)
+    year_born = input(&#39;Year you born:&#39;)
+    age = 2019 - int(year_born)
+    print(f&#39;You are {name}. And your age is {age}.&#39;)
+except TypeError:
+    print(&#39;Type error occur&#39;)
+except ValueError:
+    print(&#39;Value error occur&#39;)
+except ZeroDivisionError:
+    print(&#39;zero division error occur&#39;)
+else:
+    print(&#39;I usually run with the try block&#39;)
+finally:
+    print(&#39;I alway run.&#39;)
+</code></pre>
+<pre><code class="language-sh">Enter your name:Asabeneh
+Year you born:1920
+You are Asabeneh. And your age is 99.
+I usually run with the try block
+I alway run.
+</code></pre>
+<p>It is also shorten the above code as follows:</p>
+<pre><code class="language-py">try:
+    name = input(&#39;Enter your name:&#39;)
+    year_born = input(&#39;Year you born:&#39;)
+    age = 2019 - int(year_born)
+    print(f&#39;You are {name}. And your age is {age}.&#39;)
+except Exception as e:
+    print(e)
+</code></pre>
+<h2>Packing and Unpacking Arguments in Python</h2>
+<p>We use two operators:</p>
+<ul>
+<li>* for tuples</li>
+<li>** for dictionaries</li>
+</ul>
+<p>Let us take as an example below. It takes only arguments but we have list. We can unpack the list and changes to argument.</p>
+<h3>Unpacking</h3>
+<h4>Unpacking Lists</h4>
+<pre><code class="language-py">def sum_of_five_nums(a, b, c, d, e):
+    return a + b + c + d + e
+
+lst = [1, 2, 3, 4, 5]
+print(sum_of_five_nums(lst)) # TypeError: sum_of_five_nums() missing 4 required positional arguments: &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, and &#39;e&#39;
+</code></pre>
+<p>When we run the this code, it raises an error, because this function takes numbers (not a list) as arguments. Let us unpack/destructure the list.</p>
+<pre><code class="language-py">def sum_of_five_nums(a, b, c, d, e):
+    return a + b + c + d + e
+
+lst = [1, 2, 3, 4, 5]
+print(sum_of_five_nums(*lst))  # 15
+</code></pre>
+<p>We can also use unpacking in the range built-in function that expects a start and an end.</p>
+<pre><code class="language-py">numbers = range(2, 7)  # normal call with separate arguments
+print(list(numbers)) # [2, 3, 4, 5, 6]
+args = [2, 7]
+numbers = range(*args)  # call with arguments unpacked from a list
+print(numbers)      # [2, 3, 4, 5,6]
+</code></pre>
+<p>A list or a tuple can also be unpacked like this:</p>
+<pre><code class="language-py">countries = [&#39;Finland&#39;, &#39;Sweden&#39;, &#39;Norway&#39;, &#39;Denmark&#39;, &#39;Iceland&#39;]
+fin, sw, nor, *rest = countries
+print(fin, sw, nor, rest)   # Finland Sweden Norway [&#39;Denmark&#39;, &#39;Iceland&#39;]
+numbers = [1, 2, 3, 4, 5, 6, 7]
+one, *middle, last = numbers
+print(one, middle, last)      #  1 [2, 3, 4, 5, 6] 7
+</code></pre>
+<h4>Unpacking Dictionaries</h4>
+<pre><code class="language-py">def unpacking_person_info(name, country, city, age):
+    return f&#39;{name} lives in {country}, {city}. He is {age} year old.&#39;
+dct = {&#39;name&#39;:&#39;Asabeneh&#39;, &#39;country&#39;:&#39;Finland&#39;, &#39;city&#39;:&#39;Helsinki&#39;, &#39;age&#39;:250}
+print(unpacking_person_info(**dct)) # Asabeneh lives in Finland, Helsinki. He is 250 years old.
+</code></pre>
+<h3>Packing</h3>
+<p>Sometimes we never know how many arguments need to be passed to a python function. We can use the packing method to allow our function to take unlimited number or arbitrary number of arguments.</p>
+<h3>Packing Lists</h3>
+<pre><code class="language-py">def sum_all(*args):
+    s = 0
+    for i in args:
+        s += i
+    return s
+print(sum_all(1, 2, 3))             # 6
+print(sum_all(1, 2, 3, 4, 5, 6, 7)) # 28
+</code></pre>
+<h4>Packing Dictionaries</h4>
+<pre><code class="language-py">def packing_person_info(**kwargs):
+    # check the type of kwargs and it is a dict type
+    # print(type(kwargs))
+    # Printing dictionary items
+    for key in kwargs:
+        print(f&quot;{key} = {kwargs[key]}&quot;)
+    return kwargs
+
+print(packing_person_info(name=&quot;Asabeneh&quot;,
+      country=&quot;Finland&quot;, city=&quot;Helsinki&quot;, age=250))
+</code></pre>
+<pre><code class="language-sh">name = Asabeneh
+country = Finland
+city = Helsinki
+age = 250
+{&#39;name&#39;: &#39;Asabeneh&#39;, &#39;country&#39;: &#39;Finland&#39;, &#39;city&#39;: &#39;Helsinki&#39;, &#39;age&#39;: 250}
+</code></pre>
+<h2>Spreading in Python</h2>
+<p>Like in JavaScript, spreading is possible in Python. Let us check it in an example below:</p>
+<pre><code class="language-py">lst_one = [1, 2, 3]
+lst_two = [4, 5, 6, 7]
+lst = [0, *lst_one, *lst_two]
+print(lst)          # [0, 1, 2, 3, 4, 5, 6, 7]
+country_lst_one = [&#39;Finland&#39;, &#39;Sweden&#39;, &#39;Norway&#39;]
+country_lst_two = [&#39;Denmark&#39;, &#39;Iceland&#39;]
+nordic_countries = [*country_lst_one, *country_lst_two]
+print(nordic_countries)  # [&#39;Finland&#39;, &#39;Sweden&#39;, &#39;Norway&#39;, &#39;Denmark&#39;, &#39;Iceland&#39;]
+</code></pre>
+<h2>Enumerate</h2>
+<p>If we are interested in an index of a list, we use <em>enumerate</em> built-in function to get the index of each item in the list.</p>
+<pre><code class="language-py">for index, item in enumerate([20, 30, 40]):
+    print(index, item)
+</code></pre>
+<pre><code class="language-py">countries = [&#39;Finland&#39;, &#39;Sweden&#39;, &#39;Norway&#39;, &#39;Denmark&#39;, &#39;Iceland&#39;]
+for index, i in enumerate(countries):
+    if i == &#39;Finland&#39;:
+        print(f&#39;The country {i} has been found at index {index}&#39;)
+</code></pre>
+<pre><code class="language-sh">The country Finland has been found at index 0.
+</code></pre>
+<h2>Zip</h2>
+<p>Sometimes we would like to combine lists when looping through them. See the example below:</p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;lime&#39;]                    
+vegetables = [&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;,&#39;Onion&#39;, &#39;Carrot&#39;]
+fruits_and_veges = []
+for f, v in zip(fruits, vegetables):
+    fruits_and_veges.append({&#39;fruit&#39;:f, &#39;veg&#39;:v})
+
+print(fruits_and_veges)
+</code></pre>
+<pre><code class="language-sh">[{&#39;fruit&#39;: &#39;banana&#39;, &#39;veg&#39;: &#39;Tomato&#39;}, {&#39;fruit&#39;: &#39;orange&#39;, &#39;veg&#39;: &#39;Potato&#39;}, {&#39;fruit&#39;: &#39;mango&#39;, &#39;veg&#39;: &#39;Cabbage&#39;}, {&#39;fruit&#39;: &#39;lemon&#39;, &#39;veg&#39;: &#39;Onion&#39;}, {&#39;fruit&#39;: &#39;lime&#39;, &#39;veg&#39;: &#39;Carrot&#39;}]
+</code></pre>
+<p>🌕 You are determined. You are 17 steps a head to your way to greatness. Now do some exercises for your brain and muscles.</p>
+<h2>Exercises: Day 17</h2>
+<ol>
+<li>names = [&#39;Finland&#39;, &#39;Sweden&#39;, &#39;Norway&#39;,&#39;Denmark&#39;,&#39;Iceland&#39;, &#39;Estonia&#39;,&#39;Russia&#39;]. Unpack the first five countries and store them in a variable nordic_countries, store Estonia and Russia in es, and ru respectively.</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

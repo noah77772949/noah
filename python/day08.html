@@ -1,0 +1,251 @@
+<!--title:القواميس (Dictionaries)|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 08: القواميس (Dictionaries)</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-8">💻 Exercises: Day 8</a></li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 8</h1>
+<h2>Dictionaries</h2>
+<p>A dictionary is a collection of unordered, modifiable(mutable) paired (key: value) data type.</p>
+<h3>Creating a Dictionary</h3>
+<p>To create a dictionary we use curly brackets, {} or the <em>dict()</em> built-in function.</p>
+<pre><code class="language-py"># syntax
+empty_dict = {}
+# Dictionary with data values
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+</code></pre>
+<p>The dictionary above shows that a value could be any data types:string, boolean, list, tuple, set or a dictionary.</p>
+<h3>Dictionary Length</h3>
+<p>It checks the number of &#39;key: value&#39; pairs in the dictionary.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(len(dct)) # 4
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_married&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(len(person)) # 7
+</code></pre>
+<h3>Accessing Dictionary Items</h3>
+<p>We can access Dictionary items by referring to its key name.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct[&#39;key1&#39;]) # value1
+print(dct[&#39;key4&#39;]) # value4
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(person[&#39;first_name&#39;]) # Asabeneh
+print(person[&#39;country&#39;])    # Finland
+print(person[&#39;skills&#39;])     # [&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;]
+print(person[&#39;skills&#39;][0])  # JavaScript
+print(person[&#39;address&#39;][&#39;street&#39;]) # Space street
+print(person[&#39;city&#39;])       # Error
+</code></pre>
+<p>Accessing an item by key name raises an error if the key does not exist. To avoid this error first we have to check if a key exist or we can use the <em>get</em> method. The get method returns None, which is a NoneType object data type, if the key does not exist.</p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(person.get(&#39;first_name&#39;)) # Asabeneh
+print(person.get(&#39;country&#39;))    # Finland
+print(person.get(&#39;skills&#39;)) #[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;]
+print(person.get(&#39;city&#39;))   # None
+</code></pre>
+<h3>Adding Items to a Dictionary</h3>
+<p>We can add new key and value pairs to a dictionary</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct[&#39;key5&#39;] = &#39;value5&#39;
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+        }
+}
+person[&#39;job_title&#39;] = &#39;Instructor&#39;
+person[&#39;skills&#39;].append(&#39;HTML&#39;)
+print(person)
+</code></pre>
+<h3>Modifying Items in a Dictionary</h3>
+<p>We can modify items in a dictionary</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct[&#39;key1&#39;] = &#39;value-one&#39;
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+person[&#39;first_name&#39;] = &#39;Eyob&#39;
+person[&#39;age&#39;] = 252
+</code></pre>
+<h3>Checking Keys in a Dictionary</h3>
+<p>We use the <em>in</em> operator to check if a key exist in a dictionary</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(&#39;key2&#39; in dct) # True
+print(&#39;key5&#39; in dct) # False
+</code></pre>
+<h3>Removing Key and Value Pairs from a Dictionary</h3>
+<ul>
+<li><em>pop(key)</em>: removes the item with the specified key name:</li>
+<li><em>popitem()</em>: removes the last item</li>
+<li><em>del</em>: removes an item with specified key name</li>
+</ul>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct.pop(&#39;key1&#39;) # removes key1 item
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct.popitem() # removes the last item
+del dct[&#39;key2&#39;] # removes key2 item
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+person.pop(&#39;first_name&#39;)        # Removes the firstname item
+person.popitem()                # Removes the address item
+del person[&#39;is_married&#39;]        # Removes the is_married item
+</code></pre>
+<h3>Changing Dictionary to a List of Items</h3>
+<p>The <em>items()</em> method changes dictionary to a list of tuples.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct.items()) # dict_items([(&#39;key1&#39;, &#39;value1&#39;), (&#39;key2&#39;, &#39;value2&#39;), (&#39;key3&#39;, &#39;value3&#39;), (&#39;key4&#39;, &#39;value4&#39;)])
+</code></pre>
+<h3>Clearing a Dictionary</h3>
+<p>If we don&#39;t want the items in a dictionary we can clear them using <em>clear()</em> method</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct.clear()) # None
+</code></pre>
+<h3>Deleting a Dictionary</h3>
+<p>If we do not use the dictionary we can delete it completely</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+del dct
+</code></pre>
+<h3>Copy a Dictionary</h3>
+<p>We can copy a dictionary using a <em>copy()</em> method. Using copy we can avoid mutation of the original dictionary.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct_copy = dct.copy() # {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+</code></pre>
+<h3>Getting Dictionary Keys as a List</h3>
+<p>The <em>keys()</em> method gives us all the keys of a a dictionary as a list.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+keys = dct.keys()
+print(keys)     # dict_keys([&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;, &#39;key4&#39;])
+</code></pre>
+<h3>Getting Dictionary Values as a List</h3>
+<p>The <em>values</em> method gives us all the values of a a dictionary as a list.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+values = dct.values()
+print(values)     # dict_values([&#39;value1&#39;, &#39;value2&#39;, &#39;value3&#39;, &#39;value4&#39;])
+</code></pre>
+<p>🌕 You are astonishing. Now, you are super charged with the power of dictionaries. You have just completed day 8 challenges and you are 8 steps a head in to your way to greatness. Now do some exercises for your brain and  muscles.</p>
+<h2>💻 Exercises: Day 8</h2>
+<ol>
+<li>Create  an empty dictionary called dog</li>
+<li>Add name, color, breed, legs, age to the dog dictionary</li>
+<li>Create a student dictionary and add first_name, last_name, gender, age, marital status, skills, country, city and address as keys for the dictionary</li>
+<li>Get the length of the student dictionary</li>
+<li>Get the value of skills and check the data type, it should be a list</li>
+<li>Modify the skills values by adding one or two skills</li>
+<li>Get the dictionary keys as a list</li>
+<li>Get the dictionary values as a list</li>
+<li>Change the dictionary to a list of tuples using <em>items()</em> method</li>
+<li>Delete one of the items in the dictionary</li>
+<li>Delete one of the dictionaries</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

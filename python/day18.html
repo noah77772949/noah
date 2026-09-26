@@ -1,0 +1,368 @@
+<!--title:التعابير النمطية|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 18: التعابير النمطية</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+</ul>
+</li>
+<li><a href="#splitting-text-using-regex-split">Splitting Text Using RegEx Split</a></li>
+<li><a href="#writing-regex-patterns">Writing RegEx Patterns</a>
+</li>
+<li><a href="#-exercises-day-18">💻 Exercises: Day 18</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 18</h1>
+<h2>Regular Expressions</h2>
+<p>A regular expression or RegEx is a special text string that helps to find patterns in data. A RegEx can be used to check if some pattern exists in a different data type. To use RegEx in python first we should import the RegEx module which is called <em>re</em>.</p>
+<h3>The <em>re</em> Module</h3>
+<p>After importing the module we can use it to detect or find patterns.</p>
+<pre><code class="language-py">import re
+</code></pre>
+<h3>Methods in <em>re</em> Module</h3>
+<p>To find a pattern we use different set of <em>re</em> character sets that allows to search for a match in a string.</p>
+<ul>
+<li><em>re.match()</em>: searches only in the beginning of the first line of the string and returns matched objects if  found, else returns None.</li>
+<li><em>re.search</em>: Returns a match object if there is one anywhere in the string, including multiline strings.</li>
+<li><em>re.findall</em>: Returns a list containing all matches</li>
+<li><em>re.split</em>: Takes a string, splits it at the match points, returns a list</li>
+<li><em>re.sub</em>:  Replaces one or many matches within a string</li>
+</ul>
+<h4>Match</h4>
+<pre><code class="language-py"># syntax
+re.match(substring, string, re.I)
+# substring is a string or a pattern, string is the text we look for a pattern , re.I is case ignore
+</code></pre>
+<pre><code class="language-py">import re
+
+txt = &#39;I love to teach python and javaScript&#39;
+# It returns an object with span, and match
+match = re.match(&#39;I love to teach&#39;, txt, re.I)
+print(match)  # &lt;re.Match object; span=(0, 15), match=&#39;I love to teach&#39;&gt;
+# We can get the starting and ending position of the match as tuple using span
+span = match.span()
+print(span)     # (0, 15)
+# Lets find the start and stop position from the span
+start, end = span
+print(start, end)  # 0 15
+substring = txt[start:end]
+print(substring)       # I love to teach
+</code></pre>
+<p>As you can see from the example above, the pattern we are looking for (or the substring we are looking for) is <em>I love to teach</em>. The match function returns an object <strong>only</strong> if the text starts with the pattern.</p>
+<pre><code class="language-py">import re
+
+txt = &#39;I love to teach python and javaScript&#39;
+match = re.match(&#39;I like to teach&#39;, txt, re.I)
+print(match)  # None
+</code></pre>
+<p>The string does not string with <em>I like to teach</em>, therefore there was no match and the match method returned None.</p>
+<h4>Search</h4>
+<pre><code class="language-py"># syntax
+re.search(substring, string, re.I)
+# substring is a pattern, string is the text we look for a pattern , re.I is case ignore flag
+</code></pre>
+<pre><code class="language-py">import re
+
+txt = &#39;&#39;&#39;Python is the most beautiful language that a human being has ever created.
+I recommend python for a first programming language&#39;&#39;&#39;
+
+# It returns an object with span and match
+match = re.search(&#39;first&#39;, txt, re.I)
+print(match)  # &lt;re.Match object; span=(100, 105), match=&#39;first&#39;&gt;
+# We can get the starting and ending position of the match as tuple using span
+span = match.span()
+print(span)     # (100, 105)
+# Lets find the start and stop position from the span
+start, end = span
+print(start, end)  # 100 105
+substring = txt[start:end]
+print(substring)       # first
+</code></pre>
+<p>As you can see, search is much better than match because it can look for the pattern throughout the text. Search returns a match object with a first match that was found, otherwise it returns <em>None</em>. A much better <em>re</em> function is <em>findall</em>. This function checks for the pattern through the whole string and returns all the matches as a list.</p>
+<h4>Searching for All Matches Using <em>findall</em></h4>
+<p><em>findall()</em> returns all the matches as a list</p>
+<pre><code class="language-py">txt = &#39;&#39;&#39;Python is the most beautiful language that a human being has ever created.
+I recommend python for a first programming language&#39;&#39;&#39;
+
+# It return a list
+matches = re.findall(&#39;language&#39;, txt, re.I)
+print(matches)  # [&#39;language&#39;, &#39;language&#39;]
+</code></pre>
+<p>As you can see, the word <em>language</em> was found two times in the string. Let us practice some more.
+Now we will look for both Python and python words in the string:</p>
+<pre><code class="language-py">txt = &#39;&#39;&#39;Python is the most beautiful language that a human being has ever created.
+I recommend python for a first programming language&#39;&#39;&#39;
+
+# It returns list
+matches = re.findall(&#39;python&#39;, txt, re.I)
+print(matches)  # [&#39;Python&#39;, &#39;python&#39;]
+</code></pre>
+<p>Since we are using <em>re.I</em> both lowercase and uppercase letters are included. If we do not have the re.I flag, then we will have to write our pattern differently. Let us check it out:</p>
+<pre><code class="language-py">txt = &#39;&#39;&#39;Python is the most beautiful language that a human being has ever created.
+I recommend python for a first programming language&#39;&#39;&#39;
+
+matches = re.findall(&#39;Python|python&#39;, txt)
+print(matches)  # [&#39;Python&#39;, &#39;python&#39;]
+
+#
+matches = re.findall(&#39;[Pp]ython&#39;, txt)
+print(matches)  # [&#39;Python&#39;, &#39;python&#39;]
+</code></pre>
+<h4>Replacing a Substring</h4>
+<pre><code class="language-py">txt = &#39;&#39;&#39;Python is the most beautiful language that a human being has ever created.
+I recommend python for a first programming language&#39;&#39;&#39;
+
+match_replaced = re.sub(&#39;Python|python&#39;, &#39;JavaScript&#39;, txt, re.I)
+print(match_replaced)  # JavaScript is the most beautiful language that a human being has ever created.I recommend python for a first programming language
+# OR
+match_replaced = re.sub(&#39;[Pp]ython&#39;, &#39;JavaScript&#39;, txt, re.I)
+print(match_replaced)  # JavaScript is the most beautiful language that a human being has ever created.I recommend python for a first programming language
+</code></pre>
+<p>Let us add one more example. The following string is really hard to read unless we remove the % symbol. Replacing the % with an empty string will clean the text.</p>
+<pre><code class="language-py">
+txt = &#39;&#39;&#39;%I a%m te%%a%%che%r% a%n%d %% I l%o%ve te%ach%ing.
+T%he%re i%s n%o%th%ing as r%ewarding a%s e%duc%at%i%ng a%n%d e%m%p%ow%er%ing p%e%o%ple.
+I fo%und te%a%ching m%ore i%n%t%er%%es%ting t%h%an any other %jobs.
+D%o%es thi%s m%ot%iv%a%te %y%o%u to b%e a t%e%a%cher?&#39;&#39;&#39;
+
+matches = re.sub(&#39;%&#39;, &#39;&#39;, txt)
+print(matches)
+</code></pre>
+<pre><code class="language-sh">I am teacher and I love teaching.
+There is nothing as rewarding as educating and empowering people.
+I found teaching more interesting than any other jobs. Does this motivate you to be a teacher?
+</code></pre>
+<h2>Splitting Text Using RegEx Split</h2>
+<pre><code class="language-py">txt = &#39;&#39;&#39;I am teacher and  I love teaching.
+There is nothing as rewarding as educating and empowering people.
+I found teaching more interesting than any other jobs.
+Does this motivate you to be a teacher?&#39;&#39;&#39;
+print(re.split(&#39;\n&#39;, txt)) # splitting using \n - end of line symbol
+</code></pre>
+<pre><code class="language-sh">[&#39;I am teacher and  I love teaching.&#39;, &#39;There is nothing as rewarding as educating and empowering people.&#39;, &#39;I found teaching more interesting than any other jobs.&#39;, &#39;Does this motivate you to be a teacher?&#39;]
+</code></pre>
+<h2>Writing RegEx Patterns</h2>
+<p>To declare a string variable we use a single or double quote. To declare RegEx variable <em>r&#39;&#39;</em>.
+The following pattern only identifies apple with lowercase, to make it case insensitive either we should rewrite our pattern or we should add a flag.</p>
+<pre><code class="language-py">import re
+
+regex_pattern = r&#39;apple&#39;
+txt = &#39;Apple and banana are fruits. An old cliche says an apple a day a doctor way has been replaced by a banana a day keeps the doctor far far away. &#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;apple&#39;]
+
+# To make case insensitive adding flag &#39;
+matches = re.findall(regex_pattern, txt, re.I)
+print(matches)  # [&#39;Apple&#39;, &#39;apple&#39;]
+# or we can use a set of characters method
+regex_pattern = r&#39;[Aa]pple&#39;  # this mean the first letter could be Apple or apple
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;Apple&#39;, &#39;apple&#39;]
+</code></pre>
+<ul>
+<li>[]:  A set of characters<ul>
+<li>[a-c] means, a or b or c</li>
+<li>[a-z] means, any letter from a to z</li>
+<li>[A-Z] means, any character from A to Z</li>
+<li>[0-3] means, 0 or 1 or 2 or 3</li>
+<li>[0-9] means any number from 0 to 9</li>
+<li>[A-Za-z0-9] any single character, that is a to z, A to Z or 0 to 9</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>\:  uses to escape special characters<ul>
+<li>\d means: match where the string contains digits (numbers from 0-9)</li>
+<li>\D means: match where the string does not contain digits</li>
+</ul>
+</li>
+<li>. : any character except new line character(\n)</li>
+<li>^: starts with<ul>
+<li>r&#39;^substring&#39; eg r&#39;^love&#39;, a sentence that starts with a word love</li>
+<li>r&#39;[^abc] means not a, not b, not c.</li>
+</ul>
+</li>
+<li>$: ends with<ul>
+<li>r&#39;substring$&#39; eg r&#39;love$&#39;, sentence  that ends with a word love</li>
+</ul>
+</li>
+<li>*: zero or more times<ul>
+<li>r&#39;[a]*&#39; means a optional or it can occur many times.</li>
+</ul>
+</li>
+<li>+: one or more times<ul>
+<li>r&#39;[a]+&#39; means at least once (or more)</li>
+</ul>
+</li>
+<li>?: zero or one time<ul>
+<li>r&#39;[a]?&#39; means zero times or once</li>
+</ul>
+</li>
+<li>{3}: Exactly 3 characters</li>
+<li>{3,}: At least 3 characters</li>
+<li>{3,8}: 3 to 8 characters</li>
+<li>|: Either or<ul>
+<li>r&#39;apple|banana&#39; means either apple or a banana</li>
+</ul>
+</li>
+<li>(): Capture and group</li>
+</ul>
+<p><img src="../images/regex.png" alt="Regular Expression cheat sheet"></p>
+<p>Let us use examples to clarify the meta characters above</p>
+<h3>Square Bracket</h3>
+<p>Let us use square bracket to include lower and upper case</p>
+<pre><code class="language-py">regex_pattern = r&#39;[Aa]pple&#39; # this square bracket mean either A or a
+txt = &#39;Apple and banana are fruits. An old cliche says an apple a day a doctor way has been replaced by a banana a day keeps the doctor far far away.&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;Apple&#39;, &#39;apple&#39;]
+</code></pre>
+<p>If we want to look for the banana, we write the pattern as follows:</p>
+<pre><code class="language-py">regex_pattern = r&#39;[Aa]pple|[Bb]anana&#39; # this square bracket means either A or a
+txt = &#39;Apple and banana are fruits. An old cliche says an apple a day a doctor way has been replaced by a banana a day keeps the doctor far far away.&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;Apple&#39;, &#39;banana&#39;, &#39;apple&#39;, &#39;banana&#39;]
+</code></pre>
+<p>Using the square bracket and or operator , we manage to extract Apple, apple, Banana and banana.</p>
+<h3>Escape character(\) in RegEx</h3>
+<pre><code class="language-py">regex_pattern = r&#39;\d&#39;  # d is a special character which means digits
+txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;6&#39;, &#39;2&#39;, &#39;0&#39;, &#39;1&#39;, &#39;9&#39;, &#39;8&#39;, &#39;2&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;], this is not what we want
+</code></pre>
+<h3>One or more times(+)</h3>
+<pre><code class="language-py">regex_pattern = r&#39;\d+&#39;  # d is a special character which means digits, + mean one or more times
+txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;6&#39;, &#39;2019&#39;, &#39;8&#39;, &#39;2021&#39;] - now, this is better!
+</code></pre>
+<h3>Period(.)</h3>
+<pre><code class="language-py">regex_pattern = r&#39;[a].&#39;  # this square bracket means a and . means any character except new line
+txt = &#39;&#39;&#39;Apple and banana are fruits&#39;&#39;&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;an&#39;, &#39;an&#39;, &#39;an&#39;, &#39;a &#39;, &#39;ar&#39;]
+
+regex_pattern = r&#39;[a].+&#39;  # . any character, + any character one or more times
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;and banana are fruits&#39;]
+</code></pre>
+<h3>Zero or more times(*)</h3>
+<p>Zero or many times. The pattern could may not occur or it can occur many times.</p>
+<pre><code class="language-py">regex_pattern = r&#39;[a].*&#39;  # . any character, * any character zero or more times
+txt = &#39;&#39;&#39;Apple and banana are fruits&#39;&#39;&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;and banana are fruits&#39;]
+</code></pre>
+<h3>Zero or one time(?)</h3>
+<p>Zero or one time. The pattern may not occur or it may occur once.</p>
+<pre><code class="language-py">txt = &#39;&#39;&#39;I am not sure if there is a convention how to write the word e-mail.
+Some people write it as email others may write it as Email or E-mail.&#39;&#39;&#39;
+regex_pattern = r&#39;[Ee]-?mail&#39;  # ? means here that &#39;-&#39; is optional
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;e-mail&#39;, &#39;email&#39;, &#39;Email&#39;, &#39;E-mail&#39;]
+</code></pre>
+<h3>Quantifier in RegEx</h3>
+<p>We can specify the length of the substring we are looking for in a text, using a curly bracket. Let us imagine, we are interested in a substring with a length of 4 characters:</p>
+<pre><code class="language-py">txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+regex_pattern = r&#39;\d{4}&#39;  # exactly four times
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;2019&#39;, &#39;2021&#39;]
+
+txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+regex_pattern = r&#39;\d{1,4}&#39;
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;6&#39;, &#39;2019&#39;, &#39;8&#39;, &#39;2021&#39;] 
+</code></pre>
+<h3>Cart ^</h3>
+<ul>
+<li>Starts with</li>
+</ul>
+<pre><code class="language-py">txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+regex_pattern = r&#39;^This&#39;  # ^ means starts with
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;This&#39;]
+</code></pre>
+<ul>
+<li>Negation</li>
+</ul>
+<pre><code class="language-py">txt = &#39;This regular expression example was made on December 6,  2019 and revised on July 8, 2021&#39;
+regex_pattern = r&#39;[^A-Za-z ]+&#39;  # ^ in set character means negation, not A to Z, not a to z, no space
+matches = re.findall(regex_pattern, txt)
+print(matches)  # [&#39;6,&#39;, &#39;2019&#39;, &#39;8&#39;, &#39;2021&#39;]
+</code></pre>
+<h2>💻 Exercises: Day 18</h2>
+<h3>Exercises: Level 1</h3>
+<ol>
+<li>What is the most frequent word in the following paragraph?</li>
+</ol>
+<pre><code class="language-py">    paragraph = &#39;I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give you all the capabilities to develop an application what else can you love.
+</code></pre>
+<pre><code class="language-sh">    [
+    (6, &#39;love&#39;),
+    (5, &#39;you&#39;),
+    (3, &#39;can&#39;),
+    (2, &#39;what&#39;),
+    (2, &#39;teaching&#39;),
+    (2, &#39;not&#39;),
+    (2, &#39;else&#39;),
+    (2, &#39;do&#39;),
+    (2, &#39;I&#39;),
+    (1, &#39;which&#39;),
+    (1, &#39;to&#39;),
+    (1, &#39;the&#39;),
+    (1, &#39;something&#39;),
+    (1, &#39;if&#39;),
+    (1, &#39;give&#39;),
+    (1, &#39;develop&#39;),
+    (1, &#39;capabilities&#39;),
+    (1, &#39;application&#39;),
+    (1, &#39;an&#39;),
+    (1, &#39;all&#39;),
+    (1, &#39;Python&#39;),
+    (1, &#39;If&#39;)
+    ]
+</code></pre>
+<ol start="2">
+<li>The position of some particles on the horizontal x-axis are -12, -4, -3 and -1 in the negative direction, 0 at origin, 4 and 8 in the positive direction. Extract these numbers from this whole text and find the distance between the two furthest particles.</li>
+</ol>
+<pre><code class="language-py">points = [&#39;-12&#39;, &#39;-4&#39;, &#39;-3&#39;, &#39;-1&#39;, &#39;0&#39;, &#39;4&#39;, &#39;8&#39;]
+sorted_points =  [-12, -4, -3, -1, -1, 0, 2, 4, 8]
+distance = 8 -(-12) # 20
+</code></pre>
+<h3>Exercises: Level 2</h3>
+<ol>
+<li><p>Write a pattern which identifies if a string is a valid python variable</p>
+<pre><code class="language-sh">is_valid_variable(&#39;first_name&#39;) # True
+is_valid_variable(&#39;first-name&#39;) # False
+is_valid_variable(&#39;1first_name&#39;) # False
+is_valid_variable(&#39;firstname&#39;) # True
+</code></pre>
+</li>
+</ol>
+<h3>Exercises: Level 3</h3>
+<ol>
+<li><p>Clean the following text. After cleaning, count three most frequent words in the string.</p>
+<pre><code class="language-py">sentence = &#39;&#39;&#39;%I $am@% a %tea@cher%, &amp;and&amp; I lo%#ve %tea@ching%;. There $is nothing; &amp;as&amp; mo@re rewarding as educa@ting &amp;and&amp; @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?&#39;&#39;&#39;
+
+print(clean_text(sentence));
+I am a teacher and I love teaching There is nothing as more rewarding as educating and empowering people I found teaching more interesting than any other jobs Does this motivate you to be a teacher
+print(most_frequent_words(cleaned_text)) # [(3, &#39;I&#39;), (2, &#39;teaching&#39;), (2, &#39;teacher&#39;)]
+</code></pre>
+</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

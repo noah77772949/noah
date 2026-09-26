@@ -1,0 +1,405 @@
+<!--title:مدير الحزم|time:25|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 20: مدير الحزم</h1>
+  <div class="hero-meta">
+    <span>⏱ 25 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#exercises-day-20">Exercises: Day 20</a></li>
+</ul>
+</li>
+</ul>
+<h1>📘 Day 20</h1>
+<h2>Python PIP - Python Package Manager</h2>
+<h3>What is PIP ?</h3>
+<p>PIP stands for Preferred installer program. We use <em>pip</em> to install different Python packages.
+Package is a Python module that can contain one or more modules or other packages. A module or modules that we can install to our application is a package.
+In programming, we do not have to write every utility program, instead we install packages and import them to our applications.</p>
+<h3>Installing PIP</h3>
+<p>If you did not install pip, let us install it now. Go to your terminal or command prompt and copy and paste this:</p>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip install pip
+</code></pre>
+<p>Check if pip is installed by writing</p>
+<pre><code class="language-sh">pip --version
+</code></pre>
+<pre><code class="language-py">asabeneh@Asabeneh:~$ pip --version
+pip 21.1.3 from /usr/local/lib/python3.7/site-packages/pip (python 3.9.6)
+</code></pre>
+<p>As you can see, I am using pip version 21.1.3, if you see some number a bit below or above that, means you have pip installed.</p>
+<p>Let us check some of the packages used in the Python community for different purposes. Just to let you know that there are lots of packages available for use with different applications.</p>
+<h3>Installing packages using pip</h3>
+<p>Let us try to install <em>numpy</em>, called numeric python. It is one of the most popular packages in machine learning and data science community.</p>
+<ul>
+<li>NumPy is the fundamental package for scientific computing with Python. It contains among other things:<ul>
+<li>a powerful N-dimensional array object</li>
+<li>sophisticated (broadcasting) functions</li>
+<li>tools for integrating C/C++ and Fortran code</li>
+<li>useful linear algebra, Fourier transform, and random number capabilities</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip install numpy
+</code></pre>
+<p>Let us start using numpy. Open your python interactive shell, write python and then import numpy as follows:</p>
+<pre><code class="language-py">asabeneh@Asabeneh:~$ python
+Python 3.9.6 (default, Jun 28 2021, 15:26:21)
+[Clang 11.0.0 (clang-1100.0.33.8)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import numpy
+&gt;&gt;&gt; numpy.version.version
+&#39;1.20.1&#39;
+&gt;&gt;&gt; lst = [1, 2, 3,4, 5]
+&gt;&gt;&gt; np_arr = numpy.array(lst)
+&gt;&gt;&gt; np_arr
+array([1, 2, 3, 4, 5])
+&gt;&gt;&gt; len(np_arr)
+5
+&gt;&gt;&gt; np_arr * 2
+array([ 2,  4,  6,  8, 10])
+&gt;&gt;&gt; np_arr  + 2
+array([3, 4, 5, 6, 7])
+&gt;&gt;&gt;
+</code></pre>
+<p>Pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language. Let us install the big brother of numpy, <em>pandas</em>:</p>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip install pandas
+</code></pre>
+<pre><code class="language-py">asabeneh@Asabeneh:~$ python
+Python 3.9.6 (default, Jun 28 2021, 15:26:21)
+[Clang 11.0.0 (clang-1100.0.33.8)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import pandas
+</code></pre>
+<p>This section is not about numpy nor pandas, here we are trying to learn how to install packages and how to import them. If it is needed, we will talk about different packages in other sections.</p>
+<p>Let us import a web browser module, which can help us to open any website. We do not need to install this module, it is already installed by default with Python 3. For instance if you like to open any number of websites at any time or if you like to schedule something, this <em>webbrowser</em> module can be used.</p>
+<pre><code class="language-py">import webbrowser # web browser module to open websites
+
+# list of urls: python
+url_lists = [
+    &#39;http://www.python.org&#39;,
+    &#39;https://www.linkedin.com/in/asabeneh/&#39;,
+    &#39;https://github.com/Asabeneh&#39;,
+    &#39;https://twitter.com/Asabeneh&#39;,
+]
+
+# opens the above list of websites in a different tab
+for url in url_lists:
+    webbrowser.open_new_tab(url)
+</code></pre>
+<h3>Uninstalling Packages</h3>
+<p>If you do not like to keep the installed packages, you can remove them using the following command.</p>
+<pre><code class="language-sh">pip uninstall packagename
+</code></pre>
+<h3>List of Packages</h3>
+<p>To see the installed packages on our machine. We can use pip followed by list.</p>
+<pre><code class="language-sh">pip list
+</code></pre>
+<h3>Show Package</h3>
+<p>To show information about a package</p>
+<pre><code class="language-sh">pip show packagename
+</code></pre>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip show pandas
+Name: pandas
+Version: 1.2.3
+Summary: Powerful data structures for data analysis, time series, and statistics
+Home-page: http://pandas.pydata.org
+Author: None
+Author-email: None
+License: BSD
+Location: /usr/local/lib/python3.7/site-packages
+Requires: python-dateutil, pytz, numpy
+Required-by:
+</code></pre>
+<p>If we want even more details, just add --verbose</p>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip show --verbose pandas
+Name: pandas
+Version: 1.2.3
+Summary: Powerful data structures for data analysis, time series, and statistics
+Home-page: http://pandas.pydata.org
+Author: None
+Author-email: None
+License: BSD
+Location: /usr/local/lib/python3.7/site-packages
+Requires: numpy, pytz, python-dateutil
+Required-by:
+Metadata-Version: 2.1
+Installer: pip
+Classifiers:
+  Development Status :: 5 - Production/Stable
+  Environment :: Console
+  Operating System :: OS Independent
+  Intended Audience :: Science/Research
+  Programming Language :: Python
+  Programming Language :: Python :: 3
+  Programming Language :: Python :: 3.5
+  Programming Language :: Python :: 3.6
+  Programming Language :: Python :: 3.7
+  Programming Language :: Python :: 3.8
+  Programming Language :: Cython
+  Topic :: Scientific/Engineering
+Entry-points:
+  [pandas_plotting_backends]
+  matplotlib = pandas:plotting._matplotlib
+</code></pre>
+<h3>PIP Freeze</h3>
+<p>Generate installed Python packages with their version and the output is suitable to use it in a requirements file. A requirements.txt file is a file that should contain all the installed Python packages in a Python project.</p>
+<pre><code class="language-sh">asabeneh@Asabeneh:~$ pip freeze
+docutils==0.11
+Jinja2==2.7.2
+MarkupSafe==0.19
+Pygments==1.6
+Sphinx==1.2.2
+</code></pre>
+<p>The pip freeze gave us the packages used, installed and their version. We use it with requirements.txt file for deployment.</p>
+<h3>Reading from URL</h3>
+<p>By now you are familiar with how to read or write on a file located on you local machine. Sometimes, we would like to read from a website using url or from an API.
+API stands for Application Program Interface. It is a means to exchange structured data between servers primarily as json data. To open a network connection, we need a package called <em>requests</em> - it allows to open a network connection and to implement CRUD(create, read, update and delete) operations. In this section, we will cover only reading ore getting part of a CRUD.</p>
+<p>Let us install <em>requests</em>:</p>
+<pre><code class="language-py">asabeneh@Asabeneh:~$ pip install requests
+</code></pre>
+<p>We will see <em>get</em>, <em>status_code</em>, <em>headers</em>, <em>text</em> and <em>json</em> methods in <em>requests</em> module:</p>
+<ul>
+<li><em>get()</em>: to open a network and fetch data from url - it returns a response object</li>
+<li><em>status_code</em>: After we fetched data, we can check the status of the operation (success, error, etc)</li>
+<li><em>headers</em>: To check the header types</li>
+<li><em>text</em>: to extract the text from the fetched response object </li>
+<li><em>json</em>: to extract json data
+Let&#39;s read a txt file from this website, <a href="https://www.w3.org/TR/PNG/iso_8859-1.txt">https://www.w3.org/TR/PNG/iso_8859-1.txt</a>.</li>
+</ul>
+<pre><code class="language-py">import requests # importing the request module
+
+url = &#39;https://www.w3.org/TR/PNG/iso_8859-1.txt&#39; # text from a website
+
+response = requests.get(url) # opening a network and fetching a data
+print(response)
+print(response.status_code) # status code, success:200
+print(response.headers)     # headers information
+print(response.text) # gives all the text from the page
+</code></pre>
+<pre><code class="language-sh">&lt;Response [200]&gt;
+200
+{&#39;date&#39;: &#39;Sun, 08 Dec 2019 18:00:31 GMT&#39;, &#39;last-modified&#39;: &#39;Fri, 07 Nov 2003 05:51:11 GMT&#39;, &#39;etag&#39;: &#39;&quot;17e9-3cb82080711c0;50c0b26855880-gzip&quot;&#39;, &#39;accept-ranges&#39;: &#39;bytes&#39;, &#39;cache-control&#39;: &#39;max-age=31536000&#39;, &#39;expires&#39;: &#39;Mon, 07 Dec 2020 18:00:31 GMT&#39;, &#39;vary&#39;: &#39;Accept-Encoding&#39;, &#39;content-encoding&#39;: &#39;gzip&#39;, &#39;access-control-allow-origin&#39;: &#39;*&#39;, &#39;content-length&#39;: &#39;1616&#39;, &#39;content-type&#39;: &#39;text/plain&#39;, &#39;strict-transport-security&#39;: &#39;max-age=15552000; includeSubdomains; preload&#39;, &#39;content-security-policy&#39;: &#39;upgrade-insecure-requests&#39;}
+</code></pre>
+<ul>
+<li>Let us read from an API. API stands for Application Program Interface. It is a means to exchange structure data between servers primarily a json data. An example of an API:<a href="https://restcountries.eu/rest/v2/all">https://restcountries.eu/rest/v2/all</a>. Let us read this API using <em>requests</em> module.</li>
+</ul>
+<pre><code class="language-py">import requests
+url = &#39;https://restcountries.eu/rest/v2/all&#39;  # countries api
+response = requests.get(url)  # opening a network and fetching a data
+print(response) # response object
+print(response.status_code)  # status code, success:200
+countries = response.json()
+print(countries[:1])  # we sliced only the first country, remove the slicing to see all countries
+</code></pre>
+<pre><code class="language-sh">&lt;Response [200]&gt;
+200
+[{&#39;alpha2Code&#39;: &#39;AF&#39;,
+  &#39;alpha3Code&#39;: &#39;AFG&#39;,
+  &#39;altSpellings&#39;: [&#39;AF&#39;, &#39;Afġānistān&#39;],
+  &#39;area&#39;: 652230.0,
+  &#39;borders&#39;: [&#39;IRN&#39;, &#39;PAK&#39;, &#39;TKM&#39;, &#39;UZB&#39;, &#39;TJK&#39;, &#39;CHN&#39;],
+  &#39;callingCodes&#39;: [&#39;93&#39;],
+  &#39;capital&#39;: &#39;Kabul&#39;,
+  &#39;cioc&#39;: &#39;AFG&#39;,
+  &#39;currencies&#39;: [{&#39;code&#39;: &#39;AFN&#39;, &#39;name&#39;: &#39;Afghan afghani&#39;, &#39;symbol&#39;: &#39;؋&#39;}],
+  &#39;demonym&#39;: &#39;Afghan&#39;,
+  &#39;flag&#39;: &#39;https://restcountries.eu/data/afg.svg&#39;,
+  &#39;gini&#39;: 27.8,
+  &#39;languages&#39;: [{&#39;iso639_1&#39;: &#39;ps&#39;,
+                 &#39;iso639_2&#39;: &#39;pus&#39;,
+                 &#39;name&#39;: &#39;Pashto&#39;,
+                 &#39;nativeName&#39;: &#39;پښتو&#39;},
+                {&#39;iso639_1&#39;: &#39;uz&#39;,
+                 &#39;iso639_2&#39;: &#39;uzb&#39;,
+                 &#39;name&#39;: &#39;Uzbek&#39;,
+                 &#39;nativeName&#39;: &#39;Oʻzbek&#39;},
+                {&#39;iso639_1&#39;: &#39;tk&#39;,
+                 &#39;iso639_2&#39;: &#39;tuk&#39;,
+                 &#39;name&#39;: &#39;Turkmen&#39;,
+                 &#39;nativeName&#39;: &#39;Türkmen&#39;}],
+  &#39;latlng&#39;: [33.0, 65.0],
+  &#39;name&#39;: &#39;Afghanistan&#39;,
+  &#39;nativeName&#39;: &#39;افغانستان&#39;,
+  &#39;numericCode&#39;: &#39;004&#39;,
+  &#39;population&#39;: 27657145,
+  &#39;region&#39;: &#39;Asia&#39;,
+  &#39;regionalBlocs&#39;: [{&#39;acronym&#39;: &#39;SAARC&#39;,
+                     &#39;name&#39;: &#39;South Asian Association for Regional Cooperation&#39;,
+                     &#39;otherAcronyms&#39;: [],
+                     &#39;otherNames&#39;: []}],
+  &#39;subregion&#39;: &#39;Southern Asia&#39;,
+  &#39;timezones&#39;: [&#39;UTC+04:30&#39;],
+  &#39;topLevelDomain&#39;: [&#39;.af&#39;],
+  &#39;translations&#39;: {&#39;br&#39;: &#39;Afeganistão&#39;,
+                   &#39;de&#39;: &#39;Afghanistan&#39;,
+                   &#39;es&#39;: &#39;Afganistán&#39;,
+                   &#39;fa&#39;: &#39;افغانستان&#39;,
+                   &#39;fr&#39;: &#39;Afghanistan&#39;,
+                   &#39;hr&#39;: &#39;Afganistan&#39;,
+                   &#39;it&#39;: &#39;Afghanistan&#39;,
+                   &#39;ja&#39;: &#39;アフガニスタン&#39;,
+                   &#39;nl&#39;: &#39;Afghanistan&#39;,
+                   &#39;pt&#39;: &#39;Afeganistão&#39;}}]
+</code></pre>
+<p>We use <em>json()</em> method from response object, if the we are fetching JSON data. For txt, html, xml and other file formats we can use <em>text</em>.</p>
+<h3>Creating a Package</h3>
+<p>We organize a large number of files in different folders and sub-folders based on some criteria, so that we can find and manage them easily. As you know, a module can contain multiple objects, such as classes, functions, etc. A package can contain one or more relevant modules. A package is actually a folder containing one or more module files. Let us create a package named mypackage, using the following steps:</p>
+<p>Create a new folder named mypackage inside 30DaysOfPython folder
+Create an empty <strong><strong>init</strong></strong>.py file in the mypackage folder.
+Create modules arithmetic.py and greet.py with following code:</p>
+<pre><code class="language-py"># mypackage/arithmetics.py
+# arithmetics.py
+def add_numbers(*args):
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+
+def subtract(a, b):
+    return (a - b)
+
+
+def multiple(a, b):
+    return a * b
+
+
+def division(a, b):
+    return a / b
+
+
+def remainder(a, b):
+    return a % b
+
+
+def power(a, b):
+    return a ** b
+</code></pre>
+<pre><code class="language-py"># mypackage/greet.py
+# greet.py
+def greet_person(firstname, lastname):
+    return f&#39;{firstname} {lastname}, welcome to 30DaysOfPython Challenge!&#39;
+</code></pre>
+<p>The folder structure of your package should look like this:</p>
+<pre><code class="language-sh">─ mypackage
+    ├── __init__.py
+    ├── arithmetic.py
+    └── greet.py
+</code></pre>
+<p>Now let&#39;s open the python interactive shell and try the package we have created:</p>
+<pre><code class="language-sh">asabeneh@Asabeneh:~/Desktop/30DaysOfPython$ python
+Python 3.9.6 (default, Jun 28 2021, 15:26:21)
+[Clang 11.0.0 (clang-1100.0.33.8)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from mypackage import arithmetics
+&gt;&gt;&gt; arithmetics.add_numbers(1, 2, 3, 5)
+11
+&gt;&gt;&gt; arithmetics.subtract(5, 3)
+2
+&gt;&gt;&gt; arithmetics.multiple(5, 3)
+15
+&gt;&gt;&gt; arithmetics.division(5, 3)
+1.6666666666666667
+&gt;&gt;&gt; arithmetics.remainder(5, 3)
+2
+&gt;&gt;&gt; arithmetics.power(5, 3)
+125
+&gt;&gt;&gt; from mypackage import greet
+&gt;&gt;&gt; greet.greet_person(&#39;Asabeneh&#39;, &#39;Yetayeh&#39;)
+&#39;Asabeneh Yetayeh, welcome to 30DaysOfPython Challenge!&#39;
+&gt;&gt;&gt;
+</code></pre>
+<p>As you can see our package works perfectly. The package folder contains a special file called <strong><strong>init</strong></strong>.py - it stores the package&#39;s content. If we put <strong><strong>init</strong></strong>.py in the package folder, python start recognizes it as a package.
+The <strong><strong>init</strong></strong>.py exposes specified resources from its modules to be imported to other python files. An empty <strong><strong>init</strong></strong>.py file makes all functions available when a package is imported. The <strong><strong>init</strong></strong>.py is essential for the folder to be recognized by Python as a package.</p>
+<h3>Further Information About Packages</h3>
+<ul>
+<li><p>Database</p>
+<ul>
+<li>SQLAlchemy or SQLObject - Object oriented access to several different database systems<ul>
+<li><em>pip install SQLAlchemy</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Web Development</p>
+<ul>
+<li>Django - High-level web framework.<ul>
+<li><em>pip install django</em></li>
+</ul>
+</li>
+<li>Flask - micro framework for Python based on Werkzeug, Jinja 2. (It&#39;s BSD licensed)<ul>
+<li><em>pip install flask</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HTML Parser</p>
+<ul>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> - HTML/XML parser designed for quick turnaround projects like screen-scraping, will accept bad markup.<ul>
+<li><em>pip install beautifulsoup4</em></li>
+</ul>
+</li>
+<li>PyQuery - implements jQuery in Python; faster than BeautifulSoup, apparently.</li>
+</ul>
+</li>
+<li><p>XML Processing</p>
+<ul>
+<li>ElementTree - The Element type is a simple but flexible container object, designed to store hierarchical data structures, such as simplified XML infosets, in memory. --Note: Python 2.5 and up has ElementTree in the Standard Library</li>
+</ul>
+</li>
+<li><p>GUI</p>
+<ul>
+<li>PyQt - Bindings for the cross-platform Qt framework.</li>
+<li>TkInter - The traditional Python user interface toolkit.</li>
+</ul>
+</li>
+<li><p>Data Analysis, Data Science and Machine learning</p>
+<ul>
+<li>Numpy: Numpy(numeric python) is known as one of the most popular machine learning library in Python.</li>
+<li>Pandas: is a data analysis, data science and a machine learning library in Python that provides data structures of high-level and a wide variety of tools for analysis.</li>
+<li>SciPy: SciPy is a machine learning library for application developers and engineers. SciPy library contains modules for optimization, linear algebra, integration, image processing, and statistics.</li>
+<li>Scikit-Learn: It is NumPy and SciPy. It is considered as one of the best libraries for working with complex data.</li>
+<li>TensorFlow: is a machine learning library built by Google.</li>
+<li>Keras: is considered as one of the coolest machine learning libraries in Python. It provides an easier mechanism to express neural networks. Keras also provides some of the best utilities for compiling models, processing data-sets, visualization of graphs, and much more.</li>
+</ul>
+</li>
+<li><p>Network:</p>
+<ul>
+<li>requests: is a package which we can use to send requests to a server(GET, POST, DELETE, PUT)<ul>
+<li><em>pip install requests</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>🌕 You are always progressing and you are a head of 20 steps to your way to greatness. Now do some exercises for your brain and muscles.</p>
+<h2>Exercises: Day 20</h2>
+<ol>
+<li>Read this url and find the 10 most frequent words. romeo_and_juliet = &#39;<a href="http://www.gutenberg.org/files/1112/1112.txt">http://www.gutenberg.org/files/1112/1112.txt</a>&#39;</li>
+<li>Read the cats API and cats_api = &#39;<a href="https://api.thecatapi.com/v1/breeds">https://api.thecatapi.com/v1/breeds</a>&#39; and find :<ol>
+<li>the min, max, mean, median, standard deviation of cats&#39; weight in metric units.</li>
+<li>the min, max, mean, median, standard deviation of cats&#39; lifespan in years.</li>
+<li>Create a frequency table of country and breed of cats</li>
+</ol>
+</li>
+<li>Read the <a href="https://restcountries.eu/rest/v2/all">countries API</a> and find<ol>
+<li>the 10 largest countries</li>
+<li>the 10 most spoken languages</li>
+<li>the total number of languages in the countries API</li>
+</ol>
+</li>
+<li>UCI is one of the most common places to get data sets for data science and machine learning. Read the content of UCL (<a href="https://archive.ics.uci.edu/ml/datasets.php">https://archive.ics.uci.edu/ml/datasets.php</a>). Without additional libraries it will be difficult, so you may try it with BeautifulSoup4</li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

@@ -1,0 +1,448 @@
+<!--title:بناء واجهات API|time:40|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 Days Of Python</div>
+  <h1>Day 29: بناء واجهات API</h1>
+  <div class="hero-meta">
+    <span>⏱ 40 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+</li>
+<li><a href="#-exercises-day-29">💻 Exercises: Day 29</a></li>
+</ul>
+<h2>Day 29</h2>
+<h2>Building API</h2>
+<p>In this section, we will cove a RESTful API that uses HTTP request methods to GET, PUT, POST and DELETE data.</p>
+<p>RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. In the previous sections, we have learned about python, flask and mongoDB. We will use the knowledge we acquire to develop a RESTful API using python flask and mongoDB. Every application which has CRUD(Create, Read, Update, Delete) operation has an API to create data, to get data, to update data or to delete data from database.</p>
+<p>The browser can handle only get request. Therefore, we have to have a tool which can help us to handle all request methods(GET, POST, PUT, DELETE).</p>
+<p>Examples of API</p>
+<ul>
+<li>Countries API: <a href="https://restcountries.eu/rest/v2/all">https://restcountries.eu/rest/v2/all</a></li>
+<li>Cats breed API: <a href="https://api.thecatapi.com/v1/breeds">https://api.thecatapi.com/v1/breeds</a></li>
+</ul>
+<p><a href="https://www.getpostman.com/">Postman</a> is a very popular tool when it comes to API development. So, if you like to do this section you need to <a href="https://www.getpostman.com/">download postman</a>. An alternative of Postman is <a href="https://insomnia.rest/download">Insomnia</a>.</p>
+<p><img src="../images/postman.png" alt="Postman"></p>
+<h3>Structure of an API</h3>
+<p>An API end point is a URL which can help to retrieve, create, update or delete a resource. The structure looks like this:
+Example:
+<a href="https://api.twitter.com/1.1/lists/members.json">https://api.twitter.com/1.1/lists/members.json</a>
+Returns the members of the specified list. Private list members will only be shown if the authenticated user owns the specified list.
+The name of the company name followed by version followed by the purpose of the API.
+The methods:
+HTTP methods &amp; URLs</p>
+<p>The API uses the following HTTP methods for object manipulation:</p>
+<pre><code class="language-sh">GET        Used for object retrieval
+POST       Used for object creation and object actions
+PUT        Used for object update
+DELETE     Used for object deletion
+</code></pre>
+<p>Let us build an API which collects information about 30DaysOfPython students. We will collect the name, country, city, date of birth, skills and bio.</p>
+<p>To implement this API, we will use:</p>
+<ul>
+<li>Postman</li>
+<li>Python</li>
+<li>Flask</li>
+<li>MongoDB</li>
+</ul>
+<h3>Retrieving data using get</h3>
+<p>In this step, let us use dummy data and return it as a json. To return it as json, will use json module and Response module.</p>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+import os
+
+app = Flask(__name__)
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+    student_list = [
+        {
+            &#39;name&#39;:&#39;Asabeneh&#39;,
+            &#39;country&#39;:&#39;Finland&#39;,
+            &#39;city&#39;:&#39;Helsinki&#39;,
+            &#39;skills&#39;:[&#39;HTML&#39;, &#39;CSS&#39;,&#39;JavaScript&#39;,&#39;Python&#39;]
+        },
+        {
+            &#39;name&#39;:&#39;David&#39;,
+            &#39;country&#39;:&#39;UK&#39;,
+            &#39;city&#39;:&#39;London&#39;,
+            &#39;skills&#39;:[&#39;Python&#39;,&#39;MongoDB&#39;]
+        },
+        {
+            &#39;name&#39;:&#39;John&#39;,
+            &#39;country&#39;:&#39;Sweden&#39;,
+            &#39;city&#39;:&#39;Stockholm&#39;,
+            &#39;skills&#39;:[&#39;Java&#39;,&#39;C#&#39;]
+        }
+    ]
+    return Response(json.dumps(student_list), mimetype=&#39;application/json&#39;)
+
+
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<p>When you request the <a href="http://localhost:5000/api/v1.0/students">http://localhost:5000/api/v1.0/students</a> url on the browser you will get this:</p>
+<p><img src="../images/get_on_browser.png" alt="Get on browser"></p>
+<p>When you request the <a href="http://localhost:5000/api/v1.0/students">http://localhost:5000/api/v1.0/students</a> url on the browser you will get this:</p>
+<p><img src="../images/get_on_postman.png" alt="Get on postman"></p>
+<p>In stead of displaying dummy data let us connect the flask application with MongoDB and get data from mongoDB database.</p>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+import pymongo
+import os
+
+app = Flask(__name__)
+
+#
+MONGODB_URI=&#39;mongodb+srv://asabeneh:your_password@30daysofpython-twxkr.mongodb.net/test?retryWrites=true&amp;w=majority&#39;
+client = pymongo.MongoClient(MONGODB_URI)
+db = client[&#39;thirty_days_of_python&#39;] # accessing the database
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+
+    return Response(json.dumps(student), mimetype=&#39;application/json&#39;)
+
+
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<p>By connecting the flask, we can fetch students collection data from the thirty_days_of_python database.</p>
+<pre><code class="language-sh">[
+    {
+        &quot;_id&quot;: {
+            &quot;$oid&quot;: &quot;5df68a21f106fe2d315bbc8b&quot;
+        },
+        &quot;name&quot;: &quot;Asabeneh&quot;,
+        &quot;country&quot;: &quot;Finland&quot;,
+        &quot;city&quot;: &quot;Helsinki&quot;,
+        &quot;age&quot;: 38
+    },
+    {
+        &quot;_id&quot;: {
+            &quot;$oid&quot;: &quot;5df68a23f106fe2d315bbc8c&quot;
+        },
+        &quot;name&quot;: &quot;David&quot;,
+        &quot;country&quot;: &quot;UK&quot;,
+        &quot;city&quot;: &quot;London&quot;,
+        &quot;age&quot;: 34
+    },
+    {
+        &quot;_id&quot;: {
+            &quot;$oid&quot;: &quot;5df68a23f106fe2d315bbc8e&quot;
+        },
+        &quot;name&quot;: &quot;Sami&quot;,
+        &quot;country&quot;: &quot;Finland&quot;,
+        &quot;city&quot;: &quot;Helsinki&quot;,
+        &quot;age&quot;: 25
+    }
+]
+</code></pre>
+<h3>Getting a document by id</h3>
+<p>We can access single document using an id, let&#39;s access Asabeneh using his id.
+<a href="http://localhost:5000/api/v1.0/students/5df68a21f106fe2d315bbc8b">http://localhost:5000/api/v1.0/students/5df68a21f106fe2d315bbc8b</a></p>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+from bson.objectid import ObjectId
+import json
+from bson.json_util import dumps
+import pymongo
+import os
+
+app = Flask(__name__)
+
+#
+MONGODB_URI=&#39;mongodb+srv://asabeneh:your_password@30daysofpython-twxkr.mongodb.net/test?retryWrites=true&amp;w=majority&#39;
+client = pymongo.MongoClient(MONGODB_URI)
+db = client[&#39;thirty_days_of_python&#39;] # accessing the database
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+
+    return Response(json.dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;GET&#39;])
+def single_student (id):
+    student = db.students.find({&#39;_id&#39;:ObjectId(id)})
+    return Response(dumps(student), mimetype=&#39;application/json&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<pre><code class="language-sh">[
+    {
+        &quot;_id&quot;: {
+            &quot;$oid&quot;: &quot;5df68a21f106fe2d315bbc8b&quot;
+        },
+        &quot;name&quot;: &quot;Asabeneh&quot;,
+        &quot;country&quot;: &quot;Finland&quot;,
+        &quot;city&quot;: &quot;Helsinki&quot;,
+        &quot;age&quot;: 38
+    }
+]
+</code></pre>
+<h3>Creating data using POST</h3>
+<p>We use the POST request method to create data</p>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+from bson.objectid import ObjectId
+import json
+from bson.json_util import dumps
+import pymongo
+from datetime import datetime
+import os
+
+app = Flask(__name__)
+
+#
+MONGODB_URI=&#39;mongodb+srv://asabeneh:your_password@30daysofpython-twxkr.mongodb.net/test?retryWrites=true&amp;w=majority&#39;
+client = pymongo.MongoClient(MONGODB_URI)
+db = client[&#39;thirty_days_of_python&#39;] # accessing the database
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+
+    return Response(json.dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;GET&#39;])
+def single_student (id):
+    student = db.students.find({&#39;_id&#39;:ObjectId(id)})
+    return Response(dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;POST&#39;])
+def create_student ():
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.insert_one(student)
+    return ;
+def update_student (id):
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<h3>Updating using PUT</h3>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+from bson.objectid import ObjectId
+import json
+from bson.json_util import dumps
+import pymongo
+from datetime import datetime
+import os
+
+app = Flask(__name__)
+
+#
+MONGODB_URI=&#39;mongodb+srv://asabeneh:your_password@30daysofpython-twxkr.mongodb.net/test?retryWrites=true&amp;w=majority&#39;
+client = pymongo.MongoClient(MONGODB_URI)
+db = client[&#39;thirty_days_of_python&#39;] # accessing the database
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+
+    return Response(json.dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;GET&#39;])
+def single_student (id):
+    student = db.students.find({&#39;_id&#39;:ObjectId(id)})
+    return Response(dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;POST&#39;])
+def create_student ():
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.insert_one(student)
+    return
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;PUT&#39;]) # this decorator create the home route
+def update_student (id):
+    query = {&quot;_id&quot;:ObjectId(id)}
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.update_one(query, student)
+    # return Response(dumps({&quot;result&quot;:&quot;a new student has been created&quot;}), mimetype=&#39;application/json&#39;)
+    return
+def update_student (id):
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<h3>Deleting a document using Delete</h3>
+<pre><code class="language-py"># let&#39;s import the flask
+
+from flask import Flask,  Response
+import json
+from bson.objectid import ObjectId
+import json
+from bson.json_util import dumps
+import pymongo
+from datetime import datetime
+import os
+
+app = Flask(__name__)
+
+#
+MONGODB_URI=&#39;mongodb+srv://asabeneh:your_password@30daysofpython-twxkr.mongodb.net/test?retryWrites=true&amp;w=majority&#39;
+client = pymongo.MongoClient(MONGODB_URI)
+db = client[&#39;thirty_days_of_python&#39;] # accessing the database
+
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;GET&#39;])
+def students ():
+
+    return Response(json.dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;GET&#39;])
+def single_student (id):
+    student = db.students.find({&#39;_id&#39;:ObjectId(id)})
+    return Response(dumps(student), mimetype=&#39;application/json&#39;)
+@app.route(&#39;/api/v1.0/students&#39;, methods = [&#39;POST&#39;])
+def create_student ():
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.insert_one(student)
+    return
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;PUT&#39;]) # this decorator create the home route
+def update_student (id):
+    query = {&quot;_id&quot;:ObjectId(id)}
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.update_one(query, student)
+    # return Response(dumps({&quot;result&quot;:&quot;a new student has been created&quot;}), mimetype=&#39;application/json&#39;)
+    return
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;PUT&#39;]) # this decorator create the home route
+def update_student (id):
+    query = {&quot;_id&quot;:ObjectId(id)}
+    name = request.form[&#39;name&#39;]
+    country = request.form[&#39;country&#39;]
+    city = request.form[&#39;city&#39;]
+    skills = request.form[&#39;skills&#39;].split(&#39;, &#39;)
+    bio = request.form[&#39;bio&#39;]
+    birthyear = request.form[&#39;birthyear&#39;]
+    created_at = datetime.now()
+    student = {
+        &#39;name&#39;: name,
+        &#39;country&#39;: country,
+        &#39;city&#39;: city,
+        &#39;birthyear&#39;: birthyear,
+        &#39;skills&#39;: skills,
+        &#39;bio&#39;: bio,
+        &#39;created_at&#39;: created_at
+
+    }
+    db.students.update_one(query, student)
+    # return Response(dumps({&quot;result&quot;:&quot;a new student has been created&quot;}), mimetype=&#39;application/json&#39;)
+    return ;
+@app.route(&#39;/api/v1.0/students/&lt;id&gt;&#39;, methods = [&#39;DELETE&#39;])
+def delete_student (id):
+    db.students.delete_one({&quot;_id&quot;:ObjectId(id)})
+    return
+if __name__ == &#39;__main__&#39;:
+    # for deployment
+    # to make it work for both production and development
+    port = int(os.environ.get(&quot;PORT&quot;, 5000))
+    app.run(debug=True, host=&#39;0.0.0.0&#39;, port=port)
+</code></pre>
+<h2>💻 Exercises: Day 29</h2>
+<ol>
+<li>Implement the above example and develop <a href="https://thirtydayofpython-api.herokuapp.com/">this</a></li>
+</ol>
+<p>🎉 CONGRATULATIONS ! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>
