@@ -1,0 +1,2 @@
+window.LESSONS = window.LESSONS || {};
+window.LESSONS['html/day12'] = "<div class=\"lesson-content\">\n\n<div class=\"lesson-hero\">\n  <div class=\"hero-badge\">📘 HTML - اليوم 12</div>\n  <h1>Day 12: ## Under utilized HTML elements</h1>\n  <div class=\"hero-meta\">\n    <span>⏱ 30 دقيقة</span>\n    <span>📊 مبتدئ</span>\n    <span>🌍 Asabeneh</span>\n  </div>\n</div>\n\n<section class=\"lesson-section\">\n<h1>Day 12</h1>\n<h2>Under utilized HTML elements</h2>\n\n</section>\n\n<div class=\"lesson-nav\"></div>\n</div>";

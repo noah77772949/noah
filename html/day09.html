@@ -1,0 +1,161 @@
+<!--title:## HTML Table|time:30|level:مبتدئ|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 HTML - اليوم 09</div>
+  <h1>Day 09: ## HTML Table</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+<h1>Day 9</h1>
+<h2>HTML Table</h2>
+<p>In this section, we will see how to create an HTML table. Table has an external border, header rows and header cell, body rows and its cells and it could have also a footer row. To make an HTML table, we need a <em>table</em> element that wrap all the rows and the rows wrap all the data cells.</p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Name&lt;/td&gt;
+    &lt;td&gt;Gender&lt;/td&gt;
+    &lt;td&gt;Country&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Asabeneh&lt;/td&gt;
+    &lt;td&gt;250&lt;/td&gt;
+    &lt;td&gt;Finland&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>Let us see the output of the above code</p>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Gender</td>
+    <td>Country</td>
+  </tr>
+  <tr>
+  <td>Asabeneh</td>
+  <td>250</td>
+  <td>Finland</td>
+  </tr>
+</table><p>However, HTML table has <em>thead</em>, *tbody and tfooter. Let us add thead and tbody to the above code. In addition, we can use th in the table head instead to td to make the table heading bold.</p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Gender&lt;/th&gt;
+      &lt;th&gt;Country&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Asabeneh&lt;/td&gt;
+      &lt;td&gt;250&lt;/td&gt;
+      &lt;td&gt;Finland&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p>Try the output of the above code using visual studio code.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Asabeneh</td>
+      <td>250</td>
+      <td>Finland</td>
+    </tr>
+  </tbody>
+</table><p>The author of this challenge creates different challenges every year. Let us put all his challenges on a table.</p>
+<pre><code class="language-html">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;30 Days Of HTML: Table&lt;/title&gt;
+    &lt;style&gt;
+      /* Table CSS */
+      table,
+      td,
+      th {
+        border: 2px solid gray;
+        border-collapse: collapse;
+        border: 1px solid #a785df;
+      }
+      table {
+        margin-top: 15px;
+        width: 75%;
+      }
+      td {
+        padding-left: 10px;
+      }
+      th {
+        background-color: #7433df;
+        color: white;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Challenge&lt;/th&gt;
+          &lt;th&gt;Days&lt;/th&gt;
+          &lt;th&gt;Time&lt;/th&gt;
+          &lt;th&gt;Stars(K)&lt;/th&gt;
+          &lt;th&gt;URL&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;30 Days of Python&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;November 2019&lt;/td&gt;
+          &lt;td&gt;4.6K&lt;/td&gt;
+          &lt;td&gt;
+            &lt;a href=&quot;https://github.com/Asabeneh/30-Days-Of-Python&quot;&gt;Link&lt;/a&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;30 Days of JavaScript&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;January 2020&lt;/td&gt;
+          &lt;td&gt;6.8K&lt;/td&gt;
+          &lt;td&gt;
+            &lt;a href=&quot;https://github.com/Asabeneh/30-Days-Of-JavaScript&quot;&gt;Link&lt;/a&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;30 Days of React&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;October 2020&lt;/td&gt;
+          &lt;td&gt;5.6K&lt;/td&gt;
+          &lt;td&gt;
+            &lt;a href=&quot;https://github.com/Asabeneh/30-Days-Of-React&quot;&gt;Link&lt;/a&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;30 Days of HTML&lt;/td&gt;
+          &lt;td&gt;30&lt;/td&gt;
+          &lt;td&gt;February 2011&lt;/td&gt;
+          &lt;td&gt;33&lt;/td&gt;
+          &lt;td&gt;
+            &lt;a href=&quot;https://github.com/Asabeneh/30-Days-Of-HTML&quot;&gt;Link&lt;/a&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Try the output the above code on visual studio</p>
+
+</section>
+
+<div class="lesson-nav"></div>
+</div>

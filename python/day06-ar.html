@@ -1,0 +1,188 @@
+<!--title:الصفوف (Tuples)|time:25|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 06: الصفوف (الصفوف)</h1>
+  <div class="hero-meta">
+    <span>⏱ 25 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+</li>
+<li><a href="#-exercises-day-6">💻 التمارين: اليوم السادس</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>اليوم السادس:</h1>
+<h2>الصفوف</h2>
+<p>الصف عبارة عن مجموعة من أنواع البيانات المختلفة التي تكون مرتبة وغير قابلة للتغيير (غير قابلة للتغيير). تتم كتابة الصفوف بين قوسين دائريين، (). بمجرد إنشاء الصف، لا يمكننا تغيير قيمه. لا يمكننا استخدام أساليب الإضافة والإدراج والإزالة في الصف لأنها غير قابلة للتعديل (قابلة للتغيير). على عكس القائمة، لدى Tuple طرق قليلة. الطرق المتعلقة بالصفوف:</p>
+<ul>
+<li>tuple(): لإنشاء صف فارغ</li>
+<li>العد (): لحساب عدد العنصر المحدد في الصف</li>
+<li>الفهرس (): للعثور على فهرس عنصر محدد في صف</li>
+<li><code>+</code>عامل التشغيل: لضم صفين أو أكثر وإنشاء صف جديد</li>
+</ul>
+<h3>إنشاء Tuple</h3>
+<ul>
+<li><p>صف فارغ: إنشاء صف فارغ</p>
+<pre><code class="language-py"># syntax
+empty_tuple = ()
+# or using the tuple constructor
+empty_tuple = tuple()
+</code></pre>
+</li>
+<li><p>Tuple مع القيم الأولية</p>
+<pre><code class="language-py"># syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;,&#39;item3&#39;)
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+</code></pre>
+</li>
+</ul>
+<h3>طول الصفوف</h3>
+<p>نحن نستخدم<em>لين ()</em>طريقة الحصول على طول الصفوف.</p>
+<pre><code class="language-py"># syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;)
+len(tpl)
+</code></pre>
+<h3>الوصول إلى عناصر Tuple</h3>
+<ul>
+<li><p>الفهرسة الإيجابية
+على غرار نوع بيانات القائمة، نستخدم فهرسة إيجابية أو سلبية للوصول إلى عناصر المجموعة.<img src="../images/tuples_index.png" alt="Accessing tuple items"></p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;)
+first_item = tpl[0]
+second_item = tpl[1]
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+first_fruit = fruits[0]
+second_fruit = fruits[1]
+last_index =len(fruits) - 1
+last_fruit = fruits[last_index]
+</code></pre>
+</li>
+<li><p>الفهرسة السلبية
+الفهرسة السالبة تعني البدء من النهاية، -1 يشير إلى العنصر الأخير، -2 يشير إلى العنصر الثاني الأخير، والسالب لطول القائمة/الصف يشير إلى العنصر الأول.<img src="../images/tuple_negative_indexing.png" alt="Tuple Negative indexing"></p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;,&#39;item4&#39;)
+first_item = tpl[-4]
+second_item = tpl[-3]
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+first_fruit = fruits[-4]
+second_fruit = fruits[-3]
+last_fruit = fruits[-1]
+</code></pre>
+</li>
+</ul>
+<h3>تقطيع الصفوف</h3>
+<p>يمكننا تقسيم صف فرعي عن طريق تحديد نطاق من الفهارس حيث نبدأ وأين ننتهي في الصف، وستكون القيمة المرجعة عبارة عن صف جديد يحتوي على العناصر المحددة.</p>
+<ul>
+<li><p>مجموعة من المؤشرات الإيجابية</p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;,&#39;item4&#39;)
+all_items = tpl[0:4]         # all items
+all_items = tpl[0:]         # all items
+middle_two_items = tpl[1:3]  # does not include item at index 3
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+all_fruits = fruits[0:4]    # all items
+all_fruits= fruits[0:]      # all items
+orange_mango = fruits[1:3]  # doesn&#39;t include item at index 3
+orange_to_the_rest = fruits[1:]
+</code></pre>
+</li>
+<li><p>مجموعة من المؤشرات السلبية</p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;,&#39;item4&#39;)
+all_items = tpl[-4:]         # all items
+middle_two_items = tpl[-3:-1]  # does not include item at index 3 (-1)
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+all_fruits = fruits[-4:]    # all items
+orange_mango = fruits[-3:-1]  # doesn&#39;t include item at index 3
+orange_to_the_rest = fruits[-3:]
+</code></pre>
+</li>
+</ul>
+<h3>تغيير الصفوف إلى القوائم</h3>
+<p>يمكننا تغيير الصفوف إلى قوائم والقوائم إلى صفوف. Tuple غير قابل للتغيير إذا أردنا تعديل Tuple فيجب علينا تغييره إلى قائمة.</p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;,&#39;item4&#39;)
+lst = list(tpl)
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+fruits = list(fruits)
+fruits[0] = &#39;apple&#39;
+print(fruits)     # [&#39;apple&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits = tuple(fruits)
+print(fruits)     # (&#39;apple&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+</code></pre>
+<h3>التحقق من عنصر في Tuple</h3>
+<p>يمكننا التحقق مما إذا كان العنصر موجودًا أم لا في صف باستخدام<em>في</em>، تقوم بإرجاع قيمة منطقية.</p>
+<pre><code class="language-py"># Syntax
+tpl = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;,&#39;item4&#39;)
+&#39;item2&#39; in tpl # True
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+print(&#39;orange&#39; in fruits) # True
+print(&#39;apple&#39; in fruits) # False
+fruits[0] = &#39;apple&#39; # TypeError: &#39;tuple&#39; object does not support item assignment
+</code></pre>
+<h3>الانضمام إلى الصفوف</h3>
+<p>يمكننا ضم صفين أو أكثر باستخدام عامل التشغيل +</p>
+<pre><code class="language-py"># syntax
+tpl1 = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;)
+tpl2 = (&#39;item4&#39;, &#39;item5&#39;,&#39;item6&#39;)
+tpl3 = tpl1 + tpl2
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+vegetables = (&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;,&#39;Onion&#39;, &#39;Carrot&#39;)
+fruits_and_vegetables = fruits + vegetables
+</code></pre>
+<h3>حذف الصفوف</h3>
+<p>ليس من الممكن إزالة عنصر واحد في الصف ولكن من الممكن حذف الصف نفسه باستخدام<em>ديل</em>.</p>
+<pre><code class="language-py"># syntax
+tpl1 = (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;)
+del tpl1
+</code></pre>
+<pre><code class="language-py">fruits = (&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;)
+del fruits
+</code></pre>
+<p>🌕 أنت شجاع جدًا، لقد وصلت إلى هذا الحد. لقد أكملت للتو تحديات اليوم السادس وأنت على بعد 6 خطوات في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم السادس</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li>إنشاء صف فارغ</li>
+<li>أنشئ صفًا يحتوي على أسماء أخواتك وإخوانك (الأخوة الخياليون لا بأس بهم)</li>
+<li>انضم إلى مجموعات الإخوة والأخوات وقم بتخصيصها للأشقاء</li>
+<li>كم عدد الأخوة لديك؟</li>
+<li>تعديل صف الأشقاء وإضافة اسم والدك وأمك وتخصيصه لأفراد الأسرة</li>
+</ol>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>فك الأشقاء وأولياء الأمور من أفراد الأسرة</li>
+<li>إنشاء الفواكه والخضروات والمنتجات الحيوانية tuples. انضم إلى المجموعات الثلاثة وقم بتعيينها لمتغير يسمى food_stuff_tp.</li>
+<li>قم بتغيير صف about food_stuff_tp إلى قائمة food_stuff_lt</li>
+<li>قم بقص العنصر أو العناصر الوسطى من قائمة food_stuff_tp أو قائمة food_stuff_lt.</li>
+<li>قم بتقسيم العناصر الثلاثة الأولى وآخر ثلاثة عناصر من قائمة food_stuff_lt</li>
+<li>احذف مجموعة food_stuff_tp بالكامل</li>
+<li>تحقق مما إذا كان هناك عنصر موجود في الصف:</li>
+</ol>
+<ul>
+<li><p>تحقق مما إذا كانت "إستونيا" دولة شمالية</p>
+</li>
+<li><p>تحقق مما إذا كانت "أيسلندا" دولة شمالية</p>
+<pre><code class="language-py">nordic_countries = (&#39;Denmark&#39;, &#39;Finland&#39;,&#39;Iceland&#39;, &#39;Norway&#39;, &#39;Sweden&#39;)
+</code></pre>
+</li>
+</ul>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

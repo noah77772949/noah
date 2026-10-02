@@ -1,4 +1,21 @@
 var COURSES = {
+  html: {
+    name: "HTML", icon: "🌐", color: "#E34F26",
+    desc: "هيكل صفحات الويب",
+    lessons: [
+      { id: 'day01', title: '## Introduction', time: 30, level: 'مبتدئ' },
+      { id: 'day03', title: '## DOM', time: 30, level: 'مبتدئ' },
+      { id: 'day04', title: '## Blocking and Non-blocking Elements', time: 30, level: 'مبتدئ' },
+      { id: 'day05', title: '## HTML5 Formatting Elements', time: 30, level: 'مبتدئ' },
+      { id: 'day06', title: '## HTML5 Semantic Elements', time: 30, level: 'مبتدئ' },
+      { id: 'day07', title: '## HTML Document metadata', time: 30, level: 'مبتدئ' },
+      { id: 'day08', title: '## HTML Form', time: 30, level: 'مبتدئ' },
+      { id: 'day09', title: '## HTML Table', time: 30, level: 'مبتدئ' },
+      { id: 'day10', title: '## Lists', time: 30, level: 'مبتدئ' },
+      { id: 'day11', title: '## File Paths', time: 30, level: 'مبتدئ' },
+      { id: 'day12', title: '## Under utilized HTML elements', time: 30, level: 'مبتدئ' },
+    ]
+  },
   javascript: {
     name: "JavaScript", icon: "🟨", color: "#F7DF1E",
     desc: "لغة الويب — تعمل في كل متصفح",
@@ -26,15 +43,25 @@ var COURSES = {
       { id: '09-dictionaries', title: 'القواميس في Python', time: 35, level: 'مبتدئ' },
       { id: '10-functions', title: 'الدوال في Python', time: 45, level: 'مبتدئ' },
       { id: '11-tuples', title: 'الصفوف (Tuples) في Python', time: 20, level: 'متوسط' },
+      { id: 'day02-ar', title: 'المتغيرات والدوال المدمجة', time: 30, level: 'متوسط' },
       { id: 'day02', title: 'المتغيرات والدوال المدمجة', time: 30, level: 'متوسط' },
+      { id: 'day03-ar', title: 'العمليات الحسابية', time: 25, level: 'متوسط' },
       { id: 'day03', title: 'العمليات الحسابية', time: 25, level: 'متوسط' },
+      { id: 'day04-ar', title: 'النصوص (Strings)', time: 35, level: 'متوسط' },
       { id: 'day04', title: 'النصوص (Strings)', time: 35, level: 'متوسط' },
+      { id: 'day05-ar', title: 'القوائم (Lists)', time: 30, level: 'متوسط' },
       { id: 'day05', title: 'القوائم (Lists)', time: 30, level: 'متوسط' },
+      { id: 'day06-ar', title: 'الصفوف (Tuples)', time: 25, level: 'متوسط' },
       { id: 'day06', title: 'الصفوف (Tuples)', time: 25, level: 'متوسط' },
+      { id: 'day07-ar', title: 'المجموعات (Sets)', time: 20, level: 'متوسط' },
       { id: 'day07', title: 'المجموعات (Sets)', time: 20, level: 'متوسط' },
+      { id: 'day08-ar', title: 'القواميس (Dictionaries)', time: 30, level: 'متوسط' },
       { id: 'day08', title: 'القواميس (Dictionaries)', time: 30, level: 'متوسط' },
+      { id: 'day09-ar', title: 'الشروط (Conditionals)', time: 30, level: 'متوسط' },
       { id: 'day09', title: 'الشروط (Conditionals)', time: 30, level: 'متوسط' },
+      { id: 'day10-ar', title: 'الحلقات (Loops)', time: 35, level: 'متوسط' },
       { id: 'day10', title: 'الحلقات (Loops)', time: 35, level: 'متوسط' },
+      { id: 'day11-ar', title: 'الدوال (Functions)', time: 40, level: 'متوسط' },
       { id: 'day11', title: 'الدوال (Functions)', time: 40, level: 'متوسط' },
       { id: 'day12', title: 'الوحدات (Modules)', time: 25, level: 'متوسط' },
       { id: 'day13', title: 'List Comprehension', time: 25, level: 'متوسط' },
@@ -57,7 +84,6 @@ var COURSES = {
       { id: 'day30', title: 'الخاتمة', time: 15, level: 'متوسط' },
     ]
   }
-  ,html: { name: "HTML", icon: "🌐", color: "#E34F26", desc: "هيكل صفحات الويب", lessons: [] }
   ,sql: { name: "SQL", icon: "🗄️", color: "#00758F", desc: "قواعد البيانات", lessons: [] }
   ,java: { name: "Java", icon: "☕", color: "#007396", desc: "لغة الأنظمة", lessons: [] }
   ,cpp: { name: "C++", icon: "⚙️", color: "#00599C", desc: "الأداء العالي", lessons: [] }

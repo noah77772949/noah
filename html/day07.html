@@ -1,0 +1,109 @@
+<!--title:## HTML Document metadata|time:30|level:مبتدئ|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 HTML - اليوم 07</div>
+  <h1>Day 07: ## HTML Document metadata</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+<h1>Day 7</h1>
+<h2>HTML Document metadata</h2>
+<p>The HTML document starts with a declaration followed by the root <em><html></em> tag. Inside the <em><html></em> tag, there is <em><head></em> and <em><body></em>. The <em><head></em> contains the HTML document <em>metadata</em>. Metadata contains information about the page that includes styles, scripts, and data to help software user and render the page. In this section, we will learn how to use the different metadata. Look at the table blow understand the different metadata.</p>
+<p><img src="./images/metadata.png" alt=""></p>
+<p>Source, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">MDN</a></p>
+<ul>
+<li>base: The base tag refers to the base URL for all relative URLs in a document</li>
+</ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- character encoding for the HTML document --&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+
+    &lt;!-- the following meta tags for Search engine optimization(SEO)--&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;30 Days of HTML Challenge&quot; /&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;HTML, CSS, Web Development&quot; /&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;Asabeneh Yetayeh&quot; /&gt;
+    &lt;!-- base url https://www.30daysofreact.com --&gt;
+    &lt;base href=&quot; https://www.30daysofreact.com&quot; target=&quot;_blank&quot; /&gt;
+    &lt;!-- Goes to the task bar on the browser--&gt;
+    &lt;title&gt;30 Days Of HTML&lt;/title&gt;
+    &lt;!-- to lik external css --&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;&quot; /&gt;
+    &lt;!-- inline styling is very tideous, we can also use internal style
+     we can use tag name, id or class to select an element. Id is unique and class is for a single or group of elements
+
+     When we select by id we use # followed by the id name and if we select by class name we use . followed by a class name.
+     
+     --&gt;
+    &lt;style&gt;
+      .letter {
+        font-size: 68px;
+      }
+      #letter-h {
+        color: #e34c26;
+      }
+      #letter-t {
+        color: #264de4;
+      }
+      #letter-m {
+        color: #f0db4f;
+      }
+      #letter-l {
+        color: #61dbfb;
+      }
+    &lt;/style&gt;
+    &lt;!-- The script tag allows to write JS code --&gt;
+    &lt;script&gt;
+      console.log(&#39;Welcome to 30 Days of JavaScript&#39;)
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;span class=&quot;letter&quot; id=&quot;letter-h&quot;&gt;H&lt;/span&gt;
+      &lt;span class=&quot;letter&quot; id=&quot;letter-t&quot;&gt;T&lt;/span&gt;
+      &lt;span class=&quot;letter&quot; id=&quot;letter-m&quot;&gt;M&lt;/span&gt;
+      &lt;span class=&quot;letter&quot; id=&quot;letter-l&quot;&gt;L&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1 id=&quot;first-title&quot;&gt;The Building Blocks of the web&lt;/h1&gt;
+        &lt;p&gt;
+          There is not website without HTML. Learn HTML and build websites and
+          web applications
+        &lt;/p&gt;
+        &lt;a href=&quot;/course/30-days-of-htm.html&quot;&gt;30 Days Of HTML&lt;/a&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;small&gt;Copyright 2021 | Asabeneh Yetayeh&lt;/small&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Congratulations! Now, you knew about metadata.</p>
+<h2>Exercises</h2>
+<ol>
+<li>What are metadata elements?</li>
+<li>What is id?</li>
+<li>What is the difference between id and class?</li>
+<li>What the is the difference between style and script?</li>
+<li>What is SEO?</li>
+<li>Which meta tags help to improve SEO?</li>
+<li>What is internal style?</li>
+<li>What tag do you use to write external style?</li>
+<li>What is the difference between internal style and external style?</li>
+<li>What HTML tag do you use to write a JavaScript code?</li>
+</ol>
+
+</section>
+
+<div class="lesson-nav"></div>
+</div>

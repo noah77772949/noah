@@ -1,0 +1,298 @@
+<!--title:المجموعات (Sets)|time:20|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 07: المجموعات (مجموعات)</h1>
+  <div class="hero-meta">
+    <span>⏱ 20 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-7">💻 التمارين: اليوم السابع</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘اليوم السابع</h1>
+<h2>مجموعات</h2>
+<p>المجموعة عبارة عن مجموعة من العناصر. دعني أعيدك إلى درس الرياضيات في المدرسة الابتدائية أو الثانوية. يمكن تطبيق تعريف الرياضيات للمجموعة أيضًا في بايثون. المجموعة عبارة عن مجموعة من العناصر المميزة غير المرتبة وغير المفهرسة. تُستخدم المجموعة في Python لتخزين العناصر الفريدة، ومن الممكن العثور على<em>الاتحاد</em>,<em>تقاطع</em>,<em>اختلاف</em>,<em>الفرق المتماثل</em>,<em>مجموعة فرعية</em>,<em>مجموعة فائقة</em>و<em>مجموعة مفككة</em>بين مجموعات.</p>
+<h3>إنشاء مجموعة</h3>
+<p>لإنشاء مجموعة فارغة، نستخدم الدالة set(). الأقواس المتعرجة الفارغة {} ستؤدي إلى إنشاء قاموس.</p>
+<ul>
+<li>إنشاء مجموعة فارغة</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = set()
+</code></pre>
+<ul>
+<li>إنشاء مجموعة بالعناصر الأولية</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py"># syntax
+fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+</code></pre>
+<h3>الحصول على طول المجموعة</h3>
+<p>نحن نستخدم<strong>لين ()</strong>طريقة إيجاد طول المجموعة.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+len(st)
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+len(fruits)
+</code></pre>
+<h3>الوصول إلى العناصر في مجموعة</h3>
+<p>نحن نستخدم الحلقات للوصول إلى العناصر. سنرى هذا في قسم الحلقة</p>
+<h3>فحص عنصر</h3>
+<p>للتحقق من وجود عنصر في القائمة التي نستخدمها<em>في</em>عامل العضوية.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+print(&quot;Does set st contain item3? &quot;, &#39;item3&#39; in st) # Does set st contain item3? True
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+print(&#39;mango&#39; in fruits ) # True
+</code></pre>
+<h3>إضافة عناصر إلى مجموعة</h3>
+<p>بمجرد إنشاء المجموعة، لا يمكننا تغيير أي عناصر ويمكننا أيضًا إضافة عناصر إضافية.</p>
+<ul>
+<li>أضف عنصرًا واحدًا باستخدام<em>يضيف()</em></li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.add(&#39;item5&#39;)
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.add(&#39;lime&#39;)
+</code></pre>
+<ul>
+<li>إضافة عناصر متعددة باستخدام<em>تحديث()</em>ال<em>تحديث()</em>يسمح بإضافة عناصر متعددة إلى مجموعة. ال<em>تحديث()</em>يأخذ وسيطة القائمة.</li>
+</ul>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.update([&#39;item5&#39;,&#39;item6&#39;,&#39;item7&#39;])
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = (&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;)
+fruits.update(vegetables)
+</code></pre>
+<h3>إزالة العناصر من مجموعة</h3>
+<p>يمكننا إزالة عنصر من مجموعة باستخدام<em>يزيل()</em>طريقة. إذا لم يتم العثور على العنصر<em>يزيل()</em>ستؤدي الطريقة إلى ظهور أخطاء، لذا من الجيد التحقق مما إذا كان العنصر موجودًا في المجموعة المحددة. لكن،<em>ينبذ()</em>الطريقة لا تثير أي أخطاء.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.remove(&#39;item2&#39;)
+</code></pre>
+<p>تقوم أساليب pop() بإزالة عنصر عشوائي من القائمة وتقوم بإرجاع العنصر المحذوف.</p>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.pop()  # removes a random item from the set
+</code></pre>
+<p>إذا كنا مهتمين بالعنصر الذي تمت إزالته.</p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+removed_item = fruits.pop() 
+</code></pre>
+<h3>مسح العناصر في مجموعة</h3>
+<p>إذا أردنا مسح أو تفريغ المجموعة التي نستخدمها<em>واضح</em>طريقة.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st.clear()
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+fruits.clear()
+print(fruits) # set()
+</code></pre>
+<h3>حذف مجموعة</h3>
+<p>إذا أردنا حذف المجموعة نفسها التي نستخدمها<em>ديل</em>مشغل.</p>
+<pre><code class="language-py"># syntax
+st = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+del st
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+del fruits
+</code></pre>
+<h3>تحويل القائمة إلى مجموعة</h3>
+<p>يمكننا تحويل القائمة إلى مجموعة وتعيين إلى القائمة. يؤدي تحويل القائمة إلى المجموعة إلى إزالة التكرارات وسيتم حجز العناصر الفريدة فقط.</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;, &#39;item1&#39;]
+st = set(lst)  # {&#39;item2&#39;, &#39;item4&#39;, &#39;item1&#39;, &#39;item3&#39;} - the order is random, because sets in general are unordered
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;,&#39;orange&#39;, &#39;banana&#39;]
+fruits = set(fruits) # {&#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;, &#39;orange&#39;}
+</code></pre>
+<h3>مجموعات الانضمام</h3>
+<p>يمكننا الانضمام إلى مجموعتين باستخدام<em>الاتحاد()</em>أو<em>تحديث()</em>طريقة أو<em>|</em>رمز .</p>
+<ul>
+<li>الاتحاد
+تقوم هذه الطريقة بإرجاع مجموعة جديدة</li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item5&#39;, &#39;item6&#39;, &#39;item7&#39;, &#39;item8&#39;}
+st3 = st1.union(st2) #st3 = st1 | st2
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = {&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;}
+print(fruits.union(vegetables)) # {&#39;lemon&#39;, &#39;carrot&#39;, &#39;tomato&#39;, &#39;banana&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;cabbage&#39;, &#39;potato&#39;, &#39;onion&#39;}
+# or using this : print(fruits | vegetables)
+</code></pre>
+<ul>
+<li>تحديث
+تقوم هذه الطريقة بإدراج مجموعة في مجموعة معينة</li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item5&#39;, &#39;item6&#39;, &#39;item7&#39;, &#39;item8&#39;}
+st1.update(st2) # st2 contents are added to st1
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = {&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;}
+vegetables = {&#39;tomato&#39;, &#39;potato&#39;, &#39;cabbage&#39;,&#39;onion&#39;, &#39;carrot&#39;}
+fruits.update(vegetables)
+print(fruits) # {&#39;lemon&#39;, &#39;carrot&#39;, &#39;tomato&#39;, &#39;banana&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;cabbage&#39;, &#39;potato&#39;, &#39;onion&#39;}
+</code></pre>
+<h3>العثور على عناصر التقاطع</h3>
+<p>يقوم التقاطع بإرجاع مجموعة من العناصر الموجودة في كل من المجموعتين أو المستخدمة<em>&</em>رمز. انظر المثال</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item3&#39;, &#39;item2&#39;}
+st1.intersection(st2) # {&#39;item3&#39;, &#39;item2&#39;}
+# or using thia : st1 &amp; st2
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.intersection(even_numbers) # {0, 2, 4, 6, 8, 10}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.intersection(dragon)     # {&#39;o&#39;, &#39;n&#39;}
+# python &amp; dragon
+</code></pre>
+<h3>التحقق من المجموعة الفرعية ومجموعة السوبر</h3>
+<p>يمكن أن تكون المجموعة مجموعة فرعية أو مجموعة شاملة من مجموعات أخرى:</p>
+<ul>
+<li>مجموعة فرعية:<em>مجموعة فرعية()</em></li>
+<li>مجموعة سوبر:<em>com.issuperset</em></li>
+</ul>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.issubset(st1) # True
+st1.issuperset(st2) # True
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.issubset(even_numbers) # False, because it is a super set
+whole_numbers.issuperset(even_numbers) # True
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.issubset(dragon)     # False
+</code></pre>
+<h3>التحقق من الفرق بين مجموعتين</h3>
+<p>تقوم بإرجاع الفرق بين مجموعتين أو باستخدام<em>-</em>رمز .</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.difference(st1) # set() : st2 - st1
+st1.difference(st2) # {&#39;item1&#39;, &#39;item4&#39;} =&gt; st1\st2  : st2 - st1
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+even_numbers = {0, 2, 4, 6, 8, 10}
+whole_numbers.difference(even_numbers) # {1, 3, 5, 7, 9}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.difference(dragon)     # {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;}  - the result is unordered (characteristic of sets)
+# python - dragon
+dragon.difference(python)     # {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;}
+# dragon - python
+</code></pre>
+<h3>إيجاد الفرق المتماثل بين مجموعتين</h3>
+<p>تقوم بإرجاع الفرق المتماثل بين مجموعتين. يعني أنها تُرجع مجموعة تحتوي على كافة العناصر من المجموعتين، باستثناء العناصر الموجودة في كلتا المجموعتين، رياضياً: (A\B) ∪ (B\A)</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+# it means (A\B)∪(B\A)
+st2.symmetric_difference(st1) # {&#39;item1&#39;, &#39;item4&#39;} : st2 ^ st1
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">whole_numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+some_numbers = {1, 2, 3, 4, 5}
+whole_numbers.symmetric_difference(some_numbers) # {0, 6, 7, 8, 9, 10}
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.symmetric_difference(dragon)  # {&#39;r&#39;, &#39;t&#39;, &#39;p&#39;, &#39;y&#39;, &#39;g&#39;, &#39;a&#39;, &#39;d&#39;, &#39;h&#39;}
+# python ^ dragon
+</code></pre>
+<h3>مجموعات الانضمام</h3>
+<p>إذا لم يكن لدى مجموعتين عنصر أو عناصر مشتركة فإننا نسميها مجموعات منفصلة. يمكننا التحقق مما إذا كانت المجموعتان مشتركتين أم منفصلتين باستخدام<em>منفصل ()</em>طريقة.</p>
+<pre><code class="language-py"># syntax
+st1 = {&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;}
+st2 = {&#39;item2&#39;, &#39;item3&#39;}
+st2.isdisjoint(st1) # False
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">even_numbers = {0, 2, 4 ,6, 8}
+odd_numbers = {1, 3, 5, 7, 9}
+even_numbers.isdisjoint(odd_numbers) # True, because no common item
+
+python = {&#39;p&#39;, &#39;y&#39;, &#39;t&#39;, &#39;h&#39;, &#39;o&#39;,&#39;n&#39;}
+dragon = {&#39;d&#39;, &#39;r&#39;, &#39;a&#39;, &#39;g&#39;, &#39;o&#39;,&#39;n&#39;}
+python.isdisjoint(dragon)  # False, there are common items {&#39;o&#39;, &#39;n&#39;}
+</code></pre>
+<p>🌕 أنت نجم صاعد . لقد أكملت للتو تحديات اليوم السابع وأنت على بعد 7 خطوات في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم السابع</h2>
+<pre><code class="language-py"># sets
+it_companies = {&#39;Facebook&#39;, &#39;Google&#39;, &#39;Microsoft&#39;, &#39;Apple&#39;, &#39;IBM&#39;, &#39;Oracle&#39;, &#39;Amazon&#39;}
+A = {19, 22, 24, 20, 25, 26}
+B = {19, 22, 20, 25, 26, 24, 28, 27}
+age = [22, 19, 24, 25, 26, 24, 25, 24]
+</code></pre>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li>أوجد طول المجموعة it_company</li>
+<li>أضف "تويتر" إلى شركاته</li>
+<li>قم بإدراج العديد من شركات تكنولوجيا المعلومات في وقت واحد إلى مجموعة شركات تكنولوجيا المعلومات</li>
+<li>قم بإزالة إحدى الشركات من المجموعة it_companies</li>
+<li>ما هو الفرق بين الإزالة والتجاهل</li>
+</ol>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>انضم إلى أ و ب</li>
+<li>ابحث عن التقاطع B</li>
+<li>هي مجموعة فرعية من B</li>
+<li>هل A وB مجموعتان منفصلتان؟</li>
+<li>انضم إلى A مع B و B مع A</li>
+<li>ما هو الفرق المتماثل بين A و B</li>
+<li>احذف المجموعات بالكامل</li>
+</ol>
+<h3>التدريبات: المستوى 3</h3>
+<ol>
+<li>حول الأعمار إلى مجموعة وقارن بين طول القائمة والمجموعة، أيهما أكبر؟</li>
+<li>اشرح الفرق بين أنواع البيانات التالية: السلسلة، والقائمة، والصفوف، والمجموعة</li>
+<li><em>أنا معلم وأحب إلهام الناس وتعليمهم.</em>كم عدد الكلمات الفريدة التي تم استخدامها في الجملة؟ استخدم طرق التقسيم واضبطها للحصول على الكلمات الفريدة.</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

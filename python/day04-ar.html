@@ -1,0 +1,503 @@
+<!--title:النصوص (Strings)|time:35|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 04: النصوص (سلاسل)</h1>
+  <div class="hero-meta">
+    <span>⏱ 35 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+</li>
+<li><a href="#python-strings-as-sequences-of-characters">سلاسل بايثون كتسلسلات من الأحرف</a>
+</li>
+<li><a href="#string-methods">طرق السلسلة</a></li>
+</ul>
+</li>
+<li><a href="#-exercises---day-4">💻 التمارين - اليوم الرابع</a></li>
+</ul>
+</li>
+</ul>
+<h1>اليوم الرابع</h1>
+<h2>سلاسل</h2>
+<p>النص هو نوع بيانات سلسلة. أي نوع بيانات مكتوب كنص هو سلسلة. أي بيانات ضمن علامات اقتباس مفردة أو مزدوجة أو ثلاثية هي سلاسل. هناك طرق سلسلة مختلفة ووظائف مدمجة للتعامل مع أنواع بيانات السلسلة. للتحقق من طول السلسلة استخدم طريقة len().</p>
+<h3>إنشاء سلسلة</h3>
+<pre><code class="language-py">letter = &#39;P&#39;                # A string could be a single character or a bunch of texts
+print(letter)               # P
+print(len(letter))          # 1
+greeting = &#39;Hello, World!&#39;  # String could be made using a single or double quote,&quot;Hello, World!&quot;
+print(greeting)             # Hello, World!
+print(len(greeting))        # 13
+sentence = &quot;I hope you are enjoying 30 days of Python Challenge&quot;
+print(sentence)
+</code></pre>
+<p>يتم إنشاء سلسلة متعددة الأسطر باستخدام علامات الاقتباس المفردة الثلاثية (''') أو علامات الاقتباس المزدوجة الثلاثية (""). راجع المثال أدناه.</p>
+<pre><code class="language-py">multiline_string = &#39;&#39;&#39;I am a teacher and enjoy teaching.
+I didn&#39;t find anything as rewarding as empowering people.
+That is why I created 30 days of python.&#39;&#39;&#39;
+print(multiline_string)
+
+# Another way of doing the same thing
+multiline_string = &quot;&quot;&quot;I am a teacher and enjoy teaching.
+I didn&#39;t find anything as rewarding as empowering people.
+That is why I created 30 days of python.&quot;&quot;&quot;
+print(multiline_string)
+</code></pre>
+<h3>تسلسل السلسلة</h3>
+<p>يمكننا ربط السلاسل معًا. يُسمى دمج السلاسل أو ربطها بالتسلسل. انظر المثال أدناه:</p>
+<pre><code class="language-py">first_name = &#39;Asabeneh&#39;
+last_name = &#39;Yetayeh&#39;
+space = &#39; &#39;
+full_name = first_name  +  space + last_name
+print(full_name) # Asabeneh Yetayeh
+# Checking the length of a string using len() built-in function
+print(len(first_name))  # 8
+print(len(last_name))   # 7
+print(len(first_name) &gt; len(last_name)) # True
+print(len(full_name)) # 16
+</code></pre>
+<h3>تسلسل الهروب في السلاسل</h3>
+<p>في بايثون ولغات البرمجة الأخرى \ متبوعًا بالحرف هو تسلسل هروب. دعونا نرى شخصيات الهروب الأكثر شيوعا:</p>
+<ul>
+<li>\n: سطر جديد</li>
+<li>\t: علامة التبويب تعني (8 مسافات)</li>
+<li>\\: شرطة مائلة للخلف</li>
+<li>\': اقتباس مفرد (')</li>
+<li>\": اقتباس مزدوج (")</li>
+</ul>
+<p>الآن، دعونا نرى استخدام تسلسل الهروب أعلاه مع الأمثلة.</p>
+<pre><code class="language-py">print(&#39;I hope everyone is enjoying the Python Challenge.\nAre you ?&#39;) # line break
+print(&#39;Days\tTopics\tExercises&#39;) # adding tab space or 4 spaces
+print(&#39;Day 1\t5\t5&#39;)
+print(&#39;Day 2\t6\t20&#39;)
+print(&#39;Day 3\t5\t23&#39;)
+print(&#39;Day 4\t1\t35&#39;)
+print(&#39;This is a backslash  symbol (\\)&#39;) # To write a backslash
+print(&#39;In every programming language it starts with \&quot;Hello, World!\&quot;&#39;) # to write a double quote inside a single quote
+
+# output
+I hope every one is enjoying the Python Challenge.
+Are you ?
+Days  Topics  Exercises
+Day 1	5	    5
+Day 2	6	    20
+Day 3	5	    23
+Day 4	1	    35
+This is a backslash  symbol (\)
+In every programming language it starts with &quot;Hello, World!&quot;
+</code></pre>
+<h3>تنسيق السلسلة</h3>
+<h4>تنسيق سلسلة النمط القديم (% عامل التشغيل)</h4>
+<p>في بايثون هناك طرق عديدة لتنسيق السلاسل. وفي هذا القسم سنغطي بعضًا منها.
+يتم استخدام عامل التشغيل "%" لتنسيق مجموعة من المتغيرات المضمنة في "tuple" (قائمة ذات حجم ثابت)، بالإضافة إلى سلسلة تنسيق تحتوي على نص عادي مع "محددات الوسائط"، ورموز خاصة مثل "%s"، و"%d"، و"%f"، و"%".<small>عدد الأرقام</small>و".</p>
+<ul>
+<li>%s - سلسلة (أو أي كائن له تمثيل سلسلة، مثل الأرقام)</li>
+<li>%d - أعداد صحيحة</li>
+<li>%f - أرقام الفاصلة العائمة</li>
+<li>"%.<small>عدد الأرقام</small>f" - أرقام الفاصلة العائمة بدقة ثابتة</li>
+</ul>
+<pre><code class="language-py"># Strings only
+first_name = &#39;Asabeneh&#39;
+last_name = &#39;Yetayeh&#39;
+language = &#39;Python&#39;
+formated_string = &#39;I am %s %s. I teach %s&#39; %(first_name, last_name, language)
+print(formated_string)
+
+# Strings  and numbers
+radius = 10
+pi = 3.14
+area = pi * radius ** 2
+formated_string = &#39;The area of circle with a radius %d is %.2f.&#39; %(radius, area) # 2 refers the 2 significant digits after the point
+
+python_libraries = [&#39;Django&#39;, &#39;Flask&#39;, &#39;NumPy&#39;, &#39;Matplotlib&#39;,&#39;Pandas&#39;]
+formated_string = &#39;The following are python libraries:%s&#39; % (python_libraries)
+print(formated_string) # &quot;The following are python libraries:[&#39;Django&#39;, &#39;Flask&#39;, &#39;NumPy&#39;, &#39;Matplotlib&#39;,&#39;Pandas&#39;]&quot;
+</code></pre>
+<h4>تنسيق سلسلة النمط الجديد (str.format)</h4>
+<p>تم تقديم هذا التنسيق في إصدار Python 3.</p>
+<pre><code class="language-py">
+first_name = &#39;Asabeneh&#39;
+last_name = &#39;Yetayeh&#39;
+language = &#39;Python&#39;
+formated_string = &#39;I am {} {}. I teach {}&#39;.format(first_name, last_name, language)
+print(formated_string)
+a = 4
+b = 3
+
+print(&#39;{} + {} = {}&#39;.format(a, b, a + b))
+print(&#39;{} - {} = {}&#39;.format(a, b, a - b))
+print(&#39;{} * {} = {}&#39;.format(a, b, a * b))
+print(&#39;{} / {} = {:.2f}&#39;.format(a, b, a / b)) # limits it to two digits after decimal
+print(&#39;{} % {} = {}&#39;.format(a, b, a % b))
+print(&#39;{} // {} = {}&#39;.format(a, b, a // b))
+print(&#39;{} ** {} = {}&#39;.format(a, b, a ** b))
+
+# output
+4 + 3 = 7
+4 - 3 = 1
+4 * 3 = 12
+4 / 3 = 1.33
+4 % 3 = 1
+4 // 3 = 1
+4 ** 3 = 64
+
+# Strings  and numbers
+radius = 10
+pi = 3.14
+area = pi * radius ** 2
+formated_string = &#39;The area of a circle with a radius {} is {:.2f}.&#39;.format(radius, area) # 2 digits after decimal
+print(formated_string)
+</code></pre>
+<h4>استيفاء السلسلة / السلاسل f (Python 3.6+)</h4>
+<p>تنسيق سلسلة جديد آخر هو استيفاء السلسلة، سلاسل f. تبدأ السلاسل بحرف f ويمكننا إدخال البيانات في مواضعها المقابلة.</p>
+<pre><code class="language-py">a = 4
+b = 3
+print(f&#39;{a} + {b} = {a +b}&#39;)
+print(f&#39;{a} - {b} = {a - b}&#39;)
+print(f&#39;{a} * {b} = {a * b}&#39;)
+print(f&#39;{a} / {b} = {a / b:.2f}&#39;)
+print(f&#39;{a} % {b} = {a % b}&#39;)
+print(f&#39;{a} // {b} = {a // b}&#39;)
+print(f&#39;{a} ** {b} = {a ** b}&#39;)
+</code></pre>
+<h3>سلاسل بايثون كتسلسلات من الأحرف</h3>
+<p>سلاسل بايثون هي تسلسلات من الأحرف، وتشترك في طرق الوصول الأساسية الخاصة بها مع تسلسلات بايثون الأخرى للكائنات - القوائم والصفوف. إن أبسط طريقة لاستخراج أحرف مفردة من السلاسل (والأعضاء الفردية من أي تسلسل) هي تفكيكها في المتغيرات المقابلة.</p>
+<h4>تفريغ الشخصيات</h4>
+<pre><code>language = &#39;Python&#39;
+a,b,c,d,e,f = language # unpacking sequence characters into variables
+print(a) # P
+print(b) # y
+print(c) # t
+print(d) # h
+print(e) # o
+print(f) # n
+</code></pre>
+<h4>الوصول إلى الأحرف في السلاسل حسب الفهرس</h4>
+<p>في البرمجة يبدأ العد من الصفر. ولذلك فإن الحرف الأول من السلسلة يكون عند مؤشر صفر والحرف الأخير من السلسلة هو طول السلسلة ناقص واحد.</p>
+<p><img src="../images/string_index.png" alt="String index"></p>
+<pre><code class="language-py">language = &#39;Python&#39;
+first_letter = language[0]
+print(first_letter) # P
+second_letter = language[1]
+print(second_letter) # y
+last_index = len(language) - 1
+last_letter = language[last_index]
+print(last_letter) # n
+</code></pre>
+<p>إذا أردنا أن نبدأ من النهاية اليمنى يمكننا استخدام الفهرسة السلبية. -1 هو الفهرس الأخير.</p>
+<pre><code class="language-py">language = &#39;Python&#39;
+last_letter = language[-1]
+print(last_letter) # n
+second_last = language[-2]
+print(second_last) # o
+</code></pre>
+<h4>تقطيع سلاسل بايثون</h4>
+<p>في بايثون يمكننا تقسيم السلاسل إلى سلاسل فرعية.</p>
+<pre><code class="language-py">language = &#39;Python&#39;
+first_three = language[0:3] # starts at zero index and up to 3 but not include 3
+print(first_three) #Pyt
+last_three = language[3:6]
+print(last_three) # hon
+# Another way
+last_three = language[-3:]
+print(last_three)   # hon
+last_three = language[3:]
+print(last_three)   # hon
+</code></pre>
+<h4>عكس سلسلة</h4>
+<p>يمكننا بسهولة عكس السلاسل في بيثون.</p>
+<pre><code class="language-py">greeting = &#39;Hello, World!&#39;
+print(greeting[::-1]) # !dlroW ,olleH
+</code></pre>
+<h4>تخطي الحروف أثناء التقطيع</h4>
+<p>من الممكن تخطي الأحرف أثناء التقطيع عن طريق تمرير وسيطة الخطوة إلى طريقة الشريحة.</p>
+<pre><code class="language-py">language = &#39;Python&#39;
+pto = language[0:6:2] #
+print(pto) # Pto
+</code></pre>
+<h3>طرق السلسلة</h3>
+<p>هناك العديد من طرق السلسلة التي تسمح لنا بتنسيق السلاسل. راجع بعض طرق السلسلة في المثال التالي:</p>
+<ul>
+<li>Capitalize(): تحويل الحرف الأول من السلسلة إلى حرف كبير</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.capitalize()) # &#39;Thirty days of python&#39;
+</code></pre>
+<ul>
+<li>count(): تُرجع تكرارات السلسلة الفرعية في السلسلة، count(substring, start=.., end=..). البداية هي فهرسة البداية للعد والنهاية هي الفهرس الأخير للعد.</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.count(&#39;y&#39;)) # 3
+print(challenge.count(&#39;y&#39;, 7, 14)) # 1, 
+print(challenge.count(&#39;th&#39;)) # 2`
+</code></pre>
+<ul>
+<li>endwith(): يتحقق مما إذا كانت السلسلة تنتهي بنهاية محددة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.endswith(&#39;on&#39;))   # True
+print(challenge.endswith(&#39;tion&#39;)) # False
+</code></pre>
+<ul>
+<li>توسيع علامات التبويب (): يستبدل حرف علامة التبويب بمسافات، حجم علامة التبويب الافتراضي هو 8. ويأخذ وسيطة حجم علامة التبويب</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty\tdays\tof\tpython&#39;
+print(challenge.expandtabs())   # &#39;thirty  days    of      python&#39;
+print(challenge.expandtabs(10)) # &#39;thirty    days      of        python&#39;
+</code></pre>
+<ul>
+<li>find(): يُرجع فهرس التواجد الأول لسلسلة فرعية، وإذا لم يتم العثور عليه يُرجع -1</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.find(&#39;y&#39;))  # 5
+print(challenge.find(&#39;th&#39;)) # 0
+</code></pre>
+<ul>
+<li>rfind (): إرجاع فهرس آخر تواجد لسلسلة فرعية، إذا لم يتم العثور عليها ترجع -1</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.rfind(&#39;y&#39;))  # 16
+print(challenge.rfind(&#39;th&#39;)) # 17
+</code></pre>
+<ul>
+<li>format(): تنسيق السلسلة إلى مخرجات أجمل<br>المزيد عن تنسيق السلسلة تحقق من هذا<a href="https://www.programiz.com/python-programming/methods/string/format">وصلة</a></li>
+</ul>
+<pre><code class="language-py">first_name = &#39;Asabeneh&#39;
+last_name = &#39;Yetayeh&#39;
+age = 250
+job = &#39;teacher&#39;
+country = &#39;Finland&#39;
+sentence = &#39;I am {} {}. I am a {}. I am {} years old. I live in {}.&#39;.format(first_name, last_name, job, age, country)
+print(sentence) # I am Asabeneh Yetayeh. I am 250 years old. I am a teacher. I live in Finland.
+
+radius = 10
+pi = 3.14
+area = pi * radius ** 2
+result = &#39;The area of a circle with radius {} is {}&#39;.format(str(radius), str(area))
+print(result) # The area of a circle with radius 10 is 314
+</code></pre>
+<ul>
+<li>الفهرس (): يُرجع أدنى فهرس لسلسلة فرعية، وتشير الوسائط الإضافية إلى فهرس البداية والنهاية (الافتراضي 0 وطول السلسلة - 1). إذا لم يتم العثور على السلسلة الفرعية فإنها تثير خطأ القيمة.</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+sub_string = &#39;da&#39;
+print(challenge.index(sub_string))  # 7
+print(challenge.index(sub_string, 9)) # error
+</code></pre>
+<ul>
+<li>Rindex(): يُرجع أعلى فهرس لسلسلة فرعية، وتشير الوسائط الإضافية إلى فهرس البداية والنهاية (الافتراضي 0 وطول السلسلة - 1)</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+sub_string = &#39;da&#39;
+print(challenge.rindex(sub_string))  # 7
+print(challenge.rindex(sub_string, 9)) # error
+print(challenge.rindex(&#39;on&#39;, 8)) # 19
+</code></pre>
+<ul>
+<li>isalnum(): التحقق من الأحرف الأبجدية الرقمية</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;ThirtyDaysPython&#39;
+print(challenge.isalnum()) # True
+
+challenge = &#39;30DaysPython&#39;
+print(challenge.isalnum()) # True
+
+challenge = &#39;thirty days of python&#39;
+print(challenge.isalnum()) # False, space is not an alphanumeric character
+
+challenge = &#39;thirty days of python 2019&#39;
+print(challenge.isalnum()) # False
+</code></pre>
+<ul>
+<li>isalpha (): التحقق مما إذا كانت جميع عناصر السلسلة عبارة عن أحرف أبجدية (a-z وA-Z)</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.isalpha()) # False, space is once again excluded
+challenge = &#39;ThirtyDaysPython&#39;
+print(challenge.isalpha()) # True
+num = &#39;123&#39;
+print(num.isalpha())      # False
+</code></pre>
+<ul>
+<li>isdecimal (): التحقق مما إذا كانت جميع الأحرف في السلسلة عشرية (0-9)</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.isdecimal())  # False
+challenge = &#39;123&#39;
+print(challenge.isdecimal())  # True
+challenge = &#39;\u00B2&#39;
+print(challenge.isdigit())   # True 
+challenge = &#39;12 3&#39;
+print(challenge.isdecimal())  # False, space not allowed
+</code></pre>
+<ul>
+<li>isdigit(): يتحقق مما إذا كانت جميع الأحرف الموجودة في السلسلة عبارة عن أرقام (0-9 وبعض أحرف Unicode الأخرى للأرقام)</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;Thirty&#39;
+print(challenge.isdigit()) # False
+challenge = &#39;30&#39;
+print(challenge.isdigit())   # True
+challenge = &#39;\u00B2&#39;
+print(challenge.isdigit())   # True
+</code></pre>
+<ul>
+<li>isnumeric(): يتحقق مما إذا كانت جميع الأحرف في السلسلة عبارة عن أرقام أو مرتبطة بأرقام (تمامًا مثل isdigit()، تقبل فقط المزيد من الرموز، مثل ½)</li>
+</ul>
+<pre><code class="language-py">num = &#39;10&#39;
+print(num.isnumeric()) # True
+num = &#39;\u00BD&#39; # ½
+print(num.isnumeric()) # True
+num = &#39;10.5&#39;
+print(num.isnumeric()) # False
+</code></pre>
+<ul>
+<li>isidentifier(): يتحقق من وجود معرف صالح - يتحقق مما إذا كانت السلسلة اسم متغير صالحًا</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;30DaysOfPython&#39;
+print(challenge.isidentifier()) # False, because it starts with a number
+challenge = &#39;thirty_days_of_python&#39;
+print(challenge.isidentifier()) # True
+</code></pre>
+<ul>
+<li>islower(): يتحقق مما إذا كانت جميع الأحرف الأبجدية في السلسلة صغيرة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.islower()) # True
+challenge = &#39;Thirty days of python&#39;
+print(challenge.islower()) # False
+</code></pre>
+<ul>
+<li>isupper(): يتحقق مما إذا كانت كافة الأحرف الأبجدية في السلسلة كبيرة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.isupper()) #  False
+challenge = &#39;THIRTY DAYS OF PYTHON&#39;
+print(challenge.isupper()) # True
+</code></pre>
+<ul>
+<li>join (): إرجاع سلسلة متسلسلة</li>
+</ul>
+<pre><code class="language-py">web_tech = [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JavaScript&#39;, &#39;React&#39;]
+result = &#39; &#39;.join(web_tech)
+print(result) # &#39;HTML CSS JavaScript React&#39;
+</code></pre>
+<pre><code class="language-py">web_tech = [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JavaScript&#39;, &#39;React&#39;]
+result = &#39;# &#39;.join(web_tech)
+print(result) # &#39;HTML# CSS# JavaScript# React&#39;
+</code></pre>
+<ul>
+<li>strip(): يزيل جميع الأحرف المحددة بدءًا من بداية السلسلة ونهايتها</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of pythoonnn&#39;
+print(challenge.strip(&#39;noth&#39;)) # &#39;irty days of py&#39;
+</code></pre>
+<ul>
+<li>استبدال (): يستبدل السلسلة الفرعية بسلسلة معينة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.replace(&#39;python&#39;, &#39;coding&#39;)) # &#39;thirty days of coding&#39;
+</code></pre>
+<ul>
+<li>سبليت (): يقسم السلسلة باستخدام سلسلة أو مسافة معينة كفاصل</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.split()) # [&#39;thirty&#39;, &#39;days&#39;, &#39;of&#39;, &#39;python&#39;]
+challenge = &#39;thirty, days, of, python&#39;
+print(challenge.split(&#39;, &#39;)) # [&#39;thirty&#39;, &#39;days&#39;, &#39;of&#39;, &#39;python&#39;]
+</code></pre>
+<ul>
+<li>title(): إرجاع سلسلة ذات غلاف عنوان</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.title()) # Thirty Days Of Python
+</code></pre>
+<ul>
+<li>المبادلة (): تحويل كافة الأحرف الكبيرة إلى أحرف صغيرة وجميع الأحرف الصغيرة إلى أحرف كبيرة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.swapcase())   # THIRTY DAYS OF PYTHON
+challenge = &#39;Thirty Days Of Python&#39;
+print(challenge.swapcase())  # tHIRTY dAYS oF pYTHON
+</code></pre>
+<ul>
+<li>يبدأ بـ (): يتحقق مما إذا كانت السلسلة تبدأ بالسلسلة المحددة</li>
+</ul>
+<pre><code class="language-py">challenge = &#39;thirty days of python&#39;
+print(challenge.startswith(&#39;thirty&#39;)) # True
+
+challenge = &#39;30 days of python&#39;
+print(challenge.startswith(&#39;thirty&#39;)) # False
+</code></pre>
+<p>🌕 أنت شخص غير عادي ولديك إمكانات رائعة. لقد أكملت للتو تحديات اليوم الرابع وأنت على بعد أربع خطوات من طريقك نحو العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين - اليوم الرابع</h2>
+<ol>
+<li>قم بربط السلسلة "Thirty"، "Days"، "Of"، "Python" بسلسلة واحدة، "Thirty Days Of Python".</li>
+<li>قم بتوصيل السلسلة "Coding" و"For" و"All" إلى سلسلة واحدة، "Coding For All".</li>
+<li>قم بتعريف متغير اسمه الشركة وقم بتعيينه إلى قيمة أولية "Coding For All".</li>
+<li>طباعة متغير الشركة باستخدام<em>مطبعة()</em>.</li>
+<li>اطبع طول سلسلة الشركة باستخدام<em>لين ()</em>طريقة و<em>مطبعة()</em>.</li>
+<li>تغيير كافة الأحرف إلى أحرف كبيرة باستخدام<em>العلوي ()</em>طريقة.</li>
+<li>تغيير كافة الأحرف إلى أحرف صغيرة باستخدام<em>أدنى()</em>طريقة.</li>
+<li>استخدم أساليب Capitalize() وtitle() وswapcase() لتنسيق قيمة السلسلة<em>الترميز للجميع</em>.</li>
+<li>قص (شريحة) الكلمة الأولى من<em>الترميز للجميع</em>خيط.</li>
+<li>تحقق مما إذا<em>الترميز للجميع</em>تحتوي السلسلة على كلمة ترميز باستخدام فهرس الطريقة أو البحث أو طرق أخرى.</li>
+<li>استبدل كلمة الترميز في السلسلة "Coding For All" بـ Python.</li>
+<li>قم بتغيير "Python للجميع" إلى "Python for All" باستخدام طريقة الاستبدال أو طرق أخرى.</li>
+<li>قم بتقسيم السلسلة "Coding For All" باستخدام المسافة كفاصل (split()) .</li>
+<li>"Facebook، Google، Microsoft، Apple، IBM، Oracle، Amazon" قم بتقسيم السلسلة عند الفاصلة.</li>
+<li>ما هو الحرف الموجود في الفهرس 0 في السلسلة<em>الترميز للجميع</em>.</li>
+<li>ما هو الفهرس الأخير للسلسلة<em>الترميز للجميع</em>.</li>
+<li>ما الحرف الموجود في الفهرس 10 في سلسلة "Coding For All".</li>
+<li>أنشئ اختصارًا أو اختصارًا للاسم "Python للجميع".</li>
+<li>أنشئ اختصارًا أو اختصارًا للاسم "Coding For All".</li>
+<li>استخدم الفهرس لتحديد موضع التواجد الأول لـ C في Coding For All.</li>
+<li>استخدم الفهرس لتحديد موضع التواجد الأول لـ F في Coding For All.</li>
+<li>استخدم rfind لتحديد موضع آخر تواجد لـ l في Coding For All People.</li>
+<li>استخدم الفهرس أو البحث للعثور على موضع التواجد الأول للكلمة "لأن" في الجملة التالية: "لا يمكنك إنهاء الجملة بـ لأنه لأنه أداة ربط"</li>
+<li>استخدم rindex للعثور على موضع آخر تواجد للكلمة لأنه في الجملة التالية: "لا يمكنك إنهاء الجملة بـ لأن لأن هو حرف عطف"</li>
+<li>اقطع العبارة "لأن لأنه" من الجملة التالية: "لا يمكنك إنهاء الجملة بـ لأنه لأن لأن عبارة عن أداة ربط"</li>
+<li>ابحث عن موضع أول تواجد لكلمة "لأن" في الجملة التالية: "لا يمكنك إنهاء الجملة بـ لأنه لأنه أداة ربط"</li>
+<li>اقطع العبارة "لأن لأنه" من الجملة التالية: "لا يمكنك إنهاء الجملة بـ لأنه لأن لأن عبارة عن أداة ربط"</li>
+<li>هل يبدأ "الترميز للجميع" بسلسلة فرعية؟<em>الترميز</em>؟</li>
+<li>هل ينتهي "الترميز للجميع" بسلسلة فرعية؟<em>الترميز</em>؟</li>
+<li>'   الترميز للجميع      '  ، قم بإزالة المسافات الزائدة اليسرى واليمنى في السلسلة المحددة.</li>
+<li>أي من المتغيرات التالية يُرجع True عندما نستخدم الطريقة isidentifier():<ul>
+<li>30 يومًا من بايثون</li>
+<li>three_days_of_python</li>
+</ul>
+</li>
+<li>تحتوي القائمة التالية على أسماء بعض مكتبات بايثون: ['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']. انضم إلى القائمة بعلامة تجزئة بسلسلة مسافة.</li>
+<li>استخدم تسلسل هروب السطر الجديد لفصل الجمل التالية.<pre><code class="language-py">I am enjoying this challenge.
+I just wonder what is next.
+</code></pre>
+</li>
+<li>استخدم تسلسل هروب علامة التبويب لكتابة الأسطر التالية.<pre><code class="language-py">Name      Age     Country   City
+Asabeneh  250     Finland   Helsinki
+</code></pre>
+</li>
+<li>استخدم طريقة تنسيق السلسلة لعرض ما يلي:</li>
+</ol>
+<pre><code class="language-sh">radius = 10
+area = 3.14 * radius ** 2
+The area of a circle with radius 10 is 314 meters square.
+</code></pre>
+<ol start="36">
+<li>قم بإجراء ما يلي باستخدام طرق تنسيق السلسلة:</li>
+</ol>
+<pre><code class="language-sh">8 + 6 = 14
+8 - 6 = 2
+8 * 6 = 48
+8 / 6 = 1.33
+8 % 6 = 2
+8 // 6 = 1
+8 ** 6 = 262144
+</code></pre>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

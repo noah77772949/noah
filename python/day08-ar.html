@@ -1,0 +1,251 @@
+<!--title:القواميس (Dictionaries)|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 08: القواميس (القواميس)</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-8">💻 التمارين: اليوم الثامن</a></li>
+</ul>
+</li>
+</ul>
+<h1>📘اليوم الثامن</h1>
+<h2>القواميس</h2>
+<p>القاموس عبارة عن مجموعة من أنواع البيانات المقترنة (المفتاح: القيمة) غير المرتبة والقابلة للتعديل (القابلة للتغيير).</p>
+<h3>إنشاء قاموس</h3>
+<p>لإنشاء قاموس نستخدم الأقواس المتعرجة، {} أو<em>إملاء ()</em>وظيفة مدمجة.</p>
+<pre><code class="language-py"># syntax
+empty_dict = {}
+# Dictionary with data values
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+</code></pre>
+<p>يوضح القاموس أعلاه أن القيمة يمكن أن تكون أي أنواع بيانات: سلسلة أو منطقية أو قائمة أو صف أو مجموعة أو قاموس.</p>
+<h3>طول القاموس</h3>
+<p>يتحقق من عدد أزواج "المفتاح: القيمة" في القاموس.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(len(dct)) # 4
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_married&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(len(person)) # 7
+</code></pre>
+<h3>الوصول إلى عناصر القاموس</h3>
+<p>يمكننا الوصول إلى عناصر القاموس من خلال الإشارة إلى اسمها الرئيسي.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct[&#39;key1&#39;]) # value1
+print(dct[&#39;key4&#39;]) # value4
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(person[&#39;first_name&#39;]) # Asabeneh
+print(person[&#39;country&#39;])    # Finland
+print(person[&#39;skills&#39;])     # [&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;]
+print(person[&#39;skills&#39;][0])  # JavaScript
+print(person[&#39;address&#39;][&#39;street&#39;]) # Space street
+print(person[&#39;city&#39;])       # Error
+</code></pre>
+<p>يؤدي الوصول إلى عنصر ما بواسطة اسم المفتاح إلى حدوث خطأ في حالة عدم وجود المفتاح. لتجنب هذا الخطأ علينا أولاً التحقق من وجود مفتاح أو يمكننا استخدام ملف<em>يحصل</em>طريقة. تقوم طريقة get بإرجاع لا شيء، وهو نوع بيانات كائن NonType، إذا كان المفتاح غير موجود.</p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+print(person.get(&#39;first_name&#39;)) # Asabeneh
+print(person.get(&#39;country&#39;))    # Finland
+print(person.get(&#39;skills&#39;)) #[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;]
+print(person.get(&#39;city&#39;))   # None
+</code></pre>
+<h3>إضافة عناصر إلى القاموس</h3>
+<p>يمكننا إضافة أزواج مفاتيح وقيم جديدة إلى القاموس</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct[&#39;key5&#39;] = &#39;value5&#39;
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+        }
+}
+person[&#39;job_title&#39;] = &#39;Instructor&#39;
+person[&#39;skills&#39;].append(&#39;HTML&#39;)
+print(person)
+</code></pre>
+<h3>تعديل العناصر في القاموس</h3>
+<p>يمكننا تعديل العناصر في القاموس</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct[&#39;key1&#39;] = &#39;value-one&#39;
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+person[&#39;first_name&#39;] = &#39;Eyob&#39;
+person[&#39;age&#39;] = 252
+</code></pre>
+<h3>التحقق من المفاتيح في القاموس</h3>
+<p>نحن نستخدم<em>في</em>عامل للتحقق من وجود مفتاح في القاموس</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(&#39;key2&#39; in dct) # True
+print(&#39;key5&#39; in dct) # False
+</code></pre>
+<h3>إزالة أزواج المفاتيح والقيمة من القاموس</h3>
+<ul>
+<li><em>البوب ​​(مفتاح)</em>: يزيل العنصر باسم المفتاح المحدد:</li>
+<li><em>بوبيتم ()</em>: يزيل العنصر الأخير</li>
+<li><em>ديل</em>: يزيل عنصرًا باسم مفتاح محدد</li>
+</ul>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct.pop(&#39;key1&#39;) # removes key1 item
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct.popitem() # removes the last item
+del dct[&#39;key2&#39;] # removes key2 item
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+    }
+person.pop(&#39;first_name&#39;)        # Removes the firstname item
+person.popitem()                # Removes the address item
+del person[&#39;is_married&#39;]        # Removes the is_married item
+</code></pre>
+<h3>تغيير القاموس إلى قائمة العناصر</h3>
+<p>ال<em>أغراض()</em>يغير الأسلوب القاموس إلى قائمة الصفوف.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct.items()) # dict_items([(&#39;key1&#39;, &#39;value1&#39;), (&#39;key2&#39;, &#39;value2&#39;), (&#39;key3&#39;, &#39;value3&#39;), (&#39;key4&#39;, &#39;value4&#39;)])
+</code></pre>
+<h3>مسح القاموس</h3>
+<p>إذا كنا لا نريد العناصر الموجودة في القاموس فيمكننا مسحها باستخدام<em>واضح()</em>طريقة</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+print(dct.clear()) # None
+</code></pre>
+<h3>حذف قاموس</h3>
+<p>إذا لم نستخدم القاموس فيمكننا حذفه بالكامل</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+del dct
+</code></pre>
+<h3>انسخ قاموسًا</h3>
+<p>يمكننا نسخ القاموس باستخدام ملف<em>ينسخ()</em>طريقة. باستخدام نسخة يمكننا تجنب حدوث طفرة في القاموس الأصلي.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+dct_copy = dct.copy() # {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+</code></pre>
+<h3>الحصول على مفاتيح القاموس كقائمة</h3>
+<p>ال<em>مفاتيح ()</em>الطريقة تعطينا جميع مفاتيح القاموس كقائمة.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+keys = dct.keys()
+print(keys)     # dict_keys([&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;, &#39;key4&#39;])
+</code></pre>
+<h3>الحصول على قيم القاموس كقائمة</h3>
+<p>ال<em>قيم</em>الطريقة تعطينا جميع قيم القاموس كقائمة.</p>
+<pre><code class="language-py"># syntax
+dct = {&#39;key1&#39;:&#39;value1&#39;, &#39;key2&#39;:&#39;value2&#39;, &#39;key3&#39;:&#39;value3&#39;, &#39;key4&#39;:&#39;value4&#39;}
+values = dct.values()
+print(values)     # dict_values([&#39;value1&#39;, &#39;value2&#39;, &#39;value3&#39;, &#39;value4&#39;])
+</code></pre>
+<p>🌕أنت مذهل. الآن، أنت مشحون بقوة القواميس. لقد أكملت للتو تحديات اليوم الثامن وأنت على بعد 8 خطوات في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم الثامن</h2>
+<ol>
+<li>قم بإنشاء قاموس فارغ يسمى dog</li>
+<li>أضف الاسم واللون والسلالة والساقين والعمر إلى قاموس الكلاب</li>
+<li>أنشئ قاموسًا للطلاب وأضف الاسم الأول والاسم الأخير والجنس والعمر والحالة الاجتماعية والمهارات والبلد والمدينة والعنوان كمفاتيح للقاموس</li>
+<li>احصل على طول قاموس الطالب</li>
+<li>احصل على قيمة المهارات وتحقق من نوع البيانات، يجب أن تكون قائمة</li>
+<li>تعديل قيم المهارات عن طريق إضافة مهارة أو اثنتين</li>
+<li>احصل على مفاتيح القاموس كقائمة</li>
+<li>احصل على قيم القاموس كقائمة</li>
+<li>قم بتغيير القاموس إلى قائمة الصفوف باستخدام<em>أغراض()</em>طريقة</li>
+<li>احذف أحد العناصر الموجودة في القاموس</li>
+<li>حذف أحد القواميس</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

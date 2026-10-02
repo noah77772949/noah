@@ -1,0 +1,231 @@
+<!--title:## Blocking and Non-blocking Elements|time:30|level:مبتدئ|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 HTML - اليوم 04</div>
+  <h1>Day 04: ## Blocking and Non-blocking Elements</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 مبتدئ</span>
+    <span>🌍 Asabeneh</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+<h1>Day 4</h1>
+<h2>Blocking and Non-blocking Elements</h2>
+<p>HTML elements are like a box. Some elements take the whole width of the view port while some take as much space that fit only for the content. In another way, some elements do not allow other elements to come next them both in the left and right side, however, some elements allow other elements to come next to them.</p>
+<ul>
+<li>Blocking elements take the whole width of the viewport.</li>
+<li>Non-blocking element only take a space that is enough for the content.</li>
+</ul>
+<p>List of blocking elements:</p>
+<pre><code class="language-sh">&lt;address&gt;&lt;/address&gt; - allows to write an address related information
+&lt;article&gt;&lt;/article&gt; - allows to write articles in a section
+&lt;aside&gt;&lt;/aside&gt; - allows to create a section that is indirectly related to the document
+&lt;blockquote&gt;&lt;/blockquote&gt; - to create text a quoation mark
+&lt;canvas&gt;&lt;/canvas&gt; - to create canbas
+&lt;dd&gt;&lt;/dd&gt; - to describe a term or name in a description list
+&lt;div&gt;&lt;/div&gt; - to create section or box
+&lt;dl&gt;&lt;/dl&gt; - to create a description list
+&lt;dt&gt;&lt;/dt&gt; - describes a term a description list
+&lt;fieldset&gt;&lt;/fieldset&gt; - to create related elements in a from
+&lt;figcaption&gt;&lt;/figcaption&gt; - define figure caption
+&lt;figure&gt;&lt;/figure&gt; - to wrap figure, diagram, etc
+&lt;footer&gt;&lt;/footer&gt; - to create footer of a document
+&lt;form&gt; - to create a form
+&lt;h1&gt;&lt;/h1&gt; to &lt;h6&gt;&lt;/h6&gt; - to create different size headings
+&lt;header&gt;&lt;/header&gt; - to create header of a document
+&lt;hr /&gt; - to create a horizontal line
+&lt;li&gt;&lt;/li&gt; - create order or an unordered list
+&lt;main&gt;&lt;/main&gt; - to wrap the main content of the document
+&lt;nav&gt;&lt;nav&gt; - to create navigation
+&lt;noscript&gt;&lt;/noscript&gt; - describe an alternative content to be displayed to users when JS has disabled on their browsers.
+&lt;ol&gt;&lt;/ol&gt; - to create an ordered list
+&lt;p&gt;&lt;/p&gt; - to creat paragraph
+&lt;pre&gt;&lt;/pre&gt; - to create a space preserved content, eg poem
+&lt;section&gt;&lt;section&gt; - to create section
+&lt;table&gt;&lt;/table&gt; - to create table
+&lt;tfoot&gt;&lt;tfoot&gt; - to create a table footer
+&lt;ul&gt;&lt;ul&gt; - to wrap order or unorder list
+&lt;video&gt;&lt;/video&gt; - to create a video content
+</code></pre>
+<p>Now, let&#39;s use some of the blocking elements in following snippet of code.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;30 Days Of HTML&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;span style=&quot;color: #e34c26&quot;&gt;H&lt;/span&gt;
+      &lt;span style=&quot;color: #264de4&quot;&gt;T&lt;/span&gt;
+      &lt;span style=&quot;color: #f0db4f&quot;&gt;M&lt;/span&gt;
+      &lt;span style=&quot;color: #61dbfb&quot;&gt;L&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1 id=&quot;first-title&quot;&gt;The Building Blocks of the web&lt;/h1&gt;
+        &lt;article&gt;
+          &lt;p&gt;
+            There is not website without HTML. Learn HTML and build websites and
+            web applications
+          &lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Front end Technologis&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;HTML&lt;/li&gt;
+          &lt;li&gt;CSS&lt;/li&gt;
+          &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;video src=&quot;./assets/video/js-project.mp4&quot;&gt;&lt;/video&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;small&gt;Copyright 2021 | Asabeneh Yetayeh&lt;/small&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>List of non-blocking elements</p>
+<pre><code class="language-sh">&lt;a&gt; - to create a link
+&lt;abbr&gt; - to create abbreviation
+&lt;acronym&gt; - to create an acronym
+&lt;audio&gt; - to create or embed an audio
+&lt;b&gt; - to make bold
+&lt;bdo&gt; - to reverse a text
+&lt;big&gt; - to make text big
+&lt;br&gt; - to make a line break
+&lt;button&gt; - to create a button
+&lt;cite&gt; - to add citation
+&lt;code&gt; - to write code on HTML
+&lt;dfn&gt; - to write definition using HTML
+&lt;em&gt; - to make an emphasise
+&lt;i&gt; - to make italic
+&lt;img&gt; - to create an image
+&lt;input&gt; - to create an input field
+&lt;kbd&gt; - to define keyboard inputs
+&lt;label&gt; - to create a label for input fields
+&lt;map&gt; - to define an image map
+&lt;object&gt; - to represent an external resource that used to multimedia such as audios, videos, images, pdf, etc
+&lt;output&gt; - to represent a result of a calculation
+&lt;q&gt; - short quotation
+&lt;samp&gt; - to represent sample output
+&lt;script&gt; - to write JS code
+&lt;select&gt; - to select items
+&lt;small&gt; - to write small size texts
+&lt;span&gt; - to mark or separate a text
+&lt;strong&gt; - to make text with strong importance
+&lt;sub&gt; - to create subscript
+&lt;sup&gt; - to make superscript
+&lt;textarea&gt; - to create a text area
+&lt;time&gt;- represents a specific period of time
+&lt;tt&gt; - to represent inline teletype
+&lt;var&gt; - is used to define a variable
+</code></pre>
+<p>Let&#39;s make use of the above tags in the previous snippet of code.</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;30 Days Of HTML&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;span style=&quot;color: #e34c26&quot;&gt;H&lt;/span&gt;
+      &lt;span style=&quot;color: #264de4&quot;&gt;T&lt;/span&gt;
+      &lt;span style=&quot;color: #f0db4f&quot;&gt;M&lt;/span&gt;
+      &lt;span style=&quot;color: #61dbfb&quot;&gt;L&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1 id=&quot;first-title&quot;&gt;The Building Blocks of the web&lt;/h1&gt;
+       &lt;article&gt;
+          &lt;p&gt;
+          There is not website without HTML. Learn HTML and build websites and
+          web applications
+        &lt;/p&gt;
+         &lt;/article&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Front end Technologis&lt;/h2&gt;
+        &lt;!-- Unorder list --&gt;
+        &lt;ul&gt;
+          &lt;li&gt;HTML&lt;/li&gt;
+          &lt;li&gt;CSS&lt;/li&gt;
+          &lt;li&gt;JavaScript&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;!-- Ordered list --&gt;
+          &lt;p&gt;Ten most populated countries&lt;/p&gt;
+          &lt;ol&gt;
+            &lt;li&gt;China&lt;li&gt;
+            &lt;li&gt;India&lt;li&gt;
+            &lt;li&gt;USA&lt;li&gt;
+            &lt;li&gt;Indonesia&lt;li&gt;
+            &lt;li&gt;Brasil&lt;li&gt;
+            &lt;li&gt;Pakistan&lt;li&gt;
+            &lt;li&gt;Nigeria&lt;li&gt;
+            &lt;li&gt;Bangladesh&lt;li&gt;
+            &lt;li&gt;Russia&lt;/li&gt;
+            &lt;li&gt;Japan&lt;/li&gt;
+
+          &lt;/ol&gt;
+            &lt;!-- To link an image: img tag and src attribute, we putthe path in the src --&gt;
+          &lt;img src =&#39;./assets/images/html.png&#39; alt=&#39;HTML Logo&#39;&gt;
+            &lt;img src =&#39;./assets/images/css_logo.png&#39; alt=&#39;CSS Logo&#39;&gt;
+           &lt;img src =&#39;./assets/images/js_logo.png&#39; alt=&#39;JS Logo&#39;&gt;
+            &lt;img src =&#39;./assets/images/css_logo.png&#39; alt=&#39;CSS Logo&#39;&gt;
+        &lt;/section&gt;
+        &lt;!-- button allows to do some acction --&gt;
+        &lt;button onclick = &quot;alert(&#39;Welcome to 30 DaysOfHTML&#39;)&quot;&gt; Click Me&lt;/button&gt;
+
+        &lt;section&gt;
+          &lt;h1&gt;Audios&lt;/h1&gt;
+          &lt;audio controls&gt;
+            &lt;source src=&quot;./assets/audios/audio_1.mp3&quot; /&gt;
+            &lt;/audio&gt;
+             &lt;audio controls&gt;
+            &lt;source src=&quot;./assets/audios/audio_2.mp3&quot; /&gt;
+            &lt;/audio&gt;
+             &lt;audio controls&gt;
+
+        &lt;/section&gt;
+
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;small&gt;Copyright 2021 | Asabeneh Yetayeh&lt;/small&gt;
+      &lt;!-- Social Link: --&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;!-- a tag takes href attribute to target a link resource --&gt;
+          &lt;a href=&quot;https://www.linkedin.com/in/asabeneh/&quot;&gt;LinkedIn&lt;/a&gt;
+          &lt;/li&gt;
+            &lt;li&gt;
+          &lt;a href=&quot;https://twitter.com/Asabeneh&quot;&gt;Twitter&lt;/a&gt;
+          &lt;/li&gt;
+            &lt;li&gt;
+          &lt;a href=&quot;https://github.com/Asabeneh&quot;&gt;GitHub&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>To create a new line between non-blocking elements we can use the break(br) element.</p>
+<h2>Exercises</h2>
+<ol>
+<li>What is blocking element?</li>
+<li>What is non-blocking element?</li>
+<li>What is the difference between block and non-blocking elements?</li>
+<li>List at least five blocking elements</li>
+<li>List at least five non-blocking elements</li>
+</ol>
+
+</section>
+
+<div class="lesson-nav"></div>
+</div>

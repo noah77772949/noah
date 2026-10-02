@@ -1,0 +1,255 @@
+<!--title:المتغيرات والدوال المدمجة|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 02: عقارات والدوال المدمجة</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+<p><a href="../readme.md"><< اليوم الأول</a>|<a href="../03_Day_Operators/03_operators.md">اليوم الثالث >></a></p>
+
+
+</li>
+<li><a href="#data-types">أنواع البيانات</a></li>
+<li><a href="#checking-data-types-and-casting">التحقق من أنواع البيانات والصب</a></li>
+<li><a href="#numbers">أرقام</a></li>
+<li><a href="#-exercises---day-2">💻 التمارين - اليوم الثاني</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘اليوم الثاني</h1>
+<h2>وظائف مدمجة</h2>
+<p>في بايثون لدينا الكثير من الوظائف المضمنة. الوظائف المضمنة متاحة عالميًا لاستخدامك، مما يعني أنه يمكنك الاستفادة من الوظائف المضمنة دون استيراد أو تكوين. فيما يلي بعض وظائف Python المضمنة الأكثر استخدامًا:<em>مطبعة()</em>,<em>لين ()</em>,<em>يكتب()</em>,<em>كثافة العمليات ()</em>,<em>يطفو()</em>,<em>شارع ()</em>,<em>مدخل()</em>,<em>قائمة()</em>,<em>إملاء ()</em>,<em>دقيقة ()</em>,<em>الأعلى()</em>,<em>مجموع()</em>,<em>مرتبة ()</em>,<em>يفتح()</em>,<em>ملف()</em>,<em>يساعد()</em>، و<em>دير ()</em>. في الجدول التالي سترى قائمة شاملة لوظائف بايثون المضمنة المأخوذة من<a href="https://docs.python.org/3/library/functions.html">وثائق بايثون</a>.</p>
+<p><img src="../images/builtin-functions.png" alt="Built-in Functions"></p>
+<p>دعونا نفتح غلاف Python ونبدأ في استخدام بعض الوظائف المدمجة الأكثر شيوعًا.</p>
+<p><img src="../images/builtin-functions_practice.png" alt="Built-in functions"></p>
+<p>دعونا نتدرب أكثر باستخدام وظائف مدمجة مختلفة</p>
+<p><img src="../images/help_and_dir_builtin.png" alt="Help and Dir Built in Functions"></p>
+<p>كما ترون من المحطة أعلاه، حصلت بايثون على كلمات محجوزة. نحن لا نستخدم الكلمات المحجوزة للإعلان عن المتغيرات أو الوظائف. سنغطي المتغيرات في القسم التالي.</p>
+<p>أعتقد أنك الآن على دراية بالوظائف المضمنة. دعونا نقوم بممارسة أخرى للوظائف المضمنة وسننتقل إلى القسم التالي.</p>
+<p><img src="../images/builtin-functional-final.png" alt="Min Max Sum"></p>
+<h2>المتغيرات</h2>
+<p>تقوم المتغيرات بتخزين البيانات في ذاكرة الكمبيوتر. يوصى باستخدام المتغيرات التذكيرية في العديد من لغات البرمجة. المتغير ذاكري هو اسم متغير يمكن تذكره وربطه بسهولة. يشير المتغير إلى عنوان الذاكرة الذي يتم تخزين البيانات فيه.
+الرقم في البداية، والحرف الخاص، والواصلة غير مسموح بها عند تسمية متغير. يمكن أن يكون للمتغير اسم قصير (مثل x، y، z)، ولكن يوصى بشدة باستخدام اسم أكثر وصفًا (الاسم الأول، اسم العائلة، العمر، البلد).</p>
+<p>قواعد الأسماء المتغيرة في بايثون</p>
+<ul>
+<li>يجب أن يبدأ اسم المتغير بحرف أو بشرطة سفلية</li>
+<li>لا يمكن أن يبدأ اسم المتغير برقم</li>
+<li>يمكن أن يحتوي اسم المتغير فقط على أحرف أبجدية رقمية وشرطات سفلية (A-z، 0-9، و _ )</li>
+<li>أسماء المتغيرات حساسة لحالة الأحرف (الاسم الأول والاسم الأول والاسم الأول والاسم الأول) هي متغيرات مختلفة)</li>
+</ul>
+<p>فيما يلي بعض الأمثلة على أسماء المتغيرات الصالحة:</p>
+<pre><code class="language-shell">firstname
+lastname
+age
+country
+city
+first_name
+last_name
+capital_city
+_if # if we want to use reserved word as a variable
+year_2021
+year2021
+current_year_2021
+birth_year
+num1
+num2
+</code></pre>
+<p>أسماء المتغيرات غير صالحة</p>
+<pre><code class="language-shell">first-name
+first@name
+first$name
+num-1
+1num
+</code></pre>
+<p>سوف نستخدم أسلوب تسمية متغير Python القياسي الذي تم اعتماده من قبل العديد من مطوري Python. يستخدم مطورو Python اصطلاح تسمية متغير لحالة الثعبان (snake_case). نستخدم الشرطة السفلية بعد كل كلمة لمتغير يحتوي على أكثر من كلمة واحدة (على سبيل المثال: الاسم الأول، الاسم الأخير، سرعة دوران المحرك).  المثال أدناه هو مثال للتسمية القياسية للمتغيرات، وتكون الشرطة السفلية مطلوبة عندما يكون اسم المتغير أكثر من كلمة واحدة.</p>
+<p>عندما نقوم بتعيين نوع بيانات معين لمتغير، فإن ذلك يسمى إعلان المتغير. على سبيل المثال، في المثال أدناه، تم تعيين اسمي الأول لمتغير first_name. علامة المساواة هي عامل التخصيص. التعيين يعني تخزين البيانات في المتغير. علامة المساواة في بايثون ليست مساواة كما في الرياضيات.</p>
+<p><em>مثال:</em></p>
+<pre><code class="language-py"># Variables in Python
+first_name = &#39;Asabeneh&#39;
+last_name = &#39;Yetayeh&#39;
+country = &#39;Finland&#39;
+city = &#39;Helsinki&#39;
+age = 250
+is_married = True
+skills = [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JS&#39;, &#39;React&#39;, &#39;Python&#39;]
+person_info = {
+   &#39;firstname&#39;:&#39;Asabeneh&#39;,
+   &#39;lastname&#39;:&#39;Yetayeh&#39;,
+   &#39;country&#39;:&#39;Finland&#39;,
+   &#39;city&#39;:&#39;Helsinki&#39;
+   }
+</code></pre>
+<p>دعونا نستخدم<em>مطبعة()</em>و<em>لين ()</em>وظائف مدمجة. تأخذ وظيفة الطباعة عددًا غير محدود من الوسائط. الوسيطة هي قيمة يمكننا تمريرها أو وضعها داخل قوس الدالة، انظر المثال أدناه.</p>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">print(&#39;Hello, World!&#39;) # The text Hello, World! is an argument
+print(&#39;Hello&#39;,&#39;,&#39;, &#39;World&#39;,&#39;!&#39;) # it can take multiple arguments, four arguments have been passed
+print(len(&#39;Hello, World!&#39;)) # it takes only one argument
+</code></pre>
+<p>دعونا نطبع ونجد أيضًا طول المتغيرات المعلنة في الأعلى:</p>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py"># Printing the values stored in the variables
+
+print(&#39;First name:&#39;, first_name)
+print(&#39;First name length:&#39;, len(first_name))
+print(&#39;Last name: &#39;, last_name)
+print(&#39;Last name length: &#39;, len(last_name))
+print(&#39;Country: &#39;, country)
+print(&#39;City: &#39;, city)
+print(&#39;Age: &#39;, age)
+print(&#39;Married: &#39;, is_married)
+print(&#39;Skills: &#39;, skills)
+print(&#39;Person information: &#39;, person_info)
+</code></pre>
+<h3>الإعلان عن متغيرات متعددة في السطر</h3>
+<p>يمكن أيضًا الإعلان عن متغيرات متعددة في سطر واحد:</p>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">first_name, last_name, country, age, is_married = &#39;Asabeneh&#39;, &#39;Yetayeh&#39;, &#39;Helsink&#39;, 250, True
+
+print(first_name, last_name, country, age, is_married)
+print(&#39;First name:&#39;, first_name)
+print(&#39;Last name: &#39;, last_name)
+print(&#39;Country: &#39;, country)
+print(&#39;Age: &#39;, age)
+print(&#39;Married: &#39;, is_married)
+</code></pre>
+<p>الحصول على مدخلات المستخدم باستخدام<em>مدخل()</em>وظيفة مدمجة. دعونا نقوم بتعيين البيانات التي نحصل عليها من المستخدم إلى متغيرات الاسم الأول والعمر.<strong>مثال:</strong></p>
+<pre><code class="language-py">first_name = input(&#39;What is your name: &#39;)
+age = input(&#39;How old are you? &#39;)
+
+print(first_name)
+print(age)
+</code></pre>
+<h2>أنواع البيانات</h2>
+<p>هناك عدة أنواع من البيانات في بايثون. لتحديد نوع البيانات نستخدم<em>يكتب</em>وظيفة مدمجة. أود أن أطلب منك التركيز على فهم أنواع البيانات المختلفة بشكل جيد للغاية. عندما يتعلق الأمر بالبرمجة، فإن الأمر كله يتعلق بأنواع البيانات. لقد قدمت أنواع البيانات في البداية، ويأتي ذلك مرة أخرى، لأن كل موضوع مرتبط بأنواع البيانات. سنغطي أنواع البيانات بمزيد من التفصيل في الأقسام الخاصة بكل منها.</p>
+<h2>التحقق من أنواع البيانات والصب</h2>
+<ul>
+<li>التحقق من أنواع البيانات: للتحقق من نوع بيانات بيانات/متغير معين، نستخدم الأمر<em>يكتب</em>
+<strong>أمثلة:</strong></li>
+</ul>
+<pre><code class="language-py"># Different python data types
+# Let&#39;s declare variables with various data types
+
+first_name = &#39;Asabeneh&#39;     # str
+last_name = &#39;Yetayeh&#39;       # str
+country = &#39;Finland&#39;         # str
+city= &#39;Helsinki&#39;            # str
+age = 250                   # int, it is not my real age, don&#39;t worry about it
+
+# Printing out types
+print(type(&#39;Asabeneh&#39;))          # str
+print(type(first_name))          # str
+print(type(10))                  # int
+print(type(3.14))                # float
+print(type(1 + 1j))              # complex
+print(type(True))                # bool
+print(type([1, 2, 3, 4]))        # list
+print(type({&#39;name&#39;:&#39;Asabeneh&#39;})) # dict
+print(type((1,2)))               # tuple
+print(type(zip([1,2],[3,4])))    # zip
+</code></pre>
+<ul>
+<li><p>Casting: تحويل نوع بيانات إلى نوع بيانات آخر. نحن نستخدم<em>كثافة العمليات ()</em>,<em>يطفو()</em>,<em>شارع ()</em>,<em>قائمة</em>,<em>تعيين</em>عندما نقوم بإجراء عمليات حسابية، يجب أولاً تحويل أرقام السلسلة إلى int أو float وإلا فإنها سترجع خطأ. إذا قمنا بربط رقم بسلسلة، فيجب تحويل الرقم أولاً إلى سلسلة. سنتحدث عن التسلسل في قسم السلسلة.</p>
+<p><strong>أمثلة:</strong></p>
+</li>
+</ul>
+<pre><code class="language-py"># int to float
+num_int = 10
+print(&#39;num_int&#39;,num_int)         # 10
+num_float = float(num_int)
+print(&#39;num_float:&#39;, num_float)   # 10.0
+
+# float to int
+gravity = 9.81
+print(int(gravity))             # 9
+
+# int to str
+num_int = 10
+print(num_int)                  # 10
+num_str = str(num_int)
+print(num_str)                  # &#39;10&#39;
+
+# str to int or float
+num_str = &#39;10.6&#39;
+num_float = float(num_str)  # Convert the string to a float first
+num_int = int(num_float)    # Then convert the float to an integer
+print(&#39;num_int&#39;, int(num_str))      # 10
+print(&#39;num_float&#39;, float(num_str))  # 10.6
+num_int = int(num_float)
+print(&#39;num_int&#39;, int(num_int))      # 10
+
+# str to list
+first_name = &#39;Asabeneh&#39;
+print(first_name)               # &#39;Asabeneh&#39;
+first_name_to_list = list(first_name)
+print(first_name_to_list)            # [&#39;A&#39;, &#39;s&#39;, &#39;a&#39;, &#39;b&#39;, &#39;e&#39;, &#39;n&#39;, &#39;e&#39;, &#39;h&#39;]
+</code></pre>
+<h2>أرقام</h2>
+<p>أنواع البيانات الرقمية في بايثون:</p>
+<ol>
+<li><p>الأعداد الصحيحة: الأعداد الصحيحة (السالبة والصفر والإيجابية).
+مثال:
+... -3، -2، -1، 0، 1، 2، 3 ...</p>
+</li>
+<li><p>أرقام الفاصلة العائمة (الأرقام العشرية)
+مثال:
+... -3.5، -2.25، -1.0، 0.0، 1.1، 2.2، 3.5 ...</p>
+</li>
+<li><p>الأعداد المركبة
+مثال:
+1 + ي، 2 + 4ي، 1 - 1ي</p>
+</li>
+</ol>
+<p>🌕 أنت رائع. لقد أكملت للتو تحديات اليوم الثاني وأنت على بعد خطوتين من طريقك نحو العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين - اليوم الثاني</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li>داخل 30DaysOfPython، قم بإنشاء مجلد يسمى day_2. داخل هذا المجلد، قم بإنشاء ملف يسمىvariables.py</li>
+<li>اكتب تعليقًا بيثون يقول "اليوم الثاني: 30 يومًا من برمجة بايثون"</li>
+<li>قم بتعريف متغير الاسم الأول وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير الاسم الأخير وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير الاسم الكامل وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير البلد وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير المدينة وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير العمر وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغير السنة وقم بتعيين قيمة له</li>
+<li>قم بتعريف المتغير is_married وقم بتعيين قيمة له</li>
+<li>قم بتعريف المتغير is_true وقم بتعيين قيمة له</li>
+<li>قم بتعريف المتغير is_light_on وقم بتعيين قيمة له</li>
+<li>قم بتعريف متغيرات متعددة في سطر واحد</li>
+</ol>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>تحقق من نوع البيانات لجميع المتغيرات الخاصة بك باستخدام وظيفة type() المضمنة</li>
+<li>باستخدام<em>لين ()</em>وظيفة مدمجة، ابحث عن طول اسمك الأول</li>
+<li>قارن طول اسمك الأول واسمك الأخير</li>
+<li>قم بتعريف 5 كـ num_one و4 كـ num_two</li>
+<li>أضف num_one وnum_two وقم بتعيين القيمة إلى إجمالي متغير</li>
+<li>اطرح num_two من num_one وقم بتعيين القيمة لمتغير diff</li>
+<li>اضرب num_two و num_one وقم بتعيين القيمة لمنتج متغير</li>
+<li>اقسم num_one على num_two وقم بتعيين القيمة لقسمة متغيرة</li>
+<li>استخدم قسمة المعامل للعثور على num_two مقسومًا على num_one وتعيين القيمة إلى باقي المتغير</li>
+<li>احسب num_one أس num_two وقم بتعيين القيمة لمتغير exp</li>
+<li>ابحث عن تقسيم الأرضية لـ num_one على num_two وقم بتعيين القيمة لمتغير Floor_division</li>
+<li>نصف قطر الدائرة 30 مترًا.<ol>
+<li>احسب مساحة الدائرة وقم بتعيين القيمة لاسم متغير<em>Area_of_circle</em></li>
+<li>احسب محيط الدائرة وقم بتعيين القيمة لاسم متغير<em>circ_of_circle</em></li>
+<li>خذ نصف القطر كمدخل للمستخدم واحسب المنطقة.</li>
+</ol>
+</li>
+<li>استخدم وظيفة الإدخال المضمنة للحصول على الاسم الأول واسم العائلة والبلد والعمر من المستخدم وتخزين القيمة في أسماء المتغيرات المقابلة لها</li>
+<li>قم بتشغيل help('keywords') في Python Shell أو في ملفك للتحقق من الكلمات أو الكلمات الرئيسية المحجوزة في Python</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+<p><a href="../readme.md"><< اليوم الأول</a>|<a href="../03_Day_Operators/03_operators.md">اليوم الثالث >></a></p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

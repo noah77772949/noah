@@ -1,0 +1,212 @@
+<!--title:الوحدات (Modules)|time:25|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 12: الوحدات (وحدات)</h1>
+  <div class="hero-meta">
+    <span>⏱ 25 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#import-built-in-modules">استيراد الوحدات المضمنة</a>
+</li>
+<li><a href="#-exercises-day-12">💻 التمارين: اليوم الثاني عشر</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘 اليوم 12</h1>
+<h2>وحدات</h2>
+<h3>ما هي الوحدة النمطية</h3>
+<p>الوحدة عبارة عن ملف يحتوي على مجموعة من الرموز أو مجموعة من الوظائف التي يمكن تضمينها في التطبيق. يمكن أن تكون الوحدة عبارة عن ملف يحتوي على متغير واحد أو دالة أو قاعدة تعليمات برمجية كبيرة.</p>
+<h3>إنشاء وحدة</h3>
+<p>لإنشاء وحدة نكتب أكوادنا في برنامج نصي بيثون ونحفظها كملف .py. قم بإنشاء ملف باسم mymodule.py داخل مجلد المشروع الخاص بك. دعونا نكتب بعض التعليمات البرمجية في هذا الملف.</p>
+<pre><code class="language-py"># mymodule.py file
+def generate_full_name(firstname, lastname):
+    return firstname + &#39; &#39; + lastname
+</code></pre>
+<p>قم بإنشاء ملف main.py في دليل المشروع الخاص بك وقم باستيراد ملف mymodule.py.</p>
+<h3>استيراد وحدة</h3>
+<p>لاستيراد الملف نستخدم ملف<em>يستورد</em>الكلمة الأساسية واسم الملف فقط.</p>
+<pre><code class="language-py"># main.py file
+import mymodule
+print(mymodule.generate_full_name(&#39;Asabeneh&#39;, &#39;Yetayeh&#39;)) # Asabeneh Yetayeh
+</code></pre>
+<h3>وظائف الاستيراد من الوحدة النمطية</h3>
+<p>يمكن أن يكون لدينا العديد من الوظائف في الملف ويمكننا استيراد جميع الوظائف بشكل مختلف.</p>
+<pre><code class="language-py"># main.py file
+from mymodule import generate_full_name, sum_two_nums, person, gravity
+print(generate_full_name(&#39;Asabneh&#39;,&#39;Yetayeh&#39;))
+print(sum_two_nums(1,9))
+mass = 100
+weight = mass * gravity
+print(weight)
+print(person[&#39;firstname&#39;])
+</code></pre>
+<h3>وظائف الاستيراد من الوحدة النمطية وإعادة التسمية</h3>
+<p>أثناء الاستيراد يمكننا إعادة تسمية اسم الوحدة.</p>
+<pre><code class="language-py"># main.py file
+from mymodule import generate_full_name as fullname, sum_two_nums as total, person as p, gravity as g
+print(fullname(&#39;Asabneh&#39;,&#39;Yetayeh&#39;))
+print(total(1, 9))
+mass = 100 
+weight = mass * g
+print(weight)
+print(p)
+print(p[&#39;firstname&#39;])
+</code></pre>
+<h2>استيراد الوحدات المضمنة</h2>
+<p>مثل لغات البرمجة الأخرى، يمكننا أيضًا استيراد الوحدات عن طريق استيراد الملف/الوظيفة باستخدام الكلمة الأساسية<em>يستورد</em>. لنقم باستيراد الوحدة المشتركة التي سنستخدمها في معظم الأوقات. بعض الوحدات المدمجة الشائعة:<em>الرياضيات</em>,<em>التاريخ والوقت</em>,<em>نظام التشغيل</em>,<em>sys</em>,<em>عشوائي</em>,<em>إحصائيات</em>,<em>مجموعات</em>,<em>json</em>,<em>يكرر</em></p>
+<h3>وحدة نظام التشغيل</h3>
+<p>باستخدام بايثون<em>نظام التشغيل</em>من الممكن تنفيذ العديد من مهام نظام التشغيل تلقائيًا. توفر وحدة نظام التشغيل في Python وظائف لإنشاء دليل العمل الحالي وتغييره وإزالة الدليل (المجلد) وجلب محتوياته وتغيير الدليل الحالي وتحديده.</p>
+<pre><code class="language-py"># import the module
+import os
+# Creating a directory
+os.mkdir(&#39;directory_name&#39;)
+# Changing the current directory
+os.chdir(&#39;path&#39;)
+# Getting current working directory
+os.getcwd()
+# Removing directory
+os.rmdir()
+</code></pre>
+<h3>وحدة النظام</h3>
+<p>توفر وحدة sys الوظائف والمتغيرات المستخدمة لمعالجة أجزاء مختلفة من بيئة تشغيل Python. تقوم الدالة sys.argv بإرجاع قائمة بوسائط سطر الأوامر التي تم تمريرها إلى برنامج Python النصي. العنصر الموجود في الفهرس 0 في هذه القائمة هو دائمًا اسم البرنامج النصي، وفي الفهرس 1 هو الوسيط الذي تم تمريره من سطر الأوامر.</p>
+<p>مثال لملف script.py:</p>
+<pre><code class="language-py">import sys
+#print(sys.argv[0], argv[1],sys.argv[2])  # this line would print out: filename argument1 argument2
+print(&#39;Welcome {}. Enjoy  {} challenge!&#39;.format(sys.argv[1], sys.argv[2]))
+</code></pre>
+<p>الآن للتحقق من كيفية عمل هذا البرنامج النصي كتبت في سطر الأوامر:</p>
+<pre><code class="language-sh">python script.py Asabeneh 30DaysOfPython
+</code></pre>
+<p>النتيجة:</p>
+<pre><code class="language-sh">Welcome Asabeneh. Enjoy  30DayOfPython challenge! 
+</code></pre>
+<p>بعض أوامر النظام المفيدة:</p>
+<pre><code class="language-py"># to exit sys
+sys.exit()
+# To know the largest integer variable it takes
+sys.maxsize
+# To know environment path
+sys.path
+# To know the version of python you are using
+sys.version
+</code></pre>
+<h3>وحدة الإحصاء</h3>
+<p>توفر وحدة الإحصائيات وظائف للإحصائيات الرياضية للبيانات الرقمية. الوظائف الإحصائية الشائعة التي تم تعريفها في هذه الوحدة:<em>يقصد</em>,<em>متوسط</em>,<em>وضع</em>,<em>com.stdev</em>إلخ.</p>
+<pre><code class="language-py">from statistics import * # importing all the statistics modules
+ages = [20, 20, 4, 24, 25, 22, 26, 20, 23, 22, 26]
+print(mean(ages))       # ~22.9
+print(median(ages))     # 23
+print(mode(ages))       # 20
+print(stdev(ages))      # ~2.3
+</code></pre>
+<h3>وحدة الرياضيات</h3>
+<p>وحدة تحتوي على العديد من العمليات الحسابية والثوابت.</p>
+<pre><code class="language-py">import math
+print(math.pi)           # 3.141592653589793, pi constant
+print(math.sqrt(2))      # 1.4142135623730951, square root
+print(math.pow(2, 3))    # 8.0, exponential function
+print(math.floor(9.81))  # 9, rounding to the lowest
+print(math.ceil(9.81))   # 10, rounding to the highest
+print(math.log10(100))   # 2, logarithm with 10 as base
+</code></pre>
+<p>الآن قمنا باستيراد<em>الرياضيات</em>الوحدة التي تحتوي على الكثير من الوظائف التي يمكن أن تساعدنا في إجراء العمليات الحسابية الرياضية. للتحقق من الوظائف التي حصلت عليها الوحدة، يمكننا استخدامها<em>مساعدة (الرياضيات)</em>، أو<em>دير (الرياضيات)</em>. سيعرض هذا الوظائف المتاحة في الوحدة. إذا أردنا استيراد وظيفة محددة فقط من الوحدة، فإننا نستوردها على النحو التالي:</p>
+<pre><code class="language-py">from math import pi
+print(pi)
+</code></pre>
+<p>من الممكن أيضًا استيراد وظائف متعددة في وقت واحد</p>
+<pre><code class="language-py">
+from math import pi, sqrt, pow, floor, ceil, log10
+print(pi)                 # 3.141592653589793
+print(sqrt(2))            # 1.4142135623730951
+print(pow(2, 3))          # 8.0
+print(floor(9.81))        # 9
+print(ceil(9.81))         # 10
+print(math.log10(100))    # 2
+</code></pre>
+<p>ولكن إذا أردنا استيراد جميع الوظائف في وحدة الرياضيات فيمكننا استخدام * .</p>
+<pre><code class="language-py">from math import *
+print(pi)                  # 3.141592653589793, pi constant
+print(sqrt(2))             # 1.4142135623730951, square root
+print(pow(2, 3))           # 8.0, exponential
+print(floor(9.81))         # 9, rounding to the lowest
+print(ceil(9.81))          # 10, rounding to the highest
+print(math.log10(100))     # 2
+</code></pre>
+<p>عندما نقوم بالاستيراد، يمكننا أيضًا إعادة تسمية اسم الوظيفة.</p>
+<pre><code class="language-py">from math import pi as  PI
+print(PI) # 3.141592653589793
+</code></pre>
+<h3>وحدة السلسلة</h3>
+<p>وحدة السلسلة هي وحدة مفيدة للعديد من الأغراض. يوضح المثال أدناه بعض استخدامات وحدة السلسلة.</p>
+<pre><code class="language-py">import string
+print(string.ascii_letters) # abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+print(string.digits)        # 0123456789
+print(string.punctuation)   # !&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</code></pre>
+<h3>وحدة عشوائية</h3>
+<p>الآن أنت على دراية باستيراد الوحدات. دعونا نقوم باستيراد آخر لنتعرف عليه جيدًا. دعونا نستورد<em>عشوائي</em>الوحدة التي تعطينا رقمًا عشوائيًا بين 0 و 0.9999...<em>عشوائي</em>تحتوي الوحدة على الكثير من الوظائف ولكن في هذا القسم سنستخدمها فقط<em>عشوائي</em>و<em>randint</em>.</p>
+<pre><code class="language-py">from random import random, randint
+print(random())   # it doesn&#39;t take any arguments; it returns a value between 0 and 0.9999
+print(randint(5, 20)) # it returns a random integer number between [5, 20] inclusive
+</code></pre>
+<p>🌕 أنت تسير بعيدًا. يستمر في التقدم! لقد أكملت للتو تحديات اليوم الثاني عشر، وأنت على بعد 12 خطوة في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم الثاني عشر</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li>اكتب دالة تولد Rand_user_id المكون من ستة أرقام/أحرف.<pre><code class="language-py">  print(random_user_id()) 
+  &#39;1ee33d&#39;
+</code></pre>
+</li>
+<li>تعديل المهمة السابقة. قم بتعريف دالة باسم user_id_gen_by_user. لا يتطلب الأمر أي معلمات ولكنه يتطلب مدخلين باستخدام الإدخال (). أحد المدخلات هو عدد الأحرف والإدخال الثاني هو عدد المعرفات التي من المفترض أن يتم إنشاؤها.</li>
+</ol>
+<pre><code class="language-py">print(user_id_gen_by_user()) # user input: 5 5
+#output:
+#kcsy2
+#SMFYb
+#bWmeq
+#ZXOYh
+#2Rgxf
+   
+print(user_id_gen_by_user()) # 16 5
+#1GCSgPLMaBAVQZ26
+#YD7eFwNQKNs7qXaT
+#ycArC5yrRupyG00S
+#UbGxOFI7UXSWAyKN
+#dIV0SSUTgAdKwStr
+</code></pre>
+<ol start="3">
+<li>اكتب دالة باسم rgb_color_gen. سيتم إنشاء ألوان rgb (3 قيم تتراوح من 0 إلى 255 لكل منها).</li>
+</ol>
+<pre><code class="language-py">print(rgb_color_gen())
+# rgb(125,244,255) - the output should be in this form
+</code></pre>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>اكتب دالة list_of_hexa_colors التي تُرجع أي عدد من الألوان السداسية العشرية في مصفوفة (ستة أرقام سداسية عشرية مكتوبة بعد #. يتكون نظام الأرقام السداسية العشرية من 16 رمزًا، 0-9 وأول 6 أحرف من الأبجدية، من a إلى f. تحقق من المهمة 6 للحصول على أمثلة الإخراج).</li>
+<li>اكتب دالة list_of_rgb_colors والتي تُرجع أي عدد من ألوان RGB في مصفوفة.</li>
+<li>اكتب دالة generator_colors يمكنها توليد أي عدد من الألوان السداسية أو rgb.</li>
+</ol>
+<pre><code class="language-py">   generate_colors(&#39;hexa&#39;, 3) # [&#39;#a3e12f&#39;,&#39;#03ed55&#39;,&#39;#eb3d2b&#39;] 
+   generate_colors(&#39;hexa&#39;, 1) # [&#39;#b334ef&#39;]
+   generate_colors(&#39;rgb&#39;, 3)  # [&#39;rgb(5, 55, 175&#39;,&#39;rgb(50, 105, 100&#39;,&#39;rgb(15, 26, 80&#39;] 
+   generate_colors(&#39;rgb&#39;, 1)  # [&#39;rgb(33,79, 176)&#39;]
+</code></pre>
+<h3>التدريبات: المستوى 3</h3>
+<ol>
+<li>قم باستدعاء وظيفتك shuffle_list، فهي تأخذ قائمة كمعلمة وتقوم بإرجاع قائمة مختلطة</li>
+<li>اكتب دالة تقوم بإرجاع مصفوفة مكونة من سبعة أرقام عشوائية في نطاق من 0 إلى 9. يجب أن تكون جميع الأرقام فريدة.</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

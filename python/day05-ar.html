@@ -1,0 +1,465 @@
+<!--title:القوائم (Lists)|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 05: القوائم (القوائم)</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+</li>
+<li><a href="#-exercises-day-5">💻 التمارين: اليوم الخامس</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>اليوم الخامس</h1>
+<h2>القوائم</h2>
+<p>هناك أربعة أنواع من بيانات المجموعة في بايثون:</p>
+<ul>
+<li>القائمة: هي مجموعة مرتبة وقابلة للتغيير (قابلة للتعديل). يسمح بأعضاء مكررة.</li>
+<li>Tuple: مجموعة مرتبة وغير قابلة للتغيير أو التعديل (غير قابلة للتغيير). يسمح بأعضاء مكررة.</li>
+<li>المجموعة: هي مجموعة غير مرتبة وغير مفهرسة وغير قابلة للتعديل، ولكن يمكننا إضافة عناصر جديدة إلى المجموعة. لا يسمح بالأعضاء المكررين.</li>
+<li>القاموس: عبارة عن مجموعة غير مرتبة وقابلة للتغيير (التعديل) والمفهرسة. لا يوجد أعضاء مكررة.</li>
+</ul>
+<p>القائمة عبارة عن مجموعة من أنواع البيانات المختلفة مرتبة وقابلة للتعديل (قابلة للتغيير). يمكن أن تكون القائمة فارغة أو قد تحتوي على عناصر مختلفة من نوع البيانات.</p>
+<h3>كيفية إنشاء قائمة</h3>
+<p>في بايثون يمكننا إنشاء القوائم بطريقتين:</p>
+<ul>
+<li>استخدام وظيفة القائمة المضمنة</li>
+</ul>
+<pre><code class="language-py"># syntax
+lst = list()
+</code></pre>
+<pre><code class="language-py">empty_list = list() # this is an empty list, no item in the list
+print(len(empty_list)) # 0
+</code></pre>
+<ul>
+<li>باستخدام الأقواس المربعة، []</li>
+</ul>
+<pre><code class="language-py"># syntax
+lst = []
+</code></pre>
+<pre><code class="language-py">empty_list = [] # this is an empty list, no item in the list
+print(len(empty_list)) # 0
+</code></pre>
+<p>القوائم ذات القيم الأولية. نحن نستخدم<em>لين ()</em>للعثور على طول القائمة.</p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]                     # list of fruits
+vegetables = [&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;,&#39;Onion&#39;, &#39;Carrot&#39;]      # list of vegetables
+animal_products = [&#39;milk&#39;, &#39;meat&#39;, &#39;butter&#39;, &#39;yoghurt&#39;]             # list of animal products
+web_techs = [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JS&#39;, &#39;React&#39;,&#39;Redux&#39;, &#39;Node&#39;, &#39;MongDB&#39;] # list of web technologies
+countries = [&#39;Finland&#39;, &#39;Estonia&#39;, &#39;Denmark&#39;, &#39;Sweden&#39;, &#39;Norway&#39;] 
+
+# Print the lists and its length
+print(&#39;Fruits:&#39;, fruits)
+print(&#39;Number of fruits:&#39;, len(fruits))
+print(&#39;Vegetables:&#39;, vegetables)
+print(&#39;Number of vegetables:&#39;, len(vegetables))
+print(&#39;Animal products:&#39;,animal_products)
+print(&#39;Number of animal products:&#39;, len(animal_products))
+print(&#39;Web technologies:&#39;, web_techs)
+print(&#39;Number of web technologies:&#39;, len(web_techs))
+print(&#39;Countries:&#39;, countries)
+print(&#39;Number of countries:&#39;, len(countries))
+</code></pre>
+<pre><code class="language-sh">output
+Fruits: [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+Number of fruits: 4
+Vegetables: [&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;, &#39;Onion&#39;, &#39;Carrot&#39;]
+Number of vegetables: 5
+Animal products: [&#39;milk&#39;, &#39;meat&#39;, &#39;butter&#39;, &#39;yoghurt&#39;]
+Number of animal products: 4
+Web technologies: [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JS&#39;, &#39;React&#39;, &#39;Redux&#39;, &#39;Node&#39;, &#39;MongDB&#39;]
+Number of web technologies: 7
+Countries: [&#39;Finland&#39;, &#39;Estonia&#39;, &#39;Denmark&#39;, &#39;Sweden&#39;, &#39;Norway&#39;]
+Number of countries: 5
+</code></pre>
+<ul>
+<li>يمكن أن تحتوي القوائم على عناصر من أنواع بيانات مختلفة</li>
+</ul>
+<pre><code class="language-py"> lst = [&#39;Asabeneh&#39;, 250, True, {&#39;country&#39;:&#39;Finland&#39;, &#39;city&#39;:&#39;Helsinki&#39;}] # list containing different data types
+</code></pre>
+<h3>الوصول إلى عناصر القائمة باستخدام الفهرسة الإيجابية</h3>
+<p>يمكننا الوصول إلى كل عنصر في القائمة باستخدام الفهرس الخاص به. يبدأ فهرس القائمة من 0. الصورة أدناه توضح بوضوح أين يبدأ الفهرس<img src="../images/list_index.png" alt="List index"></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+first_fruit = fruits[0] # we are accessing the first item using its index
+print(first_fruit)      # banana
+second_fruit = fruits[1]
+print(second_fruit)     # orange
+last_fruit = fruits[3]
+print(last_fruit) # lemon
+# Last index
+last_index = len(fruits) - 1
+last_fruit = fruits[last_index]
+</code></pre>
+<h3>الوصول إلى عناصر القائمة باستخدام الفهرسة السلبية</h3>
+<p>الفهرسة السلبية تعني البدء من النهاية، -1 تشير إلى العنصر الأخير، -2 تشير إلى العنصر الثاني والأخير.</p>
+<p><img src="../images/list_negative_indexing.png" alt="List negative indexing"></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+first_fruit = fruits[-4]
+last_fruit = fruits[-1]
+second_last = fruits[-2]
+print(first_fruit)      # banana
+print(last_fruit)       # lemon
+print(second_last)      # mango
+</code></pre>
+<h3>تفريغ عناصر القائمة</h3>
+<pre><code class="language-py">lst = [&#39;item1&#39;,&#39;item2&#39;,&#39;item3&#39;, &#39;item4&#39;, &#39;item5&#39;]
+first_item, second_item, third_item, *rest = lst
+print(first_item)     # item1
+print(second_item)    # item2
+print(third_item)     # item3
+print(rest)           # [&#39;item4&#39;, &#39;item5&#39;]
+</code></pre>
+<pre><code class="language-py"># First Example
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;,&#39;lime&#39;,&#39;apple&#39;]
+first_fruit, second_fruit, third_fruit, *rest = fruits 
+print(first_fruit)     # banana
+print(second_fruit)    # orange
+print(third_fruit)     # mango
+print(rest)           # [&#39;lemon&#39;,&#39;lime&#39;,&#39;apple&#39;]
+# Second Example about unpacking list
+first, second, third,*rest, tenth = [1,2,3,4,5,6,7,8,9,10]
+print(first)          # 1
+print(second)         # 2
+print(third)          # 3
+print(rest)           # [4,5,6,7,8,9]
+print(tenth)          # 10
+# Third Example about unpacking list
+countries = [&#39;Germany&#39;, &#39;France&#39;,&#39;Belgium&#39;,&#39;Sweden&#39;,&#39;Denmark&#39;,&#39;Finland&#39;,&#39;Norway&#39;,&#39;Iceland&#39;,&#39;Estonia&#39;]
+gr, fr, bg, sw, *scandic, es = countries
+print(gr) 
+print(fr)
+print(bg)
+print(sw)
+print(scandic)
+print(es)
+</code></pre>
+<h3>تقطيع العناصر من القائمة</h3>
+<ul>
+<li>الفهرسة الإيجابية: يمكننا تحديد مجموعة من الفهارس الإيجابية من خلال تحديد البداية والنهاية والخطوة، وستكون القيمة المرجعة عبارة عن قائمة جديدة. (القيم الافتراضية للبداية = 0، النهاية = len(lst) - 1 (العنصر الأخير)، الخطوة = 1)</li>
+</ul>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+all_fruits = fruits[0:4] # it returns all the fruits
+# this will also give the same result as the one above
+all_fruits = fruits[0:] # if we don&#39;t set where to stop it takes all the rest
+orange_and_mango = fruits[1:3] # it does not include the first index
+orange_mango_lemon = fruits[1:]
+orange_and_lemon = fruits[::2] # here we used a 3rd argument, step. It will take every 2cnd item - [&#39;banana&#39;, &#39;mango&#39;]
+</code></pre>
+<ul>
+<li>الفهرسة السالبة: يمكننا تحديد نطاق من الفهارس السالبة من خلال تحديد البداية والنهاية والخطوة، وستكون القيمة المرجعة عبارة عن قائمة جديدة.</li>
+</ul>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+all_fruits = fruits[-4:] # it returns all the fruits
+orange_and_mango = fruits[-3:-1] # it does not include the last index,[&#39;orange&#39;, &#39;mango&#39;]
+orange_mango_lemon = fruits[-3:] # this will give starting from -3 to the end,[&#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+reverse_fruits = fruits[::-1] # a negative step will take the list in reverse order,[&#39;lemon&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;banana&#39;]
+</code></pre>
+<h3>تعديل القوائم</h3>
+<p>القائمة عبارة عن مجموعة مرتبة قابلة للتغيير أو التعديل من العناصر. يتيح تعديل قائمة الفاكهة.</p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits[0] = &#39;avocado&#39;
+print(fruits)       #  [&#39;avocado&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits[1] = &#39;apple&#39;
+print(fruits)       #  [&#39;avocado&#39;, &#39;apple&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+last_index = len(fruits) - 1
+fruits[last_index] = &#39;lime&#39;
+print(fruits)        #  [&#39;avocado&#39;, &#39;apple&#39;, &#39;mango&#39;, &#39;lime&#39;]
+</code></pre>
+<h3>التحقق من العناصر في القائمة</h3>
+<p>التحقق من عنصر ما إذا كان عضوًا في القائمة باستخدام<em>في</em>مشغل. انظر المثال أدناه.</p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+does_exist = &#39;banana&#39; in fruits
+print(does_exist)  # True
+does_exist = &#39;lime&#39; in fruits
+print(does_exist)  # False
+</code></pre>
+<h3>إضافة عناصر إلى القائمة</h3>
+<p>لإضافة عنصر إلى نهاية القائمة الموجودة نستخدم الطريقة<em>إلحاق ()</em>.</p>
+<pre><code class="language-py"># syntax
+lst = list()
+lst.append(item)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.append(&#39;apple&#39;)
+print(fruits)           # [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;apple&#39;]
+fruits.append(&#39;lime&#39;)   # [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;apple&#39;, &#39;lime&#39;]
+print(fruits)
+</code></pre>
+<h3>إدراج العناصر في القائمة</h3>
+<p>يمكننا استخدامها<em>إدراج ()</em>طريقة لإدراج عنصر واحد في فهرس محدد في القائمة. لاحظ أنه يتم نقل العناصر الأخرى إلى اليمين. ال<em>إدراج ()</em>تأخذ الأساليب وسيطتين: الفهرس وعنصر لإدراجه.</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.insert(index, item)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.insert(2, &#39;apple&#39;) # insert apple between orange and mango
+print(fruits)           # [&#39;banana&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.insert(3, &#39;lime&#39;)   # [&#39;banana&#39;, &#39;orange&#39;, &#39;apple&#39;, &#39;lime&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+print(fruits)
+</code></pre>
+<h3>إزالة العناصر من القائمة</h3>
+<p>تقوم طريقة الإزالة بإزالة عنصر محدد من القائمة</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.remove(item)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;]
+fruits.remove(&#39;banana&#39;)
+print(fruits)  # [&#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;] - this method removes the first occurrence of the item in the list
+fruits.remove(&#39;lemon&#39;)
+print(fruits)  # [&#39;orange&#39;, &#39;mango&#39;, &#39;banana&#39;]
+</code></pre>
+<h3>إزالة العناصر باستخدام Pop</h3>
+<p>ال<em>البوب ​​()</em>الطريقة تزيل الفهرس المحدد (أو العنصر الأخير إذا لم يتم تحديد الفهرس):</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.pop()       # last item
+lst.pop(index)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.pop()
+print(fruits)       # [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;]
+
+fruits.pop(0)
+print(fruits)       # [&#39;orange&#39;, &#39;mango&#39;]
+</code></pre>
+<h3>إزالة العناصر باستخدام Del</h3>
+<p>ال<em>ديل</em>تقوم الكلمة الأساسية بإزالة الفهرس المحدد ويمكن استخدامها أيضًا لحذف العناصر الموجودة ضمن نطاق الفهرس. ويمكنه أيضًا حذف القائمة بالكامل</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+del lst[index] # only a single item
+del lst        # to delete the list completely
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;kiwi&#39;, &#39;lime&#39;]
+del fruits[0]
+print(fruits)       # [&#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;kiwi&#39;, &#39;lime&#39;]
+del fruits[1]
+print(fruits)       # [&#39;orange&#39;, &#39;lemon&#39;, &#39;kiwi&#39;, &#39;lime&#39;]
+del fruits[1:3]     # this deletes items between given indexes, so it does not delete the item with index 3!
+print(fruits)       # [&#39;orange&#39;, &#39;lime&#39;]
+del fruits
+print(fruits)       # This should give: NameError: name &#39;fruits&#39; is not defined
+</code></pre>
+<h3>عناصر قائمة المقاصة</h3>
+<p>ال<em>واضح()</em>الطريقة تفرغ القائمة:</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.clear()
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.clear()
+print(fruits)       # []
+</code></pre>
+<h3>نسخ القائمة</h3>
+<p>من الممكن نسخ قائمة عن طريق إعادة تعيينها لمتغير جديد بالطريقة التالية: list2 = list1. الآن، list2 هي مرجع للقائمة 1، وأي تغييرات نجريها في القائمة 2 ستؤدي أيضًا إلى تعديل القائمة 1 الأصلية. ولكن هناك الكثير من الحالات التي لا نرغب فيها في تعديل النسخة الأصلية بدلاً من ذلك نرغب في الحصول على نسخة مختلفة. إحدى طرق تجنب المشكلة المذكورة أعلاه هي الاستخدام<em>ينسخ()</em>.</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst_copy = lst.copy()
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits_copy = fruits.copy()
+print(fruits_copy)       # [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+</code></pre>
+<h3>قوائم الانضمام</h3>
+<p>هناك عدة طرق لربط أو ربط قائمتين أو أكثر في بايثون.</p>
+<ul>
+<li>عامل زائد (+)</li>
+</ul>
+<pre><code class="language-py"># syntax
+list3 = list1 + list2
+</code></pre>
+<pre><code class="language-py">positive_numbers = [1, 2, 3, 4, 5]
+zero = [0]
+negative_numbers = [-5,-4,-3,-2,-1]
+integers = negative_numbers + zero + positive_numbers
+print(integers) # [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+vegetables = [&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;, &#39;Onion&#39;, &#39;Carrot&#39;]
+fruits_and_vegetables = fruits + vegetables
+print(fruits_and_vegetables ) # [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;, &#39;Onion&#39;, &#39;Carrot&#39;]
+</code></pre>
+<ul>
+<li>الانضمام باستخدام طريقة تمديد ().
+ال<em>يمتد()</em>تسمح الطريقة بإلحاق القائمة في القائمة. انظر المثال أدناه.</li>
+</ul>
+<pre><code class="language-py"># syntax
+list1 = [&#39;item1&#39;, &#39;item2&#39;]
+list2 = [&#39;item3&#39;, &#39;item4&#39;, &#39;item5&#39;]
+list1.extend(list2) # [&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;, &#39;item4&#39;, &#39;item5&#39;]
+</code></pre>
+<pre><code class="language-py">num1 = [0, 1, 2, 3]
+num2= [4, 5, 6]
+num1.extend(num2)
+print(&#39;Numbers:&#39;, num1) # Numbers: [0, 1, 2, 3, 4, 5, 6]
+negative_numbers = [-5,-4,-3,-2,-1]
+positive_numbers = [1, 2, 3,4,5]
+zero = [0]
+
+negative_numbers.extend(zero)
+negative_numbers.extend(positive_numbers)
+print(&#39;Integers:&#39;, negative_numbers) # Integers: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+vegetables = [&#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;, &#39;Onion&#39;, &#39;Carrot&#39;]
+fruits.extend(vegetables)
+print(&#39;Fruits and vegetables:&#39;, fruits ) # Fruits and vegetables: [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;Tomato&#39;, &#39;Potato&#39;, &#39;Cabbage&#39;, &#39;Onion&#39;, &#39;Carrot&#39;]
+</code></pre>
+<h3>عد العناصر في القائمة</h3>
+<p>ال<em>عدد()</em>تُرجع الطريقة عدد المرات التي يظهر فيها العنصر في القائمة:</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.count(item)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+print(fruits.count(&#39;orange&#39;))   # 1
+ages = [22, 19, 24, 25, 26, 24, 25, 24]
+print(ages.count(24))           # 3
+</code></pre>
+<h3>العثور على فهرس عنصر</h3>
+<p>ال<em>فِهرِس()</em>تقوم الطريقة بإرجاع فهرس عنصر في القائمة:</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.index(item)
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+print(fruits.index(&#39;orange&#39;))   # 1
+ages = [22, 19, 24, 25, 26, 24, 25, 24]
+print(ages.index(24))           # 2, the first occurrence
+</code></pre>
+<h3>عكس القائمة</h3>
+<p>ال<em>يعكس()</em>الأسلوب يعكس ترتيب القائمة.</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.reverse()
+</code></pre>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.reverse()
+print(fruits) # [&#39;lemon&#39;, &#39;mango&#39;, &#39;orange&#39;, &#39;banana&#39;]
+ages = [22, 19, 24, 25, 26, 24, 25, 24]
+ages.reverse()
+print(ages) # [24, 25, 24, 26, 25, 24, 19, 22]
+</code></pre>
+<h3>فرز عناصر القائمة</h3>
+<p>لفرز القوائم يمكننا استخدامها<em>نوع()</em>طريقة أو<em>مرتبة ()</em>وظائف مدمجة. ال<em>نوع()</em>تقوم الطريقة بإعادة ترتيب عناصر القائمة بترتيب تصاعدي وتعديل القائمة الأصلية. إذا كانت حجة<em>نوع()</em>الطريقة العكسية تساوي true، وسوف تقوم بترتيب القائمة بترتيب تنازلي.</p>
+<ul>
+<li><p>النوع (): تقوم هذه الطريقة بتعديل القائمة الأصلية</p>
+<pre><code class="language-py"># syntax
+lst = [&#39;item1&#39;, &#39;item2&#39;]
+lst.sort()                # ascending
+lst.sort(reverse=True)    # descending
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits.sort()
+print(fruits)             # sorted in alphabetical order, [&#39;banana&#39;, &#39;lemon&#39;, &#39;mango&#39;, &#39;orange&#39;]
+fruits.sort(reverse=True)
+print(fruits) # [&#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;]
+ages = [22, 19, 24, 25, 26, 24, 25, 24]
+ages.sort()
+print(ages) #  [19, 22, 24, 24, 24, 25, 25, 26]
+
+ages.sort(reverse=True)
+print(ages) #  [26, 25, 25, 24, 24, 24, 22, 19]
+</code></pre>
+<p>فرز (): إرجاع القائمة المرتبة دون تعديل القائمة الأصلية<strong>مثال:</strong></p>
+<pre><code class="language-py">fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+print(sorted(fruits))   # [&#39;banana&#39;, &#39;lemon&#39;, &#39;mango&#39;, &#39;orange&#39;]
+# Reverse order
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+fruits = sorted(fruits,reverse=True)
+print(fruits)     # [&#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;, &#39;banana&#39;]
+</code></pre>
+</li>
+</ul>
+<p>🌕 أنت مجتهد وقد حققت الكثير بالفعل. لقد أكملت للتو تحديات اليوم الخامس وأنت على بعد خمس خطوات من طريقك نحو العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم الخامس</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li><p>أعلن عن قائمة فارغة</p>
+</li>
+<li><p>أعلن عن قائمة تحتوي على أكثر من 5 عناصر</p>
+</li>
+<li><p>ابحث عن طول قائمتك</p>
+</li>
+<li><p>احصل على العنصر الأول والعنصر الأوسط والعنصر الأخير في القائمة</p>
+</li>
+<li><p>أعلن عن قائمة تسمى أنواع_البيانات_المختلطة، ضع (الاسم، العمر، الطول، الحالة الاجتماعية، العنوان)</p>
+</li>
+<li><p>قم بتعريف متغير قائمة باسم it_companies وقم بتعيين القيم الأولية Facebook وGoogle وMicrosoft وApple وIBM وOracle وAmazon.</p>
+</li>
+<li><p>طباعة القائمة باستخدام<em>مطبعة()</em></p>
+</li>
+<li><p>طباعة عدد الشركات في القائمة</p>
+</li>
+<li><p>طباعة الشركة الأولى والمتوسطة والأخيرة</p>
+</li>
+<li><p>طباعة القائمة بعد تعديل إحدى الشركات</p>
+</li>
+<li><p>أضف شركة تكنولوجيا المعلومات إلى it_companyes</p>
+</li>
+<li><p>أدخل شركة تكنولوجيا المعلومات في منتصف قائمة الشركات</p>
+</li>
+<li><p>قم بتغيير أحد أسماء شركات it_companies إلى أحرف كبيرة (تم استبعاد IBM!)</p>
+</li>
+<li><p>انضم إلى شركات تكنولوجيا المعلومات باستخدام السلسلة '#;  '</p>
+</li>
+<li><p>تحقق من وجود شركة معينة في قائمة الشركات.</p>
+</li>
+<li><p>فرز القائمة باستخدام طريقة الفرز ().</p>
+</li>
+<li><p>اعكس القائمة بترتيب تنازلي باستخدام الطريقة العكسية ().</p>
+</li>
+<li><p>قم بإزالة أول 3 شركات من القائمة</p>
+</li>
+<li><p>احذف آخر 3 شركات من القائمة</p>
+</li>
+<li><p>قم بإزالة شركة أو شركات تكنولوجيا المعلومات المتوسطة من القائمة</p>
+</li>
+<li><p>قم بإزالة شركة تكنولوجيا المعلومات الأولى من القائمة</p>
+</li>
+<li><p>قم بإزالة شركة أو شركات تكنولوجيا المعلومات الوسطى من القائمة</p>
+</li>
+<li><p>قم بإزالة آخر شركة تكنولوجيا معلومات من القائمة</p>
+</li>
+<li><p>قم بإزالة جميع شركات تكنولوجيا المعلومات من القائمة</p>
+</li>
+<li><p>تدمير قائمة شركات تكنولوجيا المعلومات</p>
+</li>
+<li><p>انضم إلى القوائم التالية:</p>
+<pre><code class="language-py">front_end = [&#39;HTML&#39;, &#39;CSS&#39;, &#39;JS&#39;, &#39;React&#39;, &#39;Redux&#39;]
+back_end = [&#39;Node&#39;,&#39;Express&#39;, &#39;MongoDB&#39;]
+</code></pre>
+</li>
+<li><p>بعد الانضمام إلى القوائم في السؤال 26. انسخ القائمة المرتبطة وقم بتعيينها إلى متغير full_stack، ثم أدخل Python وSQL بعد Redux.</p>
+</li>
+</ol>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>وفيما يلي قائمة بأعمار 10 طلاب:</li>
+</ol>
+<pre><code class="language-sh">ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+</code></pre>
+<ul>
+<li>قم بفرز القائمة والعثور على الحد الأدنى والحد الأقصى للعمر</li>
+<li>أضف الحد الأدنى للعمر والحد الأقصى للعمر مرة أخرى إلى القائمة</li>
+<li>ابحث عن متوسط ​​العمر (عنصر وسطي واحد أو عنصران وسطيان مقسومان على اثنين)</li>
+<li>أوجد متوسط ​​العمر (مجموع كل العناصر مقسومًا على عددها)</li>
+<li>ابحث عن نطاق الأعمار (الحد الأقصى ناقص الحد الأدنى)</li>
+<li>قارن بين قيمة (الحد الأدنى - المتوسط) و (الحد الأقصى - المتوسط)، استخدم<em>القيمة المطلقة ()</em>طريقة</li>
+</ul>
+<ol>
+<li>ابحث عن الدولة (الدول) الوسطى في<a href="https://github.com/Asabeneh/30-Days-Of-Python/tree/master/data/countries.py">قائمة البلدان</a></li>
+<li>قم بتقسيم قائمة الدول إلى قائمتين متساويتين إذا كانت حتى لو لم تكن دولة أخرى في النصف الأول.</li>
+<li>["الصين"، "روسيا"، "الولايات المتحدة الأمريكية"، "فنلندا"، "السويد"، "النرويج"، "الدنمارك"]. قم بتفكيك الدول الثلاثة الأولى والباقي كدول سكانية.</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

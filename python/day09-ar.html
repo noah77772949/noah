@@ -1,0 +1,213 @@
+<!--title:الشروط (Conditionals)|time:30|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم 09: الشروط (الشروط)</h1>
+  <div class="hero-meta">
+    <span>⏱ 30 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-9">💻 التمارين: اليوم التاسع</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘اليوم التاسع</h1>
+<h2>الشروط</h2>
+<p>بشكل افتراضي، يتم تنفيذ العبارات في برنامج Python بالتسلسل من الأعلى إلى الأسفل. إذا كان منطق المعالجة يتطلب ذلك، فيمكن تغيير التدفق التسلسلي للتنفيذ بطريقتين:</p>
+<ul>
+<li>التنفيذ الشرطي: سيتم تنفيذ كتلة مكونة من عبارة واحدة أو أكثر إذا كان تعبير معين صحيحًا</li>
+<li>التنفيذ المتكرر: سيتم تنفيذ كتلة مكونة من عبارة واحدة أو أكثر بشكل متكرر طالما كان تعبير معين صحيحًا. في هذا القسم سوف نغطي<em>لو</em>,<em>آخر</em>,<em>إليف</em>البيانات. المقارنة والعوامل المنطقية التي تعلمناها في الأقسام السابقة ستكون مفيدة هنا.</li>
+</ul>
+<h3>إذا كان الشرط</h3>
+<p>في بايثون ولغات البرمجة الأخرى الكلمة الرئيسية<em>لو</em>يتم استخدامه للتحقق مما إذا كان الشرط صحيحًا ولتنفيذ رمز الكتلة. تذكر المسافة البادئة بعد القولون.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    this part of code runs for truthy conditions
+</code></pre>
+<p><strong>مثال: 1</strong></p>
+<pre><code class="language-py">a = 3
+if a &gt; 0:
+    print(&#39;A is a positive number&#39;)
+# A is a positive number
+</code></pre>
+<p>كما ترون في المثال أعلاه، 3 أكبر من 0. كان الشرط صحيحًا وتم تنفيذ رمز الكتلة. أما إذا كان الشرط خاطئا فلا نرى النتيجة. ولكي نرى نتيجة الشرط الكاذب، يجب أن يكون لدينا كتلة أخرى، والتي ستكون<em>آخر</em>.</p>
+<h3>إذا كان آخر</h3>
+<p>إذا كان الشرط صحيحًا، فسيتم تنفيذ الكتلة الأولى، وإذا لم يكن الأمر كذلك فسيتم تنفيذ الشرط الآخر.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    this part of code runs for truthy conditions
+else:
+     this part of code runs for false conditions
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">a = 3
+if a &lt; 0:
+    print(&#39;A is a negative number&#39;)
+else:
+    print(&#39;A is a positive number&#39;)
+</code></pre>
+<p>ثبت أن الشرط أعلاه غير صحيح، وبالتالي تم تنفيذ الكتلة الأخرى. ماذا لو كانت حالتنا أكثر من اثنين؟ يمكننا استخدامها<em>إليف</em>.</p>
+<h3>إذا أليف آخر</h3>
+<p>في حياتنا اليومية، نتخذ القرارات بشكل يومي. نحن نتخذ القرارات ليس من خلال التحقق من شرط أو شرطين، بل من خلال شروط متعددة. وكما هو الحال في الحياة، فإن البرمجة مليئة بالشروط أيضًا. نحن نستخدم<em>إليف</em>عندما يكون لدينا شروط متعددة.</p>
+<pre><code class="language-py"># syntax
+if condition:
+    code
+elif condition:
+    code
+else:
+    code
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0:
+    print(&#39;A is a positive number&#39;)
+elif a &lt; 0:
+    print(&#39;A is a negative number&#39;)
+else:
+    print(&#39;A is zero&#39;)
+</code></pre>
+<h3>يد قصيرة</h3>
+<pre><code class="language-py"># syntax
+code if condition else code
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">a = 3
+print(&#39;A is positive&#39;) if a &gt; 0 else print(&#39;A is negative&#39;) # first condition met, &#39;A is positive&#39; will be printed
+</code></pre>
+<h3>الشروط المتداخلة</h3>
+<p>يمكن أن تكون متداخلة الشروط</p>
+<pre><code class="language-py"># syntax
+if condition:
+    code
+    if condition:
+    code
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0:
+    if a % 2 == 0:
+        print(&#39;A is a positive and even integer&#39;)
+    else:
+        print(&#39;A is a positive number&#39;)
+elif a == 0:
+    print(&#39;A is zero&#39;)
+else:
+    print(&#39;A is a negative number&#39;)
+</code></pre>
+<p>يمكننا تجنب كتابة الشرط المتداخل باستخدام العامل المنطقي<em>و</em>.</p>
+<h3>إذا الشرط والمشغلين المنطقيين</h3>
+<pre><code class="language-py"># syntax
+if condition and condition:
+    code
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">a = 0
+if a &gt; 0 and a % 2 == 0:
+        print(&#39;A is an even and positive integer&#39;)
+elif a &gt; 0 and a % 2 !=  0:
+     print(&#39;A is a positive integer&#39;)
+elif a == 0:
+    print(&#39;A is zero&#39;)
+else:
+    print(&#39;A is negative&#39;)
+</code></pre>
+<h3>إذا و أو العوامل المنطقية</h3>
+<pre><code class="language-py"># syntax
+if condition or condition:
+    code
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">user = &#39;James&#39;
+access_level = 3
+if user == &#39;admin&#39; or access_level &gt;= 4:
+        print(&#39;Access granted!&#39;)
+else:
+    print(&#39;Access denied!&#39;)
+</code></pre>
+<p>🌕 أنت تقوم بعمل رائع. لا تستسلم أبدًا لأن الأشياء العظيمة تستغرق وقتًا. لقد أكملت للتو تحديات اليوم التاسع وأنت على بعد 9 خطوات في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم التاسع</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li><p>احصل على مدخلات المستخدم باستخدام الإدخال ("أدخل عمرك:"). إذا كان عمر المستخدم 18 عامًا أو أكبر، فقم بإبداء الرأي: أنت كبير بما يكفي للقيادة. إذا كان عمرك أقل من 18 عامًا، قم بتقديم ملاحظات لانتظار مقدار السنوات المفقودة. الإخراج:</p>
+<pre><code class="language-sh">Enter your age: 30
+You are old enough to learn to drive.
+Output:
+Enter your age: 15
+You need 3 more years to learn to drive.
+</code></pre>
+</li>
+<li><p>قارن بين قيم my_age وyour_age باستخدام if … else. من هو الأكبر (أنا أم أنت)؟ استخدم الإدخال ("أدخل عمرك:") للحصول على العمر كمدخل. يمكنك استخدام شرط متداخل لطباعة "السنة" لفارق سنة واحدة في العمر، و"سنوات" للفروق الأكبر، ونص مخصص إذا كان my_age = your_age. الإخراج:</p>
+<pre><code class="language-sh">Enter your age: 30
+You are 5 years older than me.
+</code></pre>
+</li>
+<li><p>احصل على رقمين من المستخدم باستخدام موجه الإدخال. إذا كان a أكبر من b، فإن a أكبر من b، وإذا كان a أقل من b، فإن a أصغر من b، وإلا فإن a يساوي b. الإخراج:</p>
+</li>
+</ol>
+<pre><code class="language-sh">Enter number one: 4
+Enter number two: 3
+4 is greater than 3
+</code></pre>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>اكتب رمزًا يمنح درجات للطلاب وفقًا لدرجاتهم:</li>
+</ol>
+<pre><code>```sh
+90-100, A
+80-89, B
+70-79, C
+60-69, D
+0-59, F
+```
+</code></pre>
+<ol start="2">
+<li>احصل على الشهر من إدخال المستخدم ثم تحقق مما إذا كان الموسم هو الخريف أو الشتاء أو الربيع أو الصيف. إذا كان إدخال المستخدم هو:
+سبتمبر، أكتوبر أو نوفمبر، الموسم هو الخريف.
+ديسمبر أو يناير أو فبراير، الموسم هو الشتاء.
+مارس، أبريل أو مايو، الموسم هو الربيع
+يونيو أو يوليو أو أغسطس، الموسم هو الصيف</li>
+<li>القائمة التالية تحتوي على بعض الفواكه:</li>
+</ol>
+<pre><code>```sh
+fruits = [&#39;banana&#39;, &#39;orange&#39;, &#39;mango&#39;, &#39;lemon&#39;]
+```
+
+If a fruit doesn&#39;t exist in the list add the fruit to the list and print the modified list. If the fruit exists print(&#39;That fruit already exist in the list&#39;)
+</code></pre>
+<h3>التدريبات: المستوى 3</h3>
+<ol>
+<li>هنا لدينا قاموس الشخص. لا تتردد في تعديله!</li>
+</ol>
+<pre><code class="language-py">        person={
+    &#39;first_name&#39;: &#39;Asabeneh&#39;,
+    &#39;last_name&#39;: &#39;Yetayeh&#39;,
+    &#39;age&#39;: 250,
+    &#39;country&#39;: &#39;Finland&#39;,
+    &#39;is_married&#39;: True,
+    &#39;skills&#39;: [&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;: {
+        &#39;street&#39;: &#39;Space street&#39;,
+        &#39;zipcode&#39;: &#39;02210&#39;
+    }
+    }
+</code></pre>
+<pre><code> * Check if the person dictionary has skills key, if so print out the middle skill in the skills list.
+ * Check if the person dictionary has skills key, if so check if the person has &#39;Python&#39; skill and print out the result.
+ * If a person skills has only JavaScript and React, print(&#39;He is a front end developer&#39;), if the person skills has Node, Python, MongoDB, print(&#39;He is a backend developer&#39;), if the person skills has React, Node and MongoDB, Print(&#39;He is a fullstack developer&#39;), else print(&#39;unknown title&#39;) - for more accurate results more conditions can be nested!
+ * If the person is married and if he lives in Finland, print the information in the following format:
+</code></pre>
+<pre><code class="language-py">    Asabeneh Yetayeh lives in Finland. He is married.
+</code></pre>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>

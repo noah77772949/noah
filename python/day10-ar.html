@@ -1,0 +1,349 @@
+<!--title:الحلقات (Loops)|time:35|level:متوسط|quiz:1,2,0,1-->
+<div class="lesson-content">
+
+<div class="lesson-hero">
+  <div class="hero-badge">📘 من 30 يومًا في لغة بايثون</div>
+  <h1>اليوم العاشر: الحلقات (الحلقات)</h1>
+  <div class="hero-meta">
+    <span>⏱ 35 دقيقة</span>
+    <span>📊 متوسط</span>
+    <span>🌍صابنة</span>
+  </div>
+</div>
+
+<section class="lesson-section">
+
+</li>
+<li><a href="#-exercises-day-10">💻 التمارين: اليوم العاشر</a>
+</li>
+</ul>
+</li>
+</ul>
+<h1>📘اليوم العاشر</h1>
+<h2>الحلقات</h2>
+<p>الحياة مليئة بالروتين. في البرمجة نقوم أيضًا بالكثير من المهام المتكررة. من أجل التعامل مع لغات البرمجة المهمة المتكررة، استخدم الحلقات. توفر لغة برمجة بايثون أيضًا الأنواع التالية من الحلقتين:</p>
+<ol>
+<li>أثناء الحلقة</li>
+<li>للحلقة</li>
+</ol>
+<h3>أثناء الحلقة</h3>
+<p>نستخدم الكلمة المحجوزة<em>بينما</em>لعمل حلقة زمنية. يتم استخدامه لتنفيذ مجموعة من العبارات بشكل متكرر حتى يتم استيفاء شرط معين. عندما يصبح الشرط خاطئًا، سيستمر تنفيذ أسطر التعليمات البرمجية بعد الحلقة.</p>
+<pre><code class="language-py">  # syntax
+while condition:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">count = 0
+while count &lt; 5:
+    print(count)
+    count = count + 1
+#prints from 0 to 4
+</code></pre>
+<p>في حلقة while المذكورة أعلاه، يصبح الشرط خطأ عندما يكون العدد 5. وذلك عندما تتوقف الحلقة.
+إذا كنا مهتمين بتشغيل كتلة من التعليمات البرمجية بمجرد أن يصبح الشرط غير صحيح، فيمكننا استخدام<em>آخر</em>.</p>
+<pre><code class="language-py">  # syntax
+while condition:
+    code goes here
+else:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">count = 0
+while count &lt; 5:
+    print(count)
+    count = count + 1
+else:
+    print(count)
+</code></pre>
+<p>سيكون شرط الحلقة أعلاه خاطئًا عندما يكون العدد 5 وتتوقف الحلقة، ويبدأ التنفيذ عبارة else. ونتيجة لذلك سيتم طباعة 5.</p>
+<h3>استراحة ومتابعة - الجزء الأول</h3>
+<ul>
+<li>Break: نستخدم كلمة Break عندما نرغب في الخروج من الحلقة أو إيقافها.</li>
+</ul>
+<pre><code class="language-py"># syntax
+while condition:
+    code goes here
+    if another_condition:
+        break
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">count = 0
+while count &lt; 5:
+    print(count)
+    count = count + 1
+    if count == 3:
+        break
+</code></pre>
+<p>حلقة while المذكورة أعلاه تطبع فقط 0، 1، 2، ولكن عندما تصل إلى 3 فإنها تتوقف.</p>
+<ul>
+<li>متابعة: باستخدام عبارة continue، يمكننا تخطي التكرار الحالي والاستمرار في التكرار التالي:</li>
+</ul>
+<pre><code class="language-py">  # syntax
+while condition:
+    code goes here
+    if another_condition:
+        continue
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">count = 0
+while count &lt; 5:
+    if count == 3:
+        count += 1
+        continue
+    print(count)
+    count = count + 1
+</code></pre>
+<p>حلقة while المذكورة أعلاه تطبع فقط 0 و1 و2 و4 (تخطي 3).</p>
+<h3>للحلقة</h3>
+<p>أ<em>ل</em>يتم استخدام الكلمة الأساسية لإنشاء حلقة for، تشبه لغات البرمجة الأخرى، ولكن مع بعض الاختلافات في بناء الجملة. تُستخدم الحلقة للتكرار عبر تسلسل (إما قائمة، أو صف، أو قاموس، أو مجموعة، أو سلسلة).</p>
+<p>-استخدام حلقة For في القائمة</p>
+<pre><code class="language-py"># syntax
+for iterator in lst:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">numbers = [0, 1, 2, 3, 4, 5]
+for number in numbers: # number is temporary name to refer to the list&#39;s items, valid only inside this loop
+    print(number)       # the numbers will be printed line by line, from 0 to 5
+</code></pre>
+<p>-استخدام حلقة For على السلسلة</p>
+<pre><code class="language-py"># syntax
+for iterator in string:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">language = &#39;Python&#39;
+for letter in language:
+    print(letter)
+
+
+for i in range(len(language)):
+    print(language[i])
+</code></pre>
+<p>-استخدام حلقة For على الصف</p>
+<pre><code class="language-py"># syntax
+for iterator in tpl:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">numbers = (0, 1, 2, 3, 4, 5)
+for number in numbers:
+    print(number)
+</code></pre>
+<ul>
+<li>للحلقة مع القاموس
+يمنحك التكرار عبر القاموس مفتاح القاموس.</li>
+</ul>
+<pre><code class="language-py">  # syntax
+for iterator in dct:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;:&#39;Asabeneh&#39;,
+    &#39;last_name&#39;:&#39;Yetayeh&#39;,
+    &#39;age&#39;:250,
+    &#39;country&#39;:&#39;Finland&#39;,
+    &#39;is_marred&#39;:True,
+    &#39;skills&#39;:[&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;:{
+        &#39;street&#39;:&#39;Space street&#39;,
+        &#39;zipcode&#39;:&#39;02210&#39;
+    }
+}
+for key in person:
+    print(key)
+
+for key, value in person.items():
+    print(key, value) # this way we get both keys and values printed out
+</code></pre>
+<p>-استخدام للحلقة في المجموعة</p>
+<pre><code class="language-py"># syntax
+for iterator in st:
+    code goes here
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">it_companies = {&#39;Facebook&#39;, &#39;Google&#39;, &#39;Microsoft&#39;, &#39;Apple&#39;, &#39;IBM&#39;, &#39;Oracle&#39;, &#39;Amazon&#39;}
+for company in it_companies:
+    print(company)
+</code></pre>
+<h3>استراحة ومتابعة - الجزء 2</h3>
+<p>تذكير قصير:<em>استراحة</em>: نستخدم كلمة Break عندما نريد إيقاف الحلقة قبل اكتمالها.</p>
+<pre><code class="language-py"># syntax
+for iterator in sequence:
+    code goes here
+    if condition:
+        break
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">numbers = (0,1,2,3,4,5)
+for number in numbers:
+    print(number)
+    if number == 3:
+        break
+</code></pre>
+<p>في المثال أعلاه، تتوقف الحلقة عندما تصل إلى 3.</p>
+<p>متابعة: نستخدم continue عندما نريد تخطي بعض الخطوات في تكرار الحلقة.</p>
+<pre><code class="language-py">  # syntax
+for iterator in sequence:
+    code goes here
+    if condition:
+        continue
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">numbers = (0,1,2,3,4,5)
+for number in numbers:
+    print(number)
+    if number == 3:
+        continue
+    print(&#39;Next number should be &#39;, number + 1) if number != 5 else print(&quot;loop&#39;s end&quot;) # for short hand conditions need both if and else statements
+print(&#39;outside the loop&#39;)
+</code></pre>
+<p>في المثال أعلاه، إذا كان الرقم يساوي 3، فإن الخطوة<em>بعد</em>يتم تخطي الشرط (ولكن داخل الحلقة) ويستمر تنفيذ الحلقة إذا كان هناك أي تكرارات متبقية.</p>
+<h3>وظيفة المدى</h3>
+<p>ال<em>يتراوح()</em>يتم استخدام الدالة لإرجاع قائمة الأرقام. ال<em>النطاق (البداية، النهاية، الخطوة)</em>يأخذ ثلاث معلمات: البداية والنهاية والزيادة. افتراضيًا، يبدأ من 0 والزيادة هي 1. يحتاج تسلسل النطاق إلى وسيطة واحدة على الأقل (النهاية).
+إنشاء تسلسلات باستخدام النطاق</p>
+<pre><code class="language-py">lst = list(range(11))
+print(lst) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+st = set(range(1, 11))    # 2 arguments indicate start and end of the sequence, step set to default 1
+print(st) # {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+lst = list(range(0,11,2))
+print(lst) # [0, 2, 4, 6, 8, 10]
+st = set(range(0,11,2))
+print(st) #  {0, 2, 4, 6, 8, 10}
+
+# for backward from start to end 
+lst = list(range(11,0,-2))
+print(lst) # [11,9,7,5,3,1]
+</code></pre>
+<pre><code class="language-py"># syntax
+for iterator in range(start, end, step):
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">for number in range(11):
+    print(number)   # prints 0 to 10, not including 11
+</code></pre>
+<h3>متداخلة للحلقة</h3>
+<p>يمكننا كتابة حلقات داخل حلقة.</p>
+<pre><code class="language-py"># syntax
+for x in y:
+    for t in x:
+        print(t)
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">person = {
+    &#39;first_name&#39;: &#39;Asabeneh&#39;,
+    &#39;last_name&#39;: &#39;Yetayeh&#39;,
+    &#39;age&#39;: 250,
+    &#39;country&#39;: &#39;Finland&#39;,
+    &#39;is_marred&#39;: True,
+    &#39;skills&#39;: [&#39;JavaScript&#39;, &#39;React&#39;, &#39;Node&#39;, &#39;MongoDB&#39;, &#39;Python&#39;],
+    &#39;address&#39;: {
+        &#39;street&#39;: &#39;Space street&#39;,
+        &#39;zipcode&#39;: &#39;02210&#39;
+    }
+}
+for key in person:
+    if key == &#39;skills&#39;:
+        for skill in person[&#39;skills&#39;]:
+            print(skill)
+</code></pre>
+<h3>لغير ذلك</h3>
+<p>إذا أردنا تنفيذ رسالة ما عند انتهاء الحلقة، نستخدم آخر.</p>
+<pre><code class="language-py"># syntax
+for iterator in range(start, end, step):
+    do something
+else:
+    print(&#39;The loop ended&#39;)
+</code></pre>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">for number in range(11):
+    print(number)   # prints 0 to 10, not including 11
+else:
+    print(&#39;The loop stops at&#39;, number)
+</code></pre>
+<h3>يمر</h3>
+<p>في بايثون عندما تكون العبارة مطلوبة (بعد الفاصلة المنقوطة)، لكننا لا نحب تنفيذ أي كود هناك، يمكننا كتابة الكلمة<em>يمر</em>لتجنب الأخطاء. كما يمكننا استخدامه كعنصر نائب للبيانات المستقبلية.</p>
+<p><strong>مثال:</strong></p>
+<pre><code class="language-py">for number in range(6):
+    pass
+</code></pre>
+<p>🌕 لقد حققت إنجازًا كبيرًا، ولا يمكن إيقافك. يستمر في التقدم! لقد أكملت للتو تحديات اليوم العاشر، وأنت على بعد 10 خطوات في طريقك إلى العظمة. الآن قم ببعض التمارين لعقلك وعضلاتك.</p>
+<h2>💻 التمارين: اليوم العاشر</h2>
+<h3>التدريبات: المستوى 1</h3>
+<ol>
+<li><p>قم بالتكرار من 0 إلى 10 باستخدام حلقة for، وافعل الشيء نفسه باستخدام حلقة while.</p>
+</li>
+<li><p>قم بالتكرار من 10 إلى 0 باستخدام حلقة for، وافعل الشيء نفسه باستخدام حلقة while.</p>
+</li>
+<li><p>اكتب حلقة تقوم بإجراء سبعة استدعاءات للتابع print()، حتى نحصل على المثلث التالي:</p>
+<pre><code class="language-py">  #
+  ##
+  ###
+  ####
+  #####
+  ######
+  #######
+</code></pre>
+</li>
+<li><p>استخدم الحلقات المتداخلة لإنشاء ما يلي:</p>
+<pre><code class="language-sh"># # # # # # # #
+# # # # # # # #
+# # # # # # # #
+# # # # # # # #
+# # # # # # # #
+# # # # # # # #
+# # # # # # # #
+# # # # # # # #
+</code></pre>
+</li>
+<li><p>طباعة النمط التالي:</p>
+<pre><code class="language-sh">0 x 0 = 0
+1 x 1 = 1
+2 x 2 = 4
+3 x 3 = 9
+4 x 4 = 16
+5 x 5 = 25
+6 x 6 = 36
+7 x 7 = 49
+8 x 8 = 64
+9 x 9 = 81
+10 x 10 = 100
+</code></pre>
+</li>
+<li><p>قم بالتكرار عبر القائمة، ['Python'، 'Numpy'، 'Pandas'، 'Django'، 'Flask'] باستخدام حلقة for وطباعة العناصر.</p>
+</li>
+<li><p>استخدم حلقة for للتكرار من 0 إلى 100 وطباعة الأرقام الزوجية فقط</p>
+</li>
+<li><p>استخدم حلقة for للتكرار من 0 إلى 100 وطباعة الأرقام الفردية فقط</p>
+</li>
+</ol>
+<h3>التدريبات: المستوى 2</h3>
+<ol>
+<li>استخدم حلقة for للتكرار من 0 إلى 100 وطباعة مجموع كل الأرقام.</li>
+</ol>
+<pre><code class="language-sh">The sum of all numbers is 5050.
+</code></pre>
+<ol start="2">
+<li><p>استخدم حلقة for للتكرار من 0 إلى 100 وطباعة مجموع كل الأرقام الزوجية ومجموع كل الاحتمالات.</p>
+<pre><code class="language-sh">The sum of all evens is 2550. And the sum of all odds is 2500.
+</code></pre>
+</li>
+</ol>
+<h3>التدريبات: المستوى 3</h3>
+<ol>
+<li>انتقل إلى مجلد البيانات واستخدم<a href="https://github.com/Asabeneh/30-Days-Of-Python/blob/master/data/countries.py">البلدان.py</a>ملف. قم بالمرور عبر البلدان واستخرج جميع البلدان التي تحتوي على الكلمة<em>أرض</em>.</li>
+<li>هذه قائمة فواكه، ['موز'، 'برتقال'، 'مانجو'، 'ليمون'] عكس الترتيب باستخدام الحلقة.</li>
+<li>انتقل إلى مجلد البيانات واستخدم<a href="https://github.com/Asabeneh/30-Days-Of-Python/blob/master/data/countries-data.py">countries_data.py</a>ملف.<ol>
+<li>ما هو العدد الإجمالي للغات في البيانات</li>
+<li>ابحث عن اللغات العشر الأكثر استخدامًا من البيانات</li>
+<li>تعرف على أكثر 10 دول سكانا في العالم</li>
+</ol>
+</li>
+</ol>
+<p>🎉 تهانينا! 🎉</p>
+</section>
+
+<div class="lesson-nav"></div>
+</div>
